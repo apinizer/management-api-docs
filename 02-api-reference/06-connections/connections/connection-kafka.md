@@ -1,0 +1,680 @@
+# Kafka Connection
+
+## General Information
+
+### Connection Type
+```
+kafka
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Kafka connection for sending messages to Kafka topics. Used by policies and other components that need to publish messages to Kafka brokers.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "kafka",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-kafka-connection",
+      "description": "Kafka connection for event streaming",
+      "deployToWorker": true,
+      "enabled": true,
+      "topicName": "events",
+      "propertiesMap": {
+        "bootstrap.servers": {
+          "value": "localhost:9092",
+          "valueType": "STRING"
+        },
+        "key.serializer": {
+          "value": "org.apache.kafka.common.serialization.StringSerializer",
+          "valueType": "STRING"
+        },
+        "value.serializer": {
+          "value": "org.apache.kafka.common.serialization.StringSerializer",
+          "valueType": "STRING"
+        }
+      },
+      "enableSecure": false,
+      "protocolTypes": [],
+      "keyStoreId": null,
+      "trustStoreId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "kafka",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-kafka-connection",
+      "description": "Kafka connection for event streaming",
+      "deployToWorker": true,
+      "enabled": true,
+      "topicName": "events",
+      "propertiesMap": {
+        "bootstrap.servers": {
+          "value": "localhost:9092",
+          "valueType": "STRING"
+        },
+        "key.serializer": {
+          "value": "org.apache.kafka.common.serialization.StringSerializer",
+          "valueType": "STRING"
+        },
+        "value.serializer": {
+          "value": "org.apache.kafka.common.serialization.StringSerializer",
+          "valueType": "STRING"
+        },
+        "max.block.ms": {
+          "value": "3000",
+          "valueType": "INTEGER"
+        }
+      },
+      "enableSecure": false,
+      "protocolTypes": [],
+      "keyStoreId": null,
+      "trustStoreId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-kafka-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "_class": "kafka",
+  "name": "my-kafka-connection",
+  "description": "Kafka connection for event streaming",
+  "deployToWorker": true,
+  "enabled": true,
+  "topicName": "events",
+  "propertiesMap": {
+    "bootstrap.servers": {
+      "value": "localhost:9092",
+      "valueType": "STRING"
+    },
+    "key.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "value.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "max.block.ms": {
+      "value": "3000",
+      "valueType": "INTEGER"
+    },
+    "acks": {
+      "value": "all",
+      "valueType": "STRING"
+    },
+    "retries": {
+      "value": "3",
+      "valueType": "INTEGER"
+    }
+  },
+  "enableSecure": false,
+  "protocolTypes": [],
+  "keyStoreName": null,
+  "trustStoreName": null
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `kafka` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### Kafka-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| topicName | string | Yes | - | Kafka topic name |
+| propertiesMap | object | Yes | - | Kafka producer properties map |
+| enableSecure | boolean | No | false | Enable SSL/TLS encryption |
+| protocolTypes | array | No* | [] | SSL/TLS protocol types (required if enableSecure=true) |
+| keyStoreName | string | No* | - | KeyStore name (required if enableSecure=true) |
+| trustStoreName | string | No | - | TrustStore name (optional, for server certificate validation) |
+
+**propertiesMap Structure:**
+Each property in `propertiesMap` is a `MapValue` object with:
+- `value` (string) - Property value
+- `valueType` (string) - Value type
+
+**Enum: valueType (MapValueType)**
+- `STRING` - String value
+- `BOOLEAN` - Boolean value
+- `INTEGER` - Integer value
+- `LONG` - Long value
+- `DOUBLE` - Double value
+- `FLOAT` - Float value
+- `STRING_LIST` - Comma-separated string list
+- `URI` - URI value
+
+**Common Kafka Properties:**
+- `bootstrap.servers` (STRING) - Kafka broker addresses (e.g., "localhost:9092" or "broker1:9092,broker2:9092")
+- `key.serializer` (STRING) - Key serializer class (e.g., "org.apache.kafka.common.serialization.StringSerializer")
+- `value.serializer` (STRING) - Value serializer class (e.g., "org.apache.kafka.common.serialization.StringSerializer")
+- `max.block.ms` (INTEGER) - Maximum time to block when sending (default: 3000)
+- `acks` (STRING) - Acknowledgment mode: "0", "1", or "all"
+- `retries` (INTEGER) - Number of retries on failure
+- `batch.size` (INTEGER) - Batch size in bytes
+- `linger.ms` (INTEGER) - Time to wait before sending batch
+
+**Enum: protocolTypes (EnumSSLContextProtocolType)**
+- `TLS_1_3` - TLS 1.3
+- `TLS_1_2` - TLS 1.2
+- `TLS_1_1` - TLS 1.1
+- `TLS_1_0` - TLS 1.0
+- `SSL_3_0` - SSL 3.0 (deprecated)
+
+**Note:** 
+- `propertiesMap` must contain at least `bootstrap.servers`, `key.serializer`, and `value.serializer`
+- If `enableSecure: true`, `protocolTypes` and `keyStoreName` are required
+- `keyStoreName` and `trustStoreName` refer to KeyStore names (not IDs) - they are converted to IDs internally
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-kafka-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "kafka",
+    "name": "my-kafka-connection",
+    "description": "Kafka connection for event streaming",
+    "deployToWorker": true,
+    "enabled": true,
+    "topicName": "events",
+    "propertiesMap": {
+      "bootstrap.servers": {
+        "value": "localhost:9092",
+        "valueType": "STRING"
+      },
+      "key.serializer": {
+        "value": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueType": "STRING"
+      },
+      "value.serializer": {
+        "value": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueType": "STRING"
+      },
+      "max.block.ms": {
+        "value": "3000",
+        "valueType": "INTEGER"
+      }
+    },
+    "enableSecure": false
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "_class": "kafka",
+  "id": "connection-id",
+  "name": "my-kafka-connection",
+  "description": "Updated Kafka connection description",
+  "deployToWorker": true,
+  "enabled": true,
+  "topicName": "updated-events",
+  "propertiesMap": {
+    "bootstrap.servers": {
+      "value": "broker1:9092,broker2:9092",
+      "valueType": "STRING"
+    },
+    "key.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "value.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "max.block.ms": {
+      "value": "5000",
+      "valueType": "INTEGER"
+    }
+  },
+  "enableSecure": true,
+  "protocolTypes": ["TLS_1_2", "TLS_1_3"],
+  "keyStoreName": "kafka-client-keystore",
+  "trustStoreName": "kafka-truststore"
+}
+```
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-kafka-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "kafka",
+    "id": "connection-id",
+    "name": "my-kafka-connection",
+    "description": "Updated Kafka connection description",
+    "deployToWorker": true,
+    "enabled": true,
+    "topicName": "updated-events",
+    "propertiesMap": {
+      "bootstrap.servers": {
+        "value": "broker1:9092,broker2:9092",
+        "valueType": "STRING"
+      },
+      "key.serializer": {
+        "value": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueType": "STRING"
+      },
+      "value.serializer": {
+        "value": "org.apache.kafka.common.serialization.StringSerializer",
+        "valueType": "STRING"
+      }
+    },
+    "enableSecure": true,
+    "protocolTypes": ["TLS_1_2"],
+    "keyStoreName": "kafka-client-keystore"
+  }'
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-kafka-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic Kafka Connection
+
+Create a basic Kafka connection without SSL/TLS.
+
+**Request Body:**
+```json
+{
+  "_class": "kafka",
+  "name": "basic-kafka",
+  "description": "Basic Kafka connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "topicName": "events",
+  "propertiesMap": {
+    "bootstrap.servers": {
+      "value": "localhost:9092",
+      "valueType": "STRING"
+    },
+    "key.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "value.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "max.block.ms": {
+      "value": "3000",
+      "valueType": "INTEGER"
+    }
+  },
+  "enableSecure": false
+}
+```
+
+**cURL:**
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/basic-kafka/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d @request-body.json
+```
+
+### Scenario 2: Secure Kafka Connection with SSL/TLS
+
+Create a secure Kafka connection with SSL/TLS encryption.
+
+**Request Body:**
+```json
+{
+  "_class": "kafka",
+  "name": "secure-kafka",
+  "description": "Secure Kafka connection with SSL/TLS",
+  "deployToWorker": true,
+  "enabled": true,
+  "topicName": "secure-events",
+  "propertiesMap": {
+    "bootstrap.servers": {
+      "value": "kafka-broker:9093",
+      "valueType": "STRING"
+    },
+    "key.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "value.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "security.protocol": {
+      "value": "SSL",
+      "valueType": "STRING"
+    }
+  },
+  "enableSecure": true,
+  "protocolTypes": ["TLS_1_2", "TLS_1_3"],
+  "keyStoreName": "kafka-client-keystore",
+  "trustStoreName": "kafka-truststore"
+}
+```
+
+### Scenario 3: High-Performance Kafka Connection
+
+Create a Kafka connection optimized for high throughput.
+
+**Request Body:**
+```json
+{
+  "_class": "kafka",
+  "name": "high-performance-kafka",
+  "description": "High-performance Kafka connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "topicName": "high-volume-events",
+  "propertiesMap": {
+    "bootstrap.servers": {
+      "value": "broker1:9092,broker2:9092,broker3:9092",
+      "valueType": "STRING"
+    },
+    "key.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "value.serializer": {
+      "value": "org.apache.kafka.common.serialization.StringSerializer",
+      "valueType": "STRING"
+    },
+    "acks": {
+      "value": "1",
+      "valueType": "STRING"
+    },
+    "batch.size": {
+      "value": "16384",
+      "valueType": "INTEGER"
+    },
+    "linger.ms": {
+      "value": "10",
+      "valueType": "INTEGER"
+    },
+    "compression.type": {
+      "value": "snappy",
+      "valueType": "STRING"
+    }
+  },
+  "enableSecure": false
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Required Properties**: `propertiesMap` must contain at least:
+  - `bootstrap.servers` - Kafka broker addresses
+  - `key.serializer` - Key serializer class
+  - `value.serializer` - Value serializer class
+- **SSL/TLS**: When `enableSecure: true`:
+  - `protocolTypes` must be provided (at least one protocol)
+  - `keyStoreName` is required (KeyStore must exist)
+  - `trustStoreName` is optional (for server certificate validation)
+- **KeyStore/TrustStore**: Use KeyStore names (not IDs). They are converted to IDs internally.
+- **Property Types**: Use correct `valueType` for each property:
+  - Numbers: `INTEGER`, `LONG`, `DOUBLE`, `FLOAT`
+  - Booleans: `BOOLEAN`
+  - Strings: `STRING`
+  - Lists: `STRING_LIST` (comma-separated)
+- **Bootstrap Servers**: Can be a single broker or comma-separated list (e.g., "broker1:9092,broker2:9092")
+- **Serializers**: Common serializers:
+  - `org.apache.kafka.common.serialization.StringSerializer` - String
+  - `org.apache.kafka.common.serialization.ByteArraySerializer` - Byte array
+  - `org.apache.kafka.common.serialization.IntegerSerializer` - Integer
+- **Deployment**: If `deployToWorker: true`, connection is automatically deployed to workers
+- **Name Matching**: Path parameter `connectionName` must match the `name` field in the request body
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get connection details
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

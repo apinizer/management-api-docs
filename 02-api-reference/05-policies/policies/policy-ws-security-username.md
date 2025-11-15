@@ -1,0 +1,477 @@
+# WS Security Username Policy
+
+## General Information
+
+### Policy Type
+```
+policy-ws-security-username
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+WS Security Username policy adds WS-Security UsernameToken element to SOAP requests before forwarding to the backend service. It provides username/password authentication according to WS-Security standards.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-ws-security-username",
+            "name": "ws-security-username-policy",
+            "description": "Add UsernameToken to SOAP requests",
+            "active": true,
+            "mustUnderstand": true,
+            "username": "myuser",
+            "password": null,
+            "passwordType": "PasswordText",
+            "nonce": true,
+            "created": true
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is cleared in list operations for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - PasswordText
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken with plain text password",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordText",
+    "nonce": true,
+    "created": true
+  }
+}
+```
+
+##### Full JSON Body Example - PasswordDigest
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken with password digest",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordDigest",
+    "nonce": true,
+    "created": true
+  }
+}
+```
+
+##### Full JSON Body Example - Minimal Configuration
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken without nonce and created",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordText",
+    "nonce": false,
+    "created": false
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (adds UsernameToken to outgoing requests)
+- `RESPONSE` - Executes in response pipeline (adds UsernameToken to outgoing responses)
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-ws-security-username` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
+| username | string | Yes | - | UsernameToken username |
+| password | string | Yes | - | UsernameToken password |
+| passwordType | string | Yes | - | UsernameToken password type. See [EnumWsSecurityPasswordType](#enumwssecuritypasswordtype) |
+| nonce | boolean | No | false | Add nonce to UsernameToken |
+| created | boolean | No | false | Add created timestamp to UsernameToken |
+
+**Enum: passwordType (EnumWsSecurityPasswordType)**
+- `PasswordText` - Plain text password (less secure)
+- `PasswordDigest` - Password digest (hashed password, more secure, recommended)
+
+**Note:**
+- `username`, `password`, and `passwordType` are required.
+- `nonce` and `created` add additional security to UsernameToken.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/ws-security-username-policy/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-ws-security-username",
+      "description": "Add UsernameToken to SOAP requests",
+      "active": true,
+      "mustUnderstand": true,
+      "username": "myuser",
+      "password": "mypassword",
+      "passwordType": "PasswordText",
+      "nonce": true,
+      "created": true
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Plain Text Password
+
+Add UsernameToken with plain text password.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken with plain text password",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordText",
+    "nonce": false,
+    "created": false
+  }
+}
+```
+
+### Scenario 2: Password Digest with Nonce and Created
+
+Add UsernameToken with password digest, nonce, and created timestamp.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken with password digest",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordDigest",
+    "nonce": true,
+    "created": true
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Password Types**: 
+  - `PasswordText` - Plain text password (less secure, not recommended for production)
+  - `PasswordDigest` - Hashed password (more secure, recommended)
+- **Nonce and Created**: 
+  - `nonce: true` - Adds random nonce to prevent replay attacks
+  - `created: true` - Adds timestamp to UsernameToken
+  - Both enhance security and are recommended
+- **Security**: 
+  - Password digest uses SHA-1 hash with nonce and timestamp
+  - More secure than plain text password
+  - Recommended for production use
+- **Performance**: UsernameToken adds minimal overhead. Use for necessary authentication.
+- **Pipeline**: 
+  - `REQUEST` pipeline adds UsernameToken to outgoing requests
+  - `RESPONSE` pipeline adds UsernameToken to outgoing responses
+- **Error Handling**: Invalid username/password configuration causes policy to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [WS Security To Target Policy](./policy-ws-security-to-target.md) - Complete WS-Security configuration
+

@@ -1,0 +1,511 @@
+# Email Connection
+
+## General Information
+
+### Connection Type
+```
+email
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Email connection for sending emails via SMTP. Used by policies and other components that need to send email notifications.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "email",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-email-connection",
+      "description": "Email connection for notifications",
+      "deployToWorker": true,
+      "enabled": true,
+      "host": "smtp.example.com",
+      "port": 587,
+      "username": "user@example.com",
+      "password": null,
+      "enableStartTls": true,
+      "auth": true,
+      "defaultEncoding": "UTF-8",
+      "addressToTest": "test@example.com",
+      "from": "noreply@example.com",
+      "additionalProperties": []
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `password` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "email",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-email-connection",
+      "description": "Email connection for notifications",
+      "deployToWorker": true,
+      "enabled": true,
+      "host": "smtp.example.com",
+      "port": 587,
+      "username": "user@example.com",
+      "password": "actual-password",
+      "enableStartTls": true,
+      "auth": true,
+      "defaultEncoding": "UTF-8",
+      "addressToTest": "test@example.com",
+      "from": "noreply@example.com",
+      "additionalProperties": []
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** When getting a single connection, `password` is returned in full.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "_class": "email",
+  "name": "my-email-connection",
+  "description": "Email connection for sending notifications",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "enableStartTls": true,
+  "auth": true,
+  "username": "user@example.com",
+  "password": "app-password",
+  "defaultEncoding": "UTF-8",
+  "addressToTest": "test@example.com",
+  "from": "noreply@example.com",
+  "additionalProperties": []
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `email` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### Email-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| host | string | Yes | - | SMTP server hostname |
+| port | integer | No | 587 | SMTP server port |
+| enableStartTls | boolean | No | false | Enable STARTTLS |
+| auth | boolean | No | false | Enable authentication |
+| username | string | No* | - | SMTP username (required if auth=true) |
+| password | string | No* | - | SMTP password (required if auth=true, secret field) |
+| defaultEncoding | string | No | UTF-8 | Default email encoding |
+| addressToTest | string | No | - | Email address for testing |
+| from | string | No | - | Default sender email address |
+| additionalProperties | array | No | [] | Additional SMTP properties |
+
+**Note:** `username` and `password` are required when `auth` is `true`.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "email",
+    "name": "my-email-connection",
+    "description": "Email connection for sending notifications",
+    "deployToWorker": true,
+    "enabled": true,
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "enableStartTls": true,
+    "auth": true,
+    "username": "user@example.com",
+    "password": "app-password",
+    "defaultEncoding": "UTF-8",
+    "from": "noreply@example.com"
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "_class": "email",
+  "id": "connection-id",
+  "name": "my-email-connection",
+  "description": "Updated email connection description",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "enableStartTls": true,
+  "auth": true,
+  "username": "updated-user@example.com",
+  "password": "new-app-password",
+  "defaultEncoding": "UTF-8",
+  "from": "noreply@example.com",
+  "additionalProperties": []
+}
+```
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "email",
+    "id": "connection-id",
+    "name": "my-email-connection",
+    "description": "Updated email connection description",
+    "deployToWorker": true,
+    "enabled": true,
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "enableStartTls": true,
+    "auth": true,
+    "username": "updated-user@example.com",
+    "password": "new-app-password",
+    "defaultEncoding": "UTF-8",
+    "from": "noreply@example.com"
+  }'
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Gmail SMTP Connection
+
+Create an email connection using Gmail SMTP with app password.
+
+**Request Body:**
+```json
+{
+  "_class": "email",
+  "name": "gmail-smtp",
+  "description": "Gmail SMTP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "enableStartTls": true,
+  "auth": true,
+  "username": "your-email@gmail.com",
+  "password": "your-app-password",
+  "defaultEncoding": "UTF-8",
+  "from": "noreply@gmail.com"
+}
+```
+
+**cURL:**
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/gmail-smtp/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d @request-body.json
+```
+
+### Scenario 2: Office 365 SMTP Connection
+
+Create an email connection using Office 365 SMTP.
+
+**Request Body:**
+```json
+{
+  "_class": "email",
+  "name": "office365-smtp",
+  "description": "Office 365 SMTP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.office365.com",
+  "port": 587,
+  "enableStartTls": true,
+  "auth": true,
+  "username": "user@company.com",
+  "password": "password",
+  "defaultEncoding": "UTF-8",
+  "from": "noreply@company.com"
+}
+```
+
+### Scenario 3: SMTP Without Authentication
+
+Create an email connection for internal SMTP server without authentication.
+
+**Request Body:**
+```json
+{
+  "_class": "email",
+  "name": "internal-smtp",
+  "description": "Internal SMTP server",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.internal.company.com",
+  "port": 25,
+  "enableStartTls": false,
+  "auth": false,
+  "defaultEncoding": "UTF-8",
+  "from": "noreply@company.com"
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Secret Fields**: `password` is a secret field. Never commit it to version control
+- **List vs Get**: In list operations, `password` is returned as `null`. Use Get Connection to retrieve the full password
+- **Authentication**: If `auth: true`, both `username` and `password` are required
+- **STARTTLS**: Enable `enableStartTls` for secure SMTP connections (typically port 587)
+- **Ports**: Common SMTP ports:
+  - `25` - Standard SMTP (often blocked)
+  - `587` - SMTP with STARTTLS (recommended)
+  - `465` - SMTP with SSL/TLS
+- **Gmail**: For Gmail, use an app password instead of your regular password
+- **Deployment**: If `deployToWorker: true`, connection is automatically deployed to workers
+- **Name Matching**: Path parameter `connectionName` must match the `name` field in the request body
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get connection details
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

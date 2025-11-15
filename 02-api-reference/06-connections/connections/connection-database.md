@@ -1,0 +1,662 @@
+# Database Connection
+
+## General Information
+
+### Connection Type
+```
+database
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Database connection for connecting to relational and NoSQL databases using JDBC. Supports connection pooling with configurable pool sizes, timeouts, and connection validation. Used by policies and connectors to store and retrieve data from databases. Supports multiple database types including Oracle, MySQL, PostgreSQL, SQL Server, MongoDB, and others.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "database",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-database-connection",
+      "description": "Database connection for data storage",
+      "deployToWorker": true,
+      "enabled": true,
+      "dbType": "POSTGRES",
+      "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+      "useCredentials": true,
+      "username": "dbuser",
+      "databaseName": "mydb",
+      "password": null,
+      "initialPoolSize": 1,
+      "minPoolSize": 1,
+      "maxPoolSize": 5,
+      "incrementCount": 1,
+      "maxStatements": 100,
+      "idleConnectionTestPeriod": 30000,
+      "connectionTimeout": 30000,
+      "testConnectionOnCheckout": true,
+      "testConnectionOnCheckin": false,
+      "maxConnectionAge": 180000,
+      "maxIdleTime": 120000,
+      "selectedEnvironmentId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `password` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "database",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-database-connection",
+      "description": "Database connection for data storage",
+      "deployToWorker": true,
+      "enabled": true,
+      "dbType": "POSTGRES",
+      "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+      "useCredentials": true,
+      "username": "dbuser",
+      "databaseName": "mydb",
+      "password": null,
+      "initialPoolSize": 1,
+      "minPoolSize": 1,
+      "maxPoolSize": 5,
+      "incrementCount": 1,
+      "maxStatements": 100,
+      "idleConnectionTestPeriod": 30000,
+      "connectionTimeout": 30000,
+      "testConnectionOnCheckout": true,
+      "testConnectionOnCheckin": false,
+      "maxConnectionAge": 180000,
+      "maxIdleTime": 120000,
+      "selectedEnvironmentId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-database-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - PostgreSQL Connection
+```json
+{
+  "_class": "database",
+  "name": "my-database-connection",
+  "description": "PostgreSQL database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "POSTGRES",
+  "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword",
+  "initialPoolSize": 1,
+  "minPoolSize": 1,
+  "maxPoolSize": 5,
+  "incrementCount": 1,
+  "maxStatements": 100,
+  "idleConnectionTestPeriod": 30000,
+  "connectionTimeout": 30000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 180000,
+  "maxIdleTime": 120000,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - MySQL Connection
+```json
+{
+  "_class": "database",
+  "name": "my-mysql-connection",
+  "description": "MySQL database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "MYSQL",
+  "jdbcUrl": "jdbc:mysql://localhost:3306/mydb?useSSL=false",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword",
+  "initialPoolSize": 2,
+  "minPoolSize": 2,
+  "maxPoolSize": 10,
+  "incrementCount": 2,
+  "maxStatements": 200,
+  "idleConnectionTestPeriod": 30000,
+  "connectionTimeout": 30000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 180000,
+  "maxIdleTime": 120000,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - Oracle Connection
+```json
+{
+  "_class": "database",
+  "name": "my-oracle-connection",
+  "description": "Oracle database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "ORACLE",
+  "jdbcUrl": "jdbc:oracle:thin:@localhost:1521:ORCL",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "ORCL",
+  "password": "dbpassword",
+  "initialPoolSize": 1,
+  "minPoolSize": 1,
+  "maxPoolSize": 5,
+  "incrementCount": 1,
+  "maxStatements": 100,
+  "idleConnectionTestPeriod": 30000,
+  "connectionTimeout": 30000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 180000,
+  "maxIdleTime": 120000,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - MongoDB Connection
+```json
+{
+  "_class": "database",
+  "name": "my-mongodb-connection",
+  "description": "MongoDB database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "MONGODB",
+  "jdbcUrl": "jdbc:mongodb://localhost:27017/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword",
+  "initialPoolSize": 1,
+  "minPoolSize": 1,
+  "maxPoolSize": 5,
+  "incrementCount": 1,
+  "maxStatements": 100,
+  "idleConnectionTestPeriod": 30000,
+  "connectionTimeout": 30000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 180000,
+  "maxIdleTime": 120000,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - High-Performance Pool
+```json
+{
+  "_class": "database",
+  "name": "my-high-performance-db",
+  "description": "High-performance database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "POSTGRES",
+  "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword",
+  "initialPoolSize": 5,
+  "minPoolSize": 5,
+  "maxPoolSize": 50,
+  "incrementCount": 5,
+  "maxStatements": 500,
+  "idleConnectionTestPeriod": 60000,
+  "connectionTimeout": 60000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 360000,
+  "maxIdleTime": 300000,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `database` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### Database-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| dbType | string | Yes | - | Database type. See [EnumDatabaseType](#enumdatabasetype) |
+| jdbcUrl | string | Yes | - | JDBC connection URL |
+| useCredentials | boolean | No | true | Whether to use username/password authentication |
+| username | string | No | - | Database username (required if useCredentials=true) |
+| databaseName | string | No | - | Database name |
+| password | string | No | - | Database password (required if useCredentials=true, secret field) |
+| initialPoolSize | integer | No | 1 | Initial number of connections in pool |
+| minPoolSize | integer | No | 1 | Minimum number of connections in pool |
+| maxPoolSize | integer | No | 5 | Maximum number of connections in pool |
+| incrementCount | integer | No | 1 | Number of connections to add when pool grows |
+| maxStatements | integer | No | 100 | Maximum number of prepared statements per connection |
+| idleConnectionTestPeriod | integer | No | 30000 | Period to test idle connections (milliseconds) |
+| connectionTimeout | integer | No | 30000 | Maximum time to wait for connection (milliseconds) |
+| testConnectionOnCheckout | boolean | No | true | Test connection when checked out from pool |
+| testConnectionOnCheckin | boolean | No | false | Test connection when checked in to pool |
+| maxConnectionAge | integer | No | 180000 | Maximum age of connection before closing (milliseconds) |
+| maxIdleTime | integer | No | 120000 | Maximum idle time before closing connection (milliseconds) |
+| selectedEnvironmentId | string | No | null | Selected environment ID |
+
+**EnumDatabaseType (dbType)**
+- `ORACLE` - Oracle Database
+- `MYSQL` - MySQL Database
+- `POSTGRES` - PostgreSQL Database
+- `SQL_SERVER` - Microsoft SQL Server
+- `SYBASE` - Sybase Database
+- `DB2` - IBM DB2 Database
+- `APACHE_HIVE` - Apache Hive
+- `APACHE_IMPALA` - Apache Impala
+- `MONGODB` - MongoDB (NoSQL)
+- `TRINO` - Trino (formerly PrestoSQL)
+
+**JDBC URL Examples:**
+- PostgreSQL: `jdbc:postgresql://host:5432/database`
+- MySQL: `jdbc:mysql://host:3306/database`
+- Oracle: `jdbc:oracle:thin:@host:1521:SID` or `jdbc:oracle:thin:@host:1521/service`
+- SQL Server: `jdbc:sqlserver://host:1433;databaseName=database`
+- MongoDB: `jdbc:mongodb://host:27017/database`
+
+**Notes:**
+- `dbType` and `jdbcUrl` are required.
+- `useCredentials` defaults to `true`. If `false`, `username` and `password` are not used.
+- `username` and `password` are required if `useCredentials: true`.
+- `databaseName` is optional but recommended for clarity.
+- Connection pool settings control connection management:
+  - `initialPoolSize` - Connections created at startup
+  - `minPoolSize` - Minimum connections maintained
+  - `maxPoolSize` - Maximum connections allowed
+  - `incrementCount` - Connections added when pool grows
+- Timeout values are in milliseconds:
+  - `idleConnectionTestPeriod` - How often to test idle connections (default: 30000ms = 30 seconds)
+  - `connectionTimeout` - Maximum wait for connection (default: 30000ms = 30 seconds)
+  - `maxConnectionAge` - Maximum connection lifetime (default: 180000ms = 3 minutes)
+  - `maxIdleTime` - Maximum idle time before closing (default: 120000ms = 2 minutes)
+- `testConnectionOnCheckout: true` validates connections before use (recommended).
+- `testConnectionOnCheckin: false` skips validation when returning connections (default).
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-database-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "database",
+    "name": "my-database-connection",
+    "description": "PostgreSQL database connection",
+    "deployToWorker": true,
+    "enabled": true,
+    "dbType": "POSTGRES",
+    "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+    "useCredentials": true,
+    "username": "dbuser",
+    "databaseName": "mydb",
+    "password": "dbpassword",
+    "initialPoolSize": 1,
+    "minPoolSize": 1,
+    "maxPoolSize": 5,
+    "incrementCount": 1,
+    "maxStatements": 100,
+    "idleConnectionTestPeriod": 30000,
+    "connectionTimeout": 30000,
+    "testConnectionOnCheckout": true,
+    "testConnectionOnCheckin": false,
+    "maxConnectionAge": 180000,
+    "maxIdleTime": 120000
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic PostgreSQL Connection
+
+Standard PostgreSQL connection with default pool settings.
+
+**Request Body:**
+```json
+{
+  "_class": "database",
+  "name": "basic-postgres",
+  "description": "Basic PostgreSQL connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "POSTGRES",
+  "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword"
+}
+```
+
+### Scenario 2: High-Performance Connection
+
+Connection with increased pool size for high-throughput scenarios.
+
+**Request Body:**
+```json
+{
+  "_class": "database",
+  "name": "high-performance-db",
+  "description": "High-performance database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "POSTGRES",
+  "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "dbpassword",
+  "initialPoolSize": 10,
+  "minPoolSize": 10,
+  "maxPoolSize": 100,
+  "incrementCount": 10,
+  "maxStatements": 500,
+  "idleConnectionTestPeriod": 60000,
+  "connectionTimeout": 60000,
+  "testConnectionOnCheckout": true,
+  "maxConnectionAge": 360000,
+  "maxIdleTime": 300000
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Database Types**: 
+  - Supports multiple database types via JDBC
+  - Each database type has specific JDBC URL format
+  - Ensure appropriate JDBC driver is available
+- **JDBC URL**: 
+  - Format varies by database type
+  - Include connection parameters in URL if needed
+  - Examples:
+    - PostgreSQL: `jdbc:postgresql://host:5432/database`
+    - MySQL: `jdbc:mysql://host:3306/database?useSSL=false`
+    - Oracle: `jdbc:oracle:thin:@host:1521:SID`
+- **Connection Pooling**: 
+  - Connection pooling improves performance by reusing connections
+  - `initialPoolSize` - Connections created at startup
+  - `minPoolSize` - Minimum connections maintained (pool never goes below this)
+  - `maxPoolSize` - Maximum connections allowed (pool never exceeds this)
+  - `incrementCount` - Connections added when pool needs to grow
+  - Balance pool size with database server capacity
+- **Connection Validation**: 
+  - `testConnectionOnCheckout: true` - Validates connection before use (recommended)
+  - `testConnectionOnCheckin: false` - Skips validation when returning (default)
+  - `idleConnectionTestPeriod` - How often to test idle connections
+- **Timeouts**: 
+  - All timeout values are in milliseconds
+  - `connectionTimeout` - Maximum wait for connection (default: 30 seconds)
+  - `maxConnectionAge` - Maximum connection lifetime (default: 3 minutes)
+  - `maxIdleTime` - Maximum idle time before closing (default: 2 minutes)
+- **Authentication**: 
+  - `useCredentials: true` enables username/password authentication
+  - `useCredentials: false` disables authentication (not recommended)
+  - Password is stored securely and masked in responses
+- **Prepared Statements**: 
+  - `maxStatements` limits prepared statements per connection
+  - Higher values improve performance but use more memory
+  - Default: 100 statements per connection
+- **Performance Tuning**: 
+  - Increase pool sizes for high-throughput scenarios
+  - Adjust timeouts based on network latency
+  - Monitor connection pool usage
+  - Balance pool size with database server capacity
+- **Security**: 
+  - Use strong passwords
+  - Use SSL/TLS connections when possible (configure in JDBC URL)
+  - Restrict database user permissions
+  - Use connection pooling to limit database connections
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

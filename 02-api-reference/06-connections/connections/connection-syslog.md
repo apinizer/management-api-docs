@@ -1,0 +1,570 @@
+# Syslog Connection
+
+## General Information
+
+### Connection Type
+```
+syslog
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Syslog connection for sending log messages to Syslog servers using standard Syslog protocols (RFC 3164, RFC 5424, RFC 5425). Supports TCP and UDP transports with optional SSL/TLS encryption for TCP. Used by logging policies and connectors to send structured log data to Syslog-compatible systems.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "syslog",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-syslog-connection",
+      "description": "Syslog connection for logging",
+      "deployToWorker": true,
+      "enabled": true,
+      "syslogProtocolType": "TCP",
+      "syslogMessageHostname": "apinizer.example.com",
+      "syslogServerHostname": "syslog.example.com",
+      "syslogPort": 514,
+      "syslogTimeout": 500,
+      "syslogMessageFormat": "RFC_3164",
+      "syslogAppName": "Apinizer",
+      "syslogFacility": "AUDIT",
+      "syslogSeverity": "INFORMATIONAL",
+      "syslogSslEnabled": false
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "syslog",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-syslog-connection",
+      "description": "Syslog connection for logging",
+      "deployToWorker": true,
+      "enabled": true,
+      "syslogProtocolType": "TCP",
+      "syslogMessageHostname": "apinizer.example.com",
+      "syslogServerHostname": "syslog.example.com",
+      "syslogPort": 514,
+      "syslogTimeout": 500,
+      "syslogMessageFormat": "RFC_3164",
+      "syslogAppName": "Apinizer",
+      "syslogFacility": "AUDIT",
+      "syslogSeverity": "INFORMATIONAL",
+      "syslogSslEnabled": false
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-syslog-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - Basic UDP Connection
+```json
+{
+  "_class": "syslog",
+  "name": "my-syslog-connection",
+  "description": "Syslog connection for logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "UDP",
+  "syslogMessageHostname": "apinizer.example.com",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 514,
+  "syslogTimeout": 500,
+  "syslogMessageFormat": "RFC_3164",
+  "syslogAppName": "Apinizer",
+  "syslogFacility": "AUDIT",
+  "syslogSeverity": "INFORMATIONAL",
+  "syslogSslEnabled": false
+}
+```
+
+##### Full JSON Body Example - TCP with SSL
+```json
+{
+  "_class": "syslog",
+  "name": "my-syslog-tcp-ssl",
+  "description": "Syslog TCP connection with SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "TCP",
+  "syslogMessageHostname": "apinizer.example.com",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 514,
+  "syslogTimeout": 5000,
+  "syslogMessageFormat": "RFC_5424",
+  "syslogAppName": "Apinizer",
+  "syslogFacility": "LOCAL0",
+  "syslogSeverity": "WARNING",
+  "syslogSslEnabled": true
+}
+```
+
+##### Full JSON Body Example - RFC 5425 Format
+```json
+{
+  "_class": "syslog",
+  "name": "my-syslog-rfc5425",
+  "description": "Syslog connection with RFC 5425 format",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "TCP",
+  "syslogMessageHostname": "apinizer.example.com",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 6514,
+  "syslogTimeout": 10000,
+  "syslogMessageFormat": "RFC_5425",
+  "syslogAppName": "ApinizerGateway",
+  "syslogFacility": "AUTH",
+  "syslogSeverity": "ERROR",
+  "syslogSslEnabled": true
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `syslog` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### Syslog-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| syslogProtocolType | string | No | TCP | Protocol type. See [EnumSyslogProtocolType](#enumsyslogprotocoltype) |
+| syslogMessageHostname | string | No | - | Hostname to include in syslog messages (some cloud services use this for secret keys) |
+| syslogServerHostname | string | Yes | - | Syslog server hostname or IP address |
+| syslogPort | integer | No | 514 | Syslog server port (default: 514, standard Syslog port) |
+| syslogTimeout | integer | No | 500 | Connection timeout in milliseconds (for TCP only) |
+| syslogMessageFormat | string | No | RFC_3164 | Message format. See [MessageFormat](#messageformat) |
+| syslogAppName | string | No | Apinizer | Application name to include in syslog messages |
+| syslogFacility | string | No | AUDIT | Syslog facility. See [Facility](#facility) |
+| syslogSeverity | string | No | INFORMATIONAL | Syslog severity level. See [Severity](#severity) |
+| syslogSslEnabled | boolean | No | false | Enable SSL/TLS encryption (TCP only) |
+
+**EnumSyslogProtocolType (syslogProtocolType)**
+- `TCP` - TCP transport (reliable, ordered delivery, supports SSL)
+- `UDP` - UDP transport (faster, but unreliable, no SSL support)
+
+**MessageFormat (syslogMessageFormat)**
+- `RFC_3164` - BSD Syslog Protocol (RFC 3164)
+- `RFC_5424` - The Syslog Protocol (RFC 5424)
+- `RFC_5425` - Transport Layer Security (TLS) Transport Mapping for Syslog (RFC 5425)
+
+**Facility (syslogFacility)**
+- `KERN` - Kernel messages
+- `USER` - User-level messages
+- `MAIL` - Mail system
+- `DAEMON` - System daemons
+- `AUTH` - Security/authorization messages
+- `SYSLOG` - Messages generated internally by syslogd
+- `LPR` - Line printer subsystem
+- `NEWS` - Network news subsystem
+- `UUCP` - UUCP subsystem
+- `CRON` - Clock daemon
+- `AUTHPRIV` - Security/authorization messages (private)
+- `FTP` - FTP daemon
+- `NTP` - NTP subsystem
+- `AUDIT` - Log audit
+- `ALERT` - Log alert
+- `CLOCK` - Clock daemon
+- `LOCAL0` - Local use 0
+- `LOCAL1` - Local use 1
+- `LOCAL2` - Local use 2
+- `LOCAL3` - Local use 3
+- `LOCAL4` - Local use 4
+- `LOCAL5` - Local use 5
+- `LOCAL6` - Local use 6
+- `LOCAL7` - Local use 7
+
+**Severity (syslogSeverity)**
+- `EMERGENCY` - System is unusable
+- `ALERT` - Action must be taken immediately
+- `CRITICAL` - Critical conditions
+- `ERROR` - Error conditions
+- `WARNING` - Warning conditions
+- `NOTICE` - Normal but significant condition
+- `INFORMATIONAL` - Informational messages
+- `DEBUG` - Debug-level messages
+
+**Notes:**
+- `syslogServerHostname` is required.
+- `syslogPort` defaults to 514 (standard Syslog port).
+- `syslogProtocolType` defaults to TCP.
+- `syslogSslEnabled` is only applicable for TCP connections.
+- `syslogTimeout` is only used for TCP connections.
+- `syslogMessageHostname` can be used by some cloud Syslog services to transmit secret keys.
+- `syslogAppName` defaults to "Apinizer".
+- `syslogMessageFormat` defaults to RFC_3164 (BSD Syslog).
+- RFC_5425 format typically uses port 6514 (TLS Syslog).
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-syslog-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "syslog",
+    "name": "my-syslog-connection",
+    "description": "Syslog connection for logging",
+    "deployToWorker": true,
+    "enabled": true,
+    "syslogProtocolType": "UDP",
+    "syslogServerHostname": "syslog.example.com",
+    "syslogPort": 514,
+    "syslogMessageFormat": "RFC_3164",
+    "syslogAppName": "Apinizer",
+    "syslogFacility": "AUDIT",
+    "syslogSeverity": "INFORMATIONAL"
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic UDP Connection
+
+Standard UDP connection for high-throughput logging.
+
+**Request Body:**
+```json
+{
+  "_class": "syslog",
+  "name": "basic-syslog-udp",
+  "description": "Basic Syslog UDP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "UDP",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 514,
+  "syslogMessageFormat": "RFC_3164",
+  "syslogAppName": "Apinizer",
+  "syslogFacility": "LOCAL0",
+  "syslogSeverity": "INFO"
+}
+```
+
+### Scenario 2: Secure TCP Connection with SSL
+
+TCP connection with SSL encryption for secure logging.
+
+**Request Body:**
+```json
+{
+  "_class": "syslog",
+  "name": "secure-syslog-tcp",
+  "description": "Secure Syslog TCP connection with SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "TCP",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 6514,
+  "syslogTimeout": 10000,
+  "syslogMessageFormat": "RFC_5425",
+  "syslogAppName": "Apinizer",
+  "syslogFacility": "AUTH",
+  "syslogSeverity": "WARNING",
+  "syslogSslEnabled": true
+}
+```
+
+### Scenario 3: RFC 5424 Format
+
+Modern RFC 5424 format for structured logging.
+
+**Request Body:**
+```json
+{
+  "_class": "syslog",
+  "name": "syslog-rfc5424",
+  "description": "Syslog connection with RFC 5424 format",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "TCP",
+  "syslogMessageHostname": "apinizer.example.com",
+  "syslogServerHostname": "syslog.example.com",
+  "syslogPort": 514,
+  "syslogTimeout": 5000,
+  "syslogMessageFormat": "RFC_5424",
+  "syslogAppName": "ApinizerGateway",
+  "syslogFacility": "DAEMON",
+  "syslogSeverity": "ERROR",
+  "syslogSslEnabled": false
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Protocol Types**: 
+  - `TCP` - Reliable, ordered delivery. Supports SSL/TLS encryption. Recommended for production.
+  - `UDP` - Faster, but unreliable. No SSL support. Use for high-throughput scenarios where message loss is acceptable.
+- **Message Formats**: 
+  - `RFC_3164` - BSD Syslog Protocol (legacy, widely supported)
+  - `RFC_5424` - Modern Syslog Protocol (structured data support)
+  - `RFC_5425` - TLS Transport Mapping (RFC 5424 over TLS, typically uses port 6514)
+- **Ports**: 
+  - Standard Syslog port: 514 (UDP/TCP)
+  - TLS Syslog port: 6514 (TCP with SSL)
+- **SSL/TLS**: 
+  - `syslogSslEnabled: true` enables SSL/TLS encryption (TCP only)
+  - Use RFC_5425 format for TLS Syslog (port 6514)
+  - UDP does not support SSL/TLS
+- **Facility**: 
+  - Facility codes identify the source of the message
+  - Standard facilities: KERN, USER, MAIL, DAEMON, AUTH, etc.
+  - Local facilities: LOCAL0 through LOCAL7 (custom use)
+  - Default: AUDIT
+- **Severity**: 
+  - Severity levels indicate message importance
+  - Lower numeric values indicate higher severity
+  - Default: INFORMATIONAL
+- **Timeout**: 
+  - `syslogTimeout` is only used for TCP connections
+  - Default: 500ms
+  - Increase for slow networks or high-latency connections
+- **Message Hostname**: 
+  - `syslogMessageHostname` is included in syslog messages
+  - Some cloud Syslog services use this field to transmit secret keys
+  - Can be different from `syslogServerHostname`
+- **Application Name**: 
+  - `syslogAppName` identifies the application sending logs
+  - Default: "Apinizer"
+  - Useful for filtering logs by application
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

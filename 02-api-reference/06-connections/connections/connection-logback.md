@@ -1,0 +1,530 @@
+# Logback Connection
+
+## General Information
+
+### Connection Type
+```
+logback
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Logback connection for writing log messages to local files using Logback logging framework. Supports file rolling based on size and time with configurable patterns and retention policies. Used by logging policies and connectors to write structured log data to local file systems.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "logback",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-logback-connection",
+      "description": "Logback connection for file logging",
+      "deployToWorker": true,
+      "enabled": true,
+      "logPath": "/var/log/apinizer/",
+      "logFileName": "ApinizerApiProxyTraffic",
+      "logPodName": "worker-1",
+      "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+      "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+      "maxFileSize": 25,
+      "maxHistory": 30,
+      "totalSizeCap": 10
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "logback",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-logback-connection",
+      "description": "Logback connection for file logging",
+      "deployToWorker": true,
+      "enabled": true,
+      "logPath": "/var/log/apinizer/",
+      "logFileName": "ApinizerApiProxyTraffic",
+      "logPodName": "worker-1",
+      "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+      "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+      "maxFileSize": 25,
+      "maxHistory": 30,
+      "totalSizeCap": 10
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-logback-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - Basic Logback Connection
+```json
+{
+  "_class": "logback",
+  "name": "my-logback-connection",
+  "description": "Logback connection for file logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/",
+  "logFileName": "ApinizerApiProxyTraffic",
+  "logPodName": "",
+  "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+  "maxFileSize": 25,
+  "maxHistory": 30,
+  "totalSizeCap": 10
+}
+```
+
+##### Full JSON Body Example - Custom Pattern
+```json
+{
+  "_class": "logback",
+  "name": "my-custom-logback",
+  "description": "Logback with custom pattern",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/opt/logs/",
+  "logFileName": "ApiTraffic",
+  "logPodName": "pod-1",
+  "logFilenamePattern": "%d{yyyy-MM-dd-HH}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level %logger{36} - %msg%n",
+  "maxFileSize": 50,
+  "maxHistory": 7,
+  "totalSizeCap": 5
+}
+```
+
+##### Full JSON Body Example - Unbounded Retention
+```json
+{
+  "_class": "logback",
+  "name": "my-unbounded-logback",
+  "description": "Logback with unbounded retention",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/",
+  "logFileName": "ApinizerApiProxyTraffic",
+  "logPodName": "",
+  "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+  "maxFileSize": 25,
+  "maxHistory": 0,
+  "totalSizeCap": 0
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `logback` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### Logback-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| logPath | string | Yes | /path/to/logs/ | Directory path where log files will be written (must end with /) |
+| logFileName | string | Yes | ApinizerApiProxyTraffic | Base name for log files |
+| logPodName | string | Yes | "" | Pod/host identifier (auto-filled with hostname if empty) |
+| logFilenamePattern | string | Yes | %d{yyyy-MM-dd}.%i.log | Pattern for rolled log file names (date and index pattern) |
+| logPattern | string | Yes | %d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n | Log message format pattern |
+| maxFileSize | integer | Yes | 25 | Maximum size of a single log file in MB (before rolling) |
+| maxHistory | integer | Yes | 0 | Maximum number of days/hours to keep rolled log files (0 = unbounded) |
+| totalSizeCap | integer | Yes | 0 | Maximum total size of all log files in GB (0 = unbounded) |
+
+**Log Pattern Format:**
+- `%d{pattern}` - Date/time with pattern (e.g., `yyyy-MM-dd HH:mm:ss.SSS`)
+- `%m` - Message content
+- `%n` - Newline
+- `%thread` - Thread name
+- `%level` - Log level
+- `%logger{length}` - Logger name (with optional length)
+- `%msg` - Message
+- See Logback PatternLayout documentation for full pattern syntax
+
+**Filename Pattern Format:**
+- `%d{pattern}` - Date pattern for rolled files (e.g., `yyyy-MM-dd`)
+- `%i` - Index number for files rolled on the same day
+- Example: `%d{yyyy-MM-dd}.%i.log` creates files like `2024-01-15.0.log`, `2024-01-15.1.log`
+
+**Notes:**
+- `logPath` is required and should end with `/` (automatically added if missing).
+- `logFileName` is required and should not start with `/` (automatically removed if present).
+- `logPodName` is auto-filled with hostname if empty or not provided.
+- `logFilenamePattern` uses Logback date pattern syntax.
+- `logPattern` uses Logback PatternLayout syntax.
+- `maxFileSize` is in MB (default: 25 MB).
+- `maxHistory` is in days/hours (0 = unbounded, keep all files).
+- `totalSizeCap` is in GB (0 = unbounded, no size limit).
+- File rolling occurs when `maxFileSize` is reached or time-based pattern triggers.
+- Final log file name format: `{logPath}{logFileName}-{logPodName}-{logFilenamePattern}`
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-logback-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "logback",
+    "name": "my-logback-connection",
+    "description": "Logback connection for file logging",
+    "deployToWorker": true,
+    "enabled": true,
+    "logPath": "/var/log/apinizer/",
+    "logFileName": "ApinizerApiProxyTraffic",
+    "logPodName": "",
+    "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+    "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+    "maxFileSize": 25,
+    "maxHistory": 30,
+    "totalSizeCap": 10
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic File Logging
+
+Standard file logging with daily rotation.
+
+**Request Body:**
+```json
+{
+  "_class": "logback",
+  "name": "basic-logback",
+  "description": "Basic file logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/",
+  "logFileName": "ApinizerApiProxyTraffic",
+  "logPodName": "",
+  "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+  "maxFileSize": 25,
+  "maxHistory": 30,
+  "totalSizeCap": 10
+}
+```
+
+### Scenario 2: Hourly Rotation
+
+Log files rotated hourly with custom pattern.
+
+**Request Body:**
+```json
+{
+  "_class": "logback",
+  "name": "hourly-logback",
+  "description": "Hourly log rotation",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/",
+  "logFileName": "ApiTraffic",
+  "logPodName": "worker-1",
+  "logFilenamePattern": "%d{yyyy-MM-dd-HH}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level - %msg%n",
+  "maxFileSize": 50,
+  "maxHistory": 7,
+  "totalSizeCap": 5
+}
+```
+
+### Scenario 3: Unbounded Retention
+
+Log files with no retention limits (keep all files).
+
+**Request Body:**
+```json
+{
+  "_class": "logback",
+  "name": "unbounded-logback",
+  "description": "Unbounded log retention",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/",
+  "logFileName": "ApinizerApiProxyTraffic",
+  "logPodName": "",
+  "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
+  "maxFileSize": 25,
+  "maxHistory": 0,
+  "totalSizeCap": 0
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Log Path**: 
+  - `logPath` must be a valid directory path
+  - Path should end with `/` (automatically added if missing)
+  - Ensure the directory exists and is writable by the application
+  - Use absolute paths for clarity
+- **File Naming**: 
+  - Final log file name: `{logPath}{logFileName}-{logPodName}-{logFilenamePattern}`
+  - Example: `/var/log/apinizer/ApinizerApiProxyTraffic-worker-1-2024-01-15.0.log`
+  - `logPodName` is auto-filled with hostname if empty
+- **File Rolling**: 
+  - Files roll when `maxFileSize` is reached or time-based pattern triggers
+  - Rolled files use index numbers (`.0.log`, `.1.log`, etc.)
+  - Date pattern in `logFilenamePattern` determines time-based rolling
+- **Retention Policy**: 
+  - `maxHistory` - Maximum number of days/hours to keep rolled files (0 = unbounded)
+  - `totalSizeCap` - Maximum total size of all log files in GB (0 = unbounded)
+  - Set both to 0 for unbounded retention (not recommended for production)
+- **File Size**: 
+  - `maxFileSize` is in MB (default: 25 MB)
+  - Larger files reduce number of files but increase processing time
+  - Smaller files create more files but are easier to manage
+- **Log Pattern**: 
+  - Uses Logback PatternLayout syntax
+  - Common patterns: `%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n` (date + message)
+  - See Logback documentation for full pattern syntax
+- **Performance**: 
+  - File I/O can impact performance
+  - Use appropriate `maxFileSize` to balance performance and file management
+  - Consider disk I/O capacity when setting retention policies
+- **Disk Space**: 
+  - Monitor disk space usage
+  - Set `totalSizeCap` to prevent disk space exhaustion
+  - Use `maxHistory` to automatically clean up old files
+- **Permissions**: 
+  - Ensure application has write permissions to `logPath`
+  - Directory must exist before logging starts
+  - Consider using dedicated log directories
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

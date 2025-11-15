@@ -1,0 +1,516 @@
+# JSON Transformation Policy
+
+## General Information
+
+### Policy Type
+```
+policy-json-transformation
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+JSON Transformation policy transforms JSON request/response bodies. It supports JSON-to-JSON transformation using JOLT specification and JSON-to-XML conversion with configurable options.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-json-transformation",
+            "name": "json-transform-policy",
+            "description": "Transform JSON request body",
+            "active": true,
+            "transformationType": "JSON2JSON",
+            "joltValue": "[\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n      \"userId\": \"user.id\",\n      \"userName\": \"user.name\"\n    }\n  }\n]"
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - JSON to JSON Transformation
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Transform JSON request body using JOLT",
+    "active": true,
+    "transformationType": "JSON2JSON",
+    "joltValue": "[\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n      \"userId\": \"user.id\",\n      \"userName\": \"user.name\",\n      \"email\": \"user.email\"\n    }\n  }\n]"
+  }
+}
+```
+
+##### Full JSON Body Example - JSON to XML Transformation
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Convert JSON to XML",
+    "active": true,
+    "transformationType": "JSON2XML",
+    "jsonToXmlIgnoreNull": false,
+    "jsonToXmlIgnoreEmpty": false,
+    "jsonToXmlUseNullForNil": false,
+    "jsonToXmlUnwrapElement": false
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (transforms request body)
+- `RESPONSE` - Executes in response pipeline (transforms response body)
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-json-transformation` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| transformationType | string | Yes | JSON2JSON | Transformation type: `JSON2JSON` or `JSON2XML` |
+| joltValue | string | No* | - | JOLT specification (required if transformationType=JSON2JSON) |
+| jsonToXmlIgnoreNull | boolean | No | false | Ignore null values when converting to XML |
+| jsonToXmlIgnoreEmpty | boolean | No | false | Ignore empty values when converting to XML |
+| jsonToXmlUseNullForNil | boolean | No | false | Use null for nil attributes in XML |
+| jsonToXmlUnwrapElement | boolean | No | false | Unwrap root element in XML output |
+
+**Enum: transformationType (EnumJsonTransformationType)**
+- `JSON2JSON` - Transform JSON to JSON using JOLT specification
+- `JSON2XML` - Convert JSON to XML format
+
+**JOLT Specification:**
+JOLT (JSON to JSON Transformation Language) is used for JSON-to-JSON transformations. It supports operations like:
+- `shift` - Move/rename fields
+- `default` - Set default values
+- `remove` - Remove fields
+- `sort` - Sort arrays
+- `modify` - Modify values
+- `cardinality` - Handle array cardinality
+
+**JSON to XML Options:**
+- `jsonToXmlIgnoreNull`: When `true`, null values are omitted from XML
+- `jsonToXmlIgnoreEmpty`: When `true`, empty strings/arrays are omitted from XML
+- `jsonToXmlUseNullForNil`: When `true`, uses `xsi:nil="true"` for null values
+- `jsonToXmlUnwrapElement`: When `true`, removes root wrapper element
+
+**Note:** 
+- `transformationType` is required.
+- If `transformationType: JSON2JSON`, `joltValue` is required.
+- JSON-to-XML options are only used when `transformationType: JSON2XML`.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/json-transform/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-json-transformation",
+      "description": "Transform JSON using JOLT",
+      "active": true,
+      "transformationType": "JSON2JSON",
+      "joltValue": "[{\"operation\":\"shift\",\"spec\":{\"userId\":\"user.id\"}}]"
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: JSON to JSON Transformation with JOLT
+
+Transform JSON structure using JOLT shift operation.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Restructure JSON fields",
+    "active": true,
+    "transformationType": "JSON2JSON",
+    "joltValue": "[\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n      \"userId\": \"user.id\",\n      \"userName\": \"user.name\",\n      \"email\": \"user.email\",\n      \"address\": \"user.address\"\n    }\n  }\n]"
+  }
+}
+```
+
+**Input JSON:**
+```json
+{
+  "userId": "123",
+  "userName": "John Doe",
+  "email": "john@example.com",
+  "address": "123 Main St"
+}
+```
+
+**Output JSON:**
+```json
+{
+  "user": {
+    "id": "123",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": "123 Main St"
+  }
+}
+```
+
+### Scenario 2: JSON to XML Conversion
+
+Convert JSON request body to XML format.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Convert JSON to XML",
+    "active": true,
+    "transformationType": "JSON2XML",
+    "jsonToXmlIgnoreNull": true,
+    "jsonToXmlIgnoreEmpty": false,
+    "jsonToXmlUseNullForNil": false,
+    "jsonToXmlUnwrapElement": false
+  }
+}
+```
+
+**Input JSON:**
+```json
+{
+  "user": {
+    "id": "123",
+    "name": "John Doe",
+    "email": null
+  }
+}
+```
+
+**Output XML:**
+```xml
+<root>
+  <user>
+    <id>123</id>
+    <name>John Doe</name>
+  </user>
+</root>
+```
+
+### Scenario 3: Complex JOLT Transformation
+
+Use multiple JOLT operations for complex transformation.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Complex JOLT transformation",
+    "active": true,
+    "transformationType": "JSON2JSON",
+    "joltValue": "[\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n      \"data\": {\n        \"users\": {\n          \"*\": {\n            \"id\": \"users[&1].userId\",\n            \"name\": \"users[&1].userName\"\n          }\n        }\n      }\n    }\n  },\n  {\n    \"operation\": \"default\",\n    \"spec\": {\n      \"timestamp\": \"${NOW}\"\n    }\n  }\n]"
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Transformation Type**: 
+  - `JSON2JSON` - Uses JOLT specification for transformation (requires `joltValue`)
+  - `JSON2XML` - Converts JSON to XML format (uses JSON-to-XML options)
+- **JOLT Specification**: 
+  - Must be valid JOLT JSON array
+  - Supports operations: shift, default, remove, sort, modify, cardinality
+  - See JOLT documentation for detailed syntax
+- **JSON to XML Options**: 
+  - `jsonToXmlIgnoreNull`: Omit null values from XML output
+  - `jsonToXmlIgnoreEmpty`: Omit empty strings/arrays from XML
+  - `jsonToXmlUseNullForNil`: Use `xsi:nil="true"` for null values
+  - `jsonToXmlUnwrapElement`: Remove root wrapper element
+- **Performance**: JSON transformation adds processing overhead. Use for necessary transformations only.
+- **Pipeline**: 
+  - `REQUEST` pipeline transforms request body before forwarding
+  - `RESPONSE` pipeline transforms response body before sending to client
+- **Error Handling**: Invalid JOLT specification or malformed JSON will cause transformation to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [XML Transformation Policy](./policy-xml-transformation.md) - Transform XML messages
+

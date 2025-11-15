@@ -1,0 +1,25 @@
+# Environments API
+
+## Overview
+
+The Environments API provides endpoints for managing deployment environments in Apinizer. Environments are deployment targets where API proxies can be deployed (e.g., production, staging, development).
+
+## Endpoints
+
+- [List Environments](./list-environments.md) - Get all environments (admin only)
+- [Get Environments by Project](./get-environments-by-project.md) - Get environments accessible from a project
+
+## Authentication
+
+All endpoints require authentication using a Personal API Access Token.
+
+## Permissions
+
+- **List All Environments**: Requires admin role
+- **Get Environments by Project**: Requires project membership
+
+## Related Documentation
+
+- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
+- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+

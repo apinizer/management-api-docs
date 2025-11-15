@@ -1,0 +1,695 @@
+# Client Banner Policy
+
+## General Information
+
+### Policy Type
+```
+policy-client-banner
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Client Banner policy automatically bans clients (identified by variables such as API key, IP address, or user ID) when they exceed a threshold of errors or failures within a time window. Banned clients are blocked for a specified duration. This policy is useful for protecting APIs from abusive clients, brute force attacks, or clients causing excessive errors.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-client-banner",
+            "name": "client-banner-policy",
+            "description": "Ban clients exceeding error threshold",
+            "active": true,
+            "clientIdentityVariableList": [
+              {
+                "type": "HEADER",
+                "headerName": "X-API-Key"
+              }
+            ],
+            "thresholdWindowInSeconds": 10,
+            "thresholdCountPerWindow": 5,
+            "thresholdCalculationType": "COUNT",
+            "banTimeInSeconds": 300,
+            "enableRetryAfterHeader": true,
+            "ignoreWhenKeyIsEmpty": false,
+            "assertionCondition": {
+              "criteria": "IF_ANY_MATCH",
+              "rules": [
+                {
+                  "variable": {
+                    "type": "HTTP_STATUS_CODE"
+                  },
+                  "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+                  "value": "400",
+                  "valueSource": "STATIC"
+                }
+              ]
+            }
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name (must match name in body) |
+
+#### Request Body
+
+##### Full JSON Body Example - Basic Client Banner
+```json
+{
+  "type": "policy-client-banner",
+  "name": "client-banner-policy",
+  "description": "Ban clients exceeding error threshold",
+  "active": true,
+  "clientIdentityVariableList": [
+    {
+      "type": "HEADER",
+      "headerName": "X-API-Key"
+    }
+  ],
+  "thresholdWindowInSeconds": 10,
+  "thresholdCountPerWindow": 5,
+  "thresholdCalculationType": "COUNT",
+  "banTimeInSeconds": 300,
+  "enableRetryAfterHeader": true,
+  "ignoreWhenKeyIsEmpty": false,
+  "assertionCondition": {
+    "criteria": "IF_ANY_MATCH",
+    "rules": [
+      {
+        "variable": {
+          "type": "HTTP_STATUS_CODE"
+        },
+        "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+        "value": "400",
+        "valueSource": "STATIC"
+      }
+    ]
+  },
+  "operationMetadata": {
+    "targetScope": "API_PROXY",
+    "targetPipeline": "ERROR",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "condition": {
+    "criteria": "ALWAYS",
+    "rules": []
+  }
+}
+```
+
+##### Full JSON Body Example - IP-Based Banner with Percentage Threshold
+```json
+{
+  "type": "policy-client-banner",
+  "name": "ip-banner-policy",
+  "description": "Ban IPs with high error percentage",
+  "active": true,
+  "clientIdentityVariableList": [
+    {
+      "type": "CLIENT_IP"
+    }
+  ],
+  "thresholdWindowInSeconds": 60,
+  "thresholdCountPerWindow": 50,
+  "thresholdCalculationType": "PERCENT",
+  "banTimeInSeconds": 600,
+  "enableRetryAfterHeader": true,
+  "ignoreWhenKeyIsEmpty": false,
+  "assertionCondition": {
+    "criteria": "IF_ANY_MATCH",
+    "rules": [
+      {
+        "variable": {
+          "type": "HTTP_STATUS_CODE"
+        },
+        "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+        "value": "500",
+        "valueSource": "STATIC"
+      }
+    ]
+  },
+  "operationMetadata": {
+    "targetScope": "API_PROXY",
+    "targetPipeline": "ERROR",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "condition": {
+    "criteria": "ALWAYS",
+    "rules": []
+  }
+}
+```
+
+##### Full JSON Body Example - Multi-Variable Client Banner
+```json
+{
+  "type": "policy-client-banner",
+  "name": "multi-variable-banner",
+  "description": "Ban clients using multiple identity variables",
+  "active": true,
+  "clientIdentityVariableList": [
+    {
+      "type": "HEADER",
+      "headerName": "X-API-Key"
+    },
+    {
+      "type": "CLIENT_IP"
+    }
+  ],
+  "thresholdWindowInSeconds": 30,
+  "thresholdCountPerWindow": 10,
+  "thresholdCalculationType": "COUNT",
+  "banTimeInSeconds": 1800,
+  "enableRetryAfterHeader": true,
+  "ignoreWhenKeyIsEmpty": false,
+  "assertionCondition": {
+    "criteria": "IF_ALL_MATCH",
+    "rules": [
+      {
+        "variable": {
+          "type": "HTTP_STATUS_CODE"
+        },
+        "comparisonOperator": "EQUALS",
+        "value": "401",
+        "valueSource": "STATIC"
+      },
+      {
+        "variable": {
+          "type": "REQUEST_PATH"
+        },
+        "comparisonOperator": "CONTAINS",
+        "value": "/auth",
+        "valueSource": "STATIC"
+      }
+    ]
+  },
+  "operationMetadata": {
+    "targetScope": "API_PROXY",
+    "targetPipeline": "ERROR",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "condition": {
+    "criteria": "ALWAYS",
+    "rules": []
+  }
+}
+```
+
+##### Request Body Fields
+
+###### Common Policy Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-client-banner` |
+| name | string | Yes | - | Policy name (must match path parameter) |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](#policyconditiondto) |
+
+###### Client Banner Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](#variabledto) |
+| thresholdWindowInSeconds | integer | Yes | 10 | Time window in seconds for threshold calculation |
+| thresholdCountPerWindow | integer | Yes | 1 | Threshold count or percentage per window |
+| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](#enumerrorthresholdtype) |
+| banTimeInSeconds | integer | Yes | 10 | Duration to ban client in seconds |
+| enableRetryAfterHeader | boolean | No | false | Enable Retry-After header in ban response |
+| ignoreWhenKeyIsEmpty | boolean | No | false | Ignore requests when identity key is empty |
+| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](#policyconditiondto) |
+
+**EnumErrorThresholdType (thresholdCalculationType)**
+- `COUNT` - Count-based threshold (number of errors)
+- `PERCENT` - Percentage-based threshold (percentage of errors)
+
+**VariableDTO (clientIdentityVariableList item)**
+
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| headerName | string | No* | Header name (required if type=HEADER) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramName | string | No* | Parameter name (required if type=PARAMETER) |
+| paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
+| jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| zoneId | string | No* | Time zone ID (required for date/time context values) |
+| scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
+| scriptBody | string | No* | Script body (required if type=CUSTOM) |
+
+**Variable Types:**
+- `HEADER` - Extract from HTTP header
+- `PARAMETER` - Extract from query/path/form parameter
+- `BODY` - Extract from request/response body (XML, JSON, or raw)
+- `CONTEXT_VALUES` - Extract from system context values (e.g., REQUEST_REMOTE_ADDRESS for client IP)
+- `CUSTOM` - Extract using custom script
+
+**Note:** For client IP, use `type=CONTEXT_VALUES` with `contextValue=REQUEST_REMOTE_ADDRESS`.
+
+**PolicyConditionDTO (assertionCondition)**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
+
+**EnumConditionCriteria (assertionCondition.criteria)**
+- `ALWAYS` - Always count
+- `IF_ALL_MATCH` - Count if all rules match
+- `IF_ANY_MATCH` - Count if any rule matches (common for error conditions)
+- `IF_NONE_MATCH` - Count if no rules match
+
+**ConditionRuleDTO (assertionCondition.rules item)**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| variable | object | Yes | Variable to check. See [Variable Definition](../../../03-appendix/variable-definition.md) |
+| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](#enumconditionvaluecomparisonoperator) |
+| value | string | Yes | Value to compare against |
+| valueSource | string | No | Value source. See [EnumConditionValueSource](#enumconditionvaluesource) |
+
+**PolicyOperationMetadataDTO (operationMetadata)**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](#enumpolicytargetscope) |
+| targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
+| targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](#enumpolicytargetpipeline) |
+| deploy | boolean | No | true | Whether to deploy immediately |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | - | Policy execution order |
+
+**EnumPolicyTargetScope (operationMetadata.targetScope)**
+- `API_PROXY` - Apply to entire API Proxy
+- `ENDPOINT` - Apply to specific endpoint
+- `GLOBAL` - Apply globally
+
+**EnumPolicyTargetPipeline (operationMetadata.targetPipeline)**
+- `REQUEST` - Request pipeline
+- `RESPONSE` - Response pipeline
+- `ERROR` - Error pipeline (recommended for client banner)
+
+**Notes:**
+- `clientIdentityVariableList` must contain at least one variable.
+- `thresholdWindowInSeconds` must be greater than 0.
+- `thresholdCountPerWindow` must be greater than 0.
+- `thresholdCalculationType` is required.
+- `banTimeInSeconds` must be greater than 0.
+- `assertionCondition` is required and defines when to count errors.
+- `clientIdentityVariableList` can contain multiple variables (ban applies if any matches).
+- `ignoreWhenKeyIsEmpty: true` skips banning when identity key is empty.
+- `enableRetryAfterHeader: true` adds Retry-After header to ban responses.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/client-banner-policy/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "policy-client-banner",
+    "name": "client-banner-policy",
+    "description": "Ban clients exceeding error threshold",
+    "active": true,
+    "clientIdentityVariableList": [
+      {
+        "type": "HEADER",
+        "headerName": "X-API-Key"
+      }
+    ],
+    "thresholdWindowInSeconds": 10,
+    "thresholdCountPerWindow": 5,
+    "thresholdCalculationType": "COUNT",
+    "banTimeInSeconds": 300,
+    "enableRetryAfterHeader": true,
+    "ignoreWhenKeyIsEmpty": false,
+    "assertionCondition": {
+      "criteria": "IF_ANY_MATCH",
+      "rules": [
+        {
+          "variable": {
+            "type": "HTTP_STATUS_CODE"
+          },
+          "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+          "value": "400",
+          "valueSource": "STATIC"
+        }
+      ]
+    },
+    "operationMetadata": {
+      "targetScope": "API_PROXY",
+      "targetPipeline": "ERROR",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "condition": {
+      "criteria": "ALWAYS",
+      "rules": []
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name (must match name in body) |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: API Key-Based Banner
+
+Ban API keys that exceed error threshold.
+
+**Request Body:**
+```json
+{
+  "type": "policy-client-banner",
+  "name": "api-key-banner",
+  "description": "Ban API keys with too many errors",
+  "active": true,
+  "clientIdentityVariableList": [
+    {
+      "type": "HEADER",
+      "headerName": "X-API-Key"
+    }
+  ],
+  "thresholdWindowInSeconds": 60,
+  "thresholdCountPerWindow": 10,
+  "thresholdCalculationType": "COUNT",
+  "banTimeInSeconds": 600,
+  "enableRetryAfterHeader": true,
+  "assertionCondition": {
+    "criteria": "IF_ANY_MATCH",
+    "rules": [
+      {
+        "variable": {
+          "type": "HTTP_STATUS_CODE"
+        },
+        "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+        "value": "400",
+        "valueSource": "STATIC"
+      }
+    ]
+  },
+  "operationMetadata": {
+    "targetScope": "API_PROXY",
+    "targetPipeline": "ERROR",
+    "deploy": true,
+    "order": 1
+  },
+  "condition": {
+    "criteria": "ALWAYS",
+    "rules": []
+  }
+}
+```
+
+### Scenario 2: IP-Based Banner for Brute Force Protection
+
+Ban IPs attempting brute force attacks.
+
+**Request Body:**
+```json
+{
+  "type": "policy-client-banner",
+  "name": "brute-force-protection",
+  "description": "Ban IPs attempting brute force",
+  "active": true,
+  "clientIdentityVariableList": [
+    {
+      "type": "CLIENT_IP"
+    }
+  ],
+  "thresholdWindowInSeconds": 300,
+  "thresholdCountPerWindow": 5,
+  "thresholdCalculationType": "COUNT",
+  "banTimeInSeconds": 3600,
+  "enableRetryAfterHeader": true,
+  "assertionCondition": {
+    "criteria": "IF_ANY_MATCH",
+    "rules": [
+      {
+        "variable": {
+          "type": "HTTP_STATUS_CODE"
+        },
+        "comparisonOperator": "EQUALS",
+        "value": "401",
+        "valueSource": "STATIC"
+      }
+    ]
+  },
+  "operationMetadata": {
+    "targetScope": "API_PROXY",
+    "targetPipeline": "ERROR",
+    "deploy": true,
+    "order": 1
+  },
+  "condition": {
+    "criteria": "ALWAYS",
+    "rules": []
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Client Banning**: 
+  - Automatically bans clients that exceed error threshold
+  - Uses identity variables to identify clients
+  - Banned clients are blocked for specified duration
+- **Threshold Calculation**: 
+  - `COUNT` - Count-based (number of errors)
+  - `PERCENT` - Percentage-based (percentage of errors)
+  - Threshold is calculated within `thresholdWindowInSeconds`
+- **Identity Variables**: 
+  - `clientIdentityVariableList` identifies clients to ban
+  - Can use multiple variables (ban applies if any matches)
+  - Common: API key (HEADER), IP address (CLIENT_IP), user ID (VARIABLE)
+- **Assertion Condition**: 
+  - Defines when to count errors/failures
+  - Common: HTTP status code >= 400 or == 401
+  - Use `IF_ANY_MATCH` for multiple error conditions
+- **Ban Duration**: 
+  - `banTimeInSeconds` - Duration to ban client
+  - Banned clients receive error response during ban period
+  - Ban automatically expires after duration
+- **Retry-After Header**: 
+  - `enableRetryAfterHeader: true` adds Retry-After header
+  - Tells clients when they can retry
+  - Useful for client-side handling
+- **Empty Keys**: 
+  - `ignoreWhenKeyIsEmpty: true` skips banning when identity key is empty
+  - Useful when identity variable may be missing
+- **Time Window**: 
+  - `thresholdWindowInSeconds` - Time window for threshold calculation
+  - Errors are counted within this window
+  - Window slides continuously
+- **Performance**: 
+  - Uses cache to track ban status
+  - Multiple identity variables increase cache usage
+  - Consider cache performance for high-throughput scenarios
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` in `operationMetadata` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [Black IP Policy](./policy-black-ip.md) - Static IP blocking policy
+

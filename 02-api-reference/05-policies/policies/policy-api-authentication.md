@@ -1,0 +1,775 @@
+# API Authentication Policy
+
+## General Information
+
+### Policy Type
+```
+policy-api-authentication
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+API Authentication policy adds authentication credentials to outgoing requests to target APIs. It supports BASIC, BASE64, DIGEST, and API authentication types, and can send credentials via headers, parameters, body message, or body injection. This policy enables Apinizer to authenticate with backend APIs on behalf of clients.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-api-authentication",
+            "name": "api-auth-policy",
+            "description": "Authenticate with backend API",
+            "active": true,
+            "authType": "BASIC",
+            "sendType": "HEADER",
+            "usernameFieldName": "X-Username",
+            "passwordFieldName": "X-Password",
+            "messageContentType": "XML"
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, passwords in `apiAuthCondExpressionList` are cleared for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - BASIC Authentication with HEADER
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Basic authentication via header",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "HEADER",
+    "usernameFieldName": "X-Username",
+    "passwordFieldName": "X-Password",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "id": 1,
+        "username": "api-user",
+        "password": "api-password",
+        "policyCondition": null
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - BASE64 Authentication with PARAM
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Base64 authentication via parameter",
+    "active": true,
+    "authType": "BASE64",
+    "sendType": "PARAM",
+    "passwordFieldName": "token",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "id": 1,
+        "username": "api-user",
+        "password": "api-password",
+        "policyCondition": null
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - DIGEST Authentication with HEADER
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Digest authentication via header",
+    "active": true,
+    "authType": "DIGEST",
+    "sendType": "HEADER",
+    "usernameFieldName": "X-Username",
+    "passwordFieldName": "X-Password",
+    "createdFieldName": "X-Created",
+    "nonceFieldName": "X-Nonce",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "id": 1,
+        "username": "api-user",
+        "password": "api-password",
+        "policyCondition": null
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - BODY_MESSAGE Send Type
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Authentication via body message",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "BODY_MESSAGE",
+    "messageContentType": "JSON",
+    "bodyMessage": "{\n  \"credentials\": {\n    \"username\": \"${username}\",\n    \"password\": \"${password}\"\n  }\n}",
+    "bodyMessageInjectionPath": "$.auth",
+    "apiAuthCondExpressionList": [
+      {
+        "id": 1,
+        "username": "api-user",
+        "password": "api-password",
+        "policyCondition": null
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - BODY_INJECTION Send Type
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Authentication via body injection",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "BODY_INJECTION",
+    "messageContentType": "JSON",
+    "usernameFieldName": "username",
+    "passwordFieldName": "password",
+    "usernameInjectionPath": "$.auth.username",
+    "passwordInjectionPath": "$.auth.password",
+    "apiAuthCondExpressionList": [
+      {
+        "id": 1,
+        "username": "api-user",
+        "password": "api-password",
+        "policyCondition": null
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - Using authApiId
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Authentication using API ID",
+    "active": true,
+    "authApiId": "auth-api-id-123",
+    "messageContentType": "XML"
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (adds authentication to request)
+- `RESPONSE` - Executes in response pipeline
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-api-authentication` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| authType | string | No* | - | Authentication type (required if using conditional expressions) |
+| sendType | string | No* | - | Send type (required if using conditional expressions) |
+| messageContentType | string | No | XML | Message content type: `XML`, `JSON`, or `ALL_BODY` |
+| usernameFieldName | string | No* | - | Username field name (required for BASIC/DIGEST with HEADER/PARAM, BODY_INJECTION) |
+| passwordFieldName | string | No* | - | Password field name (required for BASIC/BASE64/DIGEST with HEADER/PARAM, BODY_INJECTION) |
+| createdFieldName | string | No* | - | Created timestamp field name (required for DIGEST with HEADER/PARAM) |
+| nonceFieldName | string | No* | - | Nonce field name (required for DIGEST with HEADER/PARAM) |
+| bodyMessage | string | No* | - | Body message template (required for BODY_MESSAGE send type) |
+| bodyMessageInjectionPath | string | No* | - | Body message injection path (required for BODY_MESSAGE send type) |
+| usernameInjectionPath | string | No* | - | Username injection path (required for BODY_INJECTION send type) |
+| passwordInjectionPath | string | No* | - | Password injection path (required for BODY_INJECTION send type) |
+| createdInjectionPath | string | No | - | Created timestamp injection path (for DIGEST with BODY_INJECTION) |
+| nonceInjectionPath | string | No | - | Nonce injection path (for DIGEST with BODY_INJECTION) |
+| authApiId | string | No* | - | Authentication API ID (alternative to conditional expressions) |
+| apiAuthCondExpressionList | array | No* | [] | List of conditional authentication expressions (required if authApiId not provided) |
+
+**Enum: authType (EnumPolicyApiAuthenticationAuthType)**
+- `BASIC` - Plain text username/password authentication
+- `BASE64` - Base64 encoded authentication
+- `DIGEST` - HTTP Digest authentication
+- `API` - API-based authentication
+
+**Enum: sendType (EnumPolicyApiAuthenticationSendType)**
+- `HEADER` - Send credentials via HTTP headers
+- `PARAM` - Send credentials via query/path parameters
+- `BODY_MESSAGE` - Send credentials via body message template
+- `BODY_INJECTION` - Inject credentials into existing body
+
+**Enum: messageContentType (EnumMessageContentType)**
+- `XML` - XML message content
+- `JSON` - JSON message content
+- `ALL_BODY` - All body content types
+
+**Note:** 
+- Either `authApiId` or `apiAuthCondExpressionList` must be provided.
+- If using `apiAuthCondExpressionList`, `authType` and `sendType` are required.
+- Field name requirements vary by `authType` and `sendType` combination.
+
+###### apiAuthCondExpressionList
+Each conditional expression is an object with the following fields:
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| id | integer | No | - | Expression ID (auto-generated) |
+| username | string | Yes | - | Username for authentication |
+| password | string | Yes | - | Password for authentication (encrypted) |
+| policyCondition | object | No | null | Policy condition for conditional authentication |
+
+**Note:** 
+- `username` and `password` are required.
+- `password` is encrypted when stored.
+- `policyCondition` allows conditional authentication based on request context.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/api-auth-policy/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-api-authentication",
+      "description": "Basic authentication",
+      "active": true,
+      "authType": "BASIC",
+      "sendType": "HEADER",
+      "usernameFieldName": "X-Username",
+      "passwordFieldName": "X-Password",
+      "messageContentType": "XML",
+      "apiAuthCondExpressionList": [
+        {
+          "username": "api-user",
+          "password": "api-password"
+        }
+      ]
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: BASIC Authentication via Header
+
+Add BASIC authentication credentials to request headers.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Basic auth via header",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "HEADER",
+    "usernameFieldName": "X-Username",
+    "passwordFieldName": "X-Password",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "username": "api-user",
+        "password": "api-password"
+      }
+    ]
+  }
+}
+```
+
+**Result:** Request headers will include:
+```
+X-Username: api-user
+X-Password: api-password
+```
+
+### Scenario 2: BASE64 Authentication via Parameter
+
+Add BASE64 encoded credentials to query parameters.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Base64 auth via parameter",
+    "active": true,
+    "authType": "BASE64",
+    "sendType": "PARAM",
+    "passwordFieldName": "token",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "username": "api-user",
+        "password": "api-password"
+      }
+    ]
+  }
+}
+```
+
+**Result:** Request URL will include:
+```
+?token=<base64-encoded-credentials>
+```
+
+### Scenario 3: DIGEST Authentication via Header
+
+Add DIGEST authentication credentials to request headers.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Digest auth via header",
+    "active": true,
+    "authType": "DIGEST",
+    "sendType": "HEADER",
+    "usernameFieldName": "X-Username",
+    "passwordFieldName": "X-Password",
+    "createdFieldName": "X-Created",
+    "nonceFieldName": "X-Nonce",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "username": "api-user",
+        "password": "api-password"
+      }
+    ]
+  }
+}
+```
+
+### Scenario 4: Body Message Template
+
+Inject authentication credentials using body message template.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Auth via body message",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "BODY_MESSAGE",
+    "messageContentType": "JSON",
+    "bodyMessage": "{\n  \"auth\": {\n    \"username\": \"${username}\",\n    \"password\": \"${password}\"\n  }\n}",
+    "bodyMessageInjectionPath": "$.credentials",
+    "apiAuthCondExpressionList": [
+      {
+        "username": "api-user",
+        "password": "api-password"
+      }
+    ]
+  }
+}
+```
+
+### Scenario 5: Conditional Authentication
+
+Use conditional expressions for different credentials based on request context.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-authentication",
+    "description": "Conditional authentication",
+    "active": true,
+    "authType": "BASIC",
+    "sendType": "HEADER",
+    "usernameFieldName": "X-Username",
+    "passwordFieldName": "X-Password",
+    "messageContentType": "XML",
+    "apiAuthCondExpressionList": [
+      {
+        "username": "user1",
+        "password": "pass1",
+        "policyCondition": {
+          "conditionRuleList": [
+            {
+              "criteria": "HEADER",
+              "headerName": "X-Environment",
+              "comparisonOperator": "EQUALS",
+              "valueSource": "VALUE",
+              "value": "production"
+            }
+          ]
+        }
+      },
+      {
+        "username": "user2",
+        "password": "pass2",
+        "policyCondition": {
+          "conditionRuleList": [
+            {
+              "criteria": "HEADER",
+              "headerName": "X-Environment",
+              "comparisonOperator": "EQUALS",
+              "valueSource": "VALUE",
+              "value": "staging"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Authentication Type**: 
+  - `BASIC` - Plain text username/password
+  - `BASE64` - Base64 encoded credentials
+  - `DIGEST` - HTTP Digest authentication (requires created/nonce fields)
+  - `API` - API-based authentication
+- **Send Type**: 
+  - `HEADER` - Via HTTP headers
+  - `PARAM` - Via query/path parameters
+  - `BODY_MESSAGE` - Via body message template
+  - `BODY_INJECTION` - Inject into existing body
+- **Configuration**: Either `authApiId` or `apiAuthCondExpressionList` must be provided
+- **Field Names**: Required field names vary by `authType` and `sendType` combination
+- **DIGEST Authentication**: Requires `createdFieldName` and `nonceFieldName` for HEADER/PARAM
+- **BODY_MESSAGE**: Requires `bodyMessage` template and `bodyMessageInjectionPath`
+- **BODY_INJECTION**: Requires `usernameInjectionPath` and `passwordInjectionPath`
+- **Conditional Expressions**: Multiple expressions allow different credentials based on conditions
+- **Password Security**: Passwords are encrypted when stored
+- **Pipeline**: 
+  - `REQUEST` pipeline adds authentication to request before forwarding to target API
+  - Authentication is added based on configured send type
+- **Error Handling**: Invalid authentication configuration may cause request forwarding to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [Basic Authentication Policy](./policy-auth-basic.md) - Authenticate incoming requests with Basic Auth
+- [Digest Authentication Policy](./policy-auth-digest.md) - Authenticate incoming requests with Digest Auth
+

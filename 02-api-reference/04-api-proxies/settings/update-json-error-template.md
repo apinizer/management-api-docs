@@ -1,0 +1,198 @@
+# Update JSON Error Response Template
+
+## Overview
+
+Updates JSON error response template for an API proxy. JSON error template defines the format of error responses for REST/JSON APIs.
+
+## Endpoint
+
+```
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/json-error-template/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "jsonErrorResponseTemplateActive": true,
+  "jsonValue": "{\n  \"fault\": {\n    \"correlationId\": \"#CORRELATIONID#\",\n    \"faultCode\": \"#FAULTCODE#\",\n    \"faultString\": \"#FAULTMESSAGE#\",\n    \"faultStatusCode\": \"#FAULTSTATUSCODE#\",\n    \"responseFromApi\": \"#RESPONSEFROMAPI#\"\n  }\n}",
+  "contentType": "application/json;charset=UTF-8",
+  "permitSpecialChars": false
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| jsonErrorResponseTemplateActive | boolean | No | false | Enable/disable JSON error template |
+| jsonValue | string | No | - | JSON error response template |
+| contentType | string | No | application/json;charset=UTF-8 | Content type for error response |
+| permitSpecialChars | boolean | No | false | Permit special characters in template |
+
+**Template Variables:**
+The JSON template can use the following variables (replaced at runtime):
+- `#CORRELATIONID#` - Request correlation ID
+- `#FAULTCODE#` - Error fault code
+- `#FAULTMESSAGE#` - Error fault message
+- `#FAULTSTATUSCODE#` - HTTP status code
+- `#RESPONSEFROMAPI#` - Response from backend API (if available)
+
+**Default Template:**
+```json
+{
+  "fault": {
+    "correlationId": "#CORRELATIONID#",
+    "faultCode": "#FAULTCODE#",
+    "faultString": "#FAULTMESSAGE#",
+    "faultStatusCode": "#FAULTSTATUSCODE#",
+    "responseFromApi": "#RESPONSEFROMAPI#"
+  }
+}
+```
+
+**Note:** All fields are optional. Only provided fields are updated.
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Invalid JSON template"
+}
+```
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "ApiProxy (name: MyAPI) was not found!"
+}
+```
+
+## cURL Example
+
+### Example 1: Enable JSON Error Template
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/json-error-template/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonErrorResponseTemplateActive": true,
+    "jsonValue": "{\n  \"fault\": {\n    \"correlationId\": \"#CORRELATIONID#\",\n    \"faultCode\": \"#FAULTCODE#\",\n    \"faultString\": \"#FAULTMESSAGE#\",\n    \"faultStatusCode\": \"#FAULTSTATUSCODE#\"\n  }\n}",
+    "contentType": "application/json;charset=UTF-8"
+  }'
+```
+
+### Example 2: Custom JSON Error Template
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/json-error-template/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonErrorResponseTemplateActive": true,
+    "jsonValue": "{\n  \"error\": {\n    \"id\": \"#CORRELATIONID#\",\n    \"code\": \"#FAULTCODE#\",\n    \"message\": \"#FAULTMESSAGE#\",\n    \"status\": #FAULTSTATUSCODE#\n  }\n}",
+    "contentType": "application/json;charset=UTF-8",
+    "permitSpecialChars": true
+  }'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Standard Error Format
+
+Use standard error format with fault object.
+
+**Request Body:**
+```json
+{
+  "jsonErrorResponseTemplateActive": true,
+  "jsonValue": "{\n  \"fault\": {\n    \"correlationId\": \"#CORRELATIONID#\",\n    \"faultCode\": \"#FAULTCODE#\",\n    \"faultString\": \"#FAULTMESSAGE#\",\n    \"faultStatusCode\": \"#FAULTSTATUSCODE#\"\n  }\n}"
+}
+```
+
+### Scenario 2: Custom Error Format
+
+Use custom error format matching your API standards.
+
+**Request Body:**
+```json
+{
+  "jsonErrorResponseTemplateActive": true,
+  "jsonValue": "{\n  \"error\": {\n    \"requestId\": \"#CORRELATIONID#\",\n    \"code\": \"#FAULTCODE#\",\n    \"message\": \"#FAULTMESSAGE#\",\n    \"httpStatus\": #FAULTSTATUSCODE#\n  }\n}",
+  "contentType": "application/json;charset=UTF-8"
+}
+```
+
+## Notes and Warnings
+
+- **Template Variables**: Use `#VARIABLE#` syntax for runtime replacement
+- **JSON Format**: Template must be valid JSON (use escaped quotes in string)
+- **Content Type**: Default is `application/json;charset=UTF-8`
+- **Special Characters**: When `permitSpecialChars=true`, special characters are not escaped
+- **Active Flag**: Set `jsonErrorResponseTemplateActive=true` to enable template
+- **REST APIs**: Primarily used for REST/JSON APIs
+- **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
+
+## Related Documentation
+
+- [Update XML Error Template](./update-xml-error-template.md) - Update XML error template
+- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+

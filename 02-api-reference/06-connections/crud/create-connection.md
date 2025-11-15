@@ -1,0 +1,281 @@
+# Create Connection
+
+## Overview
+
+Creates a new connection in a project. Connections are reusable configurations for external systems such as databases, message queues, email servers, and logging systems.
+
+## Endpoint
+
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+### Request Body
+
+#### Full JSON Body Example (Email Connection)
+
+```json
+{
+  "_class": "email",
+  "name": "my-email-connection",
+  "description": "Email connection for sending notifications",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "enableStartTls": true,
+  "auth": true,
+  "username": "user@example.com",
+  "password": "app-password",
+  "defaultEncoding": "UTF-8",
+  "addressToTest": "test@example.com",
+  "from": "noreply@example.com",
+  "additionalProperties": []
+}
+```
+
+#### Request Body Fields
+
+##### Common Fields (All Connection Types)
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type (discriminator field) |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+**Connection Types:**
+- `email` - Email (SMTP) connection
+- `kafka` - Kafka connection
+- `elasticsearch` - Elasticsearch connection
+- `database` - Database connection
+- `ldap` - LDAP connection
+- `ftp` - FTP connection
+- `rabbitMq` - RabbitMQ connection
+- `activeMq` - Apache ActiveMQ connection
+- `snmp` - SNMP connection
+- `linux-script` - Linux Script connection
+- `ops-genie` - OpsGenie connection (if available)
+- `graylog` - Graylog connection
+- `syslog` - Syslog connection
+- `webhook` - Webhook connection
+- `logback` - Logback connection
+
+**Note:** Connection-specific fields vary by connection type. See individual connection type documentation for complete field descriptions:
+- [Email Connection](../connections/connection-email.md)
+- [Kafka Connection](../connections/connection-kafka.md)
+- [Database Connection](../connections/connection-database.md)
+- ... (see [Connections Index](../index.md) for complete list)
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true
+  }
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+| deploymentResult | object | Deployment result (if deployToWorker=true) |
+| deploymentResult.success | boolean | Deployment success |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Connection (name: my-email-connection) already exists!"
+}
+```
+
+**Common Causes:**
+- Connection name already exists
+- Connection name in path does not match name in body
+- Invalid connection type
+- Missing required fields for connection type
+- Invalid field values
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "Project 'MyProject' not found"
+}
+```
+
+## cURL Example
+
+### Example 1: Create Email Connection
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "email",
+    "name": "my-email-connection",
+    "description": "Email connection for sending notifications",
+    "deployToWorker": true,
+    "enabled": true,
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "enableStartTls": true,
+    "auth": true,
+    "username": "user@example.com",
+    "password": "app-password",
+    "defaultEncoding": "UTF-8",
+    "from": "noreply@example.com"
+  }'
+```
+
+### Example 2: Create Database Connection
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-db-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "database",
+    "name": "my-db-connection",
+    "description": "PostgreSQL database connection",
+    "deployToWorker": true,
+    "enabled": true,
+    "host": "localhost",
+    "port": 5432,
+    "databaseName": "mydb",
+    "username": "dbuser",
+    "password": "dbpassword",
+    "driverClassName": "org.postgresql.Driver",
+    "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb"
+  }'
+```
+
+### Example 3: Create Kafka Connection
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-kafka-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "kafka",
+    "name": "my-kafka-connection",
+    "description": "Kafka connection for event streaming",
+    "deployToWorker": true,
+    "enabled": true,
+    "topicName": "events",
+    "bootstrapServers": "localhost:9092",
+    "keyStoreName": "my-keystore",
+    "trustStoreName": "my-truststore"
+  }'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Create Connection Without Deployment
+
+Create a connection but don't deploy to worker immediately.
+
+**Request Body:**
+```json
+{
+  "_class": "email",
+  "name": "my-email-connection",
+  "description": "Email connection",
+  "deployToWorker": false,
+  "enabled": true,
+  "host": "smtp.example.com",
+  "port": 587,
+  "auth": true,
+  "username": "user@example.com",
+  "password": "password"
+}
+```
+
+### Scenario 2: Create Disabled Connection
+
+Create a connection but keep it disabled.
+
+**Request Body:**
+```json
+{
+  "_class": "database",
+  "name": "my-db-connection",
+  "description": "Database connection",
+  "deployToWorker": true,
+  "enabled": false,
+  "host": "localhost",
+  "port": 5432,
+  "databaseName": "mydb",
+  "username": "dbuser",
+  "password": "dbpassword"
+}
+```
+
+## Notes and Warnings
+
+- **Name Matching**: Connection name in path parameter must match the `name` field in the request body (case-insensitive)
+- **Unique Names**: Connection names must be unique within a project
+- **Secret Fields**: Never commit connection configurations with secrets to version control
+- **Connection Types**: Each connection type has different required fields. See individual connection type documentation for details
+- **Deployment**: If `deployToWorker: true`, connection is automatically deployed to workers
+- **References**: Some connection types support references to certificates or keystores by name (e.g., `keyStoreName`, `trustStoreName`)
+
+## Related Documentation
+
+- [List Connections](./list-connections.md) - List all connections
+- [Get Connection](./get-connection.md) - Get connection details
+- [Update Connection](./update-connection.md) - Update a connection
+- [Delete Connection](./delete-connection.md) - Delete a connection
+- [Email Connection](../connections/connection-email.md) - Email connection details
+- [Database Connection](../connections/connection-database.md) - Database connection details
+- [Kafka Connection](../connections/connection-kafka.md) - Kafka connection details
+

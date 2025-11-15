@@ -1,0 +1,589 @@
+# ActiveMQ Connection
+
+## General Information
+
+### Connection Type
+```
+activemq
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Apache ActiveMQ connection for sending and receiving messages via JMS (Java Message Service). Supports both queue (point-to-point) and topic (publish-subscribe) messaging patterns. Used by policies and connectors to integrate with ActiveMQ message brokers for asynchronous messaging.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "activemq",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-activemq-connection",
+      "description": "ActiveMQ connection for messaging",
+      "deployToWorker": true,
+      "enabled": true,
+      "activeMqConnectionProtocolType": "TCP",
+      "brokerURL": "tcp://activemq.example.com:61616",
+      "username": "admin",
+      "password": null,
+      "destinationType": "QUEUE",
+      "destinationName": "apinizer.queue",
+      "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+      "sendTimeout": 60000,
+      "requestTimeout": 60000,
+      "closeTimeout": 60000,
+      "connectTimeout": 60000,
+      "contentType": "application/json",
+      "clientID": "apinizer-client-1",
+      "contentEncoding": "UTF-8"
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `password` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "activemq",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-activemq-connection",
+      "description": "ActiveMQ connection for messaging",
+      "deployToWorker": true,
+      "enabled": true,
+      "activeMqConnectionProtocolType": "TCP",
+      "brokerURL": "tcp://activemq.example.com:61616",
+      "username": "admin",
+      "password": null,
+      "destinationType": "QUEUE",
+      "destinationName": "apinizer.queue",
+      "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+      "sendTimeout": 60000,
+      "requestTimeout": 60000,
+      "closeTimeout": 60000,
+      "connectTimeout": 60000,
+      "contentType": "application/json",
+      "clientID": "apinizer-client-1",
+      "contentEncoding": "UTF-8"
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-activemq-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - Queue Connection (TCP)
+```json
+{
+  "_class": "activemq",
+  "name": "my-activemq-connection",
+  "description": "ActiveMQ connection for messaging",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "QUEUE",
+  "destinationName": "apinizer.queue",
+  "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000,
+  "contentType": "application/json",
+  "clientID": "apinizer-client-1",
+  "contentEncoding": "UTF-8"
+}
+```
+
+##### Full JSON Body Example - Topic Connection (AMQP)
+```json
+{
+  "_class": "activemq",
+  "name": "my-activemq-topic",
+  "description": "ActiveMQ topic connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "AMQP",
+  "brokerURL": "amqp://activemq.example.com:5672",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "TOPIC",
+  "destinationName": "apinizer.topic",
+  "sessionAcknowledgement": "CLIENT_ACKNOWLEDGE",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000,
+  "contentType": "application/json",
+  "clientID": "apinizer-client-2",
+  "contentEncoding": "UTF-8"
+}
+```
+
+##### Full JSON Body Example - Transactional Session
+```json
+{
+  "_class": "activemq",
+  "name": "my-activemq-transactional",
+  "description": "ActiveMQ with transactional session",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "QUEUE",
+  "destinationName": "apinizer.queue",
+  "sessionAcknowledgement": "SESSION_TRANSACTED",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000,
+  "contentType": "application/json",
+  "clientID": "apinizer-client-3",
+  "contentEncoding": "UTF-8"
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `activemq` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### ActiveMQ-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| activeMqConnectionProtocolType | string | Yes | - | Connection protocol type. See [EnumActiveMqConnectionProtocolType](#enumactivemqconnectionprotocoltype) |
+| brokerURL | string | Yes | - | ActiveMQ broker URL (e.g., `tcp://host:port` or `amqp://host:port`) |
+| username | string | No | - | Username for broker authentication |
+| password | string | No | - | Password for broker authentication (secret field) |
+| destinationType | string | Yes | - | Destination type. See [EnumDestinationType](#enumdestinationtype) |
+| destinationName | string | Yes | - | Queue or topic name |
+| sessionAcknowledgement | string | No | AUTO_ACKNOWLEDGE | Session acknowledgment mode. See [EnumSessionAcknowledgmentType](#enumsessionacknowledgmenttype) |
+| sendTimeout | long | No | 60000 | Send timeout in milliseconds |
+| requestTimeout | long | No | 60000 | Request timeout in milliseconds |
+| closeTimeout | long | No | 60000 | Close timeout in milliseconds |
+| connectTimeout | long | No | 60000 | Connection timeout in milliseconds |
+| contentType | string | No | - | Content type for messages (e.g., `application/json`) |
+| clientID | string | No | - | Client identifier for durable subscriptions |
+| contentEncoding | string | No | - | Content encoding (e.g., `UTF-8`) |
+
+**EnumActiveMqConnectionProtocolType (activeMqConnectionProtocolType)**
+- `TCP` - TCP protocol (standard ActiveMQ protocol, port 61616)
+- `AMQP` - AMQP protocol (Advanced Message Queuing Protocol, port 5672)
+
+**EnumDestinationType (destinationType)**
+- `QUEUE` - Point-to-point messaging (one consumer per message)
+- `TOPIC` - Publish-subscribe messaging (multiple consumers per message)
+
+**EnumSessionAcknowledgmentType (sessionAcknowledgement)**
+- `AUTO_ACKNOWLEDGE` - Messages are automatically acknowledged when received (default)
+- `CLIENT_ACKNOWLEDGE` - Client must explicitly acknowledge messages
+- `DUPS_OK_ACKNOWLEDGE` - Allows duplicate messages (lazy acknowledgment)
+- `SESSION_TRANSACTED` - Session is transactional (messages committed/rolled back)
+
+**Notes:**
+- `activeMqConnectionProtocolType`, `brokerURL`, `destinationType`, and `destinationName` are required.
+- `brokerURL` format:
+  - TCP: `tcp://hostname:61616` or `tcp://hostname:61616?options`
+  - AMQP: `amqp://hostname:5672` or `amqp://hostname:5672?options`
+- `username` and `password` are optional but required if broker authentication is enabled.
+- `destinationName` is the queue or topic name (e.g., `apinizer.queue`, `apinizer.topic`).
+- `clientID` is required for durable topic subscriptions.
+- Timeout values are in milliseconds (default: 60000ms = 60 seconds).
+- `contentType` and `contentEncoding` are optional metadata for messages.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-activemq-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "activemq",
+    "name": "my-activemq-connection",
+    "description": "ActiveMQ connection for messaging",
+    "deployToWorker": true,
+    "enabled": true,
+    "activeMqConnectionProtocolType": "TCP",
+    "brokerURL": "tcp://activemq.example.com:61616",
+    "username": "admin",
+    "password": "admin123",
+    "destinationType": "QUEUE",
+    "destinationName": "apinizer.queue",
+    "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+    "sendTimeout": 60000,
+    "requestTimeout": 60000,
+    "closeTimeout": 60000,
+    "connectTimeout": 60000,
+    "contentType": "application/json",
+    "clientID": "apinizer-client-1",
+    "contentEncoding": "UTF-8"
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic Queue Connection
+
+Standard queue connection for point-to-point messaging.
+
+**Request Body:**
+```json
+{
+  "_class": "activemq",
+  "name": "basic-queue",
+  "description": "Basic ActiveMQ queue connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "QUEUE",
+  "destinationName": "apinizer.queue",
+  "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000
+}
+```
+
+### Scenario 2: Topic Connection with Durable Subscription
+
+Topic connection with durable subscription (requires clientID).
+
+**Request Body:**
+```json
+{
+  "_class": "activemq",
+  "name": "topic-durable",
+  "description": "ActiveMQ topic with durable subscription",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "TOPIC",
+  "destinationName": "apinizer.topic",
+  "sessionAcknowledgement": "CLIENT_ACKNOWLEDGE",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000,
+  "clientID": "apinizer-durable-client"
+}
+```
+
+### Scenario 3: Transactional Queue Connection
+
+Queue connection with transactional session for guaranteed delivery.
+
+**Request Body:**
+```json
+{
+  "_class": "activemq",
+  "name": "transactional-queue",
+  "description": "ActiveMQ queue with transactional session",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "QUEUE",
+  "destinationName": "apinizer.queue",
+  "sessionAcknowledgement": "SESSION_TRANSACTED",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Protocol Types**: 
+  - `TCP` - Standard ActiveMQ protocol (port 61616, default)
+  - `AMQP` - AMQP protocol (port 5672, for interoperability)
+- **Broker URL**: 
+  - TCP format: `tcp://hostname:61616` or `tcp://hostname:61616?options`
+  - AMQP format: `amqp://hostname:5672` or `amqp://hostname:5672?options`
+  - URL options can include connection parameters
+- **Destination Types**: 
+  - `QUEUE` - Point-to-point (one consumer per message, guaranteed delivery)
+  - `TOPIC` - Publish-subscribe (multiple consumers, broadcast messaging)
+- **Session Acknowledgment**: 
+  - `AUTO_ACKNOWLEDGE` - Automatic acknowledgment (default, simplest)
+  - `CLIENT_ACKNOWLEDGE` - Manual acknowledgment (more control)
+  - `DUPS_OK_ACKNOWLEDGE` - Lazy acknowledgment (allows duplicates)
+  - `SESSION_TRANSACTED` - Transactional (guaranteed delivery, can rollback)
+- **Durable Subscriptions**: 
+  - For topic subscriptions, `clientID` is required for durable subscriptions
+  - Durable subscriptions survive client disconnections
+  - Each clientID must be unique
+- **Timeouts**: 
+  - All timeout values are in milliseconds
+  - Default: 60000ms (60 seconds)
+  - `sendTimeout` - Maximum time to wait for send operation
+  - `requestTimeout` - Maximum time to wait for request response
+  - `closeTimeout` - Maximum time to wait for connection close
+  - `connectTimeout` - Maximum time to wait for connection establishment
+- **Authentication**: 
+  - `username` and `password` are optional
+  - Required if ActiveMQ broker has authentication enabled
+  - Use strong passwords in production
+- **Content Type and Encoding**: 
+  - `contentType` - MIME type for messages (e.g., `application/json`, `text/xml`)
+  - `contentEncoding` - Character encoding (e.g., `UTF-8`, `ISO-8859-1`)
+  - These are metadata fields, not enforced by ActiveMQ
+- **Performance**: 
+  - Connection pooling improves performance
+  - Timeout settings affect behavior under load
+  - Transactional sessions have higher overhead
+- **Security**: 
+  - Use authentication for production deployments
+  - Consider using SSL/TLS for encrypted connections (configure in brokerURL)
+  - Store passwords securely
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

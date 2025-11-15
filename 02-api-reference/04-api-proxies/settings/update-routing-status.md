@@ -1,0 +1,179 @@
+# Update Routing Status
+
+## Overview
+
+Updates routing status (enable/disable routing and mirroring) for an API proxy.
+
+## Endpoint
+
+```
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/routing-status/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "routingEnabled": true,
+  "mirrorEnabled": false
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| routingEnabled | boolean | No | - | Enable/disable routing to backend |
+| mirrorEnabled | boolean | No | - | Enable/disable request mirroring (send copy to mirror backend) |
+
+**Note:** All fields are optional. Only provided fields are updated.
+
+**Routing:**
+- When `routingEnabled=true`, requests are forwarded to backend
+- When `routingEnabled=false`, requests are not forwarded (useful for testing/maintenance)
+
+**Mirroring:**
+- When `mirrorEnabled=true`, requests are sent to both primary and mirror backends
+- Mirror backend receives a copy but response is returned from primary backend
+- Useful for testing new backends without affecting production traffic
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Invalid routing status"
+}
+```
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "ApiProxy (name: MyAPI) was not found!"
+}
+```
+
+## cURL Example
+
+### Example 1: Enable Routing
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/routing-status/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "routingEnabled": true
+  }'
+```
+
+### Example 2: Enable Mirroring
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/routing-status/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "routingEnabled": true,
+    "mirrorEnabled": true
+  }'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Disable Routing for Maintenance
+
+Temporarily disable routing during maintenance.
+
+**Request Body:**
+```json
+{
+  "routingEnabled": false
+}
+```
+
+### Scenario 2: Enable Mirroring for Testing
+
+Enable mirroring to test new backend without affecting production.
+
+**Request Body:**
+```json
+{
+  "routingEnabled": true,
+  "mirrorEnabled": true
+}
+```
+
+**Note:** Configure mirror backend address separately (via routing settings).
+
+## Notes and Warnings
+
+- **Routing Disabled**: When `routingEnabled=false`, requests are not forwarded to backend
+- **Mirroring**: Mirror backend receives copy of request but response comes from primary backend
+- **Mirror Backend**: Configure mirror backend address separately (via routing settings)
+- **Use Cases**: 
+  - Disable routing for maintenance/testing
+  - Enable mirroring for gradual migration/testing
+- **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
+
+## Related Documentation
+
+- [Update Routing Addresses](./update-routing-addresses.md) - Update routing addresses
+- [Update Connection Settings](./update-connection-settings.md) - Update connection settings
+- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+

@@ -1,0 +1,656 @@
+# OIDC Authentication Policy
+
+## General Information
+
+### Policy Type
+```
+policy-oidc
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+OIDC (OpenID Connect) Authentication policy authenticates users using OIDC/OAuth 2.0 flows. It supports Authorization Code, Implicit, Hybrid, and OAuth 2.0 flows with PKCE, token validation, user claim mapping, role mapping, and session management. This policy enables SSO (Single Sign-On) integration with external identity providers like Google, Microsoft Azure AD, Okta, etc.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-oidc",
+            "name": "oidc-auth-policy",
+            "description": "OIDC authentication with Google",
+            "active": true,
+            "issuer": "https://accounts.google.com",
+            "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+            "tokenEndpoint": "https://oauth2.googleapis.com/token",
+            "flowType": "AUTHORIZATION_CODE",
+            "clientId": "your-client-id",
+            "scopes": ["openid", "profile", "email"]
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `clientSecret` is cleared for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - Authorization Code Flow with PKCE
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "OIDC authentication with Google",
+    "active": true,
+    "issuer": "https://accounts.google.com",
+    "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "tokenEndpoint": "https://oauth2.googleapis.com/token",
+    "userInfoEndpoint": "https://openidconnect.googleapis.com/v1/userinfo",
+    "jwksEndpoint": "https://www.googleapis.com/oauth2/v3/certs",
+    "clientId": "your-client-id.apps.googleusercontent.com",
+    "clientSecret": "your-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "enablePKCE": true,
+    "scopes": ["openid", "profile", "email"],
+    "additionalAuthParams": {},
+    "authenticationMode": "EXTERNAL_ONLY",
+    "requireBothInHybrid": false,
+    "validateIdToken": true,
+    "validateAccessToken": false,
+    "validateJwtLocally": true,
+    "validateJwtSignature": true,
+    "expectedJwtAuthSigningAlgs": ["RS256", "RS384", "RS512"],
+    "callUserInfoEndpoint": true,
+    "tokenCacheTimeoutSeconds": 3600,
+    "jwkCacheTimeoutSeconds": 3600,
+    "usernameClaimPath": "sub",
+    "emailClaimPath": "email",
+    "displayNameClaimPath": "name",
+    "roleMappings": [],
+    "sessionCookieName": "OIDC_SESSION",
+    "sessionTimeoutMinutes": 60,
+    "enableStateValidation": true,
+    "enableNonceValidation": true,
+    "validateIssuer": true,
+    "expectedIssuer": "https://accounts.google.com",
+    "validateAudience": false,
+    "expectedAudience": [],
+    "sessionCookieSecure": true,
+    "allowInsecureConnections": false,
+    "connectionTimeoutSeconds": 30,
+    "readTimeoutSeconds": 30,
+    "maxClockSkewSeconds": 300,
+    "errorRedirectUrl": null,
+    "errorMessageTemplate": null,
+    "includeErrorDetails": false,
+    "customHeaders": {},
+    "userAgent": "Apinizer-OIDC-Client/1.0",
+    "enableDebugLogging": false,
+    "customClaimMappings": {},
+    "disableUserinfoHeader": false,
+    "userinfoHeaderName": "UserInfo"
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (authenticates request)
+- `RESPONSE` - Executes in response pipeline
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-oidc` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| issuer | string | Yes | - | OIDC Issuer URL (e.g., https://accounts.google.com) |
+| authorizationEndpoint | string | Yes | - | Authorization endpoint URL |
+| tokenEndpoint | string | Yes | - | Token endpoint URL |
+| userInfoEndpoint | string | No | null | UserInfo endpoint URL (optional) |
+| jwksEndpoint | string | No* | null | JWKS endpoint URL (required if validateJwtSignature=true) |
+| clientId | string | Yes | - | OIDC Client ID |
+| clientSecret | string | No | null | OIDC Client Secret (encrypted) |
+| redirectUri | string | Yes | - | Redirect URI (callback URL) |
+| flowType | string | No | AUTHORIZATION_CODE | OIDC Flow Type |
+| enablePKCE | boolean | No | true | Enable PKCE (Proof Key for Code Exchange) |
+| scopes | array | Yes | ["openid", "profile", "email"] | OIDC/OAuth 2.0 scopes (must include "openid" for OIDC) |
+| additionalAuthParams | object | No | {} | Additional authorization parameters |
+| authenticationMode | string | No | EXTERNAL_ONLY | Authentication mode |
+| requireBothInHybrid | boolean | No | false | Require both external and internal authentication in hybrid mode |
+| validateIdToken | boolean | No | true | Validate ID Token signature and claims |
+| validateAccessToken | boolean | No | false | Validate Access Token |
+| validateJwtLocally | boolean | No | true | Validate JWT token locally (exp, iss, aud checks) |
+| validateJwtSignature | boolean | No | false | Validate JWT signature using JWKS endpoint |
+| expectedJwtAuthSigningAlgs | array | No | ["RS256", "RS384", "RS512", "ES256", "ES384", "ES512", "PS256", "PS384", "PS512", "EdDSA"] | Expected JWT signing algorithms |
+| callUserInfoEndpoint | boolean | No | true | Call UserInfo endpoint to get user information |
+| tokenCacheTimeoutSeconds | integer | No | 3600 | Token cache timeout in seconds |
+| jwkCacheTimeoutSeconds | integer | No | 3600 | JWK cache timeout in seconds |
+| usernameClaimPath | string | No | "sub" | Claim path for username |
+| emailClaimPath | string | No | "email" | Claim path for email |
+| displayNameClaimPath | string | No | "name" | Claim path for display name |
+| roleMappings | array | No | [] | Role mappings for authorization |
+| sessionCookieName | string | No | "OIDC_SESSION" | Session cookie name |
+| sessionTimeoutMinutes | integer | No | 60 | Session timeout in minutes |
+| enableStateValidation | boolean | No | true | Enable state validation for CSRF protection |
+| enableNonceValidation | boolean | No | true | Enable nonce validation for replay attack protection |
+| introspectionEndpoint | string | No | null | Introspection endpoint URL (optional) |
+| validateIssuer | boolean | No | true | Validate issuer claim in JWT |
+| expectedIssuer | string | No | null | Expected issuer value |
+| validateAudience | boolean | No | false | Validate audience claim in JWT |
+| expectedAudience | array | No | [] | Expected audience values |
+| sessionCookieSecure | boolean | No | true | Session cookie secure flag (HTTPS only) |
+| allowInsecureConnections | boolean | No | false | Allow insecure HTTPS connections |
+| connectionTimeoutSeconds | integer | No | 30 | Connection timeout in seconds |
+| readTimeoutSeconds | integer | No | 30 | Read timeout in seconds |
+| maxClockSkewSeconds | integer | No | 300 | Maximum clock skew in seconds for token validation |
+| errorRedirectUrl | string | No | null | Error redirect URL |
+| errorMessageTemplate | string | No | null | Error message template |
+| includeErrorDetails | boolean | No | false | Include error details in response |
+| customHeaders | object | No | {} | Custom HTTP headers to include in OIDC requests |
+| userAgent | string | No | "Apinizer-OIDC-Client/1.0" | User agent string for OIDC requests |
+| enableDebugLogging | boolean | No | false | Enable debug logging |
+| customClaimMappings | object | No | {} | Custom claim mappings |
+| disableUserinfoHeader | boolean | No | false | Disable userinfo header in response |
+| userinfoHeaderName | string | No | "UserInfo" | Userinfo header name |
+
+**Enum: flowType (EnumOIDCFlowType)**
+- `AUTHORIZATION_CODE` - Authorization Code Flow (recommended, most secure)
+- `IMPLICIT` - Implicit Flow (less secure, deprecated)
+- `HYBRID` - Hybrid Flow (combines authorization code and implicit)
+- `OAUTH2_AUTHORIZATION_CODE` - OAuth 2.0 Authorization Code Flow (without OIDC)
+
+**Enum: authenticationMode (EnumOIDCAuthenticationMode)**
+- `EXTERNAL_ONLY` - External OIDC Provider Only
+- `INTERNAL_ONLY` - Internal Apinizer Credentials Only
+- `HYBRID` - Hybrid - External OIDC + Internal Credentials
+
+**JWT Signing Algorithms:**
+- `RS256`, `RS384`, `RS512` - RSA with SHA-256/384/512
+- `ES256`, `ES384`, `ES512` - ECDSA with SHA-256/384/512
+- `PS256`, `PS384`, `PS512` - RSASSA-PSS with SHA-256/384/512
+- `EdDSA` - Edwards-curve Digital Signature Algorithm
+
+**Note:** 
+- `issuer`, `authorizationEndpoint`, `tokenEndpoint`, `clientId`, and `redirectUri` are required.
+- `scopes` must contain at least "openid" for OIDC flows.
+- If `validateJwtSignature: true`, `jwksEndpoint` is required.
+- If `validateAudience: true`, `expectedAudience` must contain at least one value.
+
+###### roleMappings
+Each role mapping is an object with the following fields:
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| claimPath | string | Yes | - | JSONPath or claim name to extract role information (e.g., "roles", "groups", "$.realm_access.roles") |
+| claimValue | string | No | null | Expected value in the claim (if null, any non-empty value matches) |
+| roleName | string | Yes | - | Apinizer role name to assign when claim matches |
+| required | boolean | No | false | Whether this is a required role mapping |
+
+**Claim Path Examples:**
+- `"roles"` - Simple claim name
+- `"groups"` - Groups claim
+- `"$.realm_access.roles"` - JSONPath for nested claim
+- `"$.resource_access.myapp.roles"` - JSONPath for resource-specific roles
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/oidc-auth-policy/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-oidc",
+      "description": "OIDC authentication",
+      "active": true,
+      "issuer": "https://accounts.google.com",
+      "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+      "tokenEndpoint": "https://oauth2.googleapis.com/token",
+      "clientId": "your-client-id",
+      "clientSecret": "your-client-secret",
+      "redirectUri": "https://api.example.com/oidc/callback",
+      "flowType": "AUTHORIZATION_CODE",
+      "enablePKCE": true,
+      "scopes": ["openid", "profile", "email"]
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Google OIDC Authentication
+
+Authenticate users using Google OIDC.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "Google OIDC authentication",
+    "active": true,
+    "issuer": "https://accounts.google.com",
+    "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "tokenEndpoint": "https://oauth2.googleapis.com/token",
+    "userInfoEndpoint": "https://openidconnect.googleapis.com/v1/userinfo",
+    "jwksEndpoint": "https://www.googleapis.com/oauth2/v3/certs",
+    "clientId": "your-client-id.apps.googleusercontent.com",
+    "clientSecret": "your-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "enablePKCE": true,
+    "scopes": ["openid", "profile", "email"],
+    "authenticationMode": "EXTERNAL_ONLY",
+    "validateIdToken": true,
+    "validateJwtSignature": true,
+    "callUserInfoEndpoint": true
+  }
+}
+```
+
+### Scenario 2: Azure AD OIDC Authentication
+
+Authenticate users using Microsoft Azure AD.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "Azure AD OIDC authentication",
+    "active": true,
+    "issuer": "https://login.microsoftonline.com/{tenant-id}/v2.0",
+    "authorizationEndpoint": "https://login.microsoftonline.com/{tenant-id}/oauth2/v2.0/authorize",
+    "tokenEndpoint": "https://login.microsoftonline.com/{tenant-id}/oauth2/v2.0/token",
+    "userInfoEndpoint": "https://graph.microsoft.com/oidc/userinfo",
+    "jwksEndpoint": "https://login.microsoftonline.com/{tenant-id}/discovery/v2.0/keys",
+    "clientId": "your-client-id",
+    "clientSecret": "your-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "enablePKCE": true,
+    "scopes": ["openid", "profile", "email"],
+    "authenticationMode": "EXTERNAL_ONLY",
+    "validateIdToken": true,
+    "validateJwtSignature": true,
+    "validateAudience": true,
+    "expectedAudience": ["your-client-id"]
+  }
+}
+```
+
+### Scenario 3: OIDC with Role Mapping
+
+Map OIDC claims to Apinizer roles.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "OIDC with role mapping",
+    "active": true,
+    "issuer": "https://accounts.google.com",
+    "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "tokenEndpoint": "https://oauth2.googleapis.com/token",
+    "clientId": "your-client-id",
+    "clientSecret": "your-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "scopes": ["openid", "profile", "email"],
+    "roleMappings": [
+      {
+        "claimPath": "groups",
+        "claimValue": "admin",
+        "roleName": "Administrator",
+        "required": false
+      },
+      {
+        "claimPath": "$.realm_access.roles",
+        "claimValue": "user",
+        "roleName": "User",
+        "required": true
+      }
+    ]
+  }
+}
+```
+
+### Scenario 4: Hybrid Authentication Mode
+
+Combine external OIDC with internal Apinizer credentials.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "Hybrid authentication",
+    "active": true,
+    "issuer": "https://accounts.google.com",
+    "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "tokenEndpoint": "https://oauth2.googleapis.com/token",
+    "clientId": "your-client-id",
+    "clientSecret": "your-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "scopes": ["openid", "profile", "email"],
+    "authenticationMode": "HYBRID",
+    "requireBothInHybrid": true
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Flow Types**: 
+  - `AUTHORIZATION_CODE` - Recommended, most secure flow
+  - `IMPLICIT` - Less secure, deprecated
+  - `HYBRID` - Combines authorization code and implicit
+  - `OAUTH2_AUTHORIZATION_CODE` - OAuth 2.0 without OIDC
+- **PKCE**: Enable PKCE for enhanced security (recommended for all flows)
+- **Scopes**: Must include "openid" for OIDC flows. Common scopes: "openid", "profile", "email", "offline_access"
+- **Token Validation**: 
+  - `validateIdToken`: Validates ID token signature and claims
+  - `validateJwtSignature`: Validates JWT signature using JWKS endpoint (requires `jwksEndpoint`)
+  - `validateJwtLocally`: Validates expiration, issuer, audience locally
+- **Issuer and Audience**: 
+  - `validateIssuer`: Validates issuer claim matches expected issuer
+  - `validateAudience`: Validates audience claim matches expected audience (requires `expectedAudience`)
+- **Session Management**: 
+  - Session data is encrypted and stored in cache
+  - Session encryption key/IV are auto-generated from policy ID
+  - Session cookie is secure by default (HTTPS only)
+- **Role Mapping**: Map OIDC claims to Apinizer roles using `roleMappings`
+- **UserInfo Endpoint**: Call UserInfo endpoint to get additional user information
+- **Cache**: Token and JWK caches improve performance (configurable timeouts)
+- **Security**: 
+  - Use HTTPS for all OIDC endpoints
+  - Enable state and nonce validation for CSRF/replay protection
+  - Validate JWT signatures for token integrity
+- **Performance**: Token and JWK caching reduces provider calls
+- **Pipeline**: 
+  - `REQUEST` pipeline authenticates request using OIDC flow
+  - Authentication failure redirects to authorization endpoint or returns error
+- **Error Handling**: Configure error redirect URL and message template for user-friendly error handling
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [OAuth2 Authentication Policy](./policy-auth-oauth2.md) - OAuth 2.0 Authentication
+- [JWT Authentication Policy](./policy-auth-jwt.md) - JWT Token Authentication
+

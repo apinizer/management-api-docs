@@ -1,0 +1,189 @@
+# Create Token
+
+## Overview
+
+Creates a Personal API Access Token using OAuth2 client credentials flow. This token can be used to authenticate all subsequent API requests.
+
+## Endpoint
+
+```
+POST /apiops/auth/token
+```
+
+## Authentication
+
+This endpoint does not require authentication. However, you must provide valid Apinizer credentials.
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Content-Type | application/x-www-form-urlencoded | Yes |
+| Accept | application/json | No |
+
+### Request Body (URL Encoded)
+
+The request body must be sent as `application/x-www-form-urlencoded` (not JSON).
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| grant_type | string | Yes | Must be `client_credentials` |
+| client_id | string | Yes | Your Apinizer username |
+| client_secret | string | Yes | Your Apinizer password |
+
+### Full Request Body Example
+
+```
+grant_type=client_credentials&client_id=your_username&client_secret=your_password
+```
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| access_token | string | The Personal API Access Token to use for authentication |
+| token_type | string | Always `Bearer` |
+| expires_in | integer | Token expiration time in seconds (if applicable) |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "unsupported_grant_type",
+  "error_description": "GrantType value must be client_credentials!"
+}
+```
+
+**Cause:** The `grant_type` parameter is not `client_credentials`.
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Bad credentials"
+}
+```
+
+**Causes:**
+- Invalid username or password
+- Account is disabled or locked
+- Credentials are incorrect
+
+### Error Response (500 Internal Server Error)
+
+```json
+{
+  "error": "server_error",
+  "error_description": "An unexpected error occurred"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json" \
+  -d "grant_type=client_credentials&client_id=your_username&client_secret=your_password"
+```
+
+## Full JSON Body Example
+
+**Note:** This endpoint uses `application/x-www-form-urlencoded` format, not JSON. The example below shows the equivalent data structure:
+
+```json
+{
+  "grant_type": "client_credentials",
+  "client_id": "your_username",
+  "client_secret": "your_password"
+}
+```
+
+**Important:** When making the actual request, send this data as URL-encoded form data, not as JSON.
+
+## Usage Example
+
+### Python Example
+
+```python
+import requests
+
+url = "https://demo.apinizer.com/apiops/auth/token"
+headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "application/json"
+}
+data = {
+    "grant_type": "client_credentials",
+    "client_id": "your_username",
+    "client_secret": "your_password"
+}
+
+response = requests.post(url, headers=headers, data=data)
+token_data = response.json()
+
+if response.status_code == 200:
+    access_token = token_data["access_token"]
+    print(f"Token: {access_token}")
+else:
+    print(f"Error: {token_data.get('error_description')}")
+```
+
+### JavaScript Example
+
+```javascript
+const url = 'https://demo.apinizer.com/apiops/auth/token';
+const headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json'
+};
+const data = new URLSearchParams({
+  grant_type: 'client_credentials',
+  client_id: 'your_username',
+  client_secret: 'your_password'
+});
+
+fetch(url, {
+  method: 'POST',
+  headers: headers,
+  body: data
+})
+  .then(response => response.json())
+  .then(data => {
+    if (data.access_token) {
+      console.log('Token:', data.access_token);
+    } else {
+      console.error('Error:', data.error_description);
+    }
+  });
+```
+
+## Notes and Warnings
+
+- **Security**: Never commit credentials or tokens to version control
+- **Token Storage**: Store tokens securely (use environment variables or secret management)
+- **Token Expiration**: Tokens may expire based on configuration. Check `expires_in` field
+- **Token Format**: Always use `Bearer` prefix when including token in Authorization header
+- **Content-Type**: This endpoint requires `application/x-www-form-urlencoded`, not `application/json`
+
+## Related Documentation
+
+- [Authentication Guide](../../01-getting-started/authentication.md) - Detailed authentication information
+- [Using Tokens](../../01-getting-started/authentication.md#using-the-token) - How to use tokens in API requests
+

@@ -1,0 +1,114 @@
+# Update IP Group
+
+## Overview
+
+Updates an existing IP Group. Only the description can be updated; the name cannot be changed (it's used as the identifier).
+
+## Endpoint
+
+```
+PUT /apiops/projects/{projectName}/ipGroups/{ipGroupName}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| ipGroupName | string | Yes | IP Group name (cannot be changed) |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "name": "AllowedIPs",
+  "description": "Updated description for allowed IP addresses"
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| name | string | Yes | - | IP Group name (must match path parameter, cannot be changed) |
+| description | string | No | - | IP Group description (can be updated) |
+
+**Notes:**
+- `name` must match the IP Group name in path (cannot be changed)
+- Only `description` can be updated
+- IP addresses are not updated by this endpoint (use IP management endpoints)
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "name value can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "IP Group (AllowedIPs) is not found!"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/ipGroups/AllowedIPs/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "AllowedIPs",
+    "description": "Updated description"
+  }'
+```
+
+## Notes and Warnings
+
+- **Name Cannot Change**: 
+  - Name is used as identifier and cannot be changed
+  - Use the existing name in the request
+- **Description Only**: 
+  - Only description can be updated
+  - IP addresses are not affected by this endpoint
+
+## Related Documentation
+
+- [Create IP Group](./create-ip-group.md) - Create a new IP Group
+- [Delete IP Group](./delete-ip-group.md) - Delete an IP Group
+

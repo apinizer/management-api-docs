@@ -1,0 +1,554 @@
+# FTP Connection
+
+## General Information
+
+### Connection Type
+```
+ftp
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+FTP connection for file transfer operations. Supports FTP, SFTP, and FTPS protocols. Used by policies and other components that need to download files from FTP servers.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "ftp",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-ftp-connection",
+      "description": "FTP connection for file transfer",
+      "deployToWorker": true,
+      "enabled": true,
+      "host": "ftp.example.com",
+      "port": 21,
+      "username": "ftpuser",
+      "password": null,
+      "workingDir": "/",
+      "protocol": "FTP",
+      "timeout": 30000,
+      "retryCount": 3,
+      "useImplicit": false,
+      "useExplicit": false,
+      "sslProtocol": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `password` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "ftp",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-ftp-connection",
+      "description": "FTP connection for file transfer",
+      "deployToWorker": true,
+      "enabled": true,
+      "host": "ftp.example.com",
+      "port": 21,
+      "username": "ftpuser",
+      "password": null,
+      "workingDir": "/uploads",
+      "protocol": "FTP",
+      "timeout": 30000,
+      "retryCount": 3,
+      "useImplicit": false,
+      "useExplicit": false,
+      "sslProtocol": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-ftp-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - FTP
+```json
+{
+  "_class": "ftp",
+  "name": "my-ftp-connection",
+  "description": "FTP connection for file transfer",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftp.example.com",
+  "port": 21,
+  "username": "ftpuser",
+  "password": "ftppassword",
+  "workingDir": "/uploads",
+  "protocol": "FTP",
+  "timeout": 30000,
+  "retryCount": 3,
+  "useImplicit": false,
+  "useExplicit": false,
+  "sslProtocol": null
+}
+```
+
+##### Full JSON Body Example - SFTP
+```json
+{
+  "_class": "ftp",
+  "name": "my-sftp-connection",
+  "description": "SFTP connection for secure file transfer",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "sftp.example.com",
+  "port": 22,
+  "username": "sftpuser",
+  "password": "sftppassword",
+  "workingDir": "/uploads",
+  "protocol": "SFTP",
+  "timeout": 30000,
+  "retryCount": 3,
+  "useImplicit": false,
+  "useExplicit": false,
+  "sslProtocol": null
+}
+```
+
+##### Full JSON Body Example - FTPS (Implicit)
+```json
+{
+  "_class": "ftp",
+  "name": "my-ftps-implicit-connection",
+  "description": "FTPS connection with implicit SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftps.example.com",
+  "port": 990,
+  "username": "ftpsuser",
+  "password": "ftpspassword",
+  "workingDir": "/uploads",
+  "protocol": "FTPS",
+  "timeout": 30000,
+  "retryCount": 3,
+  "useImplicit": true,
+  "useExplicit": false,
+  "sslProtocol": "TLS"
+}
+```
+
+##### Full JSON Body Example - FTPS (Explicit)
+```json
+{
+  "_class": "ftp",
+  "name": "my-ftps-explicit-connection",
+  "description": "FTPS connection with explicit SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftps.example.com",
+  "port": 21,
+  "username": "ftpsuser",
+  "password": "ftpspassword",
+  "workingDir": "/uploads",
+  "protocol": "FTPS",
+  "timeout": 30000,
+  "retryCount": 3,
+  "useImplicit": false,
+  "useExplicit": true,
+  "sslProtocol": "TLS"
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `ftp` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### FTP-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| host | string | Yes | - | FTP server hostname or IP address |
+| port | integer | No | 21 | FTP server port (21 for FTP/FTPS, 22 for SFTP, 990 for FTPS implicit) |
+| username | string | Yes | - | FTP username |
+| password | string | Yes | - | FTP password (secret field) |
+| workingDir | string | No | / | Working directory path |
+| protocol | string | Yes | - | FTP protocol type. See [EnumFtpProtocol](#enumftpprotocol) |
+| timeout | integer | No | 30000 | Connection timeout in milliseconds |
+| retryCount | integer | No | 3 | Number of retry attempts on failure |
+| useImplicit | boolean | No | false | Use implicit SSL/TLS (for FTPS only) |
+| useExplicit | boolean | No | false | Use explicit SSL/TLS (for FTPS only) |
+| sslProtocol | string | No | null | SSL protocol version (e.g., "TLS", "SSL", "TLSv1.2") |
+
+**Enum: protocol (EnumFtpProtocol)**
+- `FTP` - Standard FTP protocol (port 21)
+- `SFTP` - SSH File Transfer Protocol (port 22)
+- `FTPS` - FTP over SSL/TLS (port 21 for explicit, 990 for implicit)
+
+**Note:**
+- `host`, `username`, and `password` are required.
+- `protocol` is required.
+- For FTPS, either `useImplicit: true` or `useExplicit: true` must be set.
+- `useImplicit` and `useExplicit` are mutually exclusive.
+- Default ports: 21 (FTP/FTPS explicit), 22 (SFTP), 990 (FTPS implicit).
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-ftp-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "ftp",
+    "name": "my-ftp-connection",
+    "description": "FTP connection for file transfer",
+    "deployToWorker": true,
+    "enabled": true,
+    "host": "ftp.example.com",
+    "port": 21,
+    "username": "ftpuser",
+    "password": "ftppassword",
+    "workingDir": "/uploads",
+    "protocol": "FTP",
+    "timeout": 30000,
+    "retryCount": 3
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Standard FTP
+
+Basic FTP connection without encryption.
+
+**Request Body:**
+```json
+{
+  "_class": "ftp",
+  "name": "standard-ftp",
+  "description": "Standard FTP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftp.example.com",
+  "port": 21,
+  "username": "ftpuser",
+  "password": "ftppassword",
+  "workingDir": "/uploads",
+  "protocol": "FTP",
+  "timeout": 30000,
+  "retryCount": 3
+}
+```
+
+### Scenario 2: Secure SFTP
+
+SFTP connection for secure file transfer.
+
+**Request Body:**
+```json
+{
+  "_class": "ftp",
+  "name": "secure-sftp",
+  "description": "Secure SFTP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "sftp.example.com",
+  "port": 22,
+  "username": "sftpuser",
+  "password": "sftppassword",
+  "workingDir": "/uploads",
+  "protocol": "SFTP",
+  "timeout": 30000,
+  "retryCount": 3
+}
+```
+
+### Scenario 3: FTPS with Explicit SSL
+
+FTPS connection with explicit SSL/TLS.
+
+**Request Body:**
+```json
+{
+  "_class": "ftp",
+  "name": "ftps-explicit",
+  "description": "FTPS with explicit SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftps.example.com",
+  "port": 21,
+  "username": "ftpsuser",
+  "password": "ftpspassword",
+  "workingDir": "/uploads",
+  "protocol": "FTPS",
+  "timeout": 30000,
+  "retryCount": 3,
+  "useImplicit": false,
+  "useExplicit": true,
+  "sslProtocol": "TLS"
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **FTP Protocols**: 
+  - `FTP` - Standard FTP (not encrypted, not recommended for production)
+  - `SFTP` - SSH File Transfer Protocol (encrypted, recommended)
+  - `FTPS` - FTP over SSL/TLS (encrypted, recommended)
+- **Ports**: 
+  - FTP: 21 (default)
+  - SFTP: 22 (default)
+  - FTPS explicit: 21 (default)
+  - FTPS implicit: 990 (default)
+- **SSL/TLS**: 
+  - `useImplicit: true` - SSL/TLS connection from start (port 990)
+  - `useExplicit: true` - SSL/TLS connection after AUTH command (port 21)
+  - `useImplicit` and `useExplicit` are mutually exclusive
+  - `sslProtocol` specifies protocol version (TLS, SSL, TLSv1.2, etc.)
+- **Working Directory**: 
+  - `workingDir` specifies the default directory for file operations
+  - Defaults to "/" (root directory)
+  - Can be absolute or relative path
+- **Timeout and Retry**: 
+  - `timeout` - Connection timeout in milliseconds
+  - `retryCount` - Number of retry attempts on failure
+  - Recommended timeout: 30000ms (30 seconds)
+- **Security**: 
+  - Use SFTP or FTPS in production (not plain FTP)
+  - Use strong passwords
+  - Consider using key-based authentication for SFTP
+- **Performance**: 
+  - Timeout settings affect connection behavior
+  - Retry count helps with transient failures
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

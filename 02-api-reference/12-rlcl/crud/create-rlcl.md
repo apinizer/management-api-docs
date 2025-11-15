@@ -1,0 +1,193 @@
+# Create RLCL
+
+## Overview
+
+Creates a new Rate Limit Control List (RLCL). RLCLs allow you to define rate limiting rules for credentials and API endpoints, controlling how many requests can be made within a specific time period.
+
+## Endpoint
+
+```
+POST /apiops/projects/{projectName}/rlcl/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Request Body
+
+#### Full JSON Body Example - Basic RLCL
+
+```json
+{
+  "name": "PremiumUserRLCL",
+  "description": "Rate limit for premium users",
+  "enabled": true,
+  "executionOrder": "FIRST",
+  "cacheConnectionTimeoutInSeconds": 3,
+  "cacheErrorHandlingType": "FAIL",
+  "timeIntervalWindowType": "FIXED",
+  "showRateLimitStatisticsInResponseHeader": false,
+  "targetVariable": null
+}
+```
+
+#### Full JSON Body Example - RLCL with Target Variable
+
+```json
+{
+  "name": "IPBasedRLCL",
+  "description": "Rate limit based on IP address",
+  "enabled": true,
+  "executionOrder": "FIRST",
+  "cacheConnectionTimeoutInSeconds": 5,
+  "cacheErrorHandlingType": "CONTINUE",
+  "timeIntervalWindowType": "SLIDING",
+  "showRateLimitStatisticsInResponseHeader": true,
+  "targetVariable": {
+    "name": "client.ip",
+    "type": "CONTEXT",
+    "dataType": "STRING"
+  }
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| name | string | Yes | - | RLCL name (unique identifier within project) |
+| description | string | No | - | RLCL description |
+| enabled | boolean | No | true | Whether the RLCL is enabled |
+| executionOrder | string | No | FIRST | Execution order. See [EnumExecutionOrder](#enumexecutionorder) |
+| cacheConnectionTimeoutInSeconds | integer | No | 3 | Cache connection timeout in seconds |
+| cacheErrorHandlingType | string | No | FAIL | Cache error handling type. See [EnumCacheErrorHandlingType](#enumcacheerrorhandlingtype) |
+| timeIntervalWindowType | string | No | FIXED | Time interval window type. See [EnumIntervalWindowType](#enumintervalwindowtype) |
+| showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
+| targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](#variable-object) |
+
+**EnumExecutionOrder (executionOrder):**
+- `FIRST` - Execute first (before other RLCLs)
+- `LAST` - Execute last (after other RLCLs)
+
+**EnumCacheErrorHandlingType (cacheErrorHandlingType):**
+- `FAIL` - Fail the request if cache error occurs
+- `CONTINUE` - Continue processing if cache error occurs
+
+**EnumIntervalWindowType (timeIntervalWindowType):**
+- `FIXED` - Fixed time interval window
+- `SLIDING` - Sliding time interval window
+
+**Variable Object (targetVariable):**
+
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| headerName | string | No* | Header name (required if type=HEADER) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramName | string | No* | Parameter name (required if type=PARAMETER) |
+| paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
+| jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| zoneId | string | No* | Time zone ID (required for date/time context values) |
+| scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
+| scriptBody | string | No* | Script body (required if type=CUSTOM) |
+
+**Notes:**
+- `name` must be unique within the project
+- `name` must not be empty
+- RLCL is created empty (no credentials or endpoints)
+- Use Add Credentials and Add Endpoints endpoints to configure the RLCL
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "name value can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "An RLCL with same name (PremiumUserRLCL) already exists in project!"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/rlcl/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "PremiumUserRLCL",
+    "description": "Rate limit for premium users",
+    "enabled": true,
+    "executionOrder": "FIRST",
+    "cacheConnectionTimeoutInSeconds": 3,
+    "cacheErrorHandlingType": "FAIL",
+    "timeIntervalWindowType": "FIXED",
+    "showRateLimitStatisticsInResponseHeader": false
+  }'
+```
+
+## Notes and Warnings
+
+- **Name Uniqueness**: 
+  - RLCL name must be unique within the project
+  - If name already exists, creation will fail
+- **Empty RLCL**: 
+  - RLCL is created empty (no credentials or endpoints)
+  - Use Add Credentials and Add Endpoints endpoints to configure
+- **Target Variable**: 
+  - Target variable defines what to rate limit (e.g., IP address, user ID)
+  - If null, rate limiting is applied per credential
+- **Permissions**: 
+  - Requires `ROLE_MANAGE_PROXIES` permission
+  - User must have access to the project
+
+## Related Documentation
+
+- [Update RLCL](./update-rlcl.md) - Update an RLCL
+- [Add Credentials](../credentials/add-credentials.md) - Add credentials to RLCL
+- [Add Endpoints](../endpoints/add-endpoints.md) - Add endpoints to RLCL
+

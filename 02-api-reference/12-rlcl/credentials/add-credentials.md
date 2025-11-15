@@ -1,0 +1,132 @@
+# Add Credentials to RLCL
+
+## Overview
+
+Adds credentials to an existing RLCL. Credentials added to the RLCL will be subject to the rate limiting rules defined in the RLCL.
+
+## Endpoint
+
+```
+POST /apiops/projects/{projectName}/rlcl/{rlclName}/credentials/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| rlclName | string | Yes | RLCL name |
+
+### Request Body
+
+#### Full JSON Body Example - Single Credential
+
+```json
+{
+  "credentialNames": [
+    "api-user"
+  ]
+}
+```
+
+#### Full JSON Body Example - Multiple Credentials
+
+```json
+{
+  "credentialNames": [
+    "api-user-1",
+    "api-user-2",
+    "premium-user"
+  ]
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| credentialNames | array[string] | Yes | - | List of credential names (usernames) to add |
+
+**Notes:**
+- `credentialNames` must not be empty
+- Credential names must exist in the project
+- Duplicate credentials are ignored (not added twice)
+- Credentials are added to the existing list
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "credentialNames value can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential with name (api-user) is not found in project!"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/rlcl/PremiumUserRLCL/credentials/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "credentialNames": [
+      "api-user-1",
+      "api-user-2"
+    ]
+  }'
+```
+
+## Notes and Warnings
+
+- **Credential Names**: 
+  - Use credential usernames (not IDs)
+  - Credentials must exist in the project
+- **Duplicate Handling**: 
+  - Duplicate credentials are ignored
+  - No error is thrown for duplicates
+- **RLCL Must Exist**: 
+  - RLCL must exist before adding credentials
+
+## Related Documentation
+
+- [Update Credentials](./update-credentials.md) - Replace all credentials
+- [Delete Credentials](./delete-credentials.md) - Remove credentials
+- [Create RLCL](../crud/create-rlcl.md) - Create a new RLCL
+

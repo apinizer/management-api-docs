@@ -1,0 +1,142 @@
+# Update Hide Spec File Setting
+
+## Overview
+
+Updates the hide API specification file setting for an API proxy. When enabled, the API specification file (OpenAPI/Swagger/WSDL) is hidden from public access.
+
+## Endpoint
+
+```
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/hide-spec-file/{hideSpecFile}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| hideSpecFile | boolean | Yes | Hide spec file (`true` or `false`) |
+
+### Query Parameters
+
+None
+
+### Request Body
+
+This endpoint does not require a request body.
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Invalid hideSpecFile parameter"
+}
+```
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "ApiProxy (name: MyAPI) was not found!"
+}
+```
+
+## cURL Example
+
+### Example 1: Hide Spec File
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/true/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### Example 2: Show Spec File
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/false/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Usage Scenarios
+
+### Scenario 1: Hide API Specification
+
+Hide the API specification file from public access.
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/true/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### Scenario 2: Show API Specification
+
+Make the API specification file publicly accessible.
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/false/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Notes and Warnings
+
+- **Path Parameter**: `hideSpecFile` must be `true` or `false` (boolean as string in URL)
+- **Public Access**: When `hideSpecFile=false`, spec file is accessible via public endpoints
+- **Security**: Hiding spec file prevents public access to API structure/endpoints
+- **Use Cases**: 
+  - Hide internal API specifications
+  - Protect API structure from public view
+- **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
+
+## Related Documentation
+
+- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+

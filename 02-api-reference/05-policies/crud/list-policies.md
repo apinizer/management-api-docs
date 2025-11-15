@@ -1,0 +1,166 @@
+# List Policies
+
+## Overview
+
+Retrieves all policies for a specific API proxy. Policies are organized by pipeline (request, response, error).
+
+## Endpoint
+
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Query Parameters
+
+None
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "status": "SUCCESS",
+  "resultList": [
+    {
+      "name": "Address",
+      "type": "SOAP",
+      "relativePath": "/address",
+      "soapToRest": false,
+      "requestPolicyList": [
+        {
+          "type": "policy-throttling",
+          "active": true
+        }
+      ],
+      "responsePolicyList": [
+        {
+          "type": "policy-api-call",
+          "active": true
+        }
+      ],
+      "errorPolicyList": [
+        {
+          "type": "policy-script",
+          "active": true
+        },
+        {
+          "type": "policy-script",
+          "description": "sample description",
+          "active": true
+        }
+      ],
+      "endpointList": [
+        {
+          "endpoint": "/UpdateAddress",
+          "active": true,
+          "httpMethod": "POST",
+          "requestPolicyList": [
+            {
+              "type": "policy-script",
+              "active": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| status | string | Response status: `SUCCESS` or `FAILURE` |
+| resultList | array | List containing API proxy with policies |
+| resultCount | integer | Total number of results (always 1) |
+
+#### API Proxy Object Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| name | string | API Proxy name |
+| type | string | API type. See [EnumApiType](#enumapitype) |
+| relativePath | string | Relative path (from clientRoute) |
+| soapToRest | boolean | Whether SOAP to REST transformation is enabled |
+| requestPolicyList | array | List of request pipeline policies |
+| responsePolicyList | array | List of response pipeline policies |
+| errorPolicyList | array | List of error pipeline policies |
+| endpointList | array | List of endpoints with their policies |
+
+**Enum: type (EnumApiType)**
+- `REST` - REST API
+- `SOAP` - SOAP API
+
+**Enum: status**
+- `SUCCESS` - Operation successful
+- `FAILURE` - Operation failed
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "Project 'MyProject' not found"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Full JSON Body Example
+
+This endpoint does not require a request body.
+
+## Notes and Warnings
+
+- **Policy Details**: Policy details may be simplified in list responses. Use individual policy endpoints for full details.
+- **Pipeline Organization**: Policies are organized by pipeline (request, response, error).
+- **Empty Lists**: If no policies exist in a pipeline, an empty array is returned.
+
+## Related Documentation
+
+- [Add Policy](./add-policy.md) - Add a new policy
+- [Update Policy](./update-policy.md) - Update an existing policy
+- [Delete Policy](./delete-policy.md) - Delete a policy
+

@@ -1,0 +1,277 @@
+# Grant Access
+
+## Overview
+
+Grants access to a credential for one or more API Proxies or API Proxy Groups. The credential will be able to access the specified resources. Access is automatically deployed to all environments.
+
+## Endpoint
+
+```
+PUT /apiops/projects/{projectName}/credentials/{username}/access/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| username | string | Yes | Username of the credential |
+
+### Request Body
+
+#### Full JSON Body Example - Grant Access to Single API Proxy
+
+```json
+[
+  {
+    "name": "MyAPI",
+    "type": "API_PROXY"
+  }
+]
+```
+
+#### Full JSON Body Example - Grant Access to Multiple Resources
+
+```json
+[
+  {
+    "name": "MyAPI",
+    "type": "API_PROXY"
+  },
+  {
+    "name": "PaymentAPI",
+    "type": "API_PROXY"
+  },
+  {
+    "name": "MyAPIGroup",
+    "type": "API_PROXY_GROUP"
+  }
+]
+```
+
+#### Request Body Fields
+
+The request body is an array of access objects.
+
+**Access Object:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Name of the API Proxy or API Proxy Group |
+| type | string | Yes | Type of access. See [EnumAccessType](#enumaccesstype) |
+
+**EnumAccessType (type):**
+- `API_PROXY` - Grant access to a specific API Proxy
+- `API_PROXY_GROUP` - Grant access to an API Proxy Group
+
+**Notes:**
+- Request body must be an array (even for single access)
+- Each access object must have `name` and `type`
+- `name` must match an existing API Proxy or API Proxy Group
+- `type` must be either `API_PROXY` or `API_PROXY_GROUP`
+- Cannot grant access that already exists
+- Access is automatically deployed to all environments
+
+### Response
+
+#### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "message": "Deployment completed successfully",
+    "environmentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployed successfully"
+      },
+      {
+        "environmentName": "staging",
+        "success": true,
+        "message": "Deployed successfully"
+      }
+    ]
+  }
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential access object name can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential access object type can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "API Proxy (name:MyAPI) is not found or user does not have privilege to access it!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential (username:api-user) has already access to API Proxy (name:MyAPI)!"
+}
+```
+
+**Common Causes:**
+- Empty access object
+- Missing `name` or `type` field
+- API Proxy or API Proxy Group does not exist
+- Access already granted
+- Invalid access type
+
+## cURL Example
+
+### Example 1: Grant Access to Single API Proxy
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    }
+  ]'
+```
+
+### Example 2: Grant Access to Multiple Resources
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    },
+    {
+      "name": "MyAPIGroup",
+      "type": "API_PROXY_GROUP"
+    }
+  ]'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Grant Access to API Proxy
+
+Grant access to a single API Proxy.
+
+**Request Body:**
+```json
+[
+  {
+    "name": "PaymentAPI",
+    "type": "API_PROXY"
+  }
+]
+```
+
+### Scenario 2: Grant Access to API Proxy Group
+
+Grant access to an API Proxy Group (includes all APIs in the group).
+
+**Request Body:**
+```json
+[
+  {
+    "name": "PaymentAPIGroup",
+    "type": "API_PROXY_GROUP"
+  }
+]
+```
+
+### Scenario 3: Grant Multiple Accesses
+
+Grant access to multiple resources at once.
+
+**Request Body:**
+```json
+[
+  {
+    "name": "MyAPI",
+    "type": "API_PROXY"
+  },
+  {
+    "name": "PaymentAPI",
+    "type": "API_PROXY"
+  },
+  {
+    "name": "MyAPIGroup",
+    "type": "API_PROXY_GROUP"
+  }
+]
+```
+
+## Notes and Warnings
+
+- **Array Format**: 
+  - Request body must be an array
+  - Even for single access, use array format
+- **Access Validation**: 
+  - API Proxy or API Proxy Group must exist
+  - Must be within the project scope
+- **Duplicate Access**: 
+  - Cannot grant access that already exists
+  - Check existing access before granting
+- **Automatic Deployment**: 
+  - Access is automatically deployed to all environments
+  - Deployment results are returned in the response
+- **API Proxy Group**: 
+  - Granting access to API Proxy Group grants access to all APIs in the group
+  - More efficient than granting access to individual APIs
+- **Permissions**: 
+  - Requires `ROLE_MANAGE_PROXIES` permission
+  - Requires `ROLE_DEPLOY_UNDEPLOY_PROXIES` permission for deployment
+  - User must have access to the project and resources
+
+## Related Documentation
+
+- [Get Granted Access List](./get-granted-access-list.md) - Get list of granted accesses
+- [Revoke Access](./revoke-access.md) - Revoke access from API Proxy or Group
+- [List Credentials](../crud/list-credentials.md) - List all credentials
+

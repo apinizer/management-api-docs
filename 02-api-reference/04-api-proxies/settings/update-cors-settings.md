@@ -1,0 +1,237 @@
+# Update CORS Settings
+
+## Overview
+
+Updates CORS (Cross-Origin Resource Sharing) settings for an API proxy. CORS settings control how browsers handle cross-origin requests to the API proxy.
+
+## Endpoint
+
+```
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/cors/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "name": "CORS Settings",
+  "description": "CORS configuration for API",
+  "corsActive": true,
+  "allowOriginList": [
+    "*"
+  ],
+  "allowMethodList": [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    "PATCH",
+    "OPTIONS"
+  ],
+  "allowHeaderList": [
+    "*"
+  ],
+  "exposeHeaderList": [
+    "X-Custom-Header"
+  ],
+  "allowCredentials": "true",
+  "maxAge": 3600
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| name | string | Yes | - | CORS settings name |
+| description | string | No | - | CORS settings description |
+| corsActive | boolean | No | false | Enable/disable CORS |
+| allowOriginList | array | No | [] | List of allowed origins (use `["*"]` for all origins) |
+| allowMethodList | array | No | [] | List of allowed HTTP methods |
+| allowHeaderList | array | No | [] | List of allowed headers (use `["*"]` for all headers) |
+| exposeHeaderList | array | No | [] | List of headers exposed to client |
+| allowCredentials | string | No | "false" | Allow credentials (`"true"` or `"false"`) |
+| maxAge | integer | No | 3600 | Max age for preflight requests in seconds |
+
+**Enum: allowMethodList items (EnumHttpRequestMethod)**
+- `GET` - GET method
+- `POST` - POST method
+- `PUT` - PUT method
+- `DELETE` - DELETE method
+- `PATCH` - PATCH method
+- `OPTIONS` - OPTIONS method
+- `HEAD` - HEAD method
+- `TRACE` - TRACE method
+- `ALL` - All methods
+
+**Note:** 
+- `allowOriginList` can contain `"*"` to allow all origins, but this cannot be used with `allowCredentials: "true"`
+- `allowHeaderList` can contain `"*"` to allow all headers
+- `allowCredentials` must be a string (`"true"` or `"false"`), not a boolean
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Invalid CORS settings"
+}
+```
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "ApiProxy (name: MyAPI) was not found!"
+}
+```
+
+## cURL Example
+
+### Example 1: Enable CORS for All Origins
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/cors/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "CORS Settings",
+    "corsActive": true,
+    "allowOriginList": ["*"],
+    "allowMethodList": ["GET", "POST", "PUT", "DELETE"],
+    "allowHeaderList": ["*"],
+    "allowCredentials": "false",
+    "maxAge": 3600
+  }'
+```
+
+### Example 2: Enable CORS for Specific Origins
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/cors/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "CORS Settings",
+    "corsActive": true,
+    "allowOriginList": [
+      "https://example.com",
+      "https://app.example.com"
+    ],
+    "allowMethodList": ["GET", "POST"],
+    "allowHeaderList": ["Content-Type", "Authorization"],
+    "exposeHeaderList": ["X-Custom-Header"],
+    "allowCredentials": "true",
+    "maxAge": 7200
+  }'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Public API with CORS
+
+Enable CORS for a public API that needs to be accessed from web browsers.
+
+**Request Body:**
+```json
+{
+  "name": "Public API CORS",
+  "corsActive": true,
+  "allowOriginList": ["*"],
+  "allowMethodList": ["GET", "POST"],
+  "allowHeaderList": ["*"],
+  "allowCredentials": "false",
+  "maxAge": 3600
+}
+```
+
+### Scenario 2: Private API with Specific Origins
+
+Enable CORS for a private API that should only be accessed from specific domains.
+
+**Request Body:**
+```json
+{
+  "name": "Private API CORS",
+  "corsActive": true,
+  "allowOriginList": [
+    "https://app.example.com",
+    "https://admin.example.com"
+  ],
+  "allowMethodList": ["GET", "POST", "PUT", "DELETE"],
+  "allowHeaderList": ["Content-Type", "Authorization", "X-API-Key"],
+  "exposeHeaderList": ["X-Request-ID", "X-Rate-Limit"],
+  "allowCredentials": "true",
+  "maxAge": 86400
+}
+```
+
+## Notes and Warnings
+
+- **Wildcard Origin**: Using `"*"` in `allowOriginList` allows all origins but cannot be used with `allowCredentials: "true"`
+- **Credentials**: When `allowCredentials` is `"true"`, you must specify exact origins (no wildcard)
+- **Preflight Requests**: The `maxAge` value determines how long browsers cache preflight OPTIONS requests
+- **Headers**: Use `["*"]` in `allowHeaderList` to allow all headers, or specify exact header names
+- **Exposed Headers**: Headers in `exposeHeaderList` are accessible to client-side JavaScript
+- **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
+
+## Related Documentation
+
+- [Update Cache Settings](./update-cache-settings.md) - Update cache settings
+- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+

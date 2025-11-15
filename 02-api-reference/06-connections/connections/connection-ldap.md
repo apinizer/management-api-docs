@@ -1,0 +1,596 @@
+# LDAP Connection
+
+## General Information
+
+### Connection Type
+```
+ldap
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+LDAP (Lightweight Directory Access Protocol) connection for authenticating users and querying directory services. Supports SSL/TLS encryption, certificate validation, and various search scopes. Used by authentication policies and connectors to integrate with LDAP-compatible directory services like Active Directory, OpenLDAP, and others.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "ldap",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-ldap-connection",
+      "description": "LDAP connection for authentication",
+      "deployToWorker": true,
+      "enabled": true,
+      "serverAddress": "ldap://ldap.example.com:389",
+      "requireCertificateType": "NOT_REQUIRED",
+      "username": "cn=admin,dc=example,dc=com",
+      "password": null,
+      "customFilter": "(uid={0})",
+      "searchScope": "SUBTREE",
+      "baseDn": "dc=example,dc=com",
+      "certificateId": null,
+      "certificateName": null,
+      "useSsl": false,
+      "selectedEnvironmentId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `password` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "ldap",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-ldap-connection",
+      "description": "LDAP connection for authentication",
+      "deployToWorker": true,
+      "enabled": true,
+      "serverAddress": "ldap://ldap.example.com:389",
+      "requireCertificateType": "NOT_REQUIRED",
+      "username": "cn=admin,dc=example,dc=com",
+      "password": null,
+      "customFilter": "(uid={0})",
+      "searchScope": "SUBTREE",
+      "baseDn": "dc=example,dc=com",
+      "certificateId": null,
+      "certificateName": null,
+      "useSsl": false,
+      "selectedEnvironmentId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-ldap-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - Basic LDAP Connection
+```json
+{
+  "_class": "ldap",
+  "name": "my-ldap-connection",
+  "description": "LDAP connection for authentication",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldap://ldap.example.com:389",
+  "requireCertificateType": "NOT_REQUIRED",
+  "username": "cn=admin,dc=example,dc=com",
+  "password": "adminpassword",
+  "customFilter": "(uid={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "dc=example,dc=com",
+  "certificateId": null,
+  "certificateName": null,
+  "useSsl": false,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - LDAP with SSL
+```json
+{
+  "_class": "ldap",
+  "name": "my-ldap-ssl",
+  "description": "LDAP connection with SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldaps://ldap.example.com:636",
+  "requireCertificateType": "REQUIRED_CN",
+  "username": "cn=admin,dc=example,dc=com",
+  "password": "adminpassword",
+  "customFilter": "(uid={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "dc=example,dc=com",
+  "certificateId": "cert-id-123",
+  "certificateName": "ldap-server-cert",
+  "useSsl": true,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - Active Directory
+```json
+{
+  "_class": "ldap",
+  "name": "my-ad-connection",
+  "description": "Active Directory LDAP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldap://ad.example.com:389",
+  "requireCertificateType": "NOT_REQUIRED",
+  "username": "CN=ServiceAccount,CN=Users,DC=example,DC=com",
+  "password": "servicepassword",
+  "customFilter": "(sAMAccountName={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "DC=example,DC=com",
+  "certificateId": null,
+  "certificateName": null,
+  "useSsl": false,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Full JSON Body Example - LDAP with Certificate Validation
+```json
+{
+  "_class": "ldap",
+  "name": "my-ldap-secure",
+  "description": "LDAP with certificate validation",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldaps://ldap.example.com:636",
+  "requireCertificateType": "REQUIRED_AN_PN",
+  "username": "cn=admin,dc=example,dc=com",
+  "password": "adminpassword",
+  "customFilter": "(uid={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "dc=example,dc=com",
+  "certificateId": "cert-id-456",
+  "certificateName": "ldap-ca-cert",
+  "useSsl": true,
+  "selectedEnvironmentId": null
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `ldap` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### LDAP-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| serverAddress | string | Yes | - | LDAP server address (format: `ldap://host:port` or `ldaps://host:port`) |
+| requireCertificateType | string | No | NOT_REQUIRED | Certificate requirement type. See [EnumLdapRequireCertificateType](#enumldaprequirecertificatetype) |
+| username | string | Yes | - | LDAP bind DN (Distinguished Name) for authentication |
+| password | string | Yes | - | LDAP password for bind DN (secret field) |
+| customFilter | string | No | - | Custom LDAP search filter (use `{0}` as placeholder for username) |
+| searchScope | string | No | SUBTREE | Search scope. See [EnumSearchScope](#enumsearchscope) |
+| baseDn | string | Yes | - | Base Distinguished Name for searches |
+| certificateId | string | No | null | Certificate ID for SSL/TLS (required if useSsl=true and certificate validation enabled) |
+| certificateName | string | No | null | Certificate name (for reference) |
+| useSsl | boolean | No | false | Enable SSL/TLS encryption (use `ldaps://` in serverAddress) |
+| selectedEnvironmentId | string | No | null | Selected environment ID |
+
+**EnumLdapRequireCertificateType (requireCertificateType)**
+- `NOT_REQUIRED` - No certificate validation (default)
+- `REQUIRED_CN` - Certificate Common Name (CN) must match server hostname
+- `REQUIRED_AN_PN` - Certificate Alternative Name or Principal Name must match
+
+**EnumSearchScope (searchScope)**
+- `OBJECT` - Search only the base object itself
+- `ONE_LEVEL` - Search immediate children of base object
+- `SUBTREE` - Search base object and all descendants (default, most common)
+
+**Server Address Format:**
+- LDAP: `ldap://hostname:389` (standard port 389)
+- LDAPS: `ldaps://hostname:636` (secure port 636)
+- Can include additional connection parameters
+
+**LDAP Filter Examples:**
+- `(uid={0})` - Search by UID attribute (OpenLDAP)
+- `(sAMAccountName={0})` - Search by sAMAccountName (Active Directory)
+- `(cn={0})` - Search by Common Name
+- `(&(objectClass=person)(uid={0}))` - Combined filter with object class
+
+**Notes:**
+- `serverAddress`, `username`, `password`, and `baseDn` are required.
+- `serverAddress` format: `ldap://host:port` or `ldaps://host:port`
+- `username` is the bind DN (Distinguished Name) for LDAP authentication.
+- `password` is the password for the bind DN.
+- `customFilter` uses `{0}` as placeholder for the username being searched.
+- `searchScope` defaults to `SUBTREE` (searches entire subtree).
+- `useSsl: true` enables SSL/TLS encryption (use `ldaps://` in serverAddress).
+- `certificateId` is required if `useSsl: true` and certificate validation is enabled.
+- `baseDn` is the root DN for LDAP searches (e.g., `dc=example,dc=com`).
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-ldap-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "ldap",
+    "name": "my-ldap-connection",
+    "description": "LDAP connection for authentication",
+    "deployToWorker": true,
+    "enabled": true,
+    "serverAddress": "ldap://ldap.example.com:389",
+    "requireCertificateType": "NOT_REQUIRED",
+    "username": "cn=admin,dc=example,dc=com",
+    "password": "adminpassword",
+    "customFilter": "(uid={0})",
+    "searchScope": "SUBTREE",
+    "baseDn": "dc=example,dc=com",
+    "useSsl": false
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic OpenLDAP Connection
+
+Standard OpenLDAP connection without SSL.
+
+**Request Body:**
+```json
+{
+  "_class": "ldap",
+  "name": "basic-openldap",
+  "description": "Basic OpenLDAP connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldap://ldap.example.com:389",
+  "requireCertificateType": "NOT_REQUIRED",
+  "username": "cn=admin,dc=example,dc=com",
+  "password": "adminpassword",
+  "customFilter": "(uid={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "dc=example,dc=com",
+  "useSsl": false
+}
+```
+
+### Scenario 2: Active Directory Connection
+
+Active Directory LDAP connection.
+
+**Request Body:**
+```json
+{
+  "_class": "ldap",
+  "name": "active-directory",
+  "description": "Active Directory connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldap://ad.example.com:389",
+  "requireCertificateType": "NOT_REQUIRED",
+  "username": "CN=ServiceAccount,CN=Users,DC=example,DC=com",
+  "password": "servicepassword",
+  "customFilter": "(sAMAccountName={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "DC=example,DC=com",
+  "useSsl": false
+}
+```
+
+### Scenario 3: Secure LDAP with SSL
+
+LDAP connection with SSL/TLS encryption and certificate validation.
+
+**Request Body:**
+```json
+{
+  "_class": "ldap",
+  "name": "secure-ldap",
+  "description": "Secure LDAP with SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldaps://ldap.example.com:636",
+  "requireCertificateType": "REQUIRED_CN",
+  "username": "cn=admin,dc=example,dc=com",
+  "password": "adminpassword",
+  "customFilter": "(uid={0})",
+  "searchScope": "SUBTREE",
+  "baseDn": "dc=example,dc=com",
+  "certificateId": "cert-id-123",
+  "certificateName": "ldap-server-cert",
+  "useSsl": true
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **LDAP Protocol**: 
+  - LDAP (Lightweight Directory Access Protocol) for directory services
+  - Standard port: 389 (LDAP), 636 (LDAPS)
+  - Supports both LDAP and LDAPS (LDAP over SSL/TLS)
+- **Server Address**: 
+  - Format: `ldap://hostname:port` or `ldaps://hostname:port`
+  - Use `ldaps://` for SSL/TLS encrypted connections
+  - Standard ports: 389 (LDAP), 636 (LDAPS)
+- **Authentication**: 
+  - `username` is the bind DN (Distinguished Name) for LDAP authentication
+  - `password` is the password for the bind DN
+  - Bind DN format: `cn=username,dc=example,dc=com`
+  - Use service account with appropriate permissions
+- **Search Filter**: 
+  - `customFilter` uses `{0}` as placeholder for username
+  - Common filters:
+    - OpenLDAP: `(uid={0})`
+    - Active Directory: `(sAMAccountName={0})`
+    - Generic: `(cn={0})`
+- **Search Scope**: 
+  - `OBJECT` - Search only base object
+  - `ONE_LEVEL` - Search immediate children
+  - `SUBTREE` - Search entire subtree (default, most common)
+- **Base DN**: 
+  - `baseDn` is the root DN for LDAP searches
+  - Format: `dc=example,dc=com` or `DC=example,DC=com`
+  - Should match your LDAP directory structure
+- **SSL/TLS**: 
+  - `useSsl: true` enables SSL/TLS encryption
+  - Use `ldaps://` in `serverAddress` when SSL is enabled
+  - Certificate validation options:
+    - `NOT_REQUIRED` - No validation (not recommended for production)
+    - `REQUIRED_CN` - CN must match hostname
+    - `REQUIRED_AN_PN` - Alternative Name or Principal Name must match
+- **Certificate**: 
+  - `certificateId` is required if certificate validation is enabled
+  - Upload certificate to Apinizer certificate store first
+  - `certificateName` is for reference only
+- **Active Directory**: 
+  - Use `sAMAccountName` filter for Active Directory
+  - Bind DN format: `CN=ServiceAccount,CN=Users,DC=example,DC=com`
+  - Base DN format: `DC=example,DC=com`
+- **Performance**: 
+  - Use appropriate search scope (SUBTREE is most flexible but slower)
+  - Optimize custom filter for your directory structure
+  - Consider connection pooling for high-throughput scenarios
+- **Security**: 
+  - Use SSL/TLS in production (`ldaps://`)
+  - Enable certificate validation
+  - Use strong passwords for bind DN
+  - Restrict bind DN permissions
+  - Consider using service accounts with minimal privileges
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

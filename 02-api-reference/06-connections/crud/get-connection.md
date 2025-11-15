@@ -1,0 +1,151 @@
+# Get Connection
+
+## Overview
+
+Retrieves detailed information about a specific connection. Unlike list operations, secret fields (passwords, API keys, etc.) are returned in full when getting a single connection.
+
+## Endpoint
+
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Query Parameters
+
+None
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "email",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-email-connection",
+      "description": "Email connection for notifications",
+      "deployToWorker": true,
+      "enabled": true,
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "username": "user@example.com",
+      "password": "actual-password",
+      "enableStartTls": true,
+      "auth": true,
+      "defaultEncoding": "UTF-8",
+      "addressToTest": "test@example.com",
+      "from": "noreply@example.com",
+      "additionalProperties": []
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+| resultList | array | List containing single connection object |
+| resultCount | integer | Always 1 for get operation |
+
+#### Connection Object Fields (Common)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| _class | string | Connection type identifier |
+| id | string | Connection unique identifier |
+| projectId | string | Project ID |
+| name | string | Connection name |
+| description | string | Connection description |
+| deployToWorker | boolean | Whether to deploy to worker |
+| enabled | boolean | Whether connection is enabled |
+
+**Note:** Connection-specific fields vary by connection type. Secret fields are returned in full (not masked) when getting a single connection.
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Connection name can not be empty!"
+}
+```
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "Connection (name: my-email-connection) was not found!"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Full JSON Body Example
+
+This endpoint does not require a request body.
+
+## Notes and Warnings
+
+- **Secret Fields**: Unlike list operations, secret fields (password, apiKey, etc.) are returned in full when getting a single connection
+- **Security**: Never log or expose connection responses containing secrets
+- **Connection Types**: Each connection type has different fields. See individual connection type documentation for details:
+  - [Email Connection](../connections/connection-email.md)
+  - [Kafka Connection](../connections/connection-kafka.md)
+  - [Database Connection](../connections/connection-database.md)
+  - ... (see [Connections Index](../index.md) for complete list)
+
+## Related Documentation
+
+- [List Connections](./list-connections.md) - List all connections (secrets masked)
+- [Create Connection](./create-connection.md) - Create a new connection
+- [Update Connection](./update-connection.md) - Update a connection
+- [Delete Connection](./delete-connection.md) - Delete a connection
+- [Email Connection](../connections/connection-email.md) - Email connection details
+

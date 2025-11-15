@@ -1,0 +1,737 @@
+# RabbitMQ Connection
+
+## General Information
+
+### Connection Type
+```
+rabbitMq
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+RabbitMQ connection for sending messages to RabbitMQ brokers. Used by policies and other components that need to publish messages to RabbitMQ queues or exchanges.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "rabbitMq",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-rabbitmq-connection",
+      "description": "RabbitMQ connection for messaging",
+      "deployToWorker": true,
+      "enabled": true,
+      "hostPortList": [
+        {
+          "host": "localhost",
+          "port": 5672
+        }
+      ],
+      "connectionFactoryVirtualHost": "/",
+      "authenticationEnabled": false,
+      "connectionFactoryUsername": null,
+      "connectionFactoryPassword": null,
+      "connectionFactoryConnectionTimeout": 60000,
+      "connectionFactoryClientProperties": null,
+      "connectionFactoryRequestedChannelMax": 2047,
+      "connectionFactoryRequestedFrameMax": 0,
+      "connectionFactoryRequestedHeartbeat": 60,
+      "connectionFactoryUseSslProtocol": false,
+      "connectionFactorySslProtocol": "TLSv1.2",
+      "channelExchange": "",
+      "channelRoutingKey": "<queue-name>",
+      "basicPropertiesAppId": "apinizer",
+      "basicPropertiesContentType": "application/json",
+      "basicPropertiesContentEncoding": null,
+      "basicPropertiesDeliveryMode": null,
+      "basicPropertiesPriority": null,
+      "basicPropertiesReplyTo": null,
+      "basicPropertiesExpiration": null,
+      "basicPropertiesType": null,
+      "basicPropertiesUserId": null,
+      "basicPropertiesClusterId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `connectionFactoryPassword` is returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "rabbitMq",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-rabbitmq-connection",
+      "description": "RabbitMQ connection for messaging",
+      "deployToWorker": true,
+      "enabled": true,
+      "hostPortList": [
+        {
+          "host": "rabbitmq.example.com",
+          "port": 5672
+        },
+        {
+          "host": "rabbitmq2.example.com",
+          "port": 5672
+        }
+      ],
+      "connectionFactoryVirtualHost": "/",
+      "authenticationEnabled": true,
+      "connectionFactoryUsername": "guest",
+      "connectionFactoryPassword": null,
+      "connectionFactoryConnectionTimeout": 60000,
+      "connectionFactoryClientProperties": {
+        "clientName": "apinizer-client"
+      },
+      "connectionFactoryRequestedChannelMax": 2047,
+      "connectionFactoryRequestedFrameMax": 0,
+      "connectionFactoryRequestedHeartbeat": 60,
+      "connectionFactoryUseSslProtocol": true,
+      "connectionFactorySslProtocol": "TLSv1.2",
+      "channelExchange": "my-exchange",
+      "channelRoutingKey": "my-routing-key",
+      "basicPropertiesAppId": "apinizer",
+      "basicPropertiesContentType": "application/json",
+      "basicPropertiesContentEncoding": "UTF-8",
+      "basicPropertiesDeliveryMode": 2,
+      "basicPropertiesPriority": 0,
+      "basicPropertiesReplyTo": null,
+      "basicPropertiesExpiration": null,
+      "basicPropertiesType": "event",
+      "basicPropertiesUserId": null,
+      "basicPropertiesClusterId": null
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Password is masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-rabbitmq-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - Basic Configuration
+```json
+{
+  "_class": "rabbitMq",
+  "name": "my-rabbitmq-connection",
+  "description": "RabbitMQ connection for messaging",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "localhost",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": false,
+  "connectionFactoryUsername": null,
+  "connectionFactoryPassword": null,
+  "connectionFactoryConnectionTimeout": 60000,
+  "connectionFactoryClientProperties": null,
+  "connectionFactoryRequestedChannelMax": 2047,
+  "connectionFactoryRequestedFrameMax": 0,
+  "connectionFactoryRequestedHeartbeat": 60,
+  "connectionFactoryUseSslProtocol": false,
+  "connectionFactorySslProtocol": "TLSv1.2",
+  "channelExchange": "",
+  "channelRoutingKey": "<queue-name>",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesContentEncoding": null,
+  "basicPropertiesDeliveryMode": null,
+  "basicPropertiesPriority": null,
+  "basicPropertiesReplyTo": null,
+  "basicPropertiesExpiration": null,
+  "basicPropertiesType": null,
+  "basicPropertiesUserId": null,
+  "basicPropertiesClusterId": null
+}
+```
+
+##### Full JSON Body Example - With Authentication
+```json
+{
+  "_class": "rabbitMq",
+  "name": "my-rabbitmq-connection",
+  "description": "RabbitMQ connection with authentication",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq.example.com",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "guest",
+  "connectionFactoryPassword": "guest",
+  "connectionFactoryConnectionTimeout": 60000,
+  "connectionFactoryClientProperties": {
+    "clientName": "apinizer-client",
+    "version": "1.0"
+  },
+  "connectionFactoryRequestedChannelMax": 2047,
+  "connectionFactoryRequestedFrameMax": 0,
+  "connectionFactoryRequestedHeartbeat": 60,
+  "connectionFactoryUseSslProtocol": false,
+  "connectionFactorySslProtocol": "TLSv1.2",
+  "channelExchange": "my-exchange",
+  "channelRoutingKey": "my-routing-key",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesContentEncoding": "UTF-8",
+  "basicPropertiesDeliveryMode": 2,
+  "basicPropertiesPriority": 0,
+  "basicPropertiesReplyTo": null,
+  "basicPropertiesExpiration": null,
+  "basicPropertiesType": "event",
+  "basicPropertiesUserId": null,
+  "basicPropertiesClusterId": null
+}
+```
+
+##### Full JSON Body Example - With SSL
+```json
+{
+  "_class": "rabbitMq",
+  "name": "my-rabbitmq-connection",
+  "description": "RabbitMQ connection with SSL",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq.example.com",
+      "port": 5671
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "guest",
+  "connectionFactoryPassword": "guest",
+  "connectionFactoryConnectionTimeout": 60000,
+  "connectionFactoryClientProperties": null,
+  "connectionFactoryRequestedChannelMax": 2047,
+  "connectionFactoryRequestedFrameMax": 0,
+  "connectionFactoryRequestedHeartbeat": 60,
+  "connectionFactoryUseSslProtocol": true,
+  "connectionFactorySslProtocol": "TLSv1.2",
+  "channelExchange": "my-exchange",
+  "channelRoutingKey": "my-routing-key",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesContentEncoding": null,
+  "basicPropertiesDeliveryMode": 2,
+  "basicPropertiesPriority": null,
+  "basicPropertiesReplyTo": null,
+  "basicPropertiesExpiration": null,
+  "basicPropertiesType": null,
+  "basicPropertiesUserId": null,
+  "basicPropertiesClusterId": null
+}
+```
+
+##### Full JSON Body Example - High Availability
+```json
+{
+  "_class": "rabbitMq",
+  "name": "my-rabbitmq-connection",
+  "description": "RabbitMQ connection with multiple hosts",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq1.example.com",
+      "port": 5672
+    },
+    {
+      "host": "rabbitmq2.example.com",
+      "port": 5672
+    },
+    {
+      "host": "rabbitmq3.example.com",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "guest",
+  "connectionFactoryPassword": "guest",
+  "connectionFactoryConnectionTimeout": 60000,
+  "connectionFactoryRequestedChannelMax": 2047,
+  "connectionFactoryRequestedFrameMax": 0,
+  "connectionFactoryRequestedHeartbeat": 60,
+  "connectionFactoryUseSslProtocol": false,
+  "connectionFactorySslProtocol": "TLSv1.2",
+  "channelExchange": "my-exchange",
+  "channelRoutingKey": "my-routing-key",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json"
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `rabbitMq` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### RabbitMQ-Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| hostPortList | array | Yes | - | List of RabbitMQ host/port pairs. See [ConfigRabbitMqHostPort](#configrabbitmqhostport) |
+| connectionFactoryVirtualHost | string | No | / | Virtual host name |
+| authenticationEnabled | boolean | No | false | Enable authentication |
+| connectionFactoryUsername | string | No* | null | RabbitMQ username (required if authenticationEnabled=true) |
+| connectionFactoryPassword | string | No* | null | RabbitMQ password (required if authenticationEnabled=true, secret field) |
+| connectionFactoryConnectionTimeout | integer | No | 60000 | Connection timeout in milliseconds |
+| connectionFactoryClientProperties | object | No | null | Client properties map (key-value pairs) |
+| connectionFactoryRequestedChannelMax | integer | No | 2047 | Requested channel maximum |
+| connectionFactoryRequestedFrameMax | integer | No | 0 | Requested frame maximum (0 = unlimited) |
+| connectionFactoryRequestedHeartbeat | integer | No | 60 | Requested heartbeat interval in seconds |
+| connectionFactoryUseSslProtocol | boolean | No | false | Use SSL/TLS protocol |
+| connectionFactorySslProtocol | string | No | TLSv1.2 | SSL protocol version (e.g., "TLSv1.2", "TLSv1.3") |
+| channelExchange | string | No | "" | Exchange name (empty string for default exchange) |
+| channelRoutingKey | string | No | <queue-name> | Routing key pattern |
+| basicPropertiesAppId | string | No | apinizer | Application ID for message properties |
+| basicPropertiesContentType | string | No | application/json | Content type for message properties |
+| basicPropertiesContentEncoding | string | No | null | Content encoding for message properties |
+| basicPropertiesDeliveryMode | integer | No | null | Delivery mode: `1` (non-persistent) or `2` (persistent) |
+| basicPropertiesPriority | integer | No | null | Message priority (0-255) |
+| basicPropertiesReplyTo | string | No | null | Reply-to queue name |
+| basicPropertiesExpiration | string | No | null | Message expiration time (milliseconds as string) |
+| basicPropertiesType | string | No | null | Message type |
+| basicPropertiesUserId | string | No | null | User ID for message properties |
+| basicPropertiesClusterId | string | No | null | Cluster ID for message properties |
+
+**Note:**
+- `hostPortList` must contain at least one host/port pair.
+- If `authenticationEnabled: true`, both `connectionFactoryUsername` and `connectionFactoryPassword` are required.
+- `connectionFactoryVirtualHost` defaults to "/" (root virtual host).
+- `channelExchange` can be empty string for default exchange.
+- `basicPropertiesDeliveryMode`: `1` = non-persistent, `2` = persistent (recommended for reliability).
+
+### ConfigRabbitMqHostPort
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| host | string | Yes | localhost | RabbitMQ broker hostname or IP address |
+| port | integer | No | 5672 | RabbitMQ broker port (5672 for AMQP, 5671 for AMQPS) |
+
+**Note:** At least one host/port pair is required in `hostPortList`. Multiple hosts can be specified for high availability.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-rabbitmq-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "rabbitMq",
+    "name": "my-rabbitmq-connection",
+    "description": "RabbitMQ connection for messaging",
+    "deployToWorker": true,
+    "enabled": true,
+    "hostPortList": [
+      {
+        "host": "localhost",
+        "port": 5672
+      }
+    ],
+    "connectionFactoryVirtualHost": "/",
+    "authenticationEnabled": false,
+    "connectionFactoryUseSslProtocol": false,
+    "channelExchange": "",
+    "channelRoutingKey": "<queue-name>",
+    "basicPropertiesAppId": "apinizer",
+    "basicPropertiesContentType": "application/json"
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Basic Queue Publishing
+
+Publish messages to a queue using default exchange.
+
+**Request Body:**
+```json
+{
+  "_class": "rabbitMq",
+  "name": "queue-publisher",
+  "description": "Publish to queue",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "localhost",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": false,
+  "channelExchange": "",
+  "channelRoutingKey": "my-queue",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesDeliveryMode": 2
+}
+```
+
+### Scenario 2: Exchange Publishing
+
+Publish messages to an exchange with routing key.
+
+**Request Body:**
+```json
+{
+  "_class": "rabbitMq",
+  "name": "exchange-publisher",
+  "description": "Publish to exchange",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq.example.com",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "guest",
+  "connectionFactoryPassword": "guest",
+  "channelExchange": "my-exchange",
+  "channelRoutingKey": "routing.key",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesDeliveryMode": 2,
+  "basicPropertiesPriority": 5,
+  "basicPropertiesType": "event"
+}
+```
+
+### Scenario 3: High Availability Setup
+
+Multiple RabbitMQ brokers for high availability.
+
+**Request Body:**
+```json
+{
+  "_class": "rabbitMq",
+  "name": "ha-rabbitmq",
+  "description": "High availability RabbitMQ",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq1.example.com",
+      "port": 5672
+    },
+    {
+      "host": "rabbitmq2.example.com",
+      "port": 5672
+    },
+    {
+      "host": "rabbitmq3.example.com",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "guest",
+  "connectionFactoryPassword": "guest",
+  "connectionFactoryRequestedHeartbeat": 30,
+  "channelExchange": "ha-exchange",
+  "channelRoutingKey": "ha-routing-key",
+  "basicPropertiesAppId": "apinizer",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesDeliveryMode": 2
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **RabbitMQ Hosts**: 
+  - At least one host is required in `hostPortList`
+  - Multiple hosts can be specified for high availability
+  - Each host must have `host` and `port`
+  - Default port: 5672 (AMQP), 5671 (AMQPS)
+- **Virtual Host**: 
+  - `connectionFactoryVirtualHost` defaults to "/" (root virtual host)
+  - Virtual hosts provide logical separation in RabbitMQ
+- **Authentication**: 
+  - When `authenticationEnabled: true`, both `connectionFactoryUsername` and `connectionFactoryPassword` are required
+  - Default credentials: guest/guest (change in production)
+  - Password is stored securely and masked in responses
+- **SSL/TLS**: 
+  - `connectionFactoryUseSslProtocol: true` enables SSL/TLS
+  - `connectionFactorySslProtocol` specifies protocol version (TLSv1.2, TLSv1.3)
+  - Use port 5671 for AMQPS
+- **Connection Settings**: 
+  - `connectionFactoryConnectionTimeout` - Connection timeout in milliseconds
+  - `connectionFactoryRequestedChannelMax` - Maximum channels per connection
+  - `connectionFactoryRequestedFrameMax` - Maximum frame size (0 = unlimited)
+  - `connectionFactoryRequestedHeartbeat` - Heartbeat interval in seconds (keeps connection alive)
+- **Channel Settings**: 
+  - `channelExchange` - Exchange name (empty for default exchange)
+  - `channelRoutingKey` - Routing key pattern
+  - Default exchange routes messages directly to queues by routing key
+- **Message Properties**: 
+  - `basicPropertiesAppId` - Application identifier
+  - `basicPropertiesContentType` - Message content type (e.g., "application/json")
+  - `basicPropertiesContentEncoding` - Content encoding (e.g., "UTF-8")
+  - `basicPropertiesDeliveryMode` - `1` (non-persistent) or `2` (persistent)
+  - `basicPropertiesPriority` - Message priority (0-255)
+  - `basicPropertiesExpiration` - Message TTL in milliseconds (as string)
+  - `basicPropertiesType` - Message type identifier
+  - `basicPropertiesReplyTo` - Reply-to queue name
+  - `basicPropertiesUserId` - User ID
+  - `basicPropertiesClusterId` - Cluster ID
+- **Delivery Mode**: 
+  - `1` - Non-persistent (messages lost on broker restart)
+  - `2` - Persistent (messages survive broker restart, recommended)
+- **Performance**: 
+  - Heartbeat keeps connections alive
+  - Connection pooling improves performance
+  - Multiple hosts provide high availability
+- **Security**: 
+  - Use authentication in production
+  - Use SSL/TLS for encrypted communication
+  - Change default credentials
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

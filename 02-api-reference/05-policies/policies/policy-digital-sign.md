@@ -1,0 +1,613 @@
+# Digital Sign Policy
+
+## General Information
+
+### Policy Type
+```
+policy-digital-sign
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Digital Sign policy digitally signs data using cryptographic keys or certificates. It generates digital signatures for specified source variables and stores them in target signature variables. This policy provides data integrity and non-repudiation capabilities.
+
+**Note:** This policy is currently not fully implemented in Management API. The DTO structure exists but `convertToPolicy` returns null. This documentation is based on the underlying policy structure (`PolicyDigitalSign` and `PolicyDigitalSignDef`) and will be updated when full API support is added.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-digital-sign",
+            "name": "digital-sign-policy",
+            "description": "Sign request data",
+            "active": true,
+            "policyDigitalSignDefList": [
+              {
+                "id": "sign-def-1",
+                "description": "Sign request body",
+                "sourceVar": {
+                  "type": "BODY",
+                  "bodyJsonPath": "$"
+                },
+                "signatureVar": {
+                  "type": "HEADER",
+                  "headerName": "X-Signature"
+                },
+                "signatureAlgorithm": "SHA256withRSA",
+                "enumKeyCertificateType": "KEY",
+                "cryptoKeyInfoId": "signing-key-id",
+                "outputEncodingType": "BASE64"
+              }
+            ]
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - Sign with Key
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-digital-sign",
+    "description": "Sign request body",
+    "active": true,
+    "policyDigitalSignDefList": [
+      {
+        "id": "sign-def-1",
+        "description": "Sign request body",
+        "sourceVar": {
+          "type": "BODY",
+          "bodyJsonPath": "$"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Signature"
+        },
+        "signatureAlgorithm": "SHA256withRSA",
+        "signatureAlgorithmVar": null,
+        "enumKeyCertificateType": "KEY",
+        "cryptoKeyInfoId": "signing-key-id",
+        "certificateId": null,
+        "outputEncodingType": "BASE64"
+      }
+    ]
+  }
+}
+```
+
+##### Full JSON Body Example - Sign with Certificate
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-digital-sign",
+    "description": "Sign request body with certificate",
+    "active": true,
+    "policyDigitalSignDefList": [
+      {
+        "id": "sign-def-1",
+        "description": "Sign request body",
+        "sourceVar": {
+          "type": "BODY",
+          "bodyJsonPath": "$"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Signature"
+        },
+        "signatureAlgorithm": "SHA256withRSA",
+        "signatureAlgorithmVar": null,
+        "enumKeyCertificateType": "CERTIFICATE",
+        "cryptoKeyInfoId": null,
+        "certificateId": "signing-cert-id",
+        "outputEncodingType": "BASE64"
+      }
+    ]
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (signs request data)
+- `RESPONSE` - Executes in response pipeline (signs response data)
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-digital-sign` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| policyDigitalSignDefList | array | Yes | - | List of digital sign definitions (at least one required) |
+
+**Note:** `policyDigitalSignDefList` must contain at least one sign definition.
+
+###### policyDigitalSignDefList
+Each sign definition is an object with the following fields:
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| id | string | No | - | Sign definition ID (auto-generated) |
+| description | string | No | - | Sign definition description |
+| sourceVar | object | Yes | - | Source variable to sign |
+| signatureVar | object | Yes | - | Target variable to store signature |
+| signatureAlgorithm | string | Yes | - | Signature algorithm |
+| signatureAlgorithmVar | object | No | null | Variable to store signature algorithm name |
+| enumKeyCertificateType | string | No | KEY | Key or certificate type: `KEY` or `CERTIFICATE` |
+| cryptoKeyInfoId | string | No* | null | Crypto key info ID (required if enumKeyCertificateType=KEY) |
+| certificateId | string | No* | null | Certificate ID (required if enumKeyCertificateType=CERTIFICATE) |
+| outputEncodingType | string | No | BASE64 | Output encoding type: `BASE64` or `HEXADECIMAL` |
+
+**Enum: signatureAlgorithm (EnumSignatureAlgorithm)**
+- **RSA algorithms:** `NONEwithRSA`, `MD2withRSA`, `MD5withRSA`, `SHA1withRSA`, `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA`
+- **DSA algorithms:** `NONEwithDSA`, `SHA1withDSA`, `SHA224withDSA`, `SHA256withDSA`
+- **ECDSA algorithms:** `NONEwithECDSA`, `SHA1withECDSA`, `SHA224withECDSA`, `SHA256withECDSA`, `SHA384withECDSA`, `SHA512withECDSA`
+
+**Enum: enumKeyCertificateType (EnumKeyCertificateType)**
+- `KEY` - Use cryptographic key from CryptoKeyInfo
+- `CERTIFICATE` - Use certificate (extracts private key from certificate)
+
+**Enum: outputEncodingType (EnumEncodingType)**
+- `BASE64` - Base64 encoding (recommended)
+- `HEXADECIMAL` - Hexadecimal encoding
+
+**Note:** 
+- `sourceVar` and `signatureVar` are required.
+- `signatureAlgorithm` is required.
+- If `enumKeyCertificateType: KEY`, `cryptoKeyInfoId` is required.
+- If `enumKeyCertificateType: CERTIFICATE`, `certificateId` is required.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/digital-sign-policy/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-digital-sign",
+      "description": "Sign request body",
+      "active": true,
+      "policyDigitalSignDefList": [
+        {
+          "sourceVar": {
+            "type": "BODY",
+            "bodyJsonPath": "$"
+          },
+          "signatureVar": {
+            "type": "HEADER",
+            "headerName": "X-Signature"
+          },
+          "signatureAlgorithm": "SHA256withRSA",
+          "enumKeyCertificateType": "KEY",
+          "cryptoKeyInfoId": "signing-key-id",
+          "outputEncodingType": "BASE64"
+        }
+      ]
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Sign Request Body
+
+Sign request body and store signature in header.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-digital-sign",
+    "description": "Sign request body",
+    "active": true,
+    "policyDigitalSignDefList": [
+      {
+        "description": "Sign request body",
+        "sourceVar": {
+          "type": "BODY",
+          "bodyJsonPath": "$"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Signature"
+        },
+        "signatureAlgorithm": "SHA256withRSA",
+        "enumKeyCertificateType": "KEY",
+        "cryptoKeyInfoId": "signing-key-id",
+        "outputEncodingType": "BASE64"
+      }
+    ]
+  }
+}
+```
+
+### Scenario 2: Multiple Signatures
+
+Generate multiple signatures for different parts of the message.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-digital-sign",
+    "description": "Multiple signatures",
+    "active": true,
+    "policyDigitalSignDefList": [
+      {
+        "description": "Sign request body",
+        "sourceVar": {
+          "type": "BODY",
+          "bodyJsonPath": "$"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Body-Signature"
+        },
+        "signatureAlgorithm": "SHA256withRSA",
+        "enumKeyCertificateType": "KEY",
+        "cryptoKeyInfoId": "body-signing-key-id",
+        "outputEncodingType": "BASE64"
+      },
+      {
+        "description": "Sign authorization header",
+        "sourceVar": {
+          "type": "HEADER",
+          "headerName": "Authorization"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Auth-Signature"
+        },
+        "signatureAlgorithm": "SHA256withECDSA",
+        "enumKeyCertificateType": "CERTIFICATE",
+        "certificateId": "auth-signing-cert-id",
+        "outputEncodingType": "BASE64"
+      }
+    ]
+  }
+}
+```
+
+### Scenario 3: Dynamic Signature Algorithm
+
+Use variable to specify signature algorithm dynamically.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-digital-sign",
+    "description": "Dynamic signature algorithm",
+    "active": true,
+    "policyDigitalSignDefList": [
+      {
+        "description": "Sign with dynamic algorithm",
+        "sourceVar": {
+          "type": "BODY",
+          "bodyJsonPath": "$"
+        },
+        "signatureVar": {
+          "type": "HEADER",
+          "headerName": "X-Signature"
+        },
+        "signatureAlgorithm": "SHA256withRSA",
+        "signatureAlgorithmVar": {
+          "type": "HEADER",
+          "headerName": "X-Signature-Algorithm"
+        },
+        "enumKeyCertificateType": "KEY",
+        "cryptoKeyInfoId": "signing-key-id",
+        "outputEncodingType": "BASE64"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Signature Algorithms**: 
+  - **RSA:** `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA` (recommended)
+  - **ECDSA:** `SHA256withECDSA`, `SHA384withECDSA`, `SHA512withECDSA` (for elliptic curve)
+  - **DSA:** `SHA1withDSA`, `SHA224withDSA`, `SHA256withDSA` (legacy)
+- **Key/Certificate Type**: 
+  - `KEY` - Uses private key from CryptoKeyInfo (requires `cryptoKeyInfoId`)
+  - `CERTIFICATE` - Extracts private key from certificate (requires `certificateId`)
+- **Output Encoding**: 
+  - `BASE64` - Base64 encoding (recommended, more compact)
+  - `HEXADECIMAL` - Hexadecimal encoding (human-readable)
+- **Source Variable**: Variable containing data to sign (can be header, parameter, body, etc.)
+- **Signature Variable**: Variable to store generated signature (can be header, parameter, body, etc.)
+- **Signature Algorithm Variable**: Optional variable to store signature algorithm name
+- **Key Management**: 
+  - CryptoKeyInfo or Certificate must be configured in Apinizer
+  - Private key must be accessible for signing
+  - Key must match signature algorithm (RSA key for RSA algorithms, ECDSA key for ECDSA algorithms)
+- **Performance**: Digital signing adds cryptographic processing overhead. Use for necessary integrity/non-repudiation only.
+- **Pipeline**: 
+  - `REQUEST` pipeline signs request data before forwarding
+  - `RESPONSE` pipeline signs response data before sending to client
+- **Error Handling**: Invalid key/certificate or algorithm mismatch causes signing to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+- **API Status**: This policy is currently not fully implemented in Management API. Full support will be added in future releases.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [Digital Sign Verification Policy](./policy-digital-sign-verification.md) - Verify digital signatures
+

@@ -1,0 +1,128 @@
+# Change Credential Password
+
+## Overview
+
+Changes the password for an existing credential. Only the password field is updated; other fields remain unchanged. The credential is automatically deployed to all environments after password change.
+
+## Endpoint
+
+```
+PATCH /apiops/projects/{projectName}/credentials/{username}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| username | string | Yes | Username of the credential |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "password": "NewSecurePassword123!"
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| password | string | Yes | - | New password for the credential |
+
+**Notes:**
+- Only `password` field is required
+- Other fields are ignored if provided
+- Password must not be empty
+- Credential must exist
+
+### Response
+
+#### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "message": "Deployment completed successfully",
+    "environmentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployed successfully"
+      }
+    ]
+  }
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential password can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Credential (username: api-user) was not found!"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X PATCH \
+  "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "password": "NewSecurePassword123!"
+  }'
+```
+
+## Notes and Warnings
+
+- **Password Only**: 
+  - Only password is updated
+  - Other fields remain unchanged
+- **Password Required**: 
+  - Password must not be empty
+- **Credential Must Exist**: 
+  - Credential with specified username must exist
+- **Automatic Deployment**: 
+  - Credential is automatically deployed after password change
+  - Deployment results are returned in the response
+
+## Related Documentation
+
+- [Update Credential](./update-credential.md) - Update all credential fields
+- [Delete Credential](./delete-credential.md) - Delete a credential
+

@@ -1,0 +1,561 @@
+# XML Transformation Policy
+
+## General Information
+
+### Policy Type
+```
+policy-xml-transformation
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+XML Transformation policy transforms XML request/response bodies. It supports XML-to-XML transformation using XSLT and XML-to-JSON conversion with configurable options.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-xml-transformation",
+            "name": "xml-transform-policy",
+            "description": "Transform XML request body",
+            "active": true,
+            "transformationType": "XML2XML",
+            "xsltValue": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <root>\n      <xsl:apply-templates/>\n    </root>\n  </xsl:template>\n</xsl:stylesheet>"
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - XML to XML Transformation
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Transform XML request body using XSLT",
+    "active": true,
+    "transformationType": "XML2XML",
+    "xsltValue": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <transformed>\n      <xsl:apply-templates select=\"//user\"/>\n    </transformed>\n  </xsl:template>\n  <xsl:template match=\"user\">\n    <user>\n      <id><xsl:value-of select=\"@id\"/></id>\n      <name><xsl:value-of select=\"name\"/></name>\n    </user>\n  </xsl:template>\n</xsl:stylesheet>"
+  }
+}
+```
+
+##### Full JSON Body Example - XML to JSON Transformation
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Convert XML to JSON",
+    "active": true,
+    "transformationType": "XML2JSON",
+    "xmlToJsonUnwrapElement": false,
+    "xmlToJsonIgnoreNull": false,
+    "xmlToJsonIgnoreEmpty": false,
+    "xmlToJsonNumbersAsStrings": false,
+    "xmlToJsonUseNullForNil": false,
+    "xmlToJsonArrayPathList": [
+      "/root/users/user",
+      "/root/items/item"
+    ]
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (transforms request body)
+- `RESPONSE` - Executes in response pipeline (transforms response body)
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-xml-transformation` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| transformationType | string | Yes | XML2XML | Transformation type: `XML2XML` or `XML2JSON` |
+| xsltValue | string | No* | - | XSLT stylesheet (required if transformationType=XML2XML) |
+| xmlToJsonUnwrapElement | boolean | No | false | Unwrap root element in JSON output |
+| xmlToJsonIgnoreNull | boolean | No | false | Ignore null values when converting to JSON |
+| xmlToJsonIgnoreEmpty | boolean | No | false | Ignore empty values when converting to JSON |
+| xmlToJsonNumbersAsStrings | boolean | No | false | Convert numbers to strings in JSON |
+| xmlToJsonUseNullForNil | boolean | No | false | Use null for xsi:nil attributes |
+| xmlToJsonArrayPathList | array | No | [] | XPath expressions for array elements |
+
+**Enum: transformationType (EnumXmlTransformationType)**
+- `XML2XML` - Transform XML to XML using XSLT stylesheet
+- `XML2JSON` - Convert XML to JSON format
+
+**XSLT Stylesheet:**
+XSLT (eXtensible Stylesheet Language Transformations) is used for XML-to-XML transformations. It supports:
+- Template matching
+- Element/attribute selection
+- Value extraction
+- Conditional logic
+- Loops and iterations
+
+**XML to JSON Options:**
+- `xmlToJsonUnwrapElement`: When `true`, removes root wrapper element from JSON
+- `xmlToJsonIgnoreNull`: When `true`, null values are omitted from JSON
+- `xmlToJsonIgnoreEmpty`: When `true`, empty strings/elements are omitted from JSON
+- `xmlToJsonNumbersAsStrings`: When `true`, numeric values are converted to strings
+- `xmlToJsonUseNullForNil`: When `true`, uses `null` for `xsi:nil="true"` attributes
+- `xmlToJsonArrayPathList`: XPath expressions that identify elements to convert as arrays
+
+**Note:** 
+- `transformationType` is required.
+- If `transformationType: XML2XML`, `xsltValue` is required.
+- XML-to-JSON options are only used when `transformationType: XML2JSON`.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/xml-transform/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-xml-transformation",
+      "description": "Transform XML using XSLT",
+      "active": true,
+      "transformationType": "XML2XML",
+      "xsltValue": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"><xsl:template match=\"/\"><root><xsl:apply-templates/></root></xsl:template></xsl:stylesheet>"
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: XML to XML Transformation with XSLT
+
+Transform XML structure using XSLT stylesheet.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Restructure XML elements",
+    "active": true,
+    "transformationType": "XML2XML",
+    "xsltValue": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <transformed>\n      <xsl:apply-templates select=\"//user\"/>\n    </transformed>\n  </xsl:template>\n  <xsl:template match=\"user\">\n    <user>\n      <id><xsl:value-of select=\"@id\"/></id>\n      <name><xsl:value-of select=\"name\"/></name>\n      <email><xsl:value-of select=\"email\"/></email>\n    </user>\n  </xsl:template>\n</xsl:stylesheet>"
+  }
+}
+```
+
+**Input XML:**
+```xml
+<root>
+  <user id="123">
+    <name>John Doe</name>
+    <email>john@example.com</email>
+  </user>
+</root>
+```
+
+**Output XML:**
+```xml
+<transformed>
+  <user>
+    <id>123</id>
+    <name>John Doe</name>
+    <email>john@example.com</email>
+  </user>
+</transformed>
+```
+
+### Scenario 2: XML to JSON Conversion
+
+Convert XML request body to JSON format.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Convert XML to JSON",
+    "active": true,
+    "transformationType": "XML2JSON",
+    "xmlToJsonUnwrapElement": false,
+    "xmlToJsonIgnoreNull": true,
+    "xmlToJsonIgnoreEmpty": false,
+    "xmlToJsonNumbersAsStrings": false,
+    "xmlToJsonUseNullForNil": false,
+    "xmlToJsonArrayPathList": [
+      "/root/users/user"
+    ]
+  }
+}
+```
+
+**Input XML:**
+```xml
+<root>
+  <user>
+    <id>123</id>
+    <name>John Doe</name>
+    <email xsi:nil="true"/>
+  </user>
+</root>
+```
+
+**Output JSON:**
+```json
+{
+  "root": {
+    "user": {
+      "id": 123,
+      "name": "John Doe"
+    }
+  }
+}
+```
+
+### Scenario 3: XML to JSON with Array Paths
+
+Convert XML elements to JSON arrays using array path list.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Convert XML with arrays",
+    "active": true,
+    "transformationType": "XML2JSON",
+    "xmlToJsonUnwrapElement": false,
+    "xmlToJsonIgnoreNull": false,
+    "xmlToJsonIgnoreEmpty": false,
+    "xmlToJsonNumbersAsStrings": false,
+    "xmlToJsonUseNullForNil": false,
+    "xmlToJsonArrayPathList": [
+      "/root/users/user",
+      "/root/items/item"
+    ]
+  }
+}
+```
+
+**Input XML:**
+```xml
+<root>
+  <users>
+    <user>User 1</user>
+    <user>User 2</user>
+  </users>
+</root>
+```
+
+**Output JSON:**
+```json
+{
+  "root": {
+    "users": {
+      "user": ["User 1", "User 2"]
+    }
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Transformation Type**: 
+  - `XML2XML` - Uses XSLT stylesheet for transformation (requires `xsltValue`)
+  - `XML2JSON` - Converts XML to JSON format (uses XML-to-JSON options)
+- **XSLT Stylesheet**: 
+  - Must be valid XSLT 1.0 or 2.0
+  - Supports template matching, element selection, value extraction
+  - See XSLT documentation for detailed syntax
+- **XML to JSON Options**: 
+  - `xmlToJsonUnwrapElement`: Remove root wrapper element from JSON
+  - `xmlToJsonIgnoreNull`: Omit null values from JSON output
+  - `xmlToJsonIgnoreEmpty`: Omit empty strings/elements from JSON
+  - `xmlToJsonNumbersAsStrings`: Convert numeric values to strings
+  - `xmlToJsonUseNullForNil`: Use `null` for `xsi:nil="true"` attributes
+  - `xmlToJsonArrayPathList`: XPath expressions for array conversion
+- **Array Paths**: XPath expressions in `xmlToJsonArrayPathList` identify elements to convert as JSON arrays
+- **Performance**: XML transformation adds processing overhead. Use for necessary transformations only.
+- **Pipeline**: 
+  - `REQUEST` pipeline transforms request body before forwarding
+  - `RESPONSE` pipeline transforms response body before sending to client
+- **Error Handling**: Invalid XSLT or malformed XML will cause transformation to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [JSON Transformation Policy](./policy-json-transformation.md) - Transform JSON messages
+

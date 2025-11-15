@@ -1,0 +1,151 @@
+# Delete Connection
+
+## Overview
+
+Deletes an existing connection from a project. The connection is permanently removed and cannot be recovered.
+
+## Endpoint
+
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must exist) |
+
+### Query Parameters
+
+None
+
+### Request Body
+
+This endpoint does not require a request body.
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true
+  }
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+| deploymentResult | object | Deployment result |
+| deploymentResult.success | boolean | Deployment success |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Connection (name: my-email-connection) was not found!"
+}
+```
+
+**Common Causes:**
+- Connection name does not exist
+- Connection name is empty
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "Project 'MyProject' not found"
+}
+```
+
+## cURL Example
+
+```bash
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-email-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Full JSON Body Example
+
+This endpoint does not require a request body.
+
+## Usage Scenarios
+
+### Scenario 1: Delete Connection
+
+Delete a connection that is no longer needed.
+
+```bash
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/old-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### Scenario 2: Delete Multiple Connections
+
+To delete multiple connections, make separate DELETE requests for each connection.
+
+```bash
+# Delete connection 1
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/connection1/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+
+# Delete connection 2
+curl -X DELETE \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/connection2/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+## Notes and Warnings
+
+- **Permanent Deletion**: Connection deletion is permanent and cannot be undone
+- **Dependencies**: Ensure no policies or other components are using the connection before deletion
+- **Case Sensitivity**: Connection names are case-insensitive
+- **Deployment**: Connection is automatically removed from workers if it was deployed
+- **References**: If other connections reference this connection, those references may break
+
+## Related Documentation
+
+- [List Connections](./list-connections.md) - List all connections
+- [Get Connection](./get-connection.md) - Get connection details
+- [Create Connection](./create-connection.md) - Create a new connection
+- [Update Connection](./update-connection.md) - Update a connection
+

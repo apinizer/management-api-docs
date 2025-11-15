@@ -1,0 +1,121 @@
+# Update Credential
+
+## Overview
+
+Updates an existing credential. All fields can be updated except the username (which is used as the identifier). The credential is automatically deployed to all environments after update.
+
+## Endpoint
+
+```
+PUT /apiops/projects/{projectName}/credentials/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Request Body
+
+Same structure as Create Credential. All fields are required for update.
+
+#### Full JSON Body Example
+
+```json
+{
+  "email": "updated@example.com",
+  "fullName": "Updated User",
+  "description": "Updated credential description",
+  "username": "api-user",
+  "password": "NewSecurePassword123!",
+  "roleNameList": [
+    "API_USER",
+    "DEVELOPER"
+  ],
+  "enabled": true,
+  "ipList": [
+    "192.168.1.100"
+  ],
+  "expireDate": "2025-12-31T23:59:59.000Z"
+}
+```
+
+#### Request Body Fields
+
+Same as Create Credential. See [Create Credential](./create-credential.md#request-body-fields) for field descriptions.
+
+**Important Notes:**
+- `username` must match the existing credential username (cannot be changed)
+- All fields are required (same as create)
+- Password can be updated
+- Credential is automatically deployed after update
+
+### Response
+
+Same as Create Credential. See [Create Credential](./create-credential.md#response) for response format.
+
+## cURL Example
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/credentials/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "updated@example.com",
+    "fullName": "Updated User",
+    "description": "Updated description",
+    "username": "api-user",
+    "password": "NewSecurePassword123!",
+    "roleNameList": [
+      "API_USER"
+    ],
+    "enabled": true,
+    "ipList": [],
+    "expireDate": null
+  }'
+```
+
+## Notes and Warnings
+
+- **Username Cannot Change**: 
+  - Username is used as identifier and cannot be changed
+  - Use the existing username in the request
+- **All Fields Required**: 
+  - All fields must be provided (same as create)
+  - Missing fields will cause validation errors
+- **Password Update**: 
+  - Password can be updated
+  - New password must not be empty
+- **Automatic Deployment**: 
+  - Credential is automatically deployed after update
+  - Deployment results are returned in the response
+- **Credential Must Exist**: 
+  - Credential with specified username must exist
+  - If credential does not exist, update will fail
+
+## Related Documentation
+
+- [Create Credential](./create-credential.md) - Create a new credential
+- [Change Credential Password](./change-credential-password.md) - Change only password
+- [Delete Credential](./delete-credential.md) - Delete a credential
+

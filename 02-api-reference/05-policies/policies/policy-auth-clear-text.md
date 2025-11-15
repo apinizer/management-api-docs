@@ -1,0 +1,633 @@
+# Clear Text Authentication Policy
+
+## General Information
+
+### Policy Type
+```
+policy-auth-clear-text
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+Clear Text Authentication policy authenticates requests using username and password extracted from request variables. It supports optional password checking and can add authenticated user information to headers. This policy is useful for simple authentication scenarios where credentials are passed in headers, parameters, or body.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-auth-clear-text",
+            "name": "clear-text-auth-policy",
+            "description": "Authenticate using clear text credentials",
+            "active": true,
+            "usernameVar": {
+              "type": "HEADER",
+              "headerName": "X-Username"
+            },
+            "passwordVar": {
+              "type": "HEADER",
+              "headerName": "X-Password"
+            },
+            "checkPassword": true,
+            "clearAuth": false,
+            "addUserToHeader": true,
+            "userHeaderName": "X-Authenticated-User"
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - Header-Based Authentication
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Authenticate using headers",
+    "active": true,
+    "usernameVar": {
+      "type": "HEADER",
+      "headerName": "X-Username"
+    },
+    "passwordVar": {
+      "type": "HEADER",
+      "headerName": "X-Password"
+    },
+    "checkPassword": true,
+    "clearAuth": false,
+    "addUserToHeader": true,
+    "userHeaderName": "X-Authenticated-User"
+  }
+}
+```
+
+##### Full JSON Body Example - Parameter-Based Authentication
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Authenticate using parameters",
+    "active": true,
+    "usernameVar": {
+      "type": "PARAMETER",
+      "paramName": "username"
+    },
+    "passwordVar": {
+      "type": "PARAMETER",
+      "paramName": "password"
+    },
+    "checkPassword": true,
+    "clearAuth": true,
+    "addUserToHeader": false,
+    "userHeaderName": null
+  }
+}
+```
+
+##### Full JSON Body Example - Body-Based Authentication
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Authenticate using body fields",
+    "active": true,
+    "usernameVar": {
+      "type": "BODY",
+      "bodyJsonPath": "$.username"
+    },
+    "passwordVar": {
+      "type": "BODY",
+      "bodyJsonPath": "$.password"
+    },
+    "checkPassword": true,
+    "clearAuth": false,
+    "addUserToHeader": true,
+    "userHeaderName": "X-User"
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline (authenticates request)
+- `RESPONSE` - Executes in response pipeline
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-auth-clear-text` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| usernameVar | object | Yes | - | Variable for extracting username |
+| passwordVar | object | No* | - | Variable for extracting password (required if checkPassword=true) |
+| checkPassword | boolean | No | true | Whether to check password during authentication |
+| clearAuth | boolean | No | false | Clear authentication data after validation |
+| addUserToHeader | boolean | No | false | Add authenticated user to header |
+| userHeaderName | string | No* | - | Header name for authenticated user (required if addUserToHeader=true) |
+
+**Note:** 
+- `usernameVar` is required.
+- If `checkPassword: true`, `passwordVar` is required.
+- If `addUserToHeader: true`, `userHeaderName` is required.
+
+###### usernameVar / passwordVar
+Variable object with the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| type | string | Yes | Variable type: `HEADER`, `PARAMETER`, `BODY`, `CONTEXT_VALUES`, `CUSTOM` |
+| headerName | string | No* | Header name (required if type=HEADER) |
+| paramName | string | No* | Parameter name (required if type=PARAMETER) |
+| bodyJsonPath | string | No* | JSON path (required if type=BODY for JSON) |
+| bodyXPath | string | No* | XPath (required if type=BODY for XML) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES) |
+
+**Enum: type (EnumVariableType)**
+- `HEADER` - Extract from HTTP header
+- `PARAMETER` - Extract from query/path parameter
+- `BODY` - Extract from request body (JSON path or XPath)
+- `CONTEXT_VALUES` - Extract from context values
+- `CUSTOM` - Extract from custom variable
+
+**JSON Path Examples:**
+- `$.username` - Root level field
+- `$.user.name` - Nested field
+- `$.users[0].name` - Array element
+
+**XPath Examples:**
+- `/root/username` - Absolute path
+- `//username` - Anywhere in document
+- `/root/user[@id='1']/name` - With attribute condition
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/clear-text-auth/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-auth-clear-text",
+      "description": "Clear text authentication",
+      "active": true,
+      "usernameVar": {
+        "type": "HEADER",
+        "headerName": "X-Username"
+      },
+      "passwordVar": {
+        "type": "HEADER",
+        "headerName": "X-Password"
+      },
+      "checkPassword": true,
+      "clearAuth": false,
+      "addUserToHeader": true,
+      "userHeaderName": "X-Authenticated-User"
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Header-Based Authentication
+
+Authenticate using username and password from headers.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Header-based authentication",
+    "active": true,
+    "usernameVar": {
+      "type": "HEADER",
+      "headerName": "X-Username"
+    },
+    "passwordVar": {
+      "type": "HEADER",
+      "headerName": "X-Password"
+    },
+    "checkPassword": true,
+    "clearAuth": false,
+    "addUserToHeader": true,
+    "userHeaderName": "X-Authenticated-User"
+  }
+}
+```
+
+**Client Request:**
+```bash
+curl -X GET \
+  "https://api.example.com/users" \
+  -H "X-Username: john.doe" \
+  -H "X-Password: secret123"
+```
+
+### Scenario 2: Parameter-Based Authentication
+
+Authenticate using query parameters.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Parameter-based authentication",
+    "active": true,
+    "usernameVar": {
+      "type": "PARAMETER",
+      "paramName": "username"
+    },
+    "passwordVar": {
+      "type": "PARAMETER",
+      "paramName": "password"
+    },
+    "checkPassword": true,
+    "clearAuth": true,
+    "addUserToHeader": false
+  }
+}
+```
+
+**Client Request:**
+```bash
+curl -X GET \
+  "https://api.example.com/users?username=john.doe&password=secret123"
+```
+
+### Scenario 3: Body-Based Authentication
+
+Authenticate using JSON body fields.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Body-based authentication",
+    "active": true,
+    "usernameVar": {
+      "type": "BODY",
+      "bodyJsonPath": "$.username"
+    },
+    "passwordVar": {
+      "type": "BODY",
+      "bodyJsonPath": "$.password"
+    },
+    "checkPassword": true,
+    "clearAuth": false,
+    "addUserToHeader": true,
+    "userHeaderName": "X-User"
+  }
+}
+```
+
+**Client Request:**
+```bash
+curl -X POST \
+  "https://api.example.com/login" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "john.doe",
+    "password": "secret123"
+  }'
+```
+
+### Scenario 4: Username-Only Authentication
+
+Authenticate using only username (no password check).
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-clear-text",
+    "description": "Username-only authentication",
+    "active": true,
+    "usernameVar": {
+      "type": "HEADER",
+      "headerName": "X-Username"
+    },
+    "checkPassword": false,
+    "clearAuth": false,
+    "addUserToHeader": true,
+    "userHeaderName": "X-Authenticated-User"
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Username Variable**: `usernameVar` is required and must specify where to extract username
+- **Password Variable**: `passwordVar` is required if `checkPassword: true`
+- **Password Checking**: When `checkPassword: true`, password is validated against user store
+- **Clear Auth**: When `clearAuth: true`, authentication data is removed after validation
+- **Add User to Header**: When `addUserToHeader: true`, authenticated username is added to specified header
+- **User Header Name**: Required if `addUserToHeader: true`
+- **Variable Types**: 
+  - `HEADER` - Extract from HTTP header
+  - `PARAMETER` - Extract from query/path parameter
+  - `BODY` - Extract from request body (JSON path or XPath)
+  - `CONTEXT_VALUES` - Extract from context values
+- **JSON Path**: Use JSON path syntax for JSON body (e.g., `$.username`, `$.user.name`)
+- **XPath**: Use XPath syntax for XML body (e.g., `/root/username`, `//username`)
+- **Security**: Clear text authentication transmits credentials in plain text. Use HTTPS only.
+- **Performance**: Authentication adds processing overhead. Use for necessary authentication only.
+- **Pipeline**: 
+  - `REQUEST` pipeline authenticates request before forwarding
+  - Authentication failure results in 401 Unauthorized response
+- **Error Handling**: Invalid credentials or missing variables cause authentication to fail
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [Basic Authentication Policy](./policy-auth-basic.md) - HTTP Basic Authentication
+- [Digest Authentication Policy](./policy-auth-digest.md) - HTTP Digest Authentication
+

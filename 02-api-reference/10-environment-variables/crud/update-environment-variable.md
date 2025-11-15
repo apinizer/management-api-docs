@@ -1,0 +1,87 @@
+# Update Environment Variable
+
+## Overview
+
+Updates an existing environment variable. The name can be changed, but it must remain unique. All fields can be updated.
+
+## Endpoint
+
+```
+PUT /apiops/projects/{projectName}/environmentVariables/{name}/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name (can be "admin" for admin project) |
+| name | string | Yes | Current environment variable name |
+
+### Request Body
+
+Same structure as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md#request-body-fields) for field descriptions.
+
+**Important Notes:**
+- `name` in path is the current name (used to find the variable)
+- `name` in body can be different (to rename the variable)
+- If renaming, new name must be unique
+- All fields can be updated
+
+### Response
+
+Same as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md#response) for response format.
+
+## cURL Example
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/environmentVariables/API_BASE_URL/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "API_BASE_URL",
+    "description": "Updated base URL",
+    "global": false,
+    "environmentValueList": [
+      {
+        "environmentName": "production",
+        "value": "https://new-api.production.example.com",
+        "visible": true
+      }
+    ]
+  }'
+```
+
+## Notes and Warnings
+
+- **Name Change**: 
+  - Variable can be renamed by providing different name in body
+  - New name must be unique
+- **Variable Must Exist**: 
+  - Variable with specified name must exist
+- **Automatic Deployment**: 
+  - Variable is automatically deployed after update
+
+## Related Documentation
+
+- [Create Environment Variable](./create-environment-variable.md) - Create a new environment variable
+- [Delete Environment Variable](./delete-environment-variable.md) - Delete an environment variable
+

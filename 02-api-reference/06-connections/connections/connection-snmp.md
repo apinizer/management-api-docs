@@ -1,0 +1,676 @@
+# SNMP Connection
+
+## General Information
+
+### Connection Type
+```
+snmp
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+SNMP (Simple Network Management Protocol) connection for sending SNMP traps and informs to SNMP managers. Supports SNMP v1, v2c, and v3 protocols with various security levels and authentication/privacy options. Used by policies and connectors to send network management notifications to SNMP-compatible systems.
+
+### Endpoints
+
+#### List Connections
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+#### Get Connection
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Create Connection
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Update Connection
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+#### Delete Connection
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+---
+
+## List Connections
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "snmp",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-snmp-connection",
+      "description": "SNMP connection for traps",
+      "deployToWorker": true,
+      "enabled": true,
+      "version": "V1",
+      "connectionString": "udp:192.168.1.2/162",
+      "securityOrCommunityName": "public",
+      "retryCount": 3,
+      "timeout": 5000,
+      "messageType": "TRAP",
+      "securityLevel": null,
+      "privacyProtocolList": [],
+      "enableUserAuthentication": false,
+      "securityName": null,
+      "usmUserAuthenticationProtocol": null,
+      "authPassphrase": null,
+      "usmUserPrivacyProtocol": null,
+      "privPassphrase": null,
+      "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+      "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+      "pduVariableMap": {
+        "1.3.6.1.4.1.12345.1.3": "value1"
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** In list operations, `authPassphrase` and `privPassphrase` are returned as `null` for security.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Get Connection
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "_class": "snmp",
+      "id": "connection-id",
+      "projectId": "project-id",
+      "name": "my-snmp-connection",
+      "description": "SNMP connection for traps",
+      "deployToWorker": true,
+      "enabled": true,
+      "version": "V1",
+      "connectionString": "udp:192.168.1.2/162",
+      "securityOrCommunityName": "public",
+      "retryCount": 3,
+      "timeout": 5000,
+      "messageType": "TRAP",
+      "securityLevel": null,
+      "privacyProtocolList": [],
+      "enableUserAuthentication": false,
+      "securityName": null,
+      "usmUserAuthenticationProtocol": null,
+      "authPassphrase": null,
+      "usmUserPrivacyProtocol": null,
+      "privPassphrase": null,
+      "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+      "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+      "pduVariableMap": {
+        "1.3.6.1.4.1.12345.1.3": "value1"
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+**Note:** Passphrases are masked in get operations.
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-snmp-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Create Connection
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+#### Request Body
+
+##### Full JSON Body Example - SNMP v1 Trap
+```json
+{
+  "_class": "snmp",
+  "name": "my-snmp-connection",
+  "description": "SNMP v1 trap connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V1",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "public",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "TRAP",
+  "securityLevel": null,
+  "privacyProtocolList": [],
+  "enableUserAuthentication": false,
+  "securityName": null,
+  "usmUserAuthenticationProtocol": null,
+  "authPassphrase": null,
+  "usmUserPrivacyProtocol": null,
+  "privPassphrase": null,
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1",
+    "1.3.6.1.4.1.12345.1.4": "value2"
+  }
+}
+```
+
+##### Full JSON Body Example - SNMP v2c Inform
+```json
+{
+  "_class": "snmp",
+  "name": "my-snmp-v2c",
+  "description": "SNMP v2c inform connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V2c",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "public",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "INFORM",
+  "securityLevel": null,
+  "privacyProtocolList": [],
+  "enableUserAuthentication": false,
+  "securityName": null,
+  "usmUserAuthenticationProtocol": null,
+  "authPassphrase": null,
+  "usmUserPrivacyProtocol": null,
+  "privPassphrase": null,
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+##### Full JSON Body Example - SNMP v3 with Authentication and Privacy
+```json
+{
+  "_class": "snmp",
+  "name": "my-snmp-v3-secure",
+  "description": "SNMP v3 with authentication and privacy",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V3",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "securityUser",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "TRAP",
+  "securityLevel": "AUTH_PRIV",
+  "privacyProtocolList": [
+    "PrivAES128",
+    "PrivAES256"
+  ],
+  "enableUserAuthentication": true,
+  "securityName": "securityUser",
+  "usmUserAuthenticationProtocol": "AuthSHA",
+  "authPassphrase": "authPassword123",
+  "usmUserPrivacyProtocol": "PrivAES128",
+  "privPassphrase": "privPassword123",
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+##### Full JSON Body Example - SNMP v3 with Authentication Only
+```json
+{
+  "_class": "snmp",
+  "name": "my-snmp-v3-auth",
+  "description": "SNMP v3 with authentication only",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V3",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "securityUser",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "INFORM",
+  "securityLevel": "AUTH_NOPRIV",
+  "privacyProtocolList": [],
+  "enableUserAuthentication": true,
+  "securityName": "securityUser",
+  "usmUserAuthenticationProtocol": "AuthMD5",
+  "authPassphrase": "authPassword123",
+  "usmUserPrivacyProtocol": null,
+  "privPassphrase": null,
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+##### Full JSON Body Example - SNMP v3 No Authentication
+```json
+{
+  "_class": "snmp",
+  "name": "my-snmp-v3-noauth",
+  "description": "SNMP v3 without authentication",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V3",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "securityUser",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "TRAP",
+  "securityLevel": "NOAUTH_NOPRIV",
+  "privacyProtocolList": [],
+  "enableUserAuthentication": false,
+  "securityName": null,
+  "usmUserAuthenticationProtocol": null,
+  "authPassphrase": null,
+  "usmUserPrivacyProtocol": null,
+  "privPassphrase": null,
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+##### Request Body Fields
+
+###### Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| _class | string | Yes | - | Connection type: `snmp` |
+| name | string | Yes | - | Connection name (must match path parameter) |
+| description | string | No | - | Connection description |
+| deployToWorker | boolean | No | true | Whether to deploy to worker |
+| enabled | boolean | No | true | Whether connection is enabled |
+
+###### SNMP Common Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| version | string | Yes | V1 | SNMP version. See [EnumSnmpVersion](#enumsnmpversion) |
+| connectionString | string | Yes | udp:192.168.1.2/162 | Connection string (format: `protocol:host/port`) |
+| securityOrCommunityName | string | Yes | - | Community name (v1/v2c) or security name (v3) |
+| retryCount | integer | No | - | Number of retry attempts |
+| timeout | integer | No | - | Timeout in milliseconds |
+| messageType | string | No | - | Message type. See [EnumSnmpMessageType](#enumsnpmessagetype) |
+| pduOidForMessage | string | Yes | - | OID for message content |
+| pduOidForTime | string | No | - | OID for timestamp |
+| pduVariableMap | object | No | {} | Map of OID-value pairs for PDU variables |
+
+###### SNMP v3 Specific Fields
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| securityLevel | string | No | - | Security level (v3 only). See [EnumSnmpSecurityLevel](#enumsnmpsecuritylevel) |
+| privacyProtocolList | array | No | [] | List of supported privacy protocols (v3 only). See [EnumSnmpPrivacyProtocol](#enumsnmpprivacyprotocol) |
+| enableUserAuthentication | boolean | No | false | Enable user authentication (v3 only) |
+| securityName | string | No | - | Security name (v3 only, required if enableUserAuthentication=true) |
+| usmUserAuthenticationProtocol | string | No | - | Authentication protocol (v3 only, required if securityLevel=AUTH_NOPRIV or AUTH_PRIV). See [EnumSnmpAuthenticationProtocol](#enumsnmpauthenticationprotocol) |
+| authPassphrase | string | No | - | Authentication passphrase (v3 only, required if securityLevel=AUTH_NOPRIV or AUTH_PRIV, secret field) |
+| usmUserPrivacyProtocol | string | No | - | Privacy protocol (v3 only, required if securityLevel=AUTH_PRIV). See [EnumSnmpPrivacyProtocol](#enumsnmpprivacyprotocol) |
+| privPassphrase | string | No | - | Privacy passphrase (v3 only, required if securityLevel=AUTH_PRIV, secret field) |
+
+**EnumSnmpVersion (version)**
+- `V1` - SNMP version 1 (default)
+- `V2c` - SNMP version 2c (community-based)
+- `V3` - SNMP version 3 (user-based security)
+
+**EnumSnmpMessageType (messageType)**
+- `TRAP` - SNMP trap (unacknowledged)
+- `INFORM` - SNMP inform (acknowledged)
+
+**EnumSnmpSecurityLevel (securityLevel) - v3 only**
+- `NOAUTH_NOPRIV` - No authentication, no privacy
+- `AUTH_NOPRIV` - Authentication, no privacy
+- `AUTH_PRIV` - Authentication and privacy
+
+**EnumSnmpPrivacyProtocol (usmUserPrivacyProtocol, privacyProtocolList)**
+- `PrivAES128` - AES 128-bit encryption
+- `PrivAES192` - AES 192-bit encryption
+- `PrivAES192with3DES` - AES 192-bit with 3DES
+- `PrivAES256` - AES 256-bit encryption
+- `PrivAES256with3DES` - AES 256-bit with 3DES
+- `PrivDES` - DES encryption
+- `Priv3DES` - 3DES encryption
+
+**EnumSnmpAuthenticationProtocol (usmUserAuthenticationProtocol)**
+- `AuthMD5` - MD5 authentication
+- `AuthSHA` - SHA-1 authentication
+- `AuthHMAC128SHA224` - HMAC-SHA224 authentication
+- `AuthHMAC192SHA256` - HMAC-SHA256 authentication
+- `AuthHMAC256SHA384` - HMAC-SHA384 authentication
+- `AuthHMAC384SHA512` - HMAC-SHA512 authentication
+
+**Notes:**
+- `version`, `connectionString`, `securityOrCommunityName`, and `pduOidForMessage` are required.
+- `connectionString` format: `protocol:host/port` (e.g., `udp:192.168.1.2/162`, `tcp:192.168.1.2/162`)
+- For SNMP v1/v2c: `securityOrCommunityName` is the community name (e.g., "public").
+- For SNMP v3: `securityOrCommunityName` is the security name (user name).
+- SNMP v3 fields are only used when `version: "V3"`.
+- `securityLevel` determines required fields:
+  - `NOAUTH_NOPRIV`: No additional fields required
+  - `AUTH_NOPRIV`: Requires `usmUserAuthenticationProtocol` and `authPassphrase`
+  - `AUTH_PRIV`: Requires `usmUserAuthenticationProtocol`, `authPassphrase`, `usmUserPrivacyProtocol`, and `privPassphrase`
+- `enableUserAuthentication: true` enables USM (User-based Security Model) authentication.
+- `pduVariableMap` is a map of OID-value pairs for additional PDU variables.
+- `pduOidForTime` is optional OID for timestamp.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/my-snmp-connection/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "_class": "snmp",
+    "name": "my-snmp-connection",
+    "description": "SNMP v1 trap connection",
+    "deployToWorker": true,
+    "enabled": true,
+    "version": "V1",
+    "connectionString": "udp:192.168.1.2/162",
+    "securityOrCommunityName": "public",
+    "retryCount": 3,
+    "timeout": 5000,
+    "messageType": "TRAP",
+    "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+    "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+    "pduVariableMap": {
+      "1.3.6.1.4.1.12345.1.3": "value1"
+    }
+  }'
+```
+
+---
+
+## Update Connection
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name (must match name in body) |
+
+#### Request Body
+
+**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Delete Connection
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/connections/{connectionName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| connectionName | string | Yes | Connection name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [...]
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: SNMP v1 Trap
+
+Basic SNMP v1 trap with community name.
+
+**Request Body:**
+```json
+{
+  "_class": "snmp",
+  "name": "snmp-v1-trap",
+  "description": "SNMP v1 trap",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V1",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "public",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "TRAP",
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+### Scenario 2: SNMP v3 Secure
+
+SNMP v3 with authentication and privacy.
+
+**Request Body:**
+```json
+{
+  "_class": "snmp",
+  "name": "snmp-v3-secure",
+  "description": "SNMP v3 with auth and privacy",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V3",
+  "connectionString": "udp:192.168.1.2/162",
+  "securityOrCommunityName": "securityUser",
+  "retryCount": 3,
+  "timeout": 5000,
+  "messageType": "INFORM",
+  "securityLevel": "AUTH_PRIV",
+  "enableUserAuthentication": true,
+  "securityName": "securityUser",
+  "usmUserAuthenticationProtocol": "AuthSHA",
+  "authPassphrase": "authPassword123",
+  "usmUserPrivacyProtocol": "PrivAES128",
+  "privPassphrase": "privPassword123",
+  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.1.3": "value1"
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **SNMP Versions**: 
+  - `V1` - Legacy version, community-based security (default)
+  - `V2c` - Improved version, community-based security
+  - `V3` - Modern version, user-based security (recommended for production)
+- **Connection String**: 
+  - Format: `protocol:host/port`
+  - Protocols: `udp` (default, port 162) or `tcp` (port 162)
+  - Example: `udp:192.168.1.2/162` or `tcp:192.168.1.2/162`
+- **Security Levels (v3)**: 
+  - `NOAUTH_NOPRIV` - No security (not recommended)
+  - `AUTH_NOPRIV` - Authentication only (messages authenticated but not encrypted)
+  - `AUTH_PRIV` - Full security (messages authenticated and encrypted, recommended)
+- **Message Types**: 
+  - `TRAP` - Unacknowledged notification (fire-and-forget)
+  - `INFORM` - Acknowledged notification (waits for acknowledgment)
+- **Authentication Protocols**: 
+  - `AuthMD5` - MD5 (legacy, not recommended)
+  - `AuthSHA` - SHA-1 (widely supported)
+  - `AuthHMAC*` - HMAC variants (stronger security)
+- **Privacy Protocols**: 
+  - `PrivAES128` - AES 128-bit (recommended)
+  - `PrivAES256` - AES 256-bit (strongest)
+  - `PrivDES` - DES (legacy, not recommended)
+- **PDU Variables**: 
+  - `pduOidForMessage` - OID for message content (required)
+  - `pduOidForTime` - OID for timestamp (optional)
+  - `pduVariableMap` - Additional OID-value pairs
+- **Community/Security Name**: 
+  - v1/v2c: Community name (e.g., "public", "private")
+  - v3: Security name (user name)
+- **Passphrases**: 
+  - Minimum length: 8 characters (SNMP requirement)
+  - Use strong passphrases in production
+  - Passphrases are masked in responses
+- **Retry and Timeout**: 
+  - `retryCount` - Number of retry attempts
+  - `timeout` - Timeout in milliseconds
+  - Important for INFORM messages (acknowledgment required)
+- **Deployment**: Connection changes require deployment to take effect. Set `deployToWorker: true` or deploy manually.
+
+## Related Documentation
+
+- [List Connections](../crud/list-connections.md) - List all connections
+- [Get Connection](../crud/get-connection.md) - Get a specific connection
+- [Create Connection](../crud/create-connection.md) - General connection creation guide
+- [Update Connection](../crud/update-connection.md) - General connection update guide
+- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+

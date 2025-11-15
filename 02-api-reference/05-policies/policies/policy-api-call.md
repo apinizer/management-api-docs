@@ -1,0 +1,795 @@
+# API Call Policy
+
+## General Information
+
+### Policy Type
+```
+policy-api-call
+```
+
+### UI Documentation
+> 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
+
+### Description
+API Call policy makes HTTP/HTTPS calls to external APIs during request/response processing. It supports synchronous (two-way) and one-way (fire-and-forget) calls, request/response transformation, caching, mTLS, and comprehensive message manipulation.
+
+### Endpoints
+
+#### List Policies
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+#### Add Policy
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Update Policy
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+#### Delete Policy
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+---
+
+## List Policies
+
+### Endpoint
+```
+GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-api-call",
+            "name": "external-api-call",
+            "description": "Call external API for validation",
+            "active": true,
+            "callType": "SYNCHRONOUS",
+            "httpMethod": "POST",
+            "url": "https://api.example.com/validate",
+            "timeout": 5000,
+            "certificateEnabled": false,
+            "enableCache": false
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
+      }
+    }
+  ],
+  "resultCount": 1
+}
+```
+
+### cURL Example
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+---
+
+## Add Policy
+
+### Endpoint
+```
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example - Synchronous Call with Cache
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "Call external validation API with caching",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "POST",
+    "url": "https://api.example.com/validate",
+    "timeout": 5000,
+    "certificateEnabled": false,
+    "clearBodyBeforeCall": false,
+    "useMessageTemplateBeforeCall": true,
+    "enumTestConsoleRequestBodyType": "JSON",
+    "bodyContentBeforeCall": "{\n  \"userId\": \"${userId}\",\n  \"action\": \"validate\"\n}",
+    "urlEncodedList": [],
+    "dataManipulationListBeforeCall": [],
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeDeletedBeforeCallList": [],
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json",
+        "prefix": null
+      },
+      {
+        "name": "Authorization",
+        "valueSource": "VARIABLE",
+        "variable": {
+          "type": "HEADER",
+          "headerName": "Authorization"
+        },
+        "prefix": "BEARER"
+      }
+    ],
+    "removeAllParametersBeforeCall": true,
+    "parametersToBeDeletedBeforeCallList": [],
+    "parametersToBeAddedBeforeCallList": [
+      {
+        "name": "apiKey",
+        "valueSource": "VALUE",
+        "value": "your-api-key"
+      }
+    ],
+    "enableCache": true,
+    "cacheBy": {
+      "type": "HEADER",
+      "headerName": "Authorization"
+    },
+    "capacity": 1000,
+    "ttl": 3600,
+    "cacheNullResponses": false,
+    "cacheStorageType": "DISTRIBUTED",
+    "afterCallBodyOperationType": "REPLACE_BODY",
+    "useMessageTemplateAfterCall": false,
+    "messageTemplateContentTypeAfterCall": "JSON",
+    "bodyContentAfterCall": null,
+    "dataManipulationListAfterCall": [],
+    "removeAllHeadersAfterCall": false,
+    "headersToBeDeletedAfterCallList": [],
+    "headersToBeAddedAfterCallList": [],
+    "removeAllParametersAfterCall": false,
+    "parametersToBeDeletedAfterCallList": [],
+    "parametersToBeAddedAfterCallList": [],
+    "prepareMessage": false,
+    "modifyMessage": false,
+    "newBodyContentSourceType": null
+  }
+}
+```
+
+##### Request Body Fields
+
+###### operationMetadata
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
+| targetEndpoint | string | No* | - | Endpoint path (required if targetScope=ENDPOINT) |
+| targetEndpointHTTPMethod | string | No* | - | HTTP method (required if targetScope=ENDPOINT) |
+| targetPipeline | string | Yes | - | Pipeline: `REQUEST`, `RESPONSE`, or `ERROR` |
+| deploy | boolean | No | true | Whether to deploy after adding policy |
+| deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
+| order | integer | No | null | Policy execution order (starts from 1) |
+
+**Enum: targetScope**
+- `ALL` - Policy applies to all endpoints
+- `ENDPOINT` - Policy applies only to specified endpoint
+
+**Enum: targetPipeline**
+- `REQUEST` - Executes in request pipeline
+- `RESPONSE` - Executes in response pipeline
+- `ERROR` - Executes in error pipeline
+
+**Enum: targetEndpointHTTPMethod**
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
+
+###### policy
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| type | string | Yes | - | Policy type: `policy-api-call` |
+| description | string | No | - | Policy description |
+| active | boolean | No | true | Whether policy is active |
+| callType | string | Yes | - | Call type: `SYNCHRONOUS` or `ONE_WAY` |
+| httpMethod | string | Yes | - | HTTP method for API call |
+| url | string | Yes | - | Target API URL |
+| timeout | integer | No | - | Request timeout in milliseconds |
+| certificateId | string | No | - | Certificate ID for mTLS (required if certificateEnabled=true) |
+| certificateEnabled | boolean | No | false | Enable mTLS certificate |
+| clearBodyBeforeCall | boolean | No | false | Clear request body before API call |
+| useMessageTemplateBeforeCall | boolean | No | true | Use message template for request body |
+| enumTestConsoleRequestBodyType | string | No | XML | Request body content type |
+| bodyContentBeforeCall | string | No | - | Request body template |
+| urlEncodedList | array | No | [] | URL encoded form parameters |
+| dataManipulationListBeforeCall | array | No | [] | Data manipulation for request |
+| removeAllHeadersBeforeCall | boolean | No | true | Remove all headers before call |
+| headersToBeDeletedBeforeCallList | array | No | [] | Headers to delete before call |
+| headersToBeAddedBeforeCallList | array | No | [] | Headers to add before call |
+| removeAllParametersBeforeCall | boolean | No | true | Remove all parameters before call |
+| parametersToBeDeletedBeforeCallList | array | No | [] | Parameters to delete before call |
+| parametersToBeAddedBeforeCallList | array | No | [] | Parameters to add before call |
+| enableCache | boolean | No | false | Enable response caching |
+| cacheBy | object | No | - | Variable for cache key |
+| capacity | integer | No* | - | Cache capacity (required if enableCache=true) |
+| ttl | integer | No* | - | Cache TTL in seconds (required if enableCache=true) |
+| cacheNullResponses | boolean | No | true | Cache null/error responses |
+| cacheStorageType | string | No | DISTRIBUTED | Cache storage type |
+| afterCallBodyOperationType | string | No | - | Operation on original body after call |
+| useMessageTemplateAfterCall | boolean | No | true | Use message template after call |
+| messageTemplateContentTypeAfterCall | string | No | XML | Response body content type |
+| bodyContentAfterCall | string | No | - | Response body template |
+| dataManipulationListAfterCall | array | No | [] | Data manipulation for response |
+| removeAllHeadersAfterCall | boolean | No | false | Remove all headers after call |
+| headersToBeDeletedAfterCallList | array | No | [] | Headers to delete after call |
+| headersToBeAddedAfterCallList | array | No | [] | Headers to add after call |
+| removeAllParametersAfterCall | boolean | No | false | Remove all parameters after call |
+| parametersToBeDeletedAfterCallList | array | No | [] | Parameters to delete after call |
+| parametersToBeAddedAfterCallList | array | No | [] | Parameters to add after call |
+| prepareMessage | boolean | No | false | Prepare message flag |
+| modifyMessage | boolean | No | false | Modify message flag |
+| newBodyContentSourceType | string | No | - | Source type for new body content |
+
+**Enum: callType (EnumPolicyRestApiCallType)**
+- `SYNCHRONOUS` - Two-way call, waits for response (supports caching)
+- `ONE_WAY` - Fire-and-forget call, no response expected (no caching)
+
+**Enum: httpMethod (EnumHttpRequestMethod)**
+- `GET` - GET request
+- `POST` - POST request
+- `PUT` - PUT request
+- `DELETE` - DELETE request
+- `PATCH` - PATCH request
+- `OPTIONS` - OPTIONS request
+- `HEAD` - HEAD request
+
+**Enum: enumTestConsoleRequestBodyType (EnumMessageTemplateContentType)**
+- `XML` - XML content
+- `JSON` - JSON content
+- `RAW` - Raw text content
+- `URL_ENCODED` - application/x-www-form-urlencoded
+
+**Enum: cacheStorageType (EnumCacheStorageType)**
+- `LOCAL` - Local cache (per node)
+- `DISTRIBUTED` - Distributed cache (shared across nodes)
+
+**Enum: afterCallBodyOperationType (EnumOriginalMessageOperationType)**
+- `NOT_CHANGE_BODY` - Keep original body unchanged
+- `REPLACE_BODY` - Replace original body with API call response
+- `CLEAR_BODY` - Clear original body after call
+
+**Enum: messageTemplateContentTypeAfterCall (EnumMessageTemplateContentType)**
+- `XML` - XML content
+- `JSON` - JSON content
+- `RAW` - Raw text content
+
+**Enum: newBodyContentSourceType (EnumBodyContentSourceType)**
+- `VALUE` - Use static value
+- `VARIABLE` - Use variable value
+
+**Note:** 
+- `url` and `httpMethod` are required.
+- `callType` is required.
+- If `enableCache: true`, `capacity` and `ttl` are required, and `callType` must be `SYNCHRONOUS`.
+- If `certificateEnabled: true`, `certificateId` is required.
+
+###### headersToBeAddedBeforeCallList / headersToBeAddedAfterCallList
+Each header is an object with the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Header name |
+| description | string | No | Header description |
+| valueSource | string | Yes | Value source: `VALUE` or `VARIABLE` |
+| value | string | No* | Header value (required if valueSource=VALUE) |
+| variable | object | No* | Variable object (required if valueSource=VARIABLE) |
+| prefix | string | No | Header prefix |
+
+**Enum: valueSource (EnumValueSource)**
+- `VALUE` - Use static value
+- `VARIABLE` - Extract from variable
+
+**Enum: prefix (EnumRestApiHeaderPrefix)**
+- `NONE` - No prefix
+- `BASIC` - Basic prefix (for Authorization header)
+- `BEARER` - Bearer prefix (for Authorization header)
+- `DIGEST` - Digest prefix (for Authorization header)
+
+**Note:** 
+- If `valueSource: VALUE`, provide `value`.
+- If `valueSource: VARIABLE`, provide `variable` object.
+
+###### parametersToBeAddedBeforeCallList / parametersToBeAddedAfterCallList
+Each parameter is an object with the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Parameter name |
+| description | string | No | Parameter description |
+| valueSource | string | Yes | Value source: `VALUE` or `VARIABLE` |
+| value | string | No* | Parameter value (required if valueSource=VALUE) |
+| variable | object | No* | Variable object (required if valueSource=VARIABLE) |
+
+**Enum: valueSource (EnumValueSource)**
+- `VALUE` - Use static value
+- `VARIABLE` - Extract from variable
+
+**Note:** 
+- If `valueSource: VALUE`, provide `value`.
+- If `valueSource: VARIABLE`, provide `variable` object.
+
+###### urlEncodedList
+Each form parameter is an object with the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| key | string | Yes | Form parameter key |
+| value | string | Yes | Form parameter value |
+| description | string | No | Parameter description |
+
+**Note:** Used when `enumTestConsoleRequestBodyType: URL_ENCODED`.
+
+###### dataManipulationListBeforeCall / dataManipulationListAfterCall
+Each data manipulation is an object with the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| operation | string | Yes | Operation type: `ADD`, `ADD_OR_EDIT`, or `DELETE` |
+| sourceValueSource | string | No | Source value source: `VALUE` or `VARIABLE` |
+| sourceVar | object | No | Source variable |
+| sourceValue | string | No | Source value |
+| targetName | string | Yes | Target field name/path |
+| targetValueSource | string | No | Target value source: `VALUE` or `VARIABLE` |
+| targetVar | object | No | Target variable |
+| targetValue | string | No | Target value |
+
+**Enum: operation (EnumRestApiDataManipulationDefOperation)**
+- `ADD` - Add new field
+- `ADD_OR_EDIT` - Add or edit existing field
+- `DELETE` - Delete field
+
+**Enum: sourceValueSource / targetValueSource (EnumValueSource)**
+- `VALUE` - Use static value
+- `VARIABLE` - Extract from variable
+
+###### cacheBy
+Variable object for cache key generation:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| type | string | Yes | Variable type: `HEADER`, `PARAMETER`, `BODY`, `CONTEXT`, `SCRIPT` |
+| headerName | string | No* | Header name (required if type=HEADER) |
+| paramName | string | No* | Parameter name (required if type=PARAMETER) |
+| contextValue | string | No* | Context value (required if type=CONTEXT) |
+
+**Note:** Cache key is generated from the specified variable. If not provided, entire request is used as cache key.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+### cURL Example
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/external-api-call/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "operationMetadata": {
+      "targetScope": "ALL",
+      "targetPipeline": "REQUEST",
+      "deploy": true,
+      "deployTargetEnvironmentNameList": ["production"],
+      "order": 1
+    },
+    "policy": {
+      "type": "policy-api-call",
+      "description": "Call external API",
+      "active": true,
+      "callType": "SYNCHRONOUS",
+      "httpMethod": "POST",
+      "url": "https://api.example.com/validate",
+      "timeout": 5000,
+      "removeAllHeadersBeforeCall": true,
+      "headersToBeAddedBeforeCallList": [
+        {
+          "name": "Content-Type",
+          "valueSource": "VALUE",
+          "value": "application/json"
+        }
+      ],
+      "enableCache": false
+    }
+  }'
+```
+
+---
+
+## Update Policy
+
+### Endpoint
+```
+PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+**Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+---
+
+## Delete Policy
+
+### Endpoint
+```
+DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
+```
+
+### Request
+
+#### Headers
+| Header | Value |
+|--------|-------|
+| Authorization | Bearer {token} |
+| Content-Type | application/json |
+
+#### Path Parameters
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| apiProxyName | string | Yes | API Proxy name |
+| policyName | string | Yes | Policy name |
+
+#### Request Body
+
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false
+  }
+}
+```
+
+### Response
+
+#### Success Response (200 OK)
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": []
+  }
+}
+```
+
+---
+
+## Usage Scenarios
+
+### Scenario 1: Simple Synchronous Call
+
+Make a simple synchronous API call and replace the original body with the response.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "Simple API call",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "POST",
+    "url": "https://api.example.com/process",
+    "timeout": 5000,
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json"
+      }
+    ],
+    "afterCallBodyOperationType": "REPLACE_BODY",
+    "enableCache": false
+  }
+}
+```
+
+### Scenario 2: One-Way Call (Fire and Forget)
+
+Send a one-way notification without waiting for response.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "One-way notification",
+    "active": true,
+    "callType": "ONE_WAY",
+    "httpMethod": "POST",
+    "url": "https://api.example.com/notify",
+    "timeout": 1000,
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json"
+      }
+    ],
+    "enableCache": false
+  }
+}
+```
+
+### Scenario 3: Cached API Call
+
+Call external API with response caching.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "Cached API call",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "GET",
+    "url": "https://api.example.com/data",
+    "timeout": 5000,
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Authorization",
+        "valueSource": "VARIABLE",
+        "variable": {
+          "type": "HEADER",
+          "headerName": "Authorization"
+        },
+        "prefix": "BEARER"
+      }
+    ],
+    "enableCache": true,
+    "cacheBy": {
+      "type": "HEADER",
+      "headerName": "Authorization"
+    },
+    "capacity": 1000,
+    "ttl": 3600,
+    "cacheNullResponses": false,
+    "cacheStorageType": "DISTRIBUTED",
+    "afterCallBodyOperationType": "REPLACE_BODY",
+    "enableCache": true
+  }
+}
+```
+
+### Scenario 4: mTLS API Call
+
+Call external API with mTLS authentication.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "mTLS API call",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "POST",
+    "url": "https://secure-api.example.com/process",
+    "timeout": 5000,
+    "certificateEnabled": true,
+    "certificateId": "my-client-certificate-id",
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json"
+      }
+    ],
+    "enableCache": false
+  }
+}
+```
+
+### Scenario 5: Request Body Transformation
+
+Transform request body before calling external API.
+
+**Request Body:**
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": false,
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "API call with body transformation",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "POST",
+    "url": "https://api.example.com/transform",
+    "timeout": 5000,
+    "clearBodyBeforeCall": false,
+    "useMessageTemplateBeforeCall": true,
+    "enumTestConsoleRequestBodyType": "JSON",
+    "bodyContentBeforeCall": "{\n  \"userId\": \"${userId}\",\n  \"timestamp\": \"${timestamp}\",\n  \"action\": \"process\"\n}",
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json"
+      }
+    ],
+    "afterCallBodyOperationType": "REPLACE_BODY",
+    "enableCache": false
+  }
+}
+```
+
+---
+
+## Notes and Warnings
+
+- **Call Type**: 
+  - `SYNCHRONOUS` - Waits for response, supports caching
+  - `ONE_WAY` - Fire-and-forget, no caching support
+- **Caching**: 
+  - Only available for `SYNCHRONOUS` calls
+  - Requires `capacity` and `ttl` when enabled
+  - Cache key can be based on variable (e.g., Authorization header)
+- **mTLS**: 
+  - Requires `certificateId` when `certificateEnabled: true`
+  - Certificate must be configured in KeyStore
+- **Request Transformation**: 
+  - Use `bodyContentBeforeCall` with variable placeholders (e.g., `${userId}`)
+  - Variables are replaced at runtime
+- **Response Handling**: 
+  - `NOT_CHANGE_BODY` - Original body remains unchanged
+  - `REPLACE_BODY` - Original body replaced with API response
+  - `CLEAR_BODY` - Original body cleared
+- **Headers and Parameters**: 
+  - Can remove all or specific headers/parameters
+  - Can add new headers/parameters with static values or variables
+- **URL Encoded Forms**: 
+  - Use `urlEncodedList` when `enumTestConsoleRequestBodyType: URL_ENCODED`
+- **Data Manipulation**: 
+  - Add, edit, or delete fields in request/response
+  - Supports variable extraction and transformation
+- **Timeout**: Specified in milliseconds
+- **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
+
+## Related Documentation
+
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+

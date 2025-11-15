@@ -1,0 +1,304 @@
+# Update API Proxy
+
+## Overview
+
+Updates an existing API proxy. The update can be done by reparsing from a new specification URL or file. The API proxy can be automatically deployed to specified environments after update.
+
+## Endpoint
+
+### Update from URL
+```
+PUT /apiops/projects/{projectName}/apiProxies/url/
+```
+
+### Update from File
+```
+PUT /apiops/projects/{projectName}/apiProxies/file/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+**Header:**
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json (for URL) or multipart/form-data (for file) | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Request Body
+
+The request body structure is identical to [Create API Proxy from URL](./create-api-proxy-from-url.md) or [Create API Proxy from File](./create-api-proxy-from-file.md), with the following differences:
+
+#### Key Differences for Update
+
+1. **reParse**: Set `reParse: true` to update an existing API proxy
+2. **API Proxy Must Exist**: The API proxy with the specified name must already exist
+3. **Type Consistency**: The `apiProxyCreationType` must match the original type
+4. **Description**: If `apiProxyDescription` is empty, the existing description is preserved
+
+#### Full JSON Body Example (Update from URL)
+
+```json
+{
+  "apiProxyName": "petstore-api",
+  "apiProxyDescription": "Updated Petstore API Proxy",
+  "apiProxyCreationType": "OPEN_API",
+  "specUrl": "https://petstore.swagger.io/v2/swagger.json",
+  "clientRoute": {
+    "relativePathList": ["/api/v1"],
+    "hostList": ["api.example.com"]
+  },
+  "routingInfo": {
+    "routingAddressList": [
+      {
+        "address": "https://backend.example.com",
+        "weight": 100
+      }
+    ],
+    "loadBalanceAlgorithm": "ROUND_ROBIN",
+    "connectTimeout": 30,
+    "readTimeout": 60
+  },
+  "deploy": true,
+  "deployTargetEnvironmentNameList": ["production"],
+  "reParse": true,
+  "soapToRest": false,
+  "enableWSA": false,
+  "enableWSRM": false,
+  "backendApiVersion": "v2",
+  "maintenanceModeSetting": {
+    "enabled": false,
+    "httpStatusCode": 503,
+    "contentType": "application/json",
+    "message": "Service is under maintenance"
+  }
+}
+```
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "deploymentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployment successful"
+      }
+    ]
+  }
+}
+```
+
+#### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Indicates if the request was successful |
+| deploymentResult | object | Deployment result (if deploy=true) |
+| deploymentResult.success | boolean | Overall deployment success |
+| deploymentResult.deploymentResults | array | Individual environment deployment results |
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "ApiProxy (name: petstore-api) can not be reparsed because it is not exist. First create it!"
+}
+```
+
+**Common Causes:**
+- API Proxy name does not exist (must create first)
+- API Proxy creation type mismatch (cannot change type)
+- Invalid specification URL or file
+- SOAP to REST transformation not allowed (if original was SOAP without transformation)
+- Missing required fields
+
+### Error Response (401 Unauthorized)
+
+```json
+{
+  "error": "unauthorized_client",
+  "error_description": "Invalid token"
+}
+```
+
+### Error Response (404 Not Found)
+
+```json
+{
+  "error": "not_found",
+  "error_description": "Project (MyProject) is not found or user does not have privilege to access it!"
+}
+```
+
+## cURL Example
+
+### Example 1: Update API Proxy from URL
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/url/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "apiProxyName": "petstore-api",
+    "apiProxyDescription": "Updated Petstore API",
+    "apiProxyCreationType": "OPEN_API",
+    "specUrl": "https://petstore.swagger.io/v2/swagger.json",
+    "clientRoute": {
+      "relativePathList": ["/api/v1"]
+    },
+    "reParse": true,
+    "deploy": false
+  }'
+```
+
+### Example 2: Update API Proxy from File
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/file/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -F 'metadata={
+    "apiProxyName": "petstore-api",
+    "apiProxyDescription": "Updated Petstore API",
+    "apiProxyCreationType": "OPEN_API",
+    "reParse": true,
+    "deploy": false
+  }' \
+  -F "specFile=@updated-openapi.json"
+```
+
+### Example 3: Update and Deploy
+
+```bash
+curl -X PUT \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/url/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "apiProxyName": "petstore-api",
+    "apiProxyDescription": "Updated and deployed",
+    "apiProxyCreationType": "OPEN_API",
+    "specUrl": "https://petstore.swagger.io/v2/swagger.json",
+    "clientRoute": {
+      "relativePathList": ["/api/v1"]
+    },
+    "reParse": true,
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"]
+  }'
+```
+
+## Usage Scenarios
+
+### Scenario 1: Update Specification Only
+
+Update the API proxy specification without changing other settings.
+
+**Request Body:**
+```json
+{
+  "apiProxyName": "my-api",
+  "apiProxyCreationType": "OPEN_API",
+  "specUrl": "https://api.example.com/new-openapi.json",
+  "clientRoute": {
+    "relativePathList": ["/api"]
+  },
+  "reParse": true,
+  "deploy": false
+}
+```
+
+**Note:** If `apiProxyDescription` is not provided or empty, the existing description is preserved.
+
+### Scenario 2: Update with New Routing Configuration
+
+Update the API proxy with new backend addresses.
+
+**Request Body:**
+```json
+{
+  "apiProxyName": "my-api",
+  "apiProxyCreationType": "OPEN_API",
+  "specUrl": "https://api.example.com/openapi.json",
+  "clientRoute": {
+    "relativePathList": ["/api"]
+  },
+  "routingInfo": {
+    "routingAddressList": [
+      {
+        "address": "https://new-backend.example.com",
+        "weight": 100
+      }
+    ],
+    "loadBalanceAlgorithm": "WEIGHTED",
+    "connectTimeout": 60,
+    "readTimeout": 120
+  },
+  "reParse": true,
+  "deploy": false
+}
+```
+
+### Scenario 3: Update SOAP API
+
+Update a SOAP API proxy from a new WSDL.
+
+**Request Body:**
+```json
+{
+  "apiProxyName": "soap-service",
+  "apiProxyCreationType": "WSDL",
+  "specUrl": "https://example.com/new-service.wsdl",
+  "clientRoute": {
+    "relativePathList": ["/soap"]
+  },
+  "enableWSA": true,
+  "enableWSRM": false,
+  "reParse": true,
+  "deploy": false
+}
+```
+
+**Important:** The `apiProxyCreationType` must match the original type. You cannot change from SOAP to REST or vice versa.
+
+## Notes and Warnings
+
+- **API Proxy Must Exist**: The API proxy with the specified name must already exist. Use Create endpoints to create new API proxies.
+- **Type Consistency**: The `apiProxyCreationType` must match the original type. You cannot change from SOAP to REST or vice versa.
+- **SOAP to REST**: If the original API proxy was SOAP without protocol transformation, you cannot enable `soapToRest` during update. This must be set during initial creation.
+- **Description Preservation**: If `apiProxyDescription` is empty or not provided, the existing description is preserved.
+- **Client Route**: If `clientRoute` is not provided, the existing client route is preserved.
+- **Deployment**: If `deploy: true`, ensure environments exist and user has deployment permissions.
+- **Reparse**: The `reParse` field must be set to `true` for update operations (PUT endpoints).
+
+## Related Documentation
+
+- [Create API Proxy from URL](./create-api-proxy-from-url.md) - Create new API proxy from URL
+- [Create API Proxy from File](./create-api-proxy-from-file.md) - Create new API proxy from file
+- [Delete API Proxy](./delete-api-proxy.md) - Delete API proxy
+- [List API Proxies](./list-api-proxies.md) - List all API proxies
+
