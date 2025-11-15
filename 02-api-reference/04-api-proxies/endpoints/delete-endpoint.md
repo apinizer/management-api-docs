@@ -102,34 +102,6 @@ curl -X DELETE \
 
 This endpoint does not require a request body.
 
-## Usage Scenarios
-
-### Scenario 1: Delete Endpoint
-
-Delete an endpoint that is no longer needed.
-
-```bash
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Delete Multiple Endpoints
-
-To delete multiple endpoints, make separate DELETE requests for each.
-
-```bash
-# Delete endpoint 1
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id-1/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-
-# Delete endpoint 2
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id-2/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **REST Only**: Endpoints can only be deleted from REST API proxies. SOAP endpoints are managed through WSDL reparsing
@@ -144,4 +116,3 @@ curl -X DELETE \
 - [Get Endpoint](./get-endpoint.md) - Get endpoint details
 - [Create Endpoint](./create-endpoint.md) - Create a new endpoint
 - [Update Endpoint](./update-endpoint.md) - Update an endpoint
-

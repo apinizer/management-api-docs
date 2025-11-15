@@ -142,4 +142,3 @@ This endpoint does not require a request body.
 - [Get Connection](./get-connection.md) - Get detailed connection information
 - [Create Connection](./create-connection.md) - Create a new connection
 - [Email Connection](../connections/connection-email.md) - Email connection details
-

@@ -66,4 +66,3 @@ curl -X PUT \
 
 - [Add Endpoints](./add-endpoints.md) - Add endpoints without removing existing ones
 - [Delete Endpoints](./delete-endpoints.md) - Remove specific endpoints
-

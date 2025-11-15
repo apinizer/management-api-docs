@@ -206,51 +206,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Simple GET Request Caching
-
-Cache GET requests using query parameters as cache key.
-
-**Request Body:**
-```json
-{
-  "name": "GET Cache",
-  "cacheActive": true,
-  "cacheOnlyHttpGetRequests": true,
-  "cacheKeyType": "QUERY_PARAMS",
-  "cacheStorageType": "LOCAL",
-  "capacity": 1000,
-  "ttl": 3600,
-  "handlingAction": "STOP"
-}
-```
-
-### Scenario 2: Distributed Cache with Custom Key
-
-Use distributed cache with custom variables for cache key.
-
-**Request Body:**
-```json
-{
-  "name": "Distributed Cache",
-  "cacheActive": true,
-  "cacheKeyType": "CUSTOM",
-  "cacheStorageType": "DISTRIBUTED",
-  "capacity": 10000,
-  "ttl": 1800,
-  "handlingAction": "CONTINUE",
-  "invalidationRequiresAuthn": true,
-  "variableList": [
-    {
-      "name": "userId",
-      "type": "HEADER",
-      "dataType": "STRING"
-    }
-  ]
-}
-```
-
 ## Notes and Warnings
 
 - **handlingAction**: Required field. `CONTINUE` allows backend call for logging, `STOP` prevents backend call
@@ -266,4 +221,3 @@ Use distributed cache with custom variables for cache key.
 
 - [Update CORS Settings](./update-cors-settings.md) - Update CORS settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

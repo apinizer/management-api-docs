@@ -95,4 +95,3 @@ curl -X GET \
 
 - [List Certificates](./list-certificates.md) - List all certificates
 - [Create Certificate](./create-certificate.md) - Create a new certificate
-

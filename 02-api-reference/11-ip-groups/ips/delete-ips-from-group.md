@@ -92,4 +92,3 @@ curl -X DELETE \
 
 - [Add IPs to Group](./add-ips-to-group.md) - Add IPs to group
 - [Update IPs in Group](./update-ips-in-group.md) - Replace all IPs in group
-

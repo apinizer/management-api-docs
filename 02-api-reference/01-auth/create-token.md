@@ -117,63 +117,6 @@ curl -X POST \
 
 **Important:** When making the actual request, send this data as URL-encoded form data, not as JSON.
 
-## Usage Example
-
-### Python Example
-
-```python
-import requests
-
-url = "https://demo.apinizer.com/apiops/auth/token"
-headers = {
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Accept": "application/json"
-}
-data = {
-    "grant_type": "client_credentials",
-    "client_id": "your_username",
-    "client_secret": "your_password"
-}
-
-response = requests.post(url, headers=headers, data=data)
-token_data = response.json()
-
-if response.status_code == 200:
-    access_token = token_data["access_token"]
-    print(f"Token: {access_token}")
-else:
-    print(f"Error: {token_data.get('error_description')}")
-```
-
-### JavaScript Example
-
-```javascript
-const url = 'https://demo.apinizer.com/apiops/auth/token';
-const headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Accept': 'application/json'
-};
-const data = new URLSearchParams({
-  grant_type: 'client_credentials',
-  client_id: 'your_username',
-  client_secret: 'your_password'
-});
-
-fetch(url, {
-  method: 'POST',
-  headers: headers,
-  body: data
-})
-  .then(response => response.json())
-  .then(data => {
-    if (data.access_token) {
-      console.log('Token:', data.access_token);
-    } else {
-      console.error('Error:', data.error_description);
-    }
-  });
-```
-
 ## Notes and Warnings
 
 - **Security**: Never commit credentials or tokens to version control
@@ -186,4 +129,3 @@ fetch(url, {
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - Detailed authentication information
 - [Using Tokens](../../01-getting-started/authentication.md#using-the-token) - How to use tokens in API requests
-

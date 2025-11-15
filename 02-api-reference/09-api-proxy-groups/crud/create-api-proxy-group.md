@@ -252,50 +252,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Create Group for Payment APIs
-
-Create an API Proxy Group for payment-related APIs.
-
-**Request Body:**
-```json
-{
-  "name": "PaymentAPIGroup",
-  "description": "Payment API Group",
-  "clientRoute": {
-    "relativePathList": [
-      "/api/v1/payment"
-    ],
-    "methodList": ["GET", "POST", "PUT", "DELETE"],
-    "bufferRequest": true,
-    "bufferResponse": true
-  }
-}
-```
-
-### Scenario 2: Create Group with Multiple Paths
-
-Create an API Proxy Group with multiple paths.
-
-**Request Body:**
-```json
-{
-  "name": "MultiPathGroup",
-  "description": "Multi-path API Group",
-  "clientRoute": {
-    "relativePathList": [
-      "/api/v1/users",
-      "/api/v1/products",
-      "/api/v1/orders"
-    ],
-    "methodList": ["ALL"],
-    "bufferRequest": true,
-    "bufferResponse": true
-  }
-}
-```
-
 ## Notes and Warnings
 
 - **Name Uniqueness**: 
@@ -321,4 +277,3 @@ Create an API Proxy Group with multiple paths.
 - [List API Proxy Groups](./list-api-proxy-groups.md) - List all API Proxy Groups
 - [Update API Proxy Group](./update-api-proxy-group.md) - Update an API Proxy Group
 - [Add API Proxy to Group](../api-proxies/add-api-proxy-to-group.md) - Add API Proxies to group
-

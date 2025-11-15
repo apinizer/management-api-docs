@@ -104,28 +104,6 @@ curl -X PATCH \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Hide API Specification
-
-Hide the API specification file from public access.
-
-```bash
-curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/true/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Show API Specification
-
-Make the API specification file publicly accessible.
-
-```bash
-curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/hide-spec-file/false/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **Path Parameter**: `hideSpecFile` must be `true` or `false` (boolean as string in URL)
@@ -139,4 +117,3 @@ curl -X PATCH \
 ## Related Documentation
 
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

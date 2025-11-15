@@ -346,48 +346,6 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ---
 
-## Usage Scenarios
-
-### Scenario 1: Standard SSH Connection
-
-Basic SSH connection with default port.
-
-**Request Body:**
-```json
-{
-  "_class": "linuxscript",
-  "name": "standard-ssh",
-  "description": "Standard SSH connection",
-  "deployToWorker": true,
-  "enabled": true,
-  "hostName": "linux.example.com",
-  "sshPort": 22,
-  "username": "apinizer",
-  "password": "password123"
-}
-```
-
-### Scenario 2: Custom SSH Port
-
-SSH connection with non-standard port.
-
-**Request Body:**
-```json
-{
-  "_class": "linuxscript",
-  "name": "custom-port-ssh",
-  "description": "SSH connection with custom port",
-  "deployToWorker": true,
-  "enabled": true,
-  "hostName": "linux.example.com",
-  "sshPort": 2222,
-  "username": "apinizer",
-  "password": "password123"
-}
-```
-
----
-
 ## Notes and Warnings
 
 - **SSH Protocol**: 
@@ -430,4 +388,3 @@ SSH connection with non-standard port.
 - [Create Connection](../crud/create-connection.md) - General connection creation guide
 - [Update Connection](../crud/update-connection.md) - General connection update guide
 - [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
-

@@ -307,4 +307,3 @@ curl -X PUT \
 - [Create API Proxy from URL](./create-api-proxy-from-url.md) - Create new API Proxy from URL
 - [Update API Proxy](./update-api-proxy.md) - Update API Proxy metadata
 - [Deploy API Proxy](../deployment/deploy.md) - Deploy API Proxy to environments
-

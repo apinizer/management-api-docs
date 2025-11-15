@@ -133,30 +133,6 @@ curl -X GET \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: List All Credentials
-
-Get all credentials for a project.
-
-**Request:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/credentials/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: List Credentials for Admin Project
-
-Get all credentials (including global credentials) for admin project.
-
-**Request:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/admin/credentials/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **Password Security**: 
@@ -186,4 +162,3 @@ curl -X GET \
 - [Create Credential](./create-credential.md) - Create a new credential
 - [Update Credential](./update-credential.md) - Update a credential
 - [Get Granted Access List](../access/get-granted-access-list.md) - Get access list for credential
-

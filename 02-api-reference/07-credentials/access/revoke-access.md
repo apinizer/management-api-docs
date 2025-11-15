@@ -191,4 +191,3 @@ curl -X DELETE \
 - [Get Granted Access List](./get-granted-access-list.md) - Get list of granted accesses
 - [Grant Access](./grant-access.md) - Grant access to API Proxy or Group
 - [Delete Credential](../crud/delete-credential.md) - Delete a credential
-

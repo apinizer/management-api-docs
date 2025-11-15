@@ -162,42 +162,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Rotate Keys
-
-Rotate both API keys for security purposes.
-
-**Request Body:**
-```json
-{
-  "publicKey": "ak_new_public_key_12345",
-  "secretKey": "sk_new_secret_key_67890"
-}
-```
-
-### Scenario 2: Update Public Key Only
-
-Update only the public key (e.g., for rebranding or key format changes).
-
-**Request Body:**
-```json
-{
-  "publicKey": "ak_new_format_12345"
-}
-```
-
-### Scenario 3: Update Secret Key Only
-
-Update only the secret key (e.g., after a security incident).
-
-**Request Body:**
-```json
-{
-  "secretKey": "sk_new_secret_67890"
-}
-```
-
 ## Notes and Warnings
 
 - **Key Format**: 
@@ -234,4 +198,3 @@ Update only the secret key (e.g., after a security incident).
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details (includes current keys)
 - [Update Metadata](./update-metadata.md) - Update API proxy metadata
 - [Create API Proxy](../crud/create-api-proxy-from-url.md) - Create new API proxy
-

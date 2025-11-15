@@ -36,4 +36,3 @@ All endpoints require authentication using a Personal API Access Token.
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
 - [API Proxies API](../04-api-proxies/index.md) - API Proxy management
-

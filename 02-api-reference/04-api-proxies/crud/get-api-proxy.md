@@ -138,4 +138,3 @@ This endpoint does not require a request body.
 - [List API Proxies](./list-api-proxies.md) - List all API proxies
 - [Update API Proxy](./update-api-proxy.md) - Update API proxy
 - [Delete API Proxy](./delete-api-proxy.md) - Delete API proxy
-

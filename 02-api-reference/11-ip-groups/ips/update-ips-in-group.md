@@ -91,4 +91,3 @@ curl -X PUT \
 
 - [Add IPs to Group](./add-ips-to-group.md) - Add IPs without removing existing ones
 - [Delete IPs from Group](./delete-ips-from-group.md) - Remove specific IPs from group
-

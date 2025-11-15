@@ -148,43 +148,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Static Proxy Configuration
-
-Configure a static proxy server for all backend requests.
-
-**Request Body:**
-```json
-{
-  "proxyEnabled": true,
-  "proxyFromHeaderEnabled": false,
-  "proxyHost": "proxy.example.com",
-  "proxyPort": 8080,
-  "proxyAuthorizationNeeded": false
-}
-```
-
-### Scenario 2: Dynamic Proxy from Headers
-
-Configure proxy to read settings from request headers.
-
-**Request Body:**
-```json
-{
-  "proxyEnabled": true,
-  "proxyFromHeaderEnabled": true,
-  "proxyAuthorizationNeeded": true
-}
-```
-
-**Client Request Headers:**
-```
-X-Proxy-Host: proxy.example.com
-X-Proxy-Port: 8080
-X-Proxy-Authorization: Basic base64(username:password)
-```
-
 ## Notes and Warnings
 
 - **Proxy Host/Port**: Required when `proxyEnabled=true` and `proxyFromHeaderEnabled=false`
@@ -197,4 +160,3 @@ X-Proxy-Authorization: Basic base64(username:password)
 
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

@@ -139,37 +139,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: NTLM Authentication for Windows Backend
-
-Enable NTLM authentication to connect to Windows-based backend services.
-
-**Request Body:**
-```json
-{
-  "enabled": true,
-  "domain": "CORP",
-  "username": "apiuser",
-  "password": "secure-password",
-  "workstation": "APINIZER-GW"
-}
-```
-
-### Scenario 2: NTLM without Workstation
-
-Enable NTLM without specifying workstation name.
-
-**Request Body:**
-```json
-{
-  "enabled": true,
-  "domain": "EXAMPLE",
-  "username": "service-account",
-  "password": "password"
-}
-```
-
 ## Notes and Warnings
 
 - **Domain**: Windows domain name (required when enabled=true)
@@ -185,4 +154,3 @@ Enable NTLM without specifying workstation name.
 - [Update mTLS Settings](./update-mtls-settings.md) - Update mTLS settings
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

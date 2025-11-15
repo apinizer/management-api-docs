@@ -138,53 +138,6 @@ curl -X GET \
 
 This endpoint does not require a request body.
 
-## Usage Example
-
-### Python Example
-
-```python
-import requests
-
-url = "https://demo.apinizer.com/apiops/environments/MyProject"
-headers = {
-    "Authorization": "Bearer YOUR_TOKEN"
-}
-
-response = requests.get(url, headers=headers)
-environments_data = response.json()
-
-if response.status_code == 200:
-    environments = environments_data["resultList"]
-    for env in environments:
-        print(f"Environment: {env['name']} - {env['type']} - {env['status']}")
-else:
-    print(f"Error: {environments_data.get('error_description')}")
-```
-
-### JavaScript Example
-
-```javascript
-const url = 'https://demo.apinizer.com/apiops/environments/MyProject';
-const headers = {
-  'Authorization': 'Bearer YOUR_TOKEN'
-};
-
-fetch(url, {
-  method: 'GET',
-  headers: headers
-})
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      data.resultList.forEach(env => {
-        console.log(`Environment: ${env.name} - ${env.type} - ${env.status}`);
-      });
-    } else {
-      console.error('Error:', data.error_description);
-    }
-  });
-```
-
 ## Notes and Warnings
 
 - **Project Membership**: User must be a member of the project to access its environments
@@ -197,4 +150,3 @@ fetch(url, {
 - [List Environments](./list-environments.md) - Get all environments (admin only)
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
 - [Projects API](../02-projects/) - Project management
-

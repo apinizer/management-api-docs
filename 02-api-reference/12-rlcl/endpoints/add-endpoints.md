@@ -250,4 +250,3 @@ curl -X POST \
 - [Update Endpoints](./update-endpoints.md) - Replace all endpoints
 - [Delete Endpoints](./delete-endpoints.md) - Remove endpoints
 - [Endpoint Rate Limit Policy](../../05-policies/policies/policy-endpoint-rate-limit.md) - Related policy documentation
-

@@ -96,4 +96,3 @@ curl -X PUT \
 
 - [Create API Proxy Group](./create-api-proxy-group.md) - Create a new API Proxy Group
 - [Delete API Proxy Group](./delete-api-proxy-group.md) - Delete an API Proxy Group
-

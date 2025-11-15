@@ -50,22 +50,6 @@ curl -X GET \
   "https://demo.apinizer.com/apiops/test/healthcheck"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Load Balancer Health Check
-
-Use this endpoint for load balancer health checks.
-
-**Request:**
-```bash
-curl -X GET "https://demo.apinizer.com/apiops/test/healthcheck"
-```
-
-**Response:**
-```
-OK
-```
-
 ## Notes and Warnings
 
 - **No Authentication**: 
@@ -78,4 +62,3 @@ OK
 ## Related Documentation
 
 - [Secure Hello](./secure-hello.md) - Test authentication
-

@@ -113,4 +113,3 @@ curl -X GET \
 
 - [Deploy API Proxy Group](./deploy-api-proxy-group.md) - Deploy group to environment
 - [Undeploy API Proxy Group](./undeploy-api-proxy-group.md) - Undeploy group from environment
-

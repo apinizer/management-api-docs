@@ -102,4 +102,3 @@ curl -X DELETE \
 
 - [Deploy API Proxy Group](./deploy-api-proxy-group.md) - Deploy group to environment
 - [List Environments](./list-environments.md) - List environments for group
-

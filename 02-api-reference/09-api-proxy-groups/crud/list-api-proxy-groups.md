@@ -120,4 +120,3 @@ curl -X GET \
 
 - [Create API Proxy Group](./create-api-proxy-group.md) - Create a new API Proxy Group
 - [Get Environments](../deployment/list-environments.md) - Get environments for a group
-

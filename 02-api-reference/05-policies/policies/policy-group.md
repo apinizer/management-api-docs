@@ -335,4 +335,3 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 - [Add Policy](../crud/add-policy.md) - General policy addition guide
 - [Update Policy](../crud/update-policy.md) - General policy update guide
 - [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-

@@ -61,4 +61,3 @@ All endpoints require authentication using a Personal API Access Token.
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
 - [Policies API](../05-policies/) - Policy management
 - [Connections API](../06-connections/) - Connection management
-

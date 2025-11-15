@@ -218,48 +218,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Create Connection Without Deployment
-
-Create a connection but don't deploy to worker immediately.
-
-**Request Body:**
-```json
-{
-  "_class": "email",
-  "name": "my-email-connection",
-  "description": "Email connection",
-  "deployToWorker": false,
-  "enabled": true,
-  "host": "smtp.example.com",
-  "port": 587,
-  "auth": true,
-  "username": "user@example.com",
-  "password": "password"
-}
-```
-
-### Scenario 2: Create Disabled Connection
-
-Create a connection but keep it disabled.
-
-**Request Body:**
-```json
-{
-  "_class": "database",
-  "name": "my-db-connection",
-  "description": "Database connection",
-  "deployToWorker": true,
-  "enabled": false,
-  "host": "localhost",
-  "port": 5432,
-  "databaseName": "mydb",
-  "username": "dbuser",
-  "password": "dbpassword"
-}
-```
-
 ## Notes and Warnings
 
 - **Name Matching**: Connection name in path parameter must match the `name` field in the request body (case-insensitive)
@@ -278,4 +236,3 @@ Create a connection but keep it disabled.
 - [Email Connection](../connections/connection-email.md) - Email connection details
 - [Database Connection](../connections/connection-database.md) - Database connection details
 - [Kafka Connection](../connections/connection-kafka.md) - Kafka connection details
-

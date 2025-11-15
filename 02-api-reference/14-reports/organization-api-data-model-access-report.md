@@ -118,4 +118,3 @@ curl -X GET \
 
 - [API Report](./api-report.md) - API Proxy report
 - [Update Metadata](../04-api-proxies/settings/update-metadata.md) - Update API Proxy sharing type
-

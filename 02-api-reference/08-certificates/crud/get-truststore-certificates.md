@@ -115,4 +115,3 @@ curl -X GET \
 
 - [List Certificates](./list-certificates.md) - List all certificates
 - [Get Certificate](./get-certificate.md) - Get a specific certificate
-

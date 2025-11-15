@@ -134,33 +134,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Disable Routing for Maintenance
-
-Temporarily disable routing during maintenance.
-
-**Request Body:**
-```json
-{
-  "routingEnabled": false
-}
-```
-
-### Scenario 2: Enable Mirroring for Testing
-
-Enable mirroring to test new backend without affecting production.
-
-**Request Body:**
-```json
-{
-  "routingEnabled": true,
-  "mirrorEnabled": true
-}
-```
-
-**Note:** Configure mirror backend address separately (via routing settings).
-
 ## Notes and Warnings
 
 - **Routing Disabled**: When `routingEnabled=false`, requests are not forwarded to backend
@@ -176,4 +149,3 @@ Enable mirroring to test new backend without affecting production.
 - [Update Routing Addresses](./update-routing-addresses.md) - Update routing addresses
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

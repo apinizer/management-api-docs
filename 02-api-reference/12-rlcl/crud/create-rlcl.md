@@ -190,4 +190,3 @@ curl -X POST \
 - [Update RLCL](./update-rlcl.md) - Update an RLCL
 - [Add Credentials](../credentials/add-credentials.md) - Add credentials to RLCL
 - [Add Endpoints](../endpoints/add-endpoints.md) - Add endpoints to RLCL
-

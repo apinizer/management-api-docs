@@ -195,58 +195,6 @@ curl -X PUT \
   ]'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Grant Access to API Proxy
-
-Grant access to a single API Proxy.
-
-**Request Body:**
-```json
-[
-  {
-    "name": "PaymentAPI",
-    "type": "API_PROXY"
-  }
-]
-```
-
-### Scenario 2: Grant Access to API Proxy Group
-
-Grant access to an API Proxy Group (includes all APIs in the group).
-
-**Request Body:**
-```json
-[
-  {
-    "name": "PaymentAPIGroup",
-    "type": "API_PROXY_GROUP"
-  }
-]
-```
-
-### Scenario 3: Grant Multiple Accesses
-
-Grant access to multiple resources at once.
-
-**Request Body:**
-```json
-[
-  {
-    "name": "MyAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "PaymentAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "MyAPIGroup",
-    "type": "API_PROXY_GROUP"
-  }
-]
-```
-
 ## Notes and Warnings
 
 - **Array Format**: 
@@ -274,4 +222,3 @@ Grant access to multiple resources at once.
 - [Get Granted Access List](./get-granted-access-list.md) - Get list of granted accesses
 - [Revoke Access](./revoke-access.md) - Revoke access from API Proxy or Group
 - [List Credentials](../crud/list-credentials.md) - List all credentials
-

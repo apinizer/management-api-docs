@@ -60,4 +60,3 @@ curl -X DELETE \
 
 - [Add Endpoints](./add-endpoints.md) - Add endpoints to RLCL
 - [Update Endpoints](./update-endpoints.md) - Replace all endpoints
-

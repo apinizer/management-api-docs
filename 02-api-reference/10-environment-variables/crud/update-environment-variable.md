@@ -84,4 +84,3 @@ curl -X PUT \
 
 - [Create Environment Variable](./create-environment-variable.md) - Create a new environment variable
 - [Delete Environment Variable](./delete-environment-variable.md) - Delete an environment variable
-

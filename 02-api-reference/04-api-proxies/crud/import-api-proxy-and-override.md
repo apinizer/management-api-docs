@@ -294,47 +294,6 @@ curl -X PUT \
   -F "apiProxyExportFile=@apiProxyExportFile.zip"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Override Existing API Proxy
-
-Replace an existing API Proxy with an imported version.
-
-**Command:**
-```bash
-curl -X PUT \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "metadata={\"deploy\":false}" \
-  -F "apiProxyExportFile=@apiProxyExportFile.zip"
-```
-
-### Scenario 2: Import and Deploy
-
-Import an API Proxy and deploy it immediately to specific environments.
-
-**Command:**
-```bash
-curl -X PUT \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "metadata={\"deploy\":true,\"deployTargetEnvironmentNameList\":[\"production\",\"staging\"]}" \
-  -F "apiProxyExportFile=@apiProxyExportFile.zip"
-```
-
-### Scenario 3: Import with Routing
-
-Import an API Proxy and configure routing addresses.
-
-**Command:**
-```bash
-curl -X PUT \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F 'metadata={"deploy":false,"routing":{"algorithm":"ROUND_ROBIN","addressList":[{"address":"https://backend1.example.com","weight":1},{"address":"https://backend2.example.com","weight":1}]}}' \
-  -F "apiProxyExportFile=@apiProxyExportFile.zip"
-```
-
 ## Notes and Warnings
 
 - **Override Behavior**: 
@@ -391,4 +350,3 @@ curl -X PUT \
 - [Import API Proxy (Without Override)](./import-api-proxy.md) - Import API Proxy without override
 - [Deploy API Proxy](../deployment/deploy.md) - Deploy API Proxy to environments
 - [Update Routing Addresses](../settings/update-routing-addresses.md) - Update routing configuration
-

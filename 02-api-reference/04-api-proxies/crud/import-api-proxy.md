@@ -133,51 +133,6 @@ curl -X POST \
   -F "apiProxyExportFile=@my-api-export.zip"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Import New API Proxy
-
-Import an API Proxy into a project without overriding existing ones.
-
-**Command:**
-```bash
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "apiProxyExportFile=@apiProxyExportFile.zip"
-```
-
-### Scenario 2: Import Multiple API Proxies
-
-Import multiple API Proxies from different export files.
-
-**Command:**
-```bash
-# Import first API Proxy
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "apiProxyExportFile=@api1-export.zip"
-
-# Import second API Proxy
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "apiProxyExportFile=@api2-export.zip"
-```
-
-### Scenario 3: Import from Backup
-
-Restore an API Proxy from a backup export file.
-
-**Command:**
-```bash
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/import/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "apiProxyExportFile=@backup-20240101.zip"
-```
-
 ## Notes and Warnings
 
 - **No Override**: 
@@ -220,4 +175,3 @@ curl -X POST \
 - [Export API Proxy](./export-api-proxy.md) - Export API Proxy to ZIP file
 - [Import API Proxy (With Override)](./import-api-proxy-and-override.md) - Import API Proxy with override option
 - [List API Proxies](./list-api-proxies.md) - List all API Proxies in project
-

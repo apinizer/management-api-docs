@@ -162,44 +162,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: High-Performance Connection Settings
-
-Configure connection settings for high-performance scenarios.
-
-**Request Body:**
-```json
-{
-  "connectionSettingsEnabled": true,
-  "connectTimeout": 10,
-  "readTimeout": 30,
-  "connectionRequestTimeout": 10,
-  "connectionPoolManagementType": "CUSTOM",
-  "customConnectionPoolSize": 50,
-  "retryCount": 0,
-  "failoverRetryCount": 0
-}
-```
-
-### Scenario 2: Resilient Connection Settings
-
-Configure connection settings with retries and failover.
-
-**Request Body:**
-```json
-{
-  "connectionSettingsEnabled": true,
-  "connectTimeout": 30,
-  "readTimeout": 60,
-  "retryCount": 5,
-  "failoverRetryCount": 3,
-  "ignoreRoutingError": false,
-  "redirectsEnabled": true,
-  "maxRedirects": 10
-}
-```
-
 ## Notes and Warnings
 
 - **Timeouts**: All timeout values are in seconds
@@ -215,4 +177,3 @@ Configure connection settings with retries and failover.
 - [Update Circuit Breaker Settings](./update-circuit-breaker-settings.md) - Update circuit breaker settings
 - [Update Routing Addresses](./update-routing-addresses.md) - Update routing addresses
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

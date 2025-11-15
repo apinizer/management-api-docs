@@ -57,4 +57,3 @@ curl -X DELETE \
 
 - [Add Credentials](./add-credentials.md) - Add credentials to RLCL
 - [Update Credentials](./update-credentials.md) - Replace all credentials
-

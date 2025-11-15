@@ -146,40 +146,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Count-Based Circuit Breaker
-
-Open circuit breaker after 5 errors in 60 seconds.
-
-**Request Body:**
-```json
-{
-  "circuitBreakerEnabled": true,
-  "errorWindow": 60,
-  "errorThresholdValue": 5,
-  "enumErrorThresholdType": "COUNT",
-  "sleepWindow": 30,
-  "halfOpenEnabled": true
-}
-```
-
-### Scenario 2: Percentage-Based Circuit Breaker
-
-Open circuit breaker if error rate exceeds 50% in 120 seconds.
-
-**Request Body:**
-```json
-{
-  "circuitBreakerEnabled": true,
-  "errorWindow": 120,
-  "errorThresholdValue": 50,
-  "enumErrorThresholdType": "PERCENT",
-  "sleepWindow": 60,
-  "halfOpenEnabled": true
-}
-```
-
 ## Notes and Warnings
 
 - **Error Window**: Time window in seconds during which errors are counted
@@ -193,4 +159,3 @@ Open circuit breaker if error rate exceeds 50% in 120 seconds.
 
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

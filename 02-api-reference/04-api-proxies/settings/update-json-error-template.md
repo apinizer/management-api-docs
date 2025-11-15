@@ -154,33 +154,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Standard Error Format
-
-Use standard error format with fault object.
-
-**Request Body:**
-```json
-{
-  "jsonErrorResponseTemplateActive": true,
-  "jsonValue": "{\n  \"fault\": {\n    \"correlationId\": \"#CORRELATIONID#\",\n    \"faultCode\": \"#FAULTCODE#\",\n    \"faultString\": \"#FAULTMESSAGE#\",\n    \"faultStatusCode\": \"#FAULTSTATUSCODE#\"\n  }\n}"
-}
-```
-
-### Scenario 2: Custom Error Format
-
-Use custom error format matching your API standards.
-
-**Request Body:**
-```json
-{
-  "jsonErrorResponseTemplateActive": true,
-  "jsonValue": "{\n  \"error\": {\n    \"requestId\": \"#CORRELATIONID#\",\n    \"code\": \"#FAULTCODE#\",\n    \"message\": \"#FAULTMESSAGE#\",\n    \"httpStatus\": #FAULTSTATUSCODE#\n  }\n}",
-  "contentType": "application/json;charset=UTF-8"
-}
-```
-
 ## Notes and Warnings
 
 - **Template Variables**: Use `#VARIABLE#` syntax for runtime replacement
@@ -195,4 +168,3 @@ Use custom error format matching your API standards.
 
 - [Update XML Error Template](./update-xml-error-template.md) - Update XML error template
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

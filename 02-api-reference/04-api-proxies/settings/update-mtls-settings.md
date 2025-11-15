@@ -155,36 +155,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Secure Backend Connection with mTLS
-
-Enable mTLS for secure backend communication with client certificate.
-
-**Request Body:**
-```json
-{
-  "enabled": true,
-  "keyStoreId": "client-cert-keystore",
-  "trustStoreId": "server-cert-truststore",
-  "supportedProtocolList": ["TLS_1_2", "TLS_1_3"],
-  "hostnameVerifierType": "STRICT"
-}
-```
-
-### Scenario 2: mTLS with Default Protocols
-
-Enable mTLS with all supported protocols (default).
-
-**Request Body:**
-```json
-{
-  "enabled": true,
-  "keyStoreId": "keystore-id",
-  "hostnameVerifierType": "DEFAULT"
-}
-```
-
 ## Notes and Warnings
 
 - **KeyStore**: Required when `enabled=true`. Contains client certificate and private key
@@ -200,4 +170,3 @@ Enable mTLS with all supported protocols (default).
 - [Update NTLM Settings](./update-ntlm-settings.md) - Update NTLM settings
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

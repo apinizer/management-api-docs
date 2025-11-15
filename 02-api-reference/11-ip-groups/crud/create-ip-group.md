@@ -110,32 +110,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Create IP Group for Allowed IPs
-
-Create an IP Group for allowed IP addresses.
-
-**Request Body:**
-```json
-{
-  "name": "AllowedIPs",
-  "description": "Allowed IP addresses for API access"
-}
-```
-
-### Scenario 2: Create IP Group for Blocked IPs
-
-Create an IP Group for blocked IP addresses.
-
-**Request Body:**
-```json
-{
-  "name": "BlockedIPs",
-  "description": "Blocked IP addresses"
-}
-```
-
 ## Notes and Warnings
 
 - **Name Uniqueness**: 
@@ -152,4 +126,3 @@ Create an IP Group for blocked IP addresses.
 
 - [Update IP Group](./update-ip-group.md) - Update an IP Group
 - [Add IPs to Group](../ips/add-ips-to-group.md) - Add IP addresses to group
-

@@ -30,4 +30,3 @@ All endpoints require authentication using a Personal API Access Token.
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
 - [Black IP Policy](../05-policies/policies/policy-black-ip.md) - Use IP Groups in Black IP policy
 - [White IP Policy](../05-policies/policies/policy-white-ip.md) - Use IP Groups in White IP policy
-

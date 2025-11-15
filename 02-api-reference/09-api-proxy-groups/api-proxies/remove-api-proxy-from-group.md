@@ -95,4 +95,3 @@ curl -X DELETE \
 
 - [Add API Proxy to Group](./add-api-proxy-to-group.md) - Add an API Proxy to group
 - [List API Proxy Groups](../crud/list-api-proxy-groups.md) - List all API Proxy Groups
-

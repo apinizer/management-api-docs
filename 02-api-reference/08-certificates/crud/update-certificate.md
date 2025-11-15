@@ -77,4 +77,3 @@ curl -X PUT \
 
 - [Create Certificate](./create-certificate.md) - Create a new certificate
 - [Get Certificate](./get-certificate.md) - Get certificate details
-

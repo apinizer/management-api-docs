@@ -158,33 +158,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Standard SOAP Fault Template
-
-Use standard SOAP fault format.
-
-**Request Body:**
-```json
-{
-  "xmlErrorResponseTemplateActive": true,
-  "xmlValue": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <soap:Fault>\n      <correlationId>#CORRELATIONID#</correlationId>\n      <faultCode>#FAULTCODE#</faultCode>\n      <faultString>#FAULTMESSAGE#</faultString>\n      <faultStatusCode>#FAULTSTATUSCODE#</faultStatusCode>\n    </soap:Fault>\n  </soap:Body>\n</soap:Envelope>"
-}
-```
-
-### Scenario 2: Custom XML Error Format
-
-Use custom XML format for error responses.
-
-**Request Body:**
-```json
-{
-  "xmlErrorResponseTemplateActive": true,
-  "xmlValue": "<errorResponse>\n  <requestId>#CORRELATIONID#</requestId>\n  <error>\n    <code>#FAULTCODE#</code>\n    <message>#FAULTMESSAGE#</message>\n    <httpStatus>#FAULTSTATUSCODE#</httpStatus>\n  </error>\n</errorResponse>",
-  "contentType": "application/xml;charset=UTF-8"
-}
-```
-
 ## Notes and Warnings
 
 - **Template Variables**: Use `#VARIABLE#` syntax for runtime replacement
@@ -199,4 +172,3 @@ Use custom XML format for error responses.
 
 - [Update JSON Error Template](./update-json-error-template.md) - Update JSON error template
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

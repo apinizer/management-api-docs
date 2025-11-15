@@ -52,4 +52,3 @@ The current OpenAPI specification version is **3.0**.
 - [Authentication](../01-getting-started/authentication.md) - How to authenticate API requests
 - [Enum Reference](./enum-reference.md) - Enumeration values used in the API
 - [Glossary](./glossary.md) - Terms and definitions
-

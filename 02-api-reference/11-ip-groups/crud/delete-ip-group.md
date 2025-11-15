@@ -79,4 +79,3 @@ curl -X DELETE \
 
 - [Create IP Group](./create-ip-group.md) - Create a new IP Group
 - [Update IP Group](./update-ip-group.md) - Update an IP Group
-

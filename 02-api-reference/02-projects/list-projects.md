@@ -110,53 +110,6 @@ curl -X GET \
 
 This endpoint does not require a request body.
 
-## Usage Example
-
-### Python Example
-
-```python
-import requests
-
-url = "https://demo.apinizer.com/apiops/projects/"
-headers = {
-    "Authorization": "Bearer YOUR_TOKEN"
-}
-
-response = requests.get(url, headers=headers)
-projects_data = response.json()
-
-if projects_data.get("status") == "SUCCESS":
-    projects = projects_data["resultList"]
-    for project in projects:
-        print(f"Project: {project['name']} - {project['description']}")
-else:
-    print(f"Error: {projects_data.get('error_description')}")
-```
-
-### JavaScript Example
-
-```javascript
-const url = 'https://demo.apinizer.com/apiops/projects/';
-const headers = {
-  'Authorization': 'Bearer YOUR_TOKEN'
-};
-
-fetch(url, {
-  method: 'GET',
-  headers: headers
-})
-  .then(response => response.json())
-  .then(data => {
-    if (data.status === 'SUCCESS') {
-      data.resultList.forEach(project => {
-        console.log(`Project: ${project.name} - ${project.description}`);
-      });
-    } else {
-      console.error('Error:', data.error_description);
-    }
-  });
-```
-
 ## Notes and Warnings
 
 - **Filtered Results**: Only projects where the user is a member are returned
@@ -168,4 +121,3 @@ fetch(url, {
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
-

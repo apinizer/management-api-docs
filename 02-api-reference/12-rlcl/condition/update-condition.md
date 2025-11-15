@@ -60,4 +60,3 @@ curl -X PUT \
 
 - [Add Condition](./add-condition.md) - Add condition to RLCL
 - [Delete Condition](./delete-condition.md) - Remove condition from RLCL
-

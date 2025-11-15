@@ -128,44 +128,6 @@ curl -X GET \
   --output my-api-export.zip
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Backup API Proxy
-
-Export an API Proxy for backup purposes.
-
-**Command:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/export/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  --output backup-$(date +%Y%m%d).zip
-```
-
-### Scenario 2: Export for Migration
-
-Export an API Proxy to migrate it to another environment or project.
-
-**Command:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/export/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  --output migration-export.zip
-```
-
-### Scenario 3: Version Control
-
-Export an API Proxy for version control purposes.
-
-**Command:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/export/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  --output api-proxy-v1.0.0.zip
-```
-
 ## Notes and Warnings
 
 - **Export Format**: 
@@ -203,4 +165,3 @@ curl -X GET \
 - [Import API Proxy (Without Override)](./import-api-proxy.md) - Import API Proxy without overriding existing one
 - [Import API Proxy (With Override)](./import-api-proxy-and-override.md) - Import API Proxy with override option
 - [Get API Proxy](./get-api-proxy.md) - Get API Proxy details
-

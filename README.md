@@ -104,4 +104,3 @@ See [Authentication Guide](./01-getting-started/authentication.md) for details o
 ## 📧 Support
 
 For questions or issues, please contact [support information].
-

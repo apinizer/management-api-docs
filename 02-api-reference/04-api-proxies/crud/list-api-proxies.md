@@ -140,4 +140,3 @@ This endpoint does not require a request body.
 
 - [Get API Proxy](./get-api-proxy.md) - Get detailed API proxy information
 - [Create API Proxy from URL](./create-api-proxy-from-url.md) - Create a new API proxy
-

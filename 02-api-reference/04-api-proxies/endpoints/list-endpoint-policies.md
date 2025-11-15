@@ -152,4 +152,3 @@ This endpoint does not require a request body.
 - [List Endpoints](./list-endpoints.md) - List all endpoints
 - [Get Endpoint](./get-endpoint.md) - Get endpoint details (without policies)
 - [Policies API](../05-policies/) - Policy management API
-

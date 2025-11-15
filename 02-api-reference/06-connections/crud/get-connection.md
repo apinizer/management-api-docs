@@ -148,4 +148,3 @@ This endpoint does not require a request body.
 - [Update Connection](./update-connection.md) - Update a connection
 - [Delete Connection](./delete-connection.md) - Delete a connection
 - [Email Connection](../connections/connection-email.md) - Email connection details
-

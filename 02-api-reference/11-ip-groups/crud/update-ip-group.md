@@ -111,4 +111,3 @@ curl -X PUT \
 
 - [Create IP Group](./create-ip-group.md) - Create a new IP Group
 - [Delete IP Group](./delete-ip-group.md) - Delete an IP Group
-

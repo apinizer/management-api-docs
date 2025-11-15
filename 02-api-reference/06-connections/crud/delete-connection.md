@@ -106,34 +106,6 @@ curl -X DELETE \
 
 This endpoint does not require a request body.
 
-## Usage Scenarios
-
-### Scenario 1: Delete Connection
-
-Delete a connection that is no longer needed.
-
-```bash
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/connections/old-connection/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Delete Multiple Connections
-
-To delete multiple connections, make separate DELETE requests for each connection.
-
-```bash
-# Delete connection 1
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/connections/connection1/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-
-# Delete connection 2
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/connections/connection2/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **Permanent Deletion**: Connection deletion is permanent and cannot be undone
@@ -148,4 +120,3 @@ curl -X DELETE \
 - [Get Connection](./get-connection.md) - Get connection details
 - [Create Connection](./create-connection.md) - Create a new connection
 - [Update Connection](./update-connection.md) - Update a connection
-

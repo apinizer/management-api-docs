@@ -169,38 +169,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Add Custom Endpoint
-
-Add a custom endpoint that wasn't in the original OpenAPI specification.
-
-**Request Body:**
-```json
-{
-  "name": "/api/custom-endpoint",
-  "description": "Custom endpoint",
-  "httpMethod": "GET",
-  "backendResourceUrl": "/custom",
-  "backendHttpMethod": "GET"
-}
-```
-
-### Scenario 2: Add Endpoint with Different Backend URL
-
-Create an endpoint that routes to a different backend URL.
-
-**Request Body:**
-```json
-{
-  "name": "/api/external-data",
-  "description": "Fetch external data",
-  "httpMethod": "GET",
-  "backendResourceUrl": "https://external-api.com/data",
-  "backendHttpMethod": "GET"
-}
-```
-
 ## Notes and Warnings
 
 - **REST Only**: Endpoints can only be added to REST API proxies. SOAP endpoints are defined in the WSDL
@@ -215,4 +183,3 @@ Create an endpoint that routes to a different backend URL.
 - [Get Endpoint](./get-endpoint.md) - Get endpoint details
 - [Update Endpoint](./update-endpoint.md) - Update an endpoint
 - [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
-

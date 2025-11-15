@@ -125,30 +125,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Temporarily Disable Endpoint
-
-Disable an endpoint for maintenance or troubleshooting.
-
-**Request Body:**
-```json
-{
-  "active": false
-}
-```
-
-### Scenario 2: Re-enable Endpoint
-
-Re-enable a previously disabled endpoint.
-
-**Request Body:**
-```json
-{
-  "active": true
-}
-```
-
 ## Notes and Warnings
 
 - **Endpoint ID**: Use [List Endpoints](./list-endpoints.md) to get endpoint IDs
@@ -162,4 +138,3 @@ Re-enable a previously disabled endpoint.
 - [Get Endpoint](./get-endpoint.md) - Get endpoint details
 - [Update Endpoint](./update-endpoint.md) - Update endpoint configuration
 - [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
-

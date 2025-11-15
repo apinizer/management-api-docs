@@ -211,47 +211,6 @@ curl -X PUT \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Update Secret Fields
-
-Update password or API key without changing other fields.
-
-**Request Body:**
-```json
-{
-  "_class": "email",
-  "id": "connection-id",
-  "name": "my-email-connection",
-  "description": "Email connection",
-  "deployToWorker": true,
-  "enabled": true,
-  "host": "smtp.gmail.com",
-  "port": 587,
-  "auth": true,
-  "username": "user@example.com",
-  "password": "new-password"
-}
-```
-
-### Scenario 2: Update Connection Type-Specific Fields
-
-Update only connection-specific fields (e.g., Kafka topic name).
-
-**Request Body:**
-```json
-{
-  "_class": "kafka",
-  "id": "connection-id",
-  "name": "my-kafka-connection",
-  "description": "Updated Kafka connection",
-  "deployToWorker": true,
-  "enabled": true,
-  "topicName": "new-topic-name",
-  "bootstrapServers": "localhost:9092"
-}
-```
-
 ## Notes and Warnings
 
 - **ID Required**: The `id` field is required for update operations. Get the connection first to obtain the ID.
@@ -268,4 +227,3 @@ Update only connection-specific fields (e.g., Kafka topic name).
 - [Create Connection](./create-connection.md) - Create a new connection
 - [Delete Connection](./delete-connection.md) - Delete a connection
 - [Email Connection](../connections/connection-email.md) - Email connection details
-

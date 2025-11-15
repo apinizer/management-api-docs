@@ -255,51 +255,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Override API Proxy Cache for Specific Endpoint
-
-Override API Proxy-level cache settings for a specific endpoint that needs different caching behavior.
-
-**Request Body:**
-```json
-{
-  "name": "Endpoint Override Cache",
-  "cacheActive": true,
-  "cacheOnlyHttpGetRequests": false,
-  "cacheKeyType": "QUERY_PARAMS",
-  "cacheStorageType": "DISTRIBUTED",
-  "capacity": 2000,
-  "ttl": 1800,
-  "handlingAction": "STOP"
-}
-```
-
-### Scenario 2: Cache All Methods for Specific Endpoint
-
-Enable caching for all HTTP methods (not just GET) for a specific endpoint.
-
-**Request Body:**
-```json
-{
-  "name": "All Methods Cache",
-  "cacheActive": true,
-  "cacheOnlyHttpGetRequests": false,
-  "cacheKeyType": "CUSTOM",
-  "cacheStorageType": "LOCAL",
-  "capacity": 1000,
-  "ttl": 3600,
-  "handlingAction": "CONTINUE",
-  "variableList": [
-    {
-      "name": "requestBodyHash",
-      "type": "BODY",
-      "dataType": "STRING"
-    }
-  ]
-}
-```
-
 ## Notes and Warnings
 
 - **Endpoint-Level Override**: 
@@ -339,4 +294,3 @@ Enable caching for all HTTP methods (not just GET) for a specific endpoint.
 - [Get Endpoint](./get-endpoint.md) - Get endpoint details
 - [List Endpoints](./list-endpoints.md) - List all endpoints
 - [Update Endpoint](./update-endpoint.md) - Update endpoint configuration
-

@@ -228,4 +228,3 @@ curl -X POST \
 - [Update Condition](./update-condition.md) - Update condition in RLCL
 - [Delete Condition](./delete-condition.md) - Remove condition from RLCL
 - [Policy Conditions](../../05-policies/policies/policy-api-based-throttling.md#policyconditiondto) - Detailed condition documentation
-

@@ -181,46 +181,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Public API with CORS
-
-Enable CORS for a public API that needs to be accessed from web browsers.
-
-**Request Body:**
-```json
-{
-  "name": "Public API CORS",
-  "corsActive": true,
-  "allowOriginList": ["*"],
-  "allowMethodList": ["GET", "POST"],
-  "allowHeaderList": ["*"],
-  "allowCredentials": "false",
-  "maxAge": 3600
-}
-```
-
-### Scenario 2: Private API with Specific Origins
-
-Enable CORS for a private API that should only be accessed from specific domains.
-
-**Request Body:**
-```json
-{
-  "name": "Private API CORS",
-  "corsActive": true,
-  "allowOriginList": [
-    "https://app.example.com",
-    "https://admin.example.com"
-  ],
-  "allowMethodList": ["GET", "POST", "PUT", "DELETE"],
-  "allowHeaderList": ["Content-Type", "Authorization", "X-API-Key"],
-  "exposeHeaderList": ["X-Request-ID", "X-Rate-Limit"],
-  "allowCredentials": "true",
-  "maxAge": 86400
-}
-```
-
 ## Notes and Warnings
 
 - **Wildcard Origin**: Using `"*"` in `allowOriginList` allows all origins but cannot be used with `allowCredentials: "true"`
@@ -234,4 +194,3 @@ Enable CORS for a private API that should only be accessed from specific domains
 
 - [Update Cache Settings](./update-cache-settings.md) - Update cache settings
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

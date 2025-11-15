@@ -122,34 +122,6 @@ curl -X DELETE \
 
 This endpoint does not require a request body.
 
-## Usage Scenarios
-
-### Scenario 1: Delete API Proxy
-
-Delete an API proxy that is no longer needed.
-
-```bash
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/old-api/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Delete Multiple API Proxies
-
-To delete multiple API proxies, make separate DELETE requests for each.
-
-```bash
-# Delete API proxy 1
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/api1/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-
-# Delete API proxy 2
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/api2/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **Permanent Deletion**: API Proxy deletion is permanent and cannot be undone
@@ -165,4 +137,3 @@ curl -X DELETE \
 - [Get API Proxy](./get-api-proxy.md) - Get API proxy details
 - [Create API Proxy from URL](./create-api-proxy-from-url.md) - Create a new API proxy
 - [Update API Proxy](./update-api-proxy.md) - Update an API proxy
-

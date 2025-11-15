@@ -121,34 +121,6 @@ curl -X DELETE \
 
 This endpoint does not require a request body.
 
-## Usage Scenarios
-
-### Scenario 1: Undeploy from Single Environment
-
-Undeploy an API proxy from a single environment.
-
-```bash
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/production/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Undeploy from Multiple Environments
-
-To undeploy from multiple environments, make separate DELETE requests for each environment.
-
-```bash
-# Undeploy from production
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/production/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-
-# Undeploy from staging
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/staging/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **API Proxy Must Exist**: The API proxy must exist before undeployment
@@ -163,4 +135,3 @@ curl -X DELETE \
 - [Deploy API Proxy](./deploy.md) - Deploy API proxy to environment
 - [Deployment Status](./deployment-status.md) - Check deployment status
 - [List API Proxies](../crud/list-api-proxies.md) - List all API proxies
-

@@ -180,40 +180,6 @@ curl -X POST \
   -F "pemEncodedFile=@certificate.pem"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Create Certificate for Production
-
-Create a certificate and deploy it to production environment.
-
-**Command:**
-```bash
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/certificates/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "certificateName=production-cert" \
-  -F "alias=prod-cert-alias" \
-  -F "certificateDescription=Production SSL certificate" \
-  -F "environmentList=production" \
-  -F "pemEncodedFile=@production-cert.pem"
-```
-
-### Scenario 2: Create Certificate for Multiple Environments
-
-Create a certificate and deploy it to multiple environments.
-
-**Command:**
-```bash
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/certificates/" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -F "certificateName=shared-certificate" \
-  -F "alias=shared-cert-alias" \
-  -F "certificateDescription=Shared SSL certificate" \
-  -F "environmentList=production,staging" \
-  -F "pemEncodedFile=@shared-cert.pem"
-```
-
 ## Notes and Warnings
 
 - **Certificate Name**: 
@@ -248,4 +214,3 @@ curl -X POST \
 - [List Certificates](./list-certificates.md) - List all certificates
 - [Get Certificate](./get-certificate.md) - Get a specific certificate
 - [Update Certificate](./update-certificate.md) - Update a certificate
-

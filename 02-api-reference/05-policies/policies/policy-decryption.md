@@ -624,4 +624,3 @@ curl -X DELETE \
 - [Update Policy](../crud/update-policy.md) - Update a policy
 - [Delete Policy](../crud/delete-policy.md) - Delete a policy
 - [Encryption Policy](./policy-encryption.md) - Encrypt data
-

@@ -17,4 +17,3 @@ Most endpoints require authentication using a Personal API Access Token. Healthc
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
-

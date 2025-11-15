@@ -160,45 +160,6 @@ curl -X PATCH \
   ]'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Single Backend Address
-
-Configure a single backend address.
-
-**Request Body:**
-```json
-[
-  {
-    "address": "https://api.example.com"
-  }
-]
-```
-
-### Scenario 2: Load Balanced Backends
-
-Configure multiple backend addresses with weights for load balancing.
-
-**Request Body:**
-```json
-[
-  {
-    "address": "https://backend1.example.com",
-    "weight": 100
-  },
-  {
-    "address": "https://backend2.example.com",
-    "weight": 50
-  },
-  {
-    "address": "https://backend3.example.com",
-    "weight": 25
-  }
-]
-```
-
-**Note:** Ensure load balancing algorithm is set to `WEIGHTED` (via routing settings).
-
 ## Notes and Warnings
 
 - **Address Format**: Must be a valid URL (http:// or https://)
@@ -213,4 +174,3 @@ Configure multiple backend addresses with weights for load balancing.
 - [Update Connection Settings](./update-connection-settings.md) - Update connection settings
 - [Update Routing Status](./update-routing-status.md) - Update routing status
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

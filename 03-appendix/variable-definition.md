@@ -477,4 +477,3 @@ Variables are used in various policies:
 - [Endpoint Rate Limit Policy](../02-api-reference/05-policies/policies/policy-endpoint-rate-limit.md) - Uses variables for endpoint rate limiting
 - [RLCL API](../02-api-reference/12-rlcl/index.md) - Uses variables for rate limit control
 - [Script Policy](../02-api-reference/05-policies/policies/policy-script.md) - Script language types
-

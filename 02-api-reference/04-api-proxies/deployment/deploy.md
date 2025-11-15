@@ -120,34 +120,6 @@ curl -X POST \
 
 This endpoint does not require a request body.
 
-## Usage Scenarios
-
-### Scenario 1: Deploy to Single Environment
-
-Deploy an API proxy to a single environment.
-
-```bash
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/production/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-### Scenario 2: Deploy to Multiple Environments
-
-To deploy to multiple environments, make separate POST requests for each environment.
-
-```bash
-# Deploy to production
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/production/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-
-# Deploy to staging
-curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/petstore-api/environments/staging/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
 ## Notes and Warnings
 
 - **API Proxy Must Exist**: The API proxy must exist before deployment
@@ -162,4 +134,3 @@ curl -X POST \
 - [Undeploy API Proxy](./undeploy.md) - Undeploy API proxy from environment
 - [Deployment Status](./deployment-status.md) - Check deployment status
 - [List API Proxies](../crud/list-api-proxies.md) - List all API proxies
-

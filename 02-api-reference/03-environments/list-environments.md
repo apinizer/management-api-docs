@@ -144,4 +144,3 @@ This endpoint does not require a request body.
 
 - [Get Environments by Project](./get-environments-by-project.md) - Get environments for a specific project
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-

@@ -111,4 +111,3 @@ Query parameters are optional and used for filtering, pagination, etc.:
 2. [Learn about base URLs](./base-url.md)
 3. [Understand error handling](./error-handling.md)
 4. [Explore the API reference](../02-api-reference/)
-

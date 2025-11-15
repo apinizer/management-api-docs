@@ -138,4 +138,3 @@ curl -X GET \
 - [Grant Access](./grant-access.md) - Grant access to API Proxy or Group
 - [Revoke Access](./revoke-access.md) - Revoke access from API Proxy or Group
 - [List Credentials](../crud/list-credentials.md) - List all credentials
-

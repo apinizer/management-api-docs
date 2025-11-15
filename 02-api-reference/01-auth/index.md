@@ -24,4 +24,3 @@ Authorization: Bearer YOUR_TOKEN
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - Detailed authentication information
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
-

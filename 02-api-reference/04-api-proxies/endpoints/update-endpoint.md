@@ -153,43 +153,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Update Description Only
-
-Update only the endpoint description without changing other fields.
-
-**Request Body:**
-```json
-{
-  "description": "New description"
-}
-```
-
-### Scenario 2: Change Backend URL
-
-Update the backend URL that the endpoint routes to.
-
-**Request Body:**
-```json
-{
-  "backendResourceUrl": "https://new-backend.example.com/api/users"
-}
-```
-
-### Scenario 3: Change HTTP Method
-
-Change the HTTP method for the endpoint.
-
-**Request Body:**
-```json
-{
-  "httpMethod": "POST"
-}
-```
-
-**Note:** Ensure the new `name` and `httpMethod` combination doesn't conflict with existing endpoints.
-
 ## Notes and Warnings
 
 - **Partial Updates**: Only provided fields are updated. Omitted fields remain unchanged
@@ -204,4 +167,3 @@ Change the HTTP method for the endpoint.
 - [Create Endpoint](./create-endpoint.md) - Create a new endpoint
 - [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
 - [Update Endpoint Status](./update-endpoint-status.md) - Enable/disable endpoint
-

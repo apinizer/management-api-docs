@@ -235,48 +235,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Create Global Secret Variable
-
-Create a global variable with a secret value.
-
-**Request Body:**
-```json
-{
-  "name": "SECRET_KEY",
-  "description": "Secret key for encryption",
-  "global": true,
-  "globalValue": "super-secret-key-12345",
-  "globalVisible": false
-}
-```
-
-### Scenario 2: Create Environment-Specific URLs
-
-Create different API URLs for each environment.
-
-**Request Body:**
-```json
-{
-  "name": "API_ENDPOINT",
-  "description": "API endpoint URL",
-  "global": false,
-  "environmentValueList": [
-    {
-      "environmentName": "production",
-      "value": "https://api.prod.example.com",
-      "visible": true
-    },
-    {
-      "environmentName": "staging",
-      "value": "https://api.staging.example.com",
-      "visible": true
-    }
-  ]
-}
-```
-
 ## Notes and Warnings
 
 - **Name Uniqueness**: 
@@ -306,4 +264,3 @@ Create different API URLs for each environment.
 
 - [List Environment Variables](./list-environment-variables.md) - List all environment variables
 - [Update Environment Variable](./update-environment-variable.md) - Update an environment variable
-

@@ -149,34 +149,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Forward Original Client IP
-
-Forward the original client IP address (first in chain).
-
-**Request Body:**
-```json
-{
-  "forwardedIpHeaderParamActive": true,
-  "value": "X-Forwarded-For",
-  "xffOrder": "FIRST"
-}
-```
-
-### Scenario 2: Forward Last Proxy IP
-
-Forward the last proxy IP address in the chain.
-
-**Request Body:**
-```json
-{
-  "forwardedIpHeaderParamActive": true,
-  "value": "X-Forwarded-For",
-  "xffOrder": "LAST"
-}
-```
-
 ## Notes and Warnings
 
 - **Header Name**: Default is `X-Forwarded-For`. Can be customized (e.g., `X-Real-IP`)
@@ -191,4 +163,3 @@ Forward the last proxy IP address in the chain.
 ## Related Documentation
 
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-

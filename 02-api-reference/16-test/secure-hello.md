@@ -74,24 +74,6 @@ curl -X GET \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Test Authentication Token
-
-Verify that your authentication token is working correctly.
-
-**Request:**
-```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/test/hello/TestUser" \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-**Response:**
-```
-Hello TestUser
-```
-
 ## Notes and Warnings
 
 - **Authentication Required**: 
@@ -105,4 +87,3 @@ Hello TestUser
 
 - [Healthcheck](./healthcheck.md) - Check API availability
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain tokens
-

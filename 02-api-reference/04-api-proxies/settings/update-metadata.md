@@ -222,63 +222,6 @@ curl -X PATCH \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Rename API Proxy
-
-Rename an API Proxy while keeping other metadata unchanged.
-
-**Request Body:**
-```json
-{
-  "name": "New API Proxy Name"
-}
-```
-
-### Scenario 2: Update Categories
-
-Update API Proxy categories for better organization.
-
-**Request Body:**
-```json
-{
-  "categoryList": [
-    "Payment",
-    "E-commerce",
-    "Public API"
-  ]
-}
-```
-
-### Scenario 3: Change Sharing Type
-
-Change API Proxy sharing type to restrict access.
-
-**Request Body:**
-```json
-{
-  "sharingType": "INTERNAL"
-}
-```
-
-### Scenario 4: Complete Metadata Update
-
-Update all metadata fields at once.
-
-**Request Body:**
-```json
-{
-  "name": "Updated API Name",
-  "description": "This API provides payment processing functionality",
-  "categoryList": [
-    "Payment",
-    "Finance",
-    "Public"
-  ],
-  "sharingType": "BOTH"
-}
-```
-
 ## Notes and Warnings
 
 - **Name Uniqueness**: 
@@ -319,4 +262,3 @@ Update all metadata fields at once.
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details (includes metadata)
 - [Update API Keys](./update-api-keys.md) - Update API keys
 - [List API Proxies](../crud/list-api-proxies.md) - List all API Proxies (filtered by metadata)
-

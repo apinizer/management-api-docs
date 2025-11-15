@@ -123,4 +123,3 @@ This endpoint does not require a request body.
 - [List Endpoint Policies](./list-endpoint-policies.md) - List endpoint policies
 - [Update Endpoint](./update-endpoint.md) - Update an endpoint
 - [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
-

@@ -118,4 +118,3 @@ curl -X PUT \
 - [Create Credential](./create-credential.md) - Create a new credential
 - [Change Credential Password](./change-credential-password.md) - Change only password
 - [Delete Credential](./delete-credential.md) - Delete a credential
-

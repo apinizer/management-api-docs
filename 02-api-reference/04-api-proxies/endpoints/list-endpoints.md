@@ -145,4 +145,3 @@ This endpoint does not require a request body.
 - [List Endpoint Policies](./list-endpoint-policies.md) - List endpoint policies
 - [Create Endpoint](./create-endpoint.md) - Create a new endpoint
 - [Update Endpoint](./update-endpoint.md) - Update an endpoint
-

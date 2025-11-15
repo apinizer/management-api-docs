@@ -148,36 +148,6 @@ curl -X POST \
   }'
 ```
 
-## Usage Scenarios
-
-### Scenario 1: Add Office IPs
-
-Add office IP addresses to an allowed IP group.
-
-**Request Body:**
-```json
-{
-  "ipList": [
-    "203.0.113.10",
-    "203.0.113.11",
-    "203.0.113.12"
-  ]
-}
-```
-
-### Scenario 2: Add Network Range
-
-Add a network range using CIDR notation.
-
-**Request Body:**
-```json
-{
-  "ipList": [
-    "10.0.0.0/8"
-  ]
-}
-```
-
 ## Notes and Warnings
 
 - **IP List Required**: 
@@ -200,4 +170,3 @@ Add a network range using CIDR notation.
 - [Update IPs in Group](./update-ips-in-group.md) - Replace all IPs in group
 - [Delete IPs from Group](./delete-ips-from-group.md) - Remove IPs from group
 - [Create IP Group](../crud/create-ip-group.md) - Create a new IP Group
-

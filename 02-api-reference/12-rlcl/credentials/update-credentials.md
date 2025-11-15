@@ -58,4 +58,3 @@ curl -X PUT \
 
 - [Add Credentials](./add-credentials.md) - Add credentials without removing existing ones
 - [Delete Credentials](./delete-credentials.md) - Remove specific credentials
-

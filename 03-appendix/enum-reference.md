@@ -191,4 +191,3 @@ Used when importing or creating API Proxies from specification files.
 - [Variable Definition](./variable-definition.md) - Complete variable documentation
 - [Glossary](./glossary.md) - Terms and definitions
 - [OpenAPI Spec](./openapi-spec.md) - OpenAPI specification access
-
