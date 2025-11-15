@@ -48,7 +48,6 @@ See [OpenAPI Spec](./03-appendix/openapi-spec.md) for more information.
   - [RLCL](./02-api-reference/12-rlcl/)
   - [GeoLocation](./02-api-reference/13-geolocation/)
   - [Reports](./02-api-reference/14-reports/)
-  - [Performance Monitoring](./02-api-reference/15-performance-monitoring/)
   - [Test](./02-api-reference/16-test/)
 
 - [Appendix](./03-appendix/)
