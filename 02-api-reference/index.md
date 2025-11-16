@@ -114,6 +114,6 @@ All endpoints follow a consistent error response format. See [Error Handling](..
 
 ## Related Documentation
 
-- [Getting Started](/02-api-reference/01-getting-started/overview/) - Overview and quick start guide
-- [Appendix](/02-api-reference/03-appendix/) - Glossary, variable definitions, enum references, and OpenAPI spec
+- [Getting Started](../01-getting-started/overview/) - Overview and quick start guide
+- [Appendix](../03-appendix/) - Glossary, variable definitions, enum references, and OpenAPI spec
 
