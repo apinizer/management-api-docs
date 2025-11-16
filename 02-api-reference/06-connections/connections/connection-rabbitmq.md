@@ -409,7 +409,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### RabbitMQ-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| hostPortList | array | Yes | - | List of RabbitMQ host/port pairs. See [ConfigRabbitMqHostPort](/#configrabbitmqhostport) |
+| hostPortList | array | Yes | - | List of RabbitMQ host/port pairs. See [ConfigRabbitMqHostPort](../../...md#configrabbitmqhostport) |
 | connectionFactoryVirtualHost | string | No | / | Virtual host name |
 | authenticationEnabled | boolean | No | false | Enable authentication |
 | connectionFactoryUsername | string | No* | null | RabbitMQ username (required if authenticationEnabled=true) |

@@ -265,11 +265,11 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
-| encPartList | array | No | [] | Encryption parts list. See [WsSecurityToTargetPart](/#wssecuritytotargetpart) |
+| encPartList | array | No | [] | Encryption parts list. See [WsSecurityToTargetPart](../../...md#wssecuritytotargetpart) |
 | encEmbeddedKeyName | string | No | null | Embedded key name for encryption (used when encKeyIdType=EMBEDDED_KEY_INFO) |
-| encKeyIdType | string | No | null | Encryption key identifier type. See [EnumWsSecurityKeyIdentifierType](/#enumwssecuritykeyidentifiertype) |
-| encSymEncAlgorithm | string | No | null | Symmetric encoding algorithm for encryption. See [EnumWsSecuritySymmetricEncodingAlgorithm](/#enumwssecuritysymmetricencodingalgorithm) |
-| encKeyEncAlgorithm | string | No | null | Key encryption algorithm. See [EnumWsSecurityKeyEncryptionAlgorithm](/#enumwssecuritykeyencryptionalgorithm) |
+| encKeyIdType | string | No | null | Encryption key identifier type. See [EnumWsSecurityKeyIdentifierType](../../...md#enumwssecuritykeyidentifiertype) |
+| encSymEncAlgorithm | string | No | null | Symmetric encoding algorithm for encryption. See [EnumWsSecuritySymmetricEncodingAlgorithm](../../...md#enumwssecuritysymmetricencodingalgorithm) |
+| encKeyEncAlgorithm | string | No | null | Key encryption algorithm. See [EnumWsSecurityKeyEncryptionAlgorithm](../../...md#enumwssecuritykeyencryptionalgorithm) |
 | encKeyStoreName | string | Yes | - | Encryption keystore name |
 
 ### EnumWsSecurityKeyIdentifierType
@@ -305,7 +305,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | Part name (e.g., "Body", "UsernameToken") |
 | namespace | string | Yes | - | Part namespace URI |
-| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](/#enumwssecurityencryptionpartencodetype) |
+| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](../../...md#enumwssecurityencryptionpartencodetype) |
 
 ### EnumWsSecurityEncryptionPartEncodeType
 

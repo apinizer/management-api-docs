@@ -27,5 +27,5 @@ This section contains documentation for all available connection types in Apiniz
 ## Related Documentation
 
 - [Connections Overview](..) - Complete connection management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete connections
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete connections
 

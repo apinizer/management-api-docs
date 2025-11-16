@@ -91,8 +91,8 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | wsaEnabled | boolean | No | false | Enable WS-Addressing |
-| wsaMustUnderstand | string | No | NONE | MustUnderstand attribute value. See [EnumSoapWsaMustUnderstand](/#enumsoapwsamustunderstand) |
-| wsaVersion | string | No | V200508 | WSA version. See [EnumSoapWsaVersion](/#enumsoapwsaversion) |
+| wsaMustUnderstand | string | No | NONE | MustUnderstand attribute value. See [EnumSoapWsaMustUnderstand](../../...md#enumsoapwsamustunderstand) |
+| wsaVersion | string | No | V200508 | WSA version. See [EnumSoapWsaVersion](../../...md#enumsoapwsaversion) |
 | wsaAddDefaultAction | boolean | No | false | Add default Action from SOAP action |
 | wsaAction | string | No | null | Custom Action URI (if wsaAddDefaultAction is false) |
 | wsaAddDefaultTo | boolean | No | false | Add default To address from target |

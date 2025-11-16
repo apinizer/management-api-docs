@@ -45,7 +45,7 @@ Authorization: Bearer YOUR_TOKEN
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| metadata | string (JSON) | Yes | Metadata for API Proxy creation/update. See [Metadata Object](/#metadata-object) |
+| metadata | string (JSON) | Yes | Metadata for API Proxy creation/update. See [Metadata Object](../../...md#metadata-object) |
 | apiProxyExportFile | file | Yes | ZIP file containing the API Proxy export. Must have `.zip` extension |
 
 ### Metadata Object
@@ -105,15 +105,15 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 |-------|------|----------|---------|-------------|
 | deploy | boolean | No | false | Deploy API Proxy after import |
 | deployTargetEnvironmentNameList | array[string] | No | null | List of environment names to deploy to (if deploy=true) |
-| routing | object | No | null | Routing configuration. See [Routing Object](/#routing-object) |
+| routing | object | No | null | Routing configuration. See [Routing Object](../../...md#routing-object) |
 | maintenanceMode | boolean | No | null | Enable/disable maintenance mode |
 
 ### Routing Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| algorithm | string | No | Routing algorithm. See [EnumRoutingAlgorithm](/#enumroutingalgorithm) |
-| addressList | array[object] | No | List of routing addresses. See [Routing Address Object](/#routing-address-object) |
+| algorithm | string | No | Routing algorithm. See [EnumRoutingAlgorithm](../../...md#enumroutingalgorithm) |
+| addressList | array[object] | No | List of routing addresses. See [Routing Address Object](../../...md#routing-address-object) |
 
 ### EnumRoutingAlgorithm (routing.algorithm)
 
@@ -130,7 +130,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 |-------|------|----------|-------------|
 | address | string | Yes | Backend address URL |
 | weight | integer | No | Weight for weighted algorithms (default: 1) |
-| soapType | string | No | SOAP version for SOAP APIs. See [EnumSoapApiPortType](/#enumsoapapiporttype) |
+| soapType | string | No | SOAP version for SOAP APIs. See [EnumSoapApiPortType](../../...md#enumsoapapiporttype) |
 
 ### EnumSoapApiPortType (soapType)
 - `SOAP11` - SOAP 1.1
@@ -172,7 +172,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](../../...md#deployment-result-object) |
 
 ### Deployment Result Object
 

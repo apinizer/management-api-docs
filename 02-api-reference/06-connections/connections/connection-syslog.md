@@ -262,15 +262,15 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Syslog-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| syslogProtocolType | string | No | TCP | Protocol type. See [EnumSyslogProtocolType](/#enumsyslogprotocoltype) |
+| syslogProtocolType | string | No | TCP | Protocol type. See [EnumSyslogProtocolType](../../...md#enumsyslogprotocoltype) |
 | syslogMessageHostname | string | No | - | Hostname to include in syslog messages (some cloud services use this for secret keys) |
 | syslogServerHostname | string | Yes | - | Syslog server hostname or IP address |
 | syslogPort | integer | No | 514 | Syslog server port (default: 514, standard Syslog port) |
 | syslogTimeout | integer | No | 500 | Connection timeout in milliseconds (for TCP only) |
-| syslogMessageFormat | string | No | RFC_3164 | Message format. See [MessageFormat](/#messageformat) |
+| syslogMessageFormat | string | No | RFC_3164 | Message format. See [MessageFormat](../../...md#messageformat) |
 | syslogAppName | string | No | Apinizer | Application name to include in syslog messages |
-| syslogFacility | string | No | AUDIT | Syslog facility. See [Facility](/#facility) |
-| syslogSeverity | string | No | INFORMATIONAL | Syslog severity level. See [Severity](/#severity) |
+| syslogFacility | string | No | AUDIT | Syslog facility. See [Facility](../../...md#facility) |
+| syslogSeverity | string | No | INFORMATIONAL | Syslog severity level. See [Severity](../../...md#severity) |
 | syslogSslEnabled | boolean | No | false | Enable SSL/TLS encryption (TCP only) |
 
 ### EnumSyslogProtocolType (syslogProtocolType)

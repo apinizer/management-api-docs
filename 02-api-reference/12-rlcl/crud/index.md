@@ -16,7 +16,7 @@ This section contains endpoints for creating, reading, updating, and deleting RL
 ## Related Documentation
 
 - [RLCL Overview](..) - Complete RLCL management documentation
-- [Condition Management](../condition) - Manage conditions in RLCL
-- [Credentials Management](../credentials) - Manage credentials in RLCL
-- [Endpoints Management](../endpoints) - Manage endpoints in RLCL
+- [Condition Management](../../../../condition.md) - Manage conditions in RLCL
+- [Credentials Management](../../../../credentials.md) - Manage credentials in RLCL
+- [Endpoints Management](../../../../endpoints.md) - Manage endpoints in RLCL
 

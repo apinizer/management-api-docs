@@ -16,5 +16,5 @@ This section contains endpoints for creating, reading, updating, and deleting IP
 ## Related Documentation
 
 - [IP Groups Overview](..) - Complete IP group management documentation
-- [IP Management](../ips) - Manage IP addresses in groups
+- [IP Management](../../../../ips.md) - Manage IP addresses in groups
 

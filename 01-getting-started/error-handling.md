@@ -299,4 +299,4 @@ The `retry_after` field indicates seconds to wait before retrying.
 
 ## Next Steps
 
-- [Explore the API reference](../02-api-reference)
+- [Explore the API reference](../../02-api-reference.md)

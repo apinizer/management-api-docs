@@ -236,7 +236,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
 | username | string | Yes | - | UsernameToken username |
 | password | string | Yes | - | UsernameToken password |
-| passwordType | string | Yes | - | UsernameToken password type. See [EnumWsSecurityPasswordType](/#enumwssecuritypasswordtype) |
+| passwordType | string | Yes | - | UsernameToken password type. See [EnumWsSecurityPasswordType](../../...md#enumwssecuritypasswordtype) |
 | nonce | boolean | No | false | Add nonce to UsernameToken |
 | created | boolean | No | false | Add created timestamp to UsernameToken |
 

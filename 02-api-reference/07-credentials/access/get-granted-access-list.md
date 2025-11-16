@@ -80,7 +80,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | Name of the API Proxy or API Proxy Group |
-| type | string | Type of access. See [EnumAccessType](/#enumaccesstype) |
+| type | string | Type of access. See [EnumAccessType](../../...md#enumaccesstype) |
 
 ### EnumAccessType (type)
 

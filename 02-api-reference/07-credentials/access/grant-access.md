@@ -86,7 +86,7 @@ The request body is an object containing an array of access objects.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Name of the API Proxy or API Proxy Group |
-| type | string | Yes | Type of access. See [EnumAccessType](/#enumaccesstype) |
+| type | string | Yes | Type of access. See [EnumAccessType](../../...md#enumaccesstype) |
 
 ### EnumAccessType (type)
 

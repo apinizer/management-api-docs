@@ -33,6 +33,6 @@ This section contains supplementary documentation including glossary, variable d
 
 ## Related Documentation
 
-- [Getting Started](../01-getting-started) - Overview and quick start guide
-- [API Reference](../02-api-reference) - Complete API endpoint documentation
+- [Getting Started](../../01-getting-started.md) - Overview and quick start guide
+- [API Reference](../../02-api-reference.md) - Complete API endpoint documentation
 

@@ -24,7 +24,7 @@ This section contains endpoints for creating, reading, updating, and deleting AP
 ## Related Documentation
 
 - [API Proxies Overview](..) - Complete API Proxy management documentation
-- [Deployment](../deployment) - Deploy and undeploy API proxies
-- [Endpoints](../endpoints) - Manage API proxy endpoints
-- [Settings](../settings) - Configure API proxy settings
+- [Deployment](../../../../deployment.md) - Deploy and undeploy API proxies
+- [Endpoints](../../../../endpoints.md) - Manage API proxy endpoints
+- [Settings](../../../../settings.md) - Configure API proxy settings
 

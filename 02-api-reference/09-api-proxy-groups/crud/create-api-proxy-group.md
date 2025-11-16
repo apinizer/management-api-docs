@@ -113,7 +113,7 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | API Proxy Group name (unique identifier) |
 | description | string | No | - | API Proxy Group description |
-| clientRoute | object | Yes | - | Client route configuration. See [Client Route Object](/#client-route-object) |
+| clientRoute | object | Yes | - | Client route configuration. See [Client Route Object](../../...md#client-route-object) |
 
 ### Client Route Object (clientRoute)
 
@@ -121,9 +121,9 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | relativePathList | array[string] | Yes | - | List of relative paths to match. Must have at least one path, and first path must not be empty |
-| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](/#enumhttprequestmethod) |
+| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
 | hostList | array[string] | No | null | List of host names to match |
-| headerList | array[object] | No | null | List of headers to match. See [Header Object](/#header-object) |
+| headerList | array[object] | No | null | List of headers to match. See [Header Object](../../...md#header-object) |
 | bufferRequest | boolean | No | true | Buffer request body |
 | bufferResponse | boolean | No | true | Buffer response body |
 

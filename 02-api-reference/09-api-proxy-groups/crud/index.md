@@ -17,6 +17,6 @@ This section contains endpoints for creating, reading, updating, and deleting AP
 ## Related Documentation
 
 - [API Proxy Groups Overview](..) - Complete API Proxy Group management documentation
-- [API Proxies Management](../api-proxies) - Add/remove API proxies to/from groups
-- [Deployment](../deployment) - Deploy and undeploy groups
+- [API Proxies Management](../../../../api-proxies.md) - Add/remove API proxies to/from groups
+- [Deployment](../../../../deployment.md) - Deploy and undeploy groups
 

@@ -84,7 +84,7 @@ None
 |-------|------|-------------|
 | name | string | API Proxy name |
 | description | string | API Proxy description |
-| type | string | API type. See [EnumApiType](/#enumapitype) |
+| type | string | API type. See [EnumApiType](../../...md#enumapitype) |
 | relativePath | string | Relative path (from clientRoute) |
 | soapToRest | boolean | Whether SOAP to REST transformation is enabled |
 

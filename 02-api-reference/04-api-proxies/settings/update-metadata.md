@@ -93,7 +93,7 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | No | - | API Proxy name. Must be unique within the project if provided |
 | description | string | No | - | API Proxy description |
 | categoryList | array[string] | No | - | List of category names for API Proxy organization |
-| sharingType | string | No | - | Sharing type for API Proxy. See [EnumSharingType](/#enumsharingtype) |
+| sharingType | string | No | - | Sharing type for API Proxy. See [EnumSharingType](../../...md#enumsharingtype) |
 
 ### EnumSharingType (sharingType)
 - `BOTH` - Share with both internal and external users

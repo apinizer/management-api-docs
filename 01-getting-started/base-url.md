@@ -129,4 +129,4 @@ Different environments may have different base URLs:
 
 - [Learn about authentication](authentication.md)
 - [Understand error handling](error-handling.md)
-- [Explore the API reference](../02-api-reference)
+- [Explore the API reference](../../02-api-reference.md)

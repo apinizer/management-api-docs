@@ -106,7 +106,7 @@ None.
 | globalValue | string\|null | Global value (if global=true). Null if globalVisible=false (secret) |
 | globalVisible | boolean | Whether global value is visible (if global=true) |
 | projectName | string | Project name |
-| environmentValueList | array[object]\|null | List of environment-specific values (if global=false). See [Environment Value Object](/#environment-value-object) |
+| environmentValueList | array[object]\|null | List of environment-specific values (if global=false). See [Environment Value Object](../../...md#environment-value-object) |
 
 ### Environment Value Object (environmentValueList)
 

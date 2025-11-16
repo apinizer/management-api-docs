@@ -364,7 +364,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Database-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| dbType | string | Yes | - | Database type. See [EnumDatabaseType](/#enumdatabasetype) |
+| dbType | string | Yes | - | Database type. See [EnumDatabaseType](../../...md#enumdatabasetype) |
 | jdbcUrl | string | Yes | - | JDBC connection URL |
 | useCredentials | boolean | No | true | Whether to use username/password authentication |
 | username | string | No | - | Database username (required if useCredentials=true) |

@@ -22,8 +22,8 @@ This section contains endpoints for managing API proxy endpoints (routes/paths).
 ## Related Documentation
 
 - [API Proxies Overview](..) - Complete API Proxy management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete API proxies
-- [Deployment](../deployment) - Deploy and undeploy API proxies
-- [Settings](../settings) - Configure API proxy settings
-- [Policies](../../05-policies) - Policy management documentation
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete API proxies
+- [Deployment](../../../../deployment.md) - Deploy and undeploy API proxies
+- [Settings](../../../../settings.md) - Configure API proxy settings
+- [Policies](../../../../../05-policies.md) - Policy management documentation
 

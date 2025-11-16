@@ -16,5 +16,5 @@ This section contains endpoints for managing IP addresses within IP groups.
 ## Related Documentation
 
 - [IP Groups Overview](..) - Complete IP group management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete groups
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete groups
 

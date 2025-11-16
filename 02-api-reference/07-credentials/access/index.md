@@ -16,5 +16,5 @@ This section contains endpoints for managing access to credentials.
 ## Related Documentation
 
 - [Credentials Overview](..) - Complete credential management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete credentials
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete credentials
 

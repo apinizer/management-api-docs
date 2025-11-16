@@ -83,5 +83,5 @@ This section contains detailed documentation for each policy type available in A
 ## Related Documentation
 
 - [Policies Overview](..) - Complete policy management documentation
-- [CRUD Operations](../crud) - Add, update, delete policies
+- [CRUD Operations](../../../../crud.md) - Add, update, delete policies
 

@@ -112,7 +112,7 @@ None
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | API Proxy name |
-| type | string | API type. See [EnumApiType](/#enumapitype) |
+| type | string | API type. See [EnumApiType](../../...md#enumapitype) |
 | relativePath | string | Relative path (from clientRoute) |
 | soapToRest | boolean | Whether SOAP to REST transformation is enabled |
 | requestPolicyList | array | List of request pipeline policies |

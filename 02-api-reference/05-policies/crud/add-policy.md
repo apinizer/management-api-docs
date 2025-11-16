@@ -337,7 +337,7 @@ If `deploy: true` is set in the request, the response includes deployment result
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](../../...md#deployment-result-object) |
 
 ### Deployment Result Object (deploymentResult)
 
@@ -384,9 +384,9 @@ If `deploy: true` is set in the request, the response includes deployment result
 
 ### Error Messages
 
-See [Error Response 400 Bad Request](/#error-response-400-bad-request) and [Common Causes](/#common-causes) above for details.
+See [Error Response 400 Bad Request](../../...md#error-response-400-bad-request) and [Common Causes](../../...md#common-causes) above for details.
 
-**Note:** For detailed error response documentation, see [Error Response (400 Bad Request)](/#error-response-400-bad-request) section above.
+**Note:** For detailed error response documentation, see [Error Response (400 Bad Request)](../../...md#error-response-400-bad-request) section above.
 
 ### Error Response (401 Unauthorized)
 

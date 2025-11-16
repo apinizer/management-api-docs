@@ -154,17 +154,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](/#policyoperationmetadatadto) |
-| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/#policyconditiondto) |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](../../...md#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](../../...md#policyconditiondto) |
 
 ### PolicyOperationMetadataDTO (operationMetadata)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](/#enumpolicytargetscope) |
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](../../...md#enumpolicytargetscope) |
 | targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
 | targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
-| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](/#enumpolicytargetpipeline) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](../../...md#enumpolicytargetpipeline) |
 | deploy | boolean | No | true | Whether to deploy immediately |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
@@ -185,8 +185,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/#enumconditioncriteria) |
-| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](/#conditionruledto) |
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](../../...md#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](../../...md#conditionruledto) |
 
 ### EnumConditionCriteria (condition.criteria)
 

@@ -166,9 +166,9 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | Policy type. Must be `"policy-response-protocol-transformation"` |
 | description | string | No | Policy description |
 | active | boolean | No | Whether the policy is active. Default: `true` |
-| apiMethodList | array | Yes | List of API methods for transformation. At least one API method must be provided. See [API Method](/#api-method) |
-| policyCondition | object | No | Policy condition configuration. See [Policy Condition](/#policy-condition) |
-| errorMessageList | array | No | List of error messages. See [Error Messages](/#error-messages) |
+| apiMethodList | array | Yes | List of API methods for transformation. At least one API method must be provided. See [API Method](../../...md#api-method) |
+| policyCondition | object | No | Policy condition configuration. See [Policy Condition](../../...md#policy-condition) |
+| errorMessageList | array | No | List of error messages. See [Error Messages](../../...md#error-messages) |
 
 ### API Method
 
@@ -178,9 +178,9 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | API Method name |
 | description | string | No | API Method description |
 | active | boolean | No | Whether the API method is active. Default: `true` |
-| httpMethod | string | Yes | HTTP method for the REST endpoint. See [EnumHttpRequestMethod](/#enumhttprequestmethod) |
+| httpMethod | string | Yes | HTTP method for the REST endpoint. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
 | backendResourceUrl | string | Yes | Backend SOAP service resource URL |
-| backendHttpMethod | string | Yes | HTTP method for the backend SOAP service. See [EnumHttpRequestMethod](/#enumhttprequestmethod) |
+| backendHttpMethod | string | Yes | HTTP method for the backend SOAP service. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
 
 ### EnumHttpRequestMethod
 
@@ -311,7 +311,7 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body Fields
 
-Same as [Add Policy](/#add-policy) request body fields.
+Same as [Add Policy](../../...md#add-policy) request body fields.
 
 ### Response
 

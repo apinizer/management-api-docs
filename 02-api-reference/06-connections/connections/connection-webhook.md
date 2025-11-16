@@ -313,7 +313,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Webhook-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| httpMethod | string | No | GET | HTTP method. See [EnumHttpRequestMethod](/#enumhttprequestmethod) |
+| httpMethod | string | No | GET | HTTP method. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
 | fullUrl | string | Yes | - | Full webhook URL (including protocol, host, path, and optional query parameters) |
 | headerList | array | No | [] | List of HTTP headers to include in requests |
 | timeout | integer | No | 2 | Connection timeout in seconds |

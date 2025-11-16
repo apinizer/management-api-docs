@@ -304,20 +304,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](/#policyoperationmetadatadto) |
-| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/#policyconditiondto) |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](../../...md#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](../../...md#policyconditiondto) |
 
 ###### Client Ban Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](/#variabledto) |
+| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](../../...md#variabledto) |
 | thresholdWindowInSeconds | integer | Yes | 10 | Time window in seconds for threshold calculation |
 | thresholdCountPerWindow | integer | Yes | 1 | Threshold count or percentage per window |
-| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](/#enumerrorthresholdtype) |
+| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](../../...md#enumerrorthresholdtype) |
 | banTimeInSeconds | integer | Yes | 10 | Duration to ban client in seconds |
 | enableRetryAfterHeader | boolean | No | false | Enable Retry-After header in ban response |
 | ignoreWhenKeyIsEmpty | boolean | No | false | Ignore requests when identity key is empty |
-| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](/#policyconditiondto) |
+| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](../../...md#policyconditiondto) |
 
 ### EnumErrorThresholdType (thresholdCalculationType)
 
@@ -326,20 +326,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ### VariableDTO (clientIdentityVariableList item)
 
-See [Variable Definition](03-appendix/variable-definition) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](03-appendix/variable-definition) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](03-appendix/variable-definition) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](03-appendix/variable-definition) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](03-appendix/variable-definition) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -358,8 +358,8 @@ See [Variable Definition](03-appendix/variable-definition) for complete variable
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/#enumconditioncriteria) |
-| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](/#conditionruledto) |
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](../../...md#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](../../...md#conditionruledto) |
 
 ### EnumConditionCriteria (assertionCondition.criteria)
 
@@ -372,10 +372,10 @@ See [Variable Definition](03-appendix/variable-definition) for complete variable
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| variable | object | Yes | Variable to check. See [Variable Definition](03-appendix/variable-definition) |
-| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/#enumconditionvaluecomparisonoperator) |
+| variable | object | Yes | Variable to check. See [Variable Definition](../../../03-appendix/variable-definition.md) |
+| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](../../...md#enumconditionvaluecomparisonoperator) |
 | value | string | Yes | Value to compare against |
-| valueSource | string | No | Value source. See [EnumConditionValueSource](/#enumconditionvaluesource) |
+| valueSource | string | No | Value source. See [EnumConditionValueSource](../../...md#enumconditionvaluesource) |
 
 ### EnumConditionValueComparisonOperator (comparisonOperator)
 
@@ -405,10 +405,10 @@ See [Variable Definition](03-appendix/variable-definition) for complete variable
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](/#enumpolicytargetscope) |
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](../../...md#enumpolicytargetscope) |
 | targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
 | targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
-| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](/#enumpolicytargetpipeline) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](../../...md#enumpolicytargetpipeline) |
 | deploy | boolean | No | true | Whether to deploy immediately |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |

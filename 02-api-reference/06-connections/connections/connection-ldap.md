@@ -294,11 +294,11 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | serverAddress | string | Yes | - | LDAP server address (format: `ldap://host:port` or `ldaps://host:port`) |
-| requireCertificateType | string | No | NOT_REQUIRED | Certificate requirement type. See [EnumLdapRequireCertificateType](/#enumldaprequirecertificatetype) |
+| requireCertificateType | string | No | NOT_REQUIRED | Certificate requirement type. See [EnumLdapRequireCertificateType](../../...md#enumldaprequirecertificatetype) |
 | username | string | Yes | - | LDAP bind DN (Distinguished Name) for authentication |
 | password | string | Yes | - | LDAP password for bind DN (secret field) |
 | customFilter | string | No | - | Custom LDAP search filter (use `{0}` as placeholder for username) |
-| searchScope | string | No | SUBTREE | Search scope. See [EnumSearchScope](/#enumsearchscope) |
+| searchScope | string | No | SUBTREE | Search scope. See [EnumSearchScope](../../...md#enumsearchscope) |
 | baseDn | string | Yes | - | Base Distinguished Name for searches |
 | certificateId | string | No | null | Certificate ID for SSL/TLS (required if useSsl=true and certificate validation enabled) |
 | certificateName | string | No | null | Certificate name (for reference) |

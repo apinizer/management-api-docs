@@ -19,7 +19,7 @@ Variable is a structure used to extract data from API traffic messages for polic
 | projectId | string | No | Project ID (usually auto-set by API, optional in request) |
 | name | string | Yes | Unique name of the variable |
 | description | string | No | Description for the variable |
-| type | EnumVariableType | Yes | Variable type. See [Variable Types](/#variable-types) |
+| type | EnumVariableType | Yes | Variable type. See [Variable Types](...md#variable-types) |
 
 ### Note
 
@@ -66,7 +66,7 @@ Extract data from URL parameters (query, path, or form).
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `PARAMETER` |
-| paramType | string | Yes | Parameter type. See [EnumVariableParameterType](/#enumvariableparametertype) |
+| paramType | string | Yes | Parameter type. See [EnumVariableParameterType](...md#enumvariableparametertype) |
 | paramName | string | Yes | Name of the parameter in request message |
 | paramPath | string | Yes* | Template path to use for "path" parameter (required if paramType=PATH) |
 | formName | string | No | Form field name (optional, used if paramType=FORM and differs from paramName) |
@@ -125,7 +125,7 @@ Extract data from request/response body (XML, JSON, or raw body).
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `BODY` |
-| messageContentType | string | Yes | Content type. See [EnumMessageContentType](/#enummessagecontenttype) |
+| messageContentType | string | Yes | Content type. See [EnumMessageContentType](...md#enummessagecontenttype) |
 | xpathValue | string | Yes* | XPath expression for XML body data (required if messageContentType=XML) |
 | jsonPathValue | string | Yes* | JsonPath expression for JSON body data (required if messageContentType=JSON) |
 
@@ -174,7 +174,7 @@ Extract data from system context values.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `CONTEXT_VALUES` |
-| contextValue | string | Yes | Context value type. See [EnumVariableContextValue](/#enumvariablecontextvalue) |
+| contextValue | string | Yes | Context value type. See [EnumVariableContextValue](...md#enumvariablecontextvalue) |
 | zoneId | string | Yes* | Time zone ID (required for some context values, e.g., date/time values) |
 
 ### Example
@@ -486,5 +486,5 @@ Variables are used in various policies:
 - [Enum Reference](enum-reference.md) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
 - [Glossary](glossary.md) - Terms and definitions
 - [API Based Throttling Policy](../02-api-reference/05-policies/policies/policy-api-based-throttling.md) - Uses variables for client identification
-- [RLCL API](../02-api-reference/12-rlcl) - Uses variables for rate limit control
+- [RLCL API](../../02-api-reference/12-rlcl.md) - Uses variables for rate limit control
 - [Script Policy](../02-api-reference/05-policies/policies/policy-script.md) - Script language types

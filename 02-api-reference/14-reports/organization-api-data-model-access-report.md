@@ -66,7 +66,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | success | boolean | Indicates if the request was successful |
-| result | object | Report result. See [Report Result Object](/#report-result-object) |
+| result | object | Report result. See [Report Result Object](../...md#report-result-object) |
 
 ### Report Result Object (result)
 
@@ -81,7 +81,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | apiProxyName | string | API Proxy name |
-| sharingType | string | Sharing type. See [EnumSharingType](/#enumsharingtype) |
+| sharingType | string | Sharing type. See [EnumSharingType](../...md#enumsharingtype) |
 | accessList | array[object] | List of access information |
 
 ### EnumSharingType (sharingType)

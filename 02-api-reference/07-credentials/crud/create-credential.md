@@ -176,7 +176,7 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Description |
 |-------|------|-------------|
 | success | boolean | Indicates if the request was successful |
-| deploymentResult | object | Deployment result. See [Deployment Result Object](/#deployment-result-object) |
+| deploymentResult | object | Deployment result. See [Deployment Result Object](../../...md#deployment-result-object) |
 
 ### Deployment Result Object
 

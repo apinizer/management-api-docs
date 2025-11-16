@@ -24,7 +24,7 @@ See [Overview](overview.md) for detailed information about the Management API.
 3. **Understand Error Handling**: Learn how the API handles errors and what to expect.
    - [Error Handling](error-handling.md)
 
-4. **Start Using the API**: Explore the [API Reference](../02-api-reference) to find endpoints for your use case.
+4. **Start Using the API**: Explore the [API Reference](../../02-api-reference.md) to find endpoints for your use case.
 
 ## Documentation Sections
 
@@ -35,7 +35,7 @@ See [Overview](overview.md) for detailed information about the Management API.
 
 ## Next Steps
 
-After completing the getting started guide, explore the [API Reference](../02-api-reference) to find endpoints for:
+After completing the getting started guide, explore the [API Reference](../../02-api-reference.md) to find endpoints for:
 - Managing projects and environments
 - Creating and managing API proxies
 - Configuring policies
@@ -44,6 +44,6 @@ After completing the getting started guide, explore the [API Reference](../02-ap
 
 ## Related Documentation
 
-- [API Reference](../02-api-reference) - Complete API endpoint documentation
-- [Appendix](../03-appendix) - Glossary, variable definitions, enum references, and OpenAPI spec
+- [API Reference](../../02-api-reference.md) - Complete API endpoint documentation
+- [Appendix](../../03-appendix.md) - Glossary, variable definitions, enum references, and OpenAPI spec
 

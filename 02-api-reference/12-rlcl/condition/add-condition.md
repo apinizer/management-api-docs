@@ -106,19 +106,19 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](/#conditionruledto) |
+| conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](../../...md#conditionruledto) |
 
 ### ConditionRuleDTO (conditionRuleList item)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | conditionRuleList | array[object] | No | Nested condition rules (for complex conditions) |
-| conditionCriteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/#enumconditioncriteria) |
-| firstVariable | object | Yes | First variable for comparison. See [Variable Object](/#variable-object) |
-| variableDataType | string | Yes | Variable data type. See [EnumConditionVariableDataType](/#enumconditionvariabledatatype) |
+| conditionCriteria | string | Yes | Condition criteria. See [EnumConditionCriteria](../../...md#enumconditioncriteria) |
+| firstVariable | object | Yes | First variable for comparison. See [Variable Object](../../...md#variable-object) |
+| variableDataType | string | Yes | Variable data type. See [EnumConditionVariableDataType](../../...md#enumconditionvariabledatatype) |
 | dateFormat | string | No | Date format for date comparisons |
-| valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/#enumconditionvaluecomparisonoperator) |
-| secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](/#enumconditionvaluesource) |
+| valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](../../...md#enumconditionvaluecomparisonoperator) |
+| secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](../../...md#enumconditionvaluesource) |
 | secondValue | string | No | Static value for comparison (if secondValueSource is STATIC) |
 | secondVariable | object | No | Second variable for comparison (if secondValueSource is VARIABLE) |
 
@@ -157,12 +157,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Variable Object (firstVariable/secondVariable)
 
-See [Variable Definition](03-appendix/variable-definition) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "request.header.X-User-Type", "client.ip") |
-| type | string | Yes | Variable type. See [Variable Types](03-appendix/variable-definition) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -170,7 +170,7 @@ See [Variable Definition](03-appendix/variable-definition) for complete variable
 | messageContentType | string | No* | Message content type (required if type=BODY) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](03-appendix/variable-definition) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 
 ### Notes

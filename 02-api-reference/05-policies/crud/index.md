@@ -16,10 +16,10 @@ This section contains endpoints for creating, reading, updating, and deleting po
 
 ## Policy Types
 
-For detailed documentation on specific policy types, see [Policy Types](../policies).
+For detailed documentation on specific policy types, see [Policy Types](../../../../policies.md).
 
 ## Related Documentation
 
 - [Policies Overview](..) - Complete policy management documentation
-- [Policy Types](../policies) - Detailed documentation for each policy type
+- [Policy Types](../../../../policies.md) - Detailed documentation for each policy type
 

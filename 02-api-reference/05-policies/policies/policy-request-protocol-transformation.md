@@ -144,8 +144,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | Policy type. Must be `"policy-request-protocol-transformation"` |
 | description | string | No | Policy description |
 | active | boolean | No | Whether the policy is active. Default: `true` |
-| policyCondition | object | No | Policy condition configuration. See [Policy Condition](/#policy-condition) |
-| errorMessageList | array | No | List of error messages. See [Error Messages](/#error-messages) |
+| policyCondition | object | No | Policy condition configuration. See [Policy Condition](../../...md#policy-condition) |
+| errorMessageList | array | No | List of error messages. See [Error Messages](../../...md#error-messages) |
 
 **Note:** This policy currently only supports base policy fields. The actual REST-to-SOAP transformation configuration is managed through API Method settings in the API Proxy configuration.
 
@@ -224,7 +224,7 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body Fields
 
-Same as [Add Policy](/#add-policy) request body fields.
+Same as [Add Policy](../../...md#add-policy) request body fields.
 
 ### Response
 

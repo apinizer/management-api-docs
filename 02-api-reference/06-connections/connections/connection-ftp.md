@@ -298,7 +298,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | username | string | Yes | - | FTP username |
 | password | string | Yes | - | FTP password (secret field) |
 | workingDir | string | No | / | Working directory path |
-| protocol | string | Yes | - | FTP protocol type. See [EnumFtpProtocol](/#enumftpprotocol) |
+| protocol | string | Yes | - | FTP protocol type. See [EnumFtpProtocol](../../...md#enumftpprotocol) |
 | timeout | integer | No | 30000 | Connection timeout in milliseconds |
 | retryCount | integer | No | 3 | Number of retry attempts on failure |
 | useImplicit | boolean | No | false | Use implicit SSL/TLS (for FTPS only) |

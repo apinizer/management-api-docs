@@ -102,7 +102,7 @@ None
 | description | string | Policy description |
 | active | boolean | Whether policy is active |
 
-**Note:** Policy objects contain only basic information. For full policy details, use the [Policies API](../../05-policies).
+**Note:** Policy objects contain only basic information. For full policy details, use the [Policies API](../../../../../05-policies.md).
 
 ### EnumHttpRequestMethod
 
@@ -150,7 +150,7 @@ This endpoint does not require a request body.
 ## Notes and Warnings
 
 - **Endpoint ID**: Use [List Endpoints](list-endpoints.md) to get endpoint IDs
-- **Policy Details**: Policy objects contain basic information only. For full policy configuration, use the [Policies API](../../05-policies)
+- **Policy Details**: Policy objects contain basic information only. For full policy configuration, use the [Policies API](../../../../../05-policies.md)
 - **Empty Lists**: If no policies exist in a pipeline, an empty array is returned
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
@@ -158,4 +158,4 @@ This endpoint does not require a request body.
 
 - [List Endpoints](list-endpoints.md) - List all endpoints
 - [Get Endpoint](get-endpoint.md) - Get endpoint details (without policies)
-- [Policies API](../../05-policies) - Policy management API
+- [Policies API](../../../../../05-policies.md) - Policy management API

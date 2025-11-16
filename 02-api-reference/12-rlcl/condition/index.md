@@ -16,7 +16,7 @@ This section contains endpoints for managing conditions in RLCL (Rate Limit, Con
 ## Related Documentation
 
 - [RLCL Overview](..) - Complete RLCL management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete RLCL
-- [Credentials Management](../credentials) - Manage credentials in RLCL
-- [Endpoints Management](../endpoints) - Manage endpoints in RLCL
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete RLCL
+- [Credentials Management](../../../../credentials.md) - Manage credentials in RLCL
+- [Endpoints Management](../../../../endpoints.md) - Manage endpoints in RLCL
 

@@ -18,5 +18,5 @@ This section contains endpoints for creating, reading, updating, and deleting cr
 ## Related Documentation
 
 - [Credentials Overview](..) - Complete credential management documentation
-- [Access Management](../access) - Manage credential access
+- [Access Management](../../../../access.md) - Manage credential access
 

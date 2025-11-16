@@ -65,5 +65,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
 - [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
-- [Policies API](../05-policies) - Policy management
-- [Connections API](../06-connections) - Connection management
+- [Policies API](../../../05-policies.md) - Policy management
+- [Connections API](../../../06-connections.md) - Connection management

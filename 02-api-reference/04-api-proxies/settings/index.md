@@ -43,7 +43,7 @@ This section contains endpoints for configuring various settings of API proxies.
 ## Related Documentation
 
 - [API Proxies Overview](..) - Complete API Proxy management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete API proxies
-- [Deployment](../deployment) - Deploy and undeploy API proxies
-- [Endpoints](../endpoints) - Manage API proxy endpoints
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete API proxies
+- [Deployment](../../../../deployment.md) - Deploy and undeploy API proxies
+- [Endpoints](../../../../endpoints.md) - Manage API proxy endpoints
 

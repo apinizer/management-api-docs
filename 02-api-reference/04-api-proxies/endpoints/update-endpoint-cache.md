@@ -103,14 +103,14 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 | description | string | No | - | Cache settings description |
 | cacheActive | boolean | No | false | Enable/disable cache for this endpoint |
 | cacheOnlyHttpGetRequests | boolean | No | true | Cache only GET requests (if false, caches all methods) |
-| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](/#enumcachekeytype) |
-| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](/#enumcachestoragetype) |
+| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](../../...md#enumcachekeytype) |
+| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](../../...md#enumcachestoragetype) |
 | capacity | integer | No | - | Maximum cache capacity (number of entries) |
 | ttl | integer | No | - | Time to live in seconds |
-| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](/#enumcachehandlingaction) |
+| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](../../...md#enumcachehandlingaction) |
 | invalidationRequiresAuthn | boolean | No | false | Require authentication for cache invalidation |
 | cacheNullValue | boolean | No | false | Cache null/empty responses |
-| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](/#variable-object) |
+| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](../../...md#variable-object) |
 
 ### EnumCacheKeyType (cacheKeyType)
 
@@ -128,20 +128,20 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 
 ### Variable Object (for variableList when cacheKeyType=CUSTOM)
 
-See [Variable Definition](03-appendix/variable-definition) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](03-appendix/variable-definition) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](03-appendix/variable-definition) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](03-appendix/variable-definition) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](03-appendix/variable-definition) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |

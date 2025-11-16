@@ -539,24 +539,24 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | unPasswordDecrypted | boolean | No | false | Password is already decrypted flag |
 | unNonce | boolean | No | false | Add nonce to UsernameToken |
 | unCreated | boolean | No | false | Add created timestamp to UsernameToken |
-| unPasswordType | string | No* | null | UsernameToken password type (required if USERNAME_TOKEN is in wsSecurityEntryOrderList). See [EnumWsSecurityPasswordType](/#enumwssecuritypasswordtype) |
-| encPartList | array | No* | [] | Encryption parts list (required if ENCRYPTION is in wsSecurityEntryOrderList, at least one required). See [WsSecurityToTargetPart](/#wssecuritytotargetpart) |
+| unPasswordType | string | No* | null | UsernameToken password type (required if USERNAME_TOKEN is in wsSecurityEntryOrderList). See [EnumWsSecurityPasswordType](../../...md#enumwssecuritypasswordtype) |
+| encPartList | array | No* | [] | Encryption parts list (required if ENCRYPTION is in wsSecurityEntryOrderList, at least one required). See [WsSecurityToTargetPart](../../...md#wssecuritytotargetpart) |
 | encEmbeddedKeyName | string | No | null | Embedded key name for encryption (used when encKeyIdType=EMBEDDED_KEY_INFO) |
-| encKeyIdType | string | No* | null | Encryption key identifier type (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyIdentifierType](/#enumwssecuritykeyidentifiertype) |
-| encSymEncAlgorithm | string | No* | null | Symmetric encoding algorithm for encryption (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecuritySymmetricEncodingAlgorithm](/#enumwssecuritysymmetricencodingalgorithm) |
-| encKeyEncAlgorithm | string | No* | null | Key encryption algorithm (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyEncryptionAlgorithm](/#enumwssecuritykeyencryptionalgorithm) |
+| encKeyIdType | string | No* | null | Encryption key identifier type (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyIdentifierType](../../...md#enumwssecuritykeyidentifiertype) |
+| encSymEncAlgorithm | string | No* | null | Symmetric encoding algorithm for encryption (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecuritySymmetricEncodingAlgorithm](../../...md#enumwssecuritysymmetricencodingalgorithm) |
+| encKeyEncAlgorithm | string | No* | null | Key encryption algorithm (required if ENCRYPTION is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyEncryptionAlgorithm](../../...md#enumwssecuritykeyencryptionalgorithm) |
 | encKeyStoreName | string | No* | null | Encryption keystore name (required if ENCRYPTION is in wsSecurityEntryOrderList) |
-| sigPartList | array | No* | [] | Signature parts list (required if SIGNATURE is in wsSecurityEntryOrderList, at least one required). See [WsSecurityToTargetPart](/#wssecuritytotargetpart) |
+| sigPartList | array | No* | [] | Signature parts list (required if SIGNATURE is in wsSecurityEntryOrderList, at least one required). See [WsSecurityToTargetPart](../../...md#wssecuritytotargetpart) |
 | sigCustomKeyIdentifier | string | No | null | Custom key identifier for signature (used when sigKeyIdType=CUSTOM_KEY_INFO) |
 | sigCustomKeyIdentifierValueType | string | No* | null | Custom key identifier value type (required if sigCustomKeyIdentifier is provided) |
-| sigKeyIdType | string | No* | null | Signature key identifier type (required if SIGNATURE is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyIdentifierType](/#enumwssecuritykeyidentifiertype) |
-| sigSigAlgorithm | string | No | null | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](/#enumwssecuritysignaturealgorithm) |
-| sigC14n | string | No | null | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](/#enumwssecuritysignaturecanonicalization) |
-| sigDigAlgorithm | string | No | null | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](/#enum-ws-security-signature-digest-algorithm) |
+| sigKeyIdType | string | No* | null | Signature key identifier type (required if SIGNATURE is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyIdentifierType](../../...md#enumwssecuritykeyidentifiertype) |
+| sigSigAlgorithm | string | No | null | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](../../...md#enumwssecuritysignaturealgorithm) |
+| sigC14n | string | No | null | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](../../...md#enumwssecuritysignaturecanonicalization) |
+| sigDigAlgorithm | string | No | null | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](../../...md#enum-ws-security-signature-digest-algorithm) |
 | sigUseSingleCert | boolean | No | false | Use single certificate for signature |
 | sigWsiBSPCompliant | boolean | No | false | WSI BSP compliance for signature |
 | sigKeyStoreName | string | No* | null | Signature keystore name (required if SIGNATURE is in wsSecurityEntryOrderList) |
-| wsSecurityEntryOrderList | array | Yes | - | WS-Security entry order list (at least one required). See [EnumWsSecurityEntryType](/#enumwssecurityentrytype) |
+| wsSecurityEntryOrderList | array | Yes | - | WS-Security entry order list (at least one required). See [EnumWsSecurityEntryType](../../...md#enumwssecurityentrytype) |
 
 ### EnumWsSecurityEntryType
 
@@ -649,7 +649,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | Part name (e.g., "Body", "Timestamp") |
 | namespace | string | Yes | - | Part namespace URI |
-| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](/#enumwssecurityencryptionpartencodetype) |
+| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](../../...md#enumwssecurityencryptionpartencodetype) |
 
 ### EnumWsSecurityEncryptionPartEncodeType
 

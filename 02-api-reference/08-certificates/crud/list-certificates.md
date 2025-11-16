@@ -92,7 +92,7 @@ None.
 |-------|------|-------------|
 | name | string | Certificate name |
 | description | string | Certificate description |
-| certificateEnvironmentList | array[object] | List of certificate environments. See [Certificate Environment Object](/#certificate-environment-object) |
+| certificateEnvironmentList | array[object] | List of certificate environments. See [Certificate Environment Object](../../...md#certificate-environment-object) |
 
 ### Certificate Environment Object
 

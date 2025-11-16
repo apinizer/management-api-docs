@@ -16,6 +16,6 @@ This section contains endpoints for deploying and undeploying API proxy groups t
 ## Related Documentation
 
 - [API Proxy Groups Overview](..) - Complete API Proxy Group management documentation
-- [CRUD Operations](../crud) - Create, read, update, and delete groups
-- [API Proxies Management](../api-proxies) - Add/remove API proxies to/from groups
+- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete groups
+- [API Proxies Management](../../../../api-proxies.md) - Add/remove API proxies to/from groups
 

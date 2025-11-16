@@ -17,10 +17,10 @@ This section contains endpoints for creating, reading, updating, and deleting co
 
 ## Connection Types
 
-For detailed documentation on specific connection types, see [Connection Types](../connections).
+For detailed documentation on specific connection types, see [Connection Types](../../../../connections.md).
 
 ## Related Documentation
 
 - [Connections Overview](..) - Complete connection management documentation
-- [Connection Types](../connections) - Detailed documentation for each connection type
+- [Connection Types](../../../../connections.md) - Detailed documentation for each connection type
 

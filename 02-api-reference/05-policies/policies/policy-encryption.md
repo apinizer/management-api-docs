@@ -260,10 +260,10 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Must be `"policy-encryption"` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether the policy is active |
-| policyCondition | object | No | null | Policy condition. See [Policy Condition](/#policy-condition) |
-| errorMessageList | array | No | [] | List of error messages. See [Error Messages](/#error-messages) |
-| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](/#policy-operation-metadata) |
-| policyEncryptionDefList | array | Yes | - | List of encryption definitions. See [Encryption Definition](/#encryption-definition) |
+| policyCondition | object | No | null | Policy condition. See [Policy Condition](../../...md#policy-condition) |
+| errorMessageList | array | No | [] | List of error messages. See [Error Messages](../../...md#error-messages) |
+| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](../../...md#policy-operation-metadata) |
+| policyEncryptionDefList | array | Yes | - | List of encryption definitions. See [Encryption Definition](../../...md#encryption-definition) |
 
 ### Encryption Definition (policyEncryptionDefList)
 
@@ -272,17 +272,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | id | string | No | - | Definition ID |
 | description | string | No | - | Definition description |
-| sourceVar | object | Yes | - | Source variable to encrypt. See [Variable Object](/#variable-object) |
-| targetVar | object | Yes | - | Target variable for encrypted data. See [Variable Object](/#variable-object) |
-| cipherAlgorithm | string | Yes | - | Cipher algorithm. See [EnumCipherAlgorithm](/#enumcipheralgorithm) |
+| sourceVar | object | Yes | - | Source variable to encrypt. See [Variable Object](../../...md#variable-object) |
+| targetVar | object | Yes | - | Target variable for encrypted data. See [Variable Object](../../...md#variable-object) |
+| cipherAlgorithm | string | Yes | - | Cipher algorithm. See [EnumCipherAlgorithm](../../...md#enumcipheralgorithm) |
 | cipherAlgorithmVar | object | No | null | Variable containing cipher algorithm name (if dynamic) |
 | cryptoKeyInfoId | string | No | null | Crypto key info ID (for symmetric algorithms or asymmetric with KEY type) |
 | certificateId | string | No | null | Certificate ID (for asymmetric algorithms with CERTIFICATE type) |
-| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](/#enumkeycertificatetype) |
+| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](../../...md#enumkeycertificatetype) |
 | createIV | boolean | No | false | Whether to create initialization vector (IV) |
-| ivEncodingType | string | No | null | IV encoding type (if createIV=true). See [EnumEncodingType](/#enumencodingtype) |
+| ivEncodingType | string | No | null | IV encoding type (if createIV=true). See [EnumEncodingType](../../...md#enumencodingtype) |
 | ivVar | object | No | null | Variable to store IV (if createIV=true) |
-| outputEncodingType | string | Yes | - | Output encoding type. See [EnumEncodingType](/#enumencodingtype) |
+| outputEncodingType | string | Yes | - | Output encoding type. See [EnumEncodingType](../../...md#enumencodingtype) |
 
 ### EnumCipherAlgorithm (cipherAlgorithm)
 
@@ -318,20 +318,20 @@ Asymmetric Algorithms:
 
 ### Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar)
 
-See [Variable Definition](03-appendix/variable-definition) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](03-appendix/variable-definition) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](03-appendix/variable-definition) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](03-appendix/variable-definition) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](03-appendix/variable-definition) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
