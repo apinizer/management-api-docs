@@ -156,11 +156,11 @@ The policy object structure varies by policy type. All policies share common bas
 ###### Policy Types
 
 Each policy type has its own specific fields. See individual policy documentation pages for details:
-- [API Based Throttling](../policies/policy-api-based-throttling)
-- [Blocked IP List](../policies/policy-black-ip)
-- [Allowed IP List](../policies/policy-white-ip)
-- [Authentication Basic](../policies/policy-auth-basic)
-- ... (see [Policies Index](../) for complete list)
+- [API Based Throttling](/02-api-reference/05-policies/policies/policy-api-based-throttling)
+- [Blocked IP List](/02-api-reference/05-policies/policies/policy-black-ip)
+- [Allowed IP List](/02-api-reference/05-policies/policies/policy-white-ip)
+- [Authentication Basic](/02-api-reference/05-policies/policies/policy-auth-basic)
+- ... (see [Policies Index](/02-api-reference/05-policies) for complete list)
 
 ###### Policy Condition (PolicyConditionDTO)
 
@@ -522,7 +522,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Policies](./list-policies) - List all policies
-- [Update Policy](./update-policy) - Update an existing policy
-- [Delete Policy](./delete-policy) - Delete a policy
-- [Policy API Based Throttling](../policies/policy-api-based-throttling) - Example policy documentation
+- [List Policies](/02-api-reference/05-policies/crud/list-policies) - List all policies
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy) - Update an existing policy
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy) - Delete a policy
+- [Policy API Based Throttling](/02-api-reference/05-policies/policies/policy-api-based-throttling) - Example policy documentation

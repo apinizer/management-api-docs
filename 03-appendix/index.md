@@ -10,29 +10,29 @@ This section contains supplementary documentation including glossary, variable d
 ## Documentation
 
 ### Glossary
-- [Glossary](./glossary) - Definitions of terms and concepts used throughout the documentation
+- [Glossary](/03-appendix/glossary) - Definitions of terms and concepts used throughout the documentation
 
 ### Variable Definition
-- [Variable Definition](./variable-definition) - Complete guide to variables used in policies and configurations
+- [Variable Definition](/03-appendix/variable-definition) - Complete guide to variables used in policies and configurations
   - Variable types (HEADER, PARAMETER, BODY, CONTEXT_VALUES, CUSTOM)
   - Enum definitions for variable parameters
   - Usage examples and best practices
 
 ### Enum Reference
-- [Enum Reference](./enum-reference) - Complete reference of all enumeration types used in the API
+- [Enum Reference](/03-appendix/enum-reference) - Complete reference of all enumeration types used in the API
   - Policy enums
   - Connection enums
   - Configuration enums
   - And more...
 
 ### OpenAPI Specification
-- [OpenAPI Spec](./openapi-spec) - Information about accessing and using the OpenAPI specification
+- [OpenAPI Spec](/03-appendix/openapi-spec) - Information about accessing and using the OpenAPI specification
   - Interactive documentation
   - YAML specification download
   - API endpoint details
 
 ## Related Documentation
 
-- [Getting Started](../01-getting-started/) - Overview and quick start guide
-- [API Reference](../02-api-reference/) - Complete API endpoint documentation
+- [Getting Started](/01-getting-started) - Overview and quick start guide
+- [API Reference](/02-api-reference) - Complete API endpoint documentation
 

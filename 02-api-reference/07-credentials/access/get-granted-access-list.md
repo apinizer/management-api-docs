@@ -143,6 +143,6 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Grant Access](./grant-access) - Grant access to API Proxy or Group
-- [Revoke Access](./revoke-access) - Revoke access from API Proxy or Group
-- [List Credentials](../crud/list-credentials) - List all credentials
+- [Grant Access](/02-api-reference/07-credentials/access/grant-access) - Grant access to API Proxy or Group
+- [Revoke Access](/02-api-reference/07-credentials/access/revoke-access) - Revoke access from API Proxy or Group
+- [List Credentials](/02-api-reference/07-credentials/crud/list-credentials) - List all credentials

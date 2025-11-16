@@ -11,8 +11,8 @@ The Test API provides simple endpoints for testing API connectivity and authenti
 
 ## Endpoints
 
-- [Healthcheck](./healthcheck) - Check if the API is up and accessible
-- [Secure Hello](./secure-hello) - Test authentication with a simple greeting
+- [Healthcheck](/02-api-reference/16-test/healthcheck) - Check if the API is up and accessible
+- [Secure Hello](/02-api-reference/16-test/secure-hello) - Test authentication with a simple greeting
 
 ## Authentication
 
@@ -20,5 +20,5 @@ Most endpoints require authentication using a Personal API Access Token. Healthc
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling) - Error response formats

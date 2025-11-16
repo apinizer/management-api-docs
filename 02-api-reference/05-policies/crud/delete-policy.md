@@ -267,7 +267,7 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add Policy](./add-policy) - Add a new policy
-- [Update Policy](./update-policy) - Update an existing policy
-- [List Policies](./list-policies) - List all policies
-- [Deploy API Proxy](../../04-api-proxies/deployment/deploy) - Deploy API Proxy after changes
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy) - Add a new policy
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy) - Update an existing policy
+- [List Policies](/02-api-reference/05-policies/crud/list-policies) - List all policies
+- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy) - Deploy API Proxy after changes

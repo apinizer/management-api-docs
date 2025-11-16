@@ -130,5 +130,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Credential](./update-credential) - Update all credential fields
-- [Delete Credential](./delete-credential) - Delete a credential
+- [Update Credential](/02-api-reference/07-credentials/crud/update-credential) - Update all credential fields
+- [Delete Credential](/02-api-reference/07-credentials/crud/delete-credential) - Delete a credential

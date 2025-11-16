@@ -12,45 +12,45 @@ The API Proxies API provides endpoints for managing API proxies in Apinizer. API
 ## Endpoints
 
 ### CRUD Operations
-- [List API Proxies](./crud/list-api-proxies) - Get all API proxies for a project
-- [Get API Proxy](./crud/get-api-proxy) - Get API proxy details
-- [Create API Proxy from URL](./crud/create-api-proxy-from-url) - Create API proxy from OpenAPI/Swagger/WSDL URL
-- [Create API Proxy from File](./crud/create-api-proxy-from-file) - Create API proxy from uploaded file
-- [Update API Proxy](./crud/update-api-proxy) - Update API proxy
-- [Delete API Proxy](./crud/delete-api-proxy) - Delete API proxy
+- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies) - Get all API proxies for a project
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy) - Get API proxy details
+- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url) - Create API proxy from OpenAPI/Swagger/WSDL URL
+- [Create API Proxy from File](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file) - Create API proxy from uploaded file
+- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy) - Update API proxy
+- [Delete API Proxy](/02-api-reference/04-api-proxies/crud/delete-api-proxy) - Delete API proxy
 
 ### Deployment
-- [Deploy API Proxy](./deployment/deploy) - Deploy API proxy to environments
-- [Undeploy API Proxy](./deployment/undeploy) - Undeploy API proxy from environments
+- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy) - Deploy API proxy to environments
+- [Undeploy API Proxy](/02-api-reference/04-api-proxies/deployment/undeploy) - Undeploy API proxy from environments
 
 ### Endpoints Management
-- [List Endpoints](./endpoints/list-endpoints) - List all endpoints
-- [Get Endpoint](./endpoints/get-endpoint) - Get endpoint details
-- [Create Endpoint](./endpoints/create-endpoint) - Create new endpoint
-- [Update Endpoint](./endpoints/update-endpoint) - Update endpoint
-- [Delete Endpoint](./endpoints/delete-endpoint) - Delete endpoint
-- [Update Endpoint Status](./endpoints/update-endpoint-status) - Enable/disable endpoint
-- [Update Endpoint WSA](./endpoints/update-endpoint-wsa) - Update SOAP WSA settings
-- [Update Endpoint Cache](./endpoints/update-endpoint-cache) - Update endpoint cache settings
+- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints) - List all endpoints
+- [Get Endpoint](/02-api-reference/04-api-proxies/endpoints/get-endpoint) - Get endpoint details
+- [Create Endpoint](/02-api-reference/04-api-proxies/endpoints/create-endpoint) - Create new endpoint
+- [Update Endpoint](/02-api-reference/04-api-proxies/endpoints/update-endpoint) - Update endpoint
+- [Delete Endpoint](/02-api-reference/04-api-proxies/endpoints/delete-endpoint) - Delete endpoint
+- [Update Endpoint Status](/02-api-reference/04-api-proxies/endpoints/update-endpoint-status) - Enable/disable endpoint
+- [Update Endpoint WSA](/02-api-reference/04-api-proxies/endpoints/update-endpoint-wsa) - Update SOAP WSA settings
+- [Update Endpoint Cache](/02-api-reference/04-api-proxies/endpoints/update-endpoint-cache) - Update endpoint cache settings
 
 ### Settings
-- [CORS Settings](./settings/update-cors-settings) - Configure CORS
-- [Cache Settings](./settings/update-cache-settings) - Configure caching
-- [Routing Addresses](./settings/update-routing-addresses) - Configure routing addresses
-- [Routing Status](./settings/update-routing-status) - Configure routing status
-- [Connection Settings](./settings/update-connection-settings) - Configure connection settings
-- [Circuit Breaker Settings](./settings/update-circuit-breaker-settings) - Configure circuit breaker
-- [mTLS Settings](./settings/update-mtls-settings) - Configure mTLS
-- [NTLM Settings](./settings/update-ntlm-settings) - Configure NTLM
-- [Proxy Server Settings](./settings/update-proxy-server-settings) - Configure proxy server
-- [Traffic Log Settings](./settings/update-traffic-log-settings) - Configure traffic logging
-- [JSON Error Template](./settings/update-json-error-template) - Configure JSON error template
-- [XML Error Template](./settings/update-xml-error-template) - Configure XML error template
-- [Forwarded IP Header](./settings/update-forwarded-ip-header) - Configure forwarded IP header
-- [Hide API Definition](./settings/update-hide-spec-file) - Hide API definition file
-- [Client Route](./settings/update-client-route) - Configure client route metadata
-- [API Keys](./settings/update-api-keys) - Configure API keys
-- [Metadata](./settings/update-metadata) - Update metadata (name, description, category, sharing)
+- [CORS Settings](/02-api-reference/04-api-proxies/settings/update-cors-settings) - Configure CORS
+- [Cache Settings](/02-api-reference/04-api-proxies/settings/update-cache-settings) - Configure caching
+- [Routing Addresses](/02-api-reference/04-api-proxies/settings/update-routing-addresses) - Configure routing addresses
+- [Routing Status](/02-api-reference/04-api-proxies/settings/update-routing-status) - Configure routing status
+- [Connection Settings](/02-api-reference/04-api-proxies/settings/update-connection-settings) - Configure connection settings
+- [Circuit Breaker Settings](/02-api-reference/04-api-proxies/settings/update-circuit-breaker-settings) - Configure circuit breaker
+- [mTLS Settings](/02-api-reference/04-api-proxies/settings/update-mtls-settings) - Configure mTLS
+- [NTLM Settings](/02-api-reference/04-api-proxies/settings/update-ntlm-settings) - Configure NTLM
+- [Proxy Server Settings](/02-api-reference/04-api-proxies/settings/update-proxy-server-settings) - Configure proxy server
+- [Traffic Log Settings](/02-api-reference/04-api-proxies/settings/update-traffic-log-settings) - Configure traffic logging
+- [JSON Error Template](/02-api-reference/04-api-proxies/settings/update-json-error-template) - Configure JSON error template
+- [XML Error Template](/02-api-reference/04-api-proxies/settings/update-xml-error-template) - Configure XML error template
+- [Forwarded IP Header](/02-api-reference/04-api-proxies/settings/update-forwarded-ip-header) - Configure forwarded IP header
+- [Hide API Definition](/02-api-reference/04-api-proxies/settings/update-hide-spec-file) - Hide API definition file
+- [Client Route](/02-api-reference/04-api-proxies/settings/update-client-route) - Configure client route metadata
+- [API Keys](/02-api-reference/04-api-proxies/settings/update-api-keys) - Configure API keys
+- [Metadata](/02-api-reference/04-api-proxies/settings/update-metadata) - Update metadata (name, description, category, sharing)
 
 ## Authentication
 
@@ -63,7 +63,7 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling) - Error response formats
-- [Policies API](../05-policies/) - Policy management
-- [Connections API](../06-connections/) - Connection management
+- [Authentication Guide](/01-getting-started/authentication) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling) - Error response formats
+- [Policies API](/02-api-reference/05-policies) - Policy management
+- [Connections API](/02-api-reference/06-connections) - Connection management

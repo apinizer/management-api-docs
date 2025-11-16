@@ -872,8 +872,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies) - List all policies
-- [Add Policy](../crud/add-policy) - General policy addition guide
-- [Update Policy](../crud/update-policy) - General policy update guide
-- [Delete Policy](../crud/delete-policy) - General policy deletion guide
-- [WS Security From Target Policy](./policy-ws-security-from-target) - Process WS-Security from backend
+- [List Policies](/02-api-reference/05-policies/crud/list-policies) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy) - General policy deletion guide
+- [WS Security From Target Policy](/02-api-reference/05-policies/policies/policy-ws-security-from-target) - Process WS-Security from backend

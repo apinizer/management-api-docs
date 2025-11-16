@@ -432,10 +432,10 @@ curl -X DELETE \
 
 ## Policy Condition
 
-Policy condition allows you to specify when this policy should be applied. See [Policy Condition Documentation](../crud/add-policy) for detailed information.
+Policy condition allows you to specify when this policy should be applied. See [Policy Condition Documentation](/02-api-reference/05-policies/crud/add-policy) for detailed information.
 
 ---
 
 ## Error Messages
 
-Error messages allow you to customize error responses when policy validation fails. See [Error Messages Documentation](../crud/add-policy) for detailed information.
+Error messages allow you to customize error responses when policy validation fails. See [Error Messages Documentation](/02-api-reference/05-policies/crud/add-policy) for detailed information.

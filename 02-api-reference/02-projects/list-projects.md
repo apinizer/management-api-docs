@@ -127,5 +127,5 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling) - Error response formats

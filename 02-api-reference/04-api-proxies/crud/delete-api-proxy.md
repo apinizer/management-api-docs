@@ -140,7 +140,7 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [List API Proxies](./list-api-proxies) - List all API proxies
-- [Get API Proxy](./get-api-proxy) - Get API proxy details
-- [Create API Proxy from URL](./create-api-proxy-from-url) - Create a new API proxy
-- [Update API Proxy](./update-api-proxy) - Update an API proxy
+- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies) - List all API proxies
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy) - Get API proxy details
+- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url) - Create a new API proxy
+- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy) - Update an API proxy

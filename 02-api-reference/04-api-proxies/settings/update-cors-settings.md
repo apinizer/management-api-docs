@@ -200,5 +200,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Cache Settings](./update-cache-settings) - Update cache settings
-- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details
+- [Update Cache Settings](/02-api-reference/04-api-proxies/settings/update-cache-settings) - Update cache settings
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy) - Get API proxy details

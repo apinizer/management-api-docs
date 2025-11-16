@@ -114,7 +114,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Connectors
 
-Connectors must be created and configured before enabling them. See [Connections API](../../06-connections/) for connector management.
+Connectors must be created and configured before enabling them. See [Connections API](/02-api-reference/06-connections) for connector management.
 
 ## Response
 
@@ -223,7 +223,7 @@ curl -X PATCH \
 
 - **Environment-Specific**: Traffic log settings are configured per environment
 - **Environment Name**: Must match an existing environment name
-- **Connectors**: Connectors must be created before enabling (see [Connections API](../../06-connections/))
+- **Connectors**: Connectors must be created before enabling (see [Connections API](/02-api-reference/06-connections))
 - **Logging Overhead**: Logging request/response bodies can impact performance
 - **Data Privacy**: Be careful when logging sensitive data (passwords, tokens, etc.)
 - **Trace Log**: `enabledTraceLog` enables trace logging for debugging
@@ -233,5 +233,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Connections API](../../06-connections/) - Manage connectors for log export
-- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details
+- [Connections API](/02-api-reference/06-connections) - Manage connectors for log export
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy) - Get API proxy details
