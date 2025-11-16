@@ -192,7 +192,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ### ConditionRuleDTO (condition.rules item)
 
-See [Add Policy](../crud/add-policy.md#conditionrulelist-item) for detailed documentation. The structure matches the `ConditionRuleDTO` defined in the Add Policy documentation.
+See [Add Policy](../crud/add-policy#conditionrulelist-item) for detailed documentation. The structure matches the `ConditionRuleDTO` defined in the Add Policy documentation.
 
 ### Notes
 

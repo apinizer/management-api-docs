@@ -10,7 +10,6 @@ This section contains endpoints for creating, reading, updating, and deleting cr
 ## Endpoints
 
 - [List Credentials](./list-credentials) - Get all credentials for a project
-- [Get Credential](./get-credential) - Get detailed information about a specific credential
 - [Create Credential](./create-credential) - Create a new credential
 - [Update Credential](./update-credential) - Update an existing credential
 - [Change Credential Password](./change-credential-password) - Change password for a credential
