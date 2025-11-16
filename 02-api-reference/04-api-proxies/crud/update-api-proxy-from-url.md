@@ -195,12 +195,14 @@ Authorization: Bearer YOUR_TOKEN
 - `REVERSE_PROXY` - Reverse proxy (no specification)
 
 ### ClientRoute (clientRoute)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | relativePathList | array | Yes | List of relative paths (at least one required, first cannot be empty) |
 | virtualHostList | array | No | List of virtual hosts |
 
 ### RoutingInfo (routingInfo)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | routingAddressList | array | No | List of routing addresses. See [RoutingAddress](/management-api-docs/#routingaddress) |
@@ -208,6 +210,7 @@ Authorization: Bearer YOUR_TOKEN
 | mirrorEnabled | boolean | No | Whether mirroring is enabled |
 
 ### RoutingAddress (routingInfo.routingAddressList item)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | address | string | Yes | Backend server address |
@@ -215,6 +218,7 @@ Authorization: Bearer YOUR_TOKEN
 | healthCheckEnabled | boolean | No | Enable health check |
 
 ### MaintenanceModeSetting (maintenanceModeSetting)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | enabled | boolean | No | Whether maintenance mode is enabled |
@@ -223,6 +227,7 @@ Authorization: Bearer YOUR_TOKEN
 | message | string | No | Maintenance message |
 
 ### SpecAuthorizationValue (specAuthorizationValueList item)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | headerName | string | Yes | Header name (e.g., "Authorization") |

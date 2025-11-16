@@ -57,11 +57,13 @@ GET /apiops/projects/{projectName}/connections/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -114,11 +116,13 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -172,12 +176,14 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -251,6 +257,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Request Body Fields
 
 ###### Common Fields
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
@@ -260,6 +267,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | enabled | boolean | No | true | Whether connection is enabled |
 
 ###### Syslog-Specific Fields
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | syslogProtocolType | string | No | TCP | Protocol type. See [EnumSyslogProtocolType](/management-api-docs/#enumsyslogprotocoltype) |
@@ -385,12 +393,14 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -425,11 +435,13 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |

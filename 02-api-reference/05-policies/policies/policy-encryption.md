@@ -54,11 +54,13 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -102,12 +104,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ### Request
 
 #### Headers
+
 | Header | Value | Required |
 |--------|-------|----------|
 | Authorization | Bearer {token} | Yes |
 | Content-Type | application/json | Yes |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -402,11 +406,13 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 ### Request
 
 #### Headers
+
 | Header | Value | Required |
 |--------|-------|----------|
 | Authorization | Bearer {token} | Yes |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |

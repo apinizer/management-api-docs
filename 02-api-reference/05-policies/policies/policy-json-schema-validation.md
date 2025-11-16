@@ -52,11 +52,13 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -118,12 +120,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -163,6 +167,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ##### Request Body Fields
 
 ###### operationMetadata
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | targetScope | string | Yes | - | Policy scope: `ALL` or `ENDPOINT` |
@@ -186,6 +191,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`
 
 ###### policy
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | type | string | Yes | - | Policy type: `policy-json-schema-validation` |
@@ -299,12 +305,14 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -403,12 +411,14 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -431,6 +441,7 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 ##### Request Body Fields
 
 ###### operationMetadata
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | targetScope | string | Yes | Policy scope: `ALL` or `ENDPOINT` |

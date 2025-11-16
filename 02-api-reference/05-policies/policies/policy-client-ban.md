@@ -52,11 +52,13 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -133,12 +135,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -298,6 +302,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ##### Request Body Fields
 
 ###### Common Policy Fields
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | type | string | Yes | - | Policy type: `policy-client-ban` |
@@ -308,6 +313,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/management-api-docs/#policyconditiondto) |
 
 ###### Client Ban Specific Fields
+
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](/management-api-docs/#variabledto) |
@@ -517,12 +523,14 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 | Content-Type | application/json |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
@@ -558,11 +566,13 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 ### Request
 
 #### Headers
+
 | Header | Value |
 |--------|-------|
 | Authorization | Bearer {token} |
 
 #### Path Parameters
+
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |

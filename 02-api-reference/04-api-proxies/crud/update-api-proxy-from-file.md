@@ -167,6 +167,7 @@ Authorization: Bearer YOUR_TOKEN
 - `REVERSE_PROXY` - Reverse proxy (no specification)
 
 ### ClientRoute (clientRoute)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | relativePathList | array | Yes | List of relative paths (at least one required, first cannot be empty) |
@@ -177,6 +178,7 @@ Authorization: Bearer YOUR_TOKEN
 | bufferResponse | boolean | No | Buffer response body |
 
 ### RoutingInfo (routingInfo)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | routingAddressList | array | No | List of routing addresses. See [RoutingAddress](/management-api-docs/#routingaddress) |
@@ -188,6 +190,7 @@ Authorization: Bearer YOUR_TOKEN
 | ignoreRoutingError | boolean | No | Ignore routing errors |
 
 ### RoutingAddress (routingInfo.routingAddressList item)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | address | string | Yes | Backend server address |
@@ -202,6 +205,7 @@ Authorization: Bearer YOUR_TOKEN
 - `RANDOM` - Random selection
 
 ### MaintenanceModeSetting (maintenanceModeSetting)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | enabled | boolean | No | Whether maintenance mode is enabled |
