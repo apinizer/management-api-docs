@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/crud/
+---
+
 # API Proxy Groups CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting API proxy groups.

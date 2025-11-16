@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/credentials/
+---
+
 # RLCL - Credentials Management
 
 This section contains endpoints for managing credentials in RLCL (Rate Limit, Connection Limit) configurations.

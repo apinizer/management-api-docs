@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /03-appendix/
+---
+
 # Appendix
 
 This section contains supplementary documentation including glossary, variable definitions, enum references, and OpenAPI specification information.

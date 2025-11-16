@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /01-getting-started/
+---
+
 # Getting Started
 
 Welcome to the Apinizer Management API documentation. This section provides essential information to get you started with the Management API.

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/10-environment-variables/
+---
+
 # Environment Variables API
 
 ## Overview

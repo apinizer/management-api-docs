@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/crud/
+---
+
 # IP Groups CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting IP groups.

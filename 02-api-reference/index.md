@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/
+---
+
 # API Reference
 
 This section contains comprehensive documentation for all Management API endpoints organized by functionality.

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/
+---
+
 # API Proxy CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting API proxies.

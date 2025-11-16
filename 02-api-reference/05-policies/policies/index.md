@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/
+---
+
 # Policy Types
 
 This section contains detailed documentation for each policy type available in Apinizer.

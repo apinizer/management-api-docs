@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/ips/
+---
+
 # IP Groups - IP Address Management
 
 This section contains endpoints for managing IP addresses within IP groups.

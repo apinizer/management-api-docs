@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/crud/
+---
+
 # RLCL CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting RLCL (Rate Limit, Connection Limit) configurations.

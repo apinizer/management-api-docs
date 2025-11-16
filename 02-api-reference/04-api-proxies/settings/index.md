@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/
+---
+
 # API Proxy Settings
 
 This section contains endpoints for configuring various settings of API proxies.

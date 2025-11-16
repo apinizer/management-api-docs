@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/08-certificates/crud/
+---
+
 # Certificates CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting certificates.

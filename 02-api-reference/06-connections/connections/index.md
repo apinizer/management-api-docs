@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/06-connections/connections/
+---
+
 # Connection Types
 
 This section contains documentation for all available connection types in Apinizer.

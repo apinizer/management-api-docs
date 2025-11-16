@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/deployment/
+---
+
 # API Proxy Group Deployment
 
 This section contains endpoints for deploying and undeploying API proxy groups to environments.

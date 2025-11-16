@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/01-auth/
+---
+
 # Authentication API
 
 ## Overview

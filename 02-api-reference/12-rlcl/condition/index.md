@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/condition/
+---
+
 # RLCL - Condition Management
 
 This section contains endpoints for managing conditions in RLCL (Rate Limit, Connection Limit) configurations.

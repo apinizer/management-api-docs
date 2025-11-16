@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/
+---
+
 # API Proxy Groups API
 
 ## Overview

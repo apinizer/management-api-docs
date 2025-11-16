@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/crud/
+---
+
 # Policies CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting policies.

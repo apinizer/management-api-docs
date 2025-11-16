@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/07-credentials/crud/
+---
+
 # Credentials CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting credentials.

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/deployment/
+---
+
 # API Proxy Deployment
 
 This section contains endpoints for deploying and undeploying API proxies to environments.

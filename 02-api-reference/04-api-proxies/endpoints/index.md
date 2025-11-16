@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/endpoints/
+---
+
 # API Proxy Endpoints
 
 This section contains endpoints for managing API proxy endpoints (routes/paths).

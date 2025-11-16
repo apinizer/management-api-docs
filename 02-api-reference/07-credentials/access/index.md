@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/07-credentials/access/
+---
+
 # Credential Access Management
 
 This section contains endpoints for managing access to credentials.

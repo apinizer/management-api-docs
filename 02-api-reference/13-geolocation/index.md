@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/13-geolocation/
+---
+
 # Geolocation API
 
 ## Overview

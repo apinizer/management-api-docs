@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/endpoints/
+---
+
 # RLCL - Endpoints Management
 
 This section contains endpoints for managing endpoints in RLCL (Rate Limit, Connection Limit) configurations.

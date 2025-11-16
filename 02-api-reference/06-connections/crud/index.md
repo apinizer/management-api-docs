@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/06-connections/crud/
+---
+
 # Connections CRUD Operations
 
 This section contains endpoints for creating, reading, updating, and deleting connections.
