@@ -37,6 +37,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-relative-links
 
+# jekyll-relative-links configuration
+# This plugin automatically converts relative markdown links to proper URLs with baseurl
+relative_links:
+  enabled: true
+  collections: true
+
 # Exclude files
 exclude:
   - Gemfile
