@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-json-schema-validation/
+---
+
 # JSON Schema Validation Policy
 
 ## General Information

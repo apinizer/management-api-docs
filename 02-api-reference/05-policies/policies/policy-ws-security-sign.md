@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-ws-security-sign/
+---
+
 # WS Security Sign Policy
 
 ## General Information

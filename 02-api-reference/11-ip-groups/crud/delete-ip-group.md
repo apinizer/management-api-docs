@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/crud/delete-ip-group/
+---
+
 # Delete IP Group
 
 ## Overview

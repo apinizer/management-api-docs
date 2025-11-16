@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/crud/update-api-proxy-group/
+---
+
 # Update API Proxy Group
 
 ## Overview

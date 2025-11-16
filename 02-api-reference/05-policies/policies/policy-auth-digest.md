@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-auth-digest/
+---
+
 # Digest Authentication Policy
 
 ## General Information

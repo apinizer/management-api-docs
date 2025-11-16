@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/deployment/undeploy-api-proxy-group/
+---
+
 # Undeploy API Proxy Group
 
 ## Overview

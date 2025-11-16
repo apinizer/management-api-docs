@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-circuit-breaker-settings/
+---
+
 # Update Circuit Breaker Settings
 
 ## Overview

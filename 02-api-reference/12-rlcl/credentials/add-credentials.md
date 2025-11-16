@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/credentials/add-credentials/
+---
+
 # Add Credentials to RLCL
 
 ## Overview

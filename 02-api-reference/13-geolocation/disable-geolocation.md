@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/13-geolocation/disable-geolocation/
+---
+
 # Disable Geolocation
 
 ## Overview

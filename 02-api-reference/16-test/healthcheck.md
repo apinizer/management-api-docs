@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/16-test/healthcheck/
+---
+
 # Healthcheck
 
 ## Overview

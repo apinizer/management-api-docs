@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-xml-error-template/
+---
+
 # Update XML Error Response Template
 
 ## Overview

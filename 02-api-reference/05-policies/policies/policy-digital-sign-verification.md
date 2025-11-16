@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-digital-sign-verification/
+---
+
 # Digital Sign Verification Policy
 
 ## General Information

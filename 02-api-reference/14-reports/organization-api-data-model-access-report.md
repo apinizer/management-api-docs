@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/14-reports/organization-api-data-model-access-report/
+---
+
 # Organization API Data Model Access Report
 
 ## Overview

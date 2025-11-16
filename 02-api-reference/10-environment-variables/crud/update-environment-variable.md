@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/10-environment-variables/crud/update-environment-variable/
+---
+
 # Update Environment Variable
 
 ## Overview

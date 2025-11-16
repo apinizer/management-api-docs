@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-json-transformation/
+---
+
 # JSON Transformation Policy
 
 ## General Information

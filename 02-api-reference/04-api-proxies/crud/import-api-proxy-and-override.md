@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/import-api-proxy-and-override/
+---
+
 # Import API Proxy (With Override)
 
 ## Overview

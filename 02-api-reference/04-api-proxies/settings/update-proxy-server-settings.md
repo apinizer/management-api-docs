@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-proxy-server-settings/
+---
+
 # Update Proxy Server Settings
 
 ## Overview

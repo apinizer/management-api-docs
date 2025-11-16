@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/deployment/list-environments/
+---
+
 # List Environments of API Proxy Group
 
 ## Overview

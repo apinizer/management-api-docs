@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/deployment/undeploy/
+---
+
 # Undeploy API Proxy
 
 ## Overview

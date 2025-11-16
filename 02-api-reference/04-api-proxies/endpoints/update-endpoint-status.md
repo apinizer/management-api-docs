@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/endpoints/update-endpoint-status/
+---
+
 # Update Endpoint Status
 
 ## Overview

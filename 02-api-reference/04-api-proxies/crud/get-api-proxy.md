@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/get-api-proxy/
+---
+
 # Get API Proxy
 
 ## Overview

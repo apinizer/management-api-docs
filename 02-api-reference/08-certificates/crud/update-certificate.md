@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/08-certificates/crud/update-certificate/
+---
+
 # Update Certificate
 
 ## Overview

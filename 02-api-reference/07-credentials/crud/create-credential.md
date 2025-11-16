@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/07-credentials/crud/create-credential/
+---
+
 # Create Credential
 
 ## Overview

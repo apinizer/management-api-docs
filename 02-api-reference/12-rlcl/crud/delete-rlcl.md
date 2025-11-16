@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/crud/delete-rlcl/
+---
+
 # Delete RLCL
 
 ## Overview

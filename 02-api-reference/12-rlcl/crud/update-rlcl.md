@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/crud/update-rlcl/
+---
+
 # Update RLCL
 
 ## Overview

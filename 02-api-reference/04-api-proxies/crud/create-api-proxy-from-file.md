@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/
+---
+
 # Create API Proxy from File
 
 ## Overview

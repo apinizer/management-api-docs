@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-xml-schema-validation/
+---
+
 # XML Schema Validation Policy
 
 ## General Information

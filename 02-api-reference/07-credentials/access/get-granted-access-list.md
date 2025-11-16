@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/07-credentials/access/get-granted-access-list/
+---
+
 # Get Granted Access List
 
 ## Overview

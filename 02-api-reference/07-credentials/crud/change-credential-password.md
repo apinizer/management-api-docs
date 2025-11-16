@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/07-credentials/crud/change-credential-password/
+---
+
 # Change Credential Password
 
 ## Overview

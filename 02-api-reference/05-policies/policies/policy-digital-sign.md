@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-digital-sign/
+---
+
 # Digital Sign Policy
 
 ## General Information

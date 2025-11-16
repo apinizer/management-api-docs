@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/02-projects/list-projects/
+---
+
 # List Projects
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-json-error-template/
+---
+
 # Update JSON Error Response Template
 
 ## Overview

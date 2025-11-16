@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/condition/delete-condition/
+---
+
 # Delete Condition from RLCL
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /03-appendix/openapi-spec/
+---
+
 # OpenAPI Specification
 
 ## Overview

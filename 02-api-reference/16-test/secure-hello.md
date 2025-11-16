@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/16-test/secure-hello/
+---
+
 # Secure Hello
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/ips/add-ips-to-group/
+---
+
 # Add IPs to Group
 
 ## Overview

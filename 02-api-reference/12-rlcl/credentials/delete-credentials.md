@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/credentials/delete-credentials/
+---
+
 # Delete Credentials from RLCL
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/list-api-proxies/
+---
+
 # List API Proxies
 
 ## Overview

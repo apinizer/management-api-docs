@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/14-reports/api-report/
+---
+
 # API Report
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-ws-security-to-target/
+---
+
 # WS Security To Target Policy
 
 ## General Information

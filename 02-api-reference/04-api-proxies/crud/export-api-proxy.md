@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/export-api-proxy/
+---
+
 # Export API Proxy
 
 ## Overview

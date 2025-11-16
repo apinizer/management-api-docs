@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/credentials/update-credentials/
+---
+
 # Update Credentials in RLCL
 
 ## Overview

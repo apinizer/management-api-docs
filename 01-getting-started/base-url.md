@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /01-getting-started/base-url/
+---
+
 # Base URL and Endpoint Structure
 
 ## Base URL

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/crud/update-api-proxy/
+---
+
 # Update API Proxy
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-traffic-log-settings/
+---
+
 # Update Traffic Log Settings
 
 ## Overview

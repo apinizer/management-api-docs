@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/ips/delete-ips-from-group/
+---
+
 # Delete IPs from Group
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/
+---
+
 # List API Proxy Groups
 
 ## Overview

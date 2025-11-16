@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/endpoints/delete-endpoints/
+---
+
 # Delete Endpoints from RLCL
 
 ## Overview

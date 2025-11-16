@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/03-environments/get-environments-by-project/
+---
+
 # Get Environments by Project
 
 ## Overview

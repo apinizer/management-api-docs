@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/12-rlcl/condition/add-condition/
+---
+
 # Add Condition to RLCL
 
 ## Overview

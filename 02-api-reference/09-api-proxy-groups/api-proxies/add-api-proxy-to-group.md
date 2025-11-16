@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group/
+---
+
 # Add API Proxy to Group
 
 ## Overview

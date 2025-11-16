@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/05-policies/policies/policy-ws-security-sign-validation/
+---
+
 # WS Security Sign Validation Policy
 
 ## General Information

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/03-environments/list-environments/
+---
+
 # List Environments
 
 ## Overview

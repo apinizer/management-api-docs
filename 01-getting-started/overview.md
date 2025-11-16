@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /01-getting-started/overview/
+---
+
 # Management API Overview
 
 ## Introduction

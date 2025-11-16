@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/11-ip-groups/crud/create-ip-group/
+---
+
 # Create IP Group
 
 ## Overview

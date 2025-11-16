@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /03-appendix/glossary/
+---
+
 # Glossary
 
 ## Terms and Definitions

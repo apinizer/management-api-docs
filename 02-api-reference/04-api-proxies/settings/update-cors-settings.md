@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/04-api-proxies/settings/update-cors-settings/
+---
+
 # Update CORS Settings
 
 ## Overview

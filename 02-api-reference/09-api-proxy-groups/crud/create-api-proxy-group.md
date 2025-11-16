@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group/
+---
+
 # Create API Proxy Group
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /03-appendix/variable-definition/
+---
+
 # Variable Definition
 
 ## Overview

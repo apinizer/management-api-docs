@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/09-api-proxy-groups/api-proxies/remove-api-proxy-from-group/
+---
+
 # Remove API Proxy from Group
 
 ## Overview

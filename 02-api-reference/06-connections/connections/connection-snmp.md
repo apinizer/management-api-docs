@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /02-api-reference/06-connections/connections/connection-snmp/
+---
+
 # SNMP Connection
 
 ## General Information

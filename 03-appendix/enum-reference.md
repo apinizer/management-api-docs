@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /03-appendix/enum-reference/
+---
+
 # Enum Reference
 
 This document provides a comprehensive reference for all enumerations used in the Apinizer Management API.
