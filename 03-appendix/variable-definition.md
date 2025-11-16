@@ -15,16 +15,12 @@ Variable is a structure used to extract data from API traffic messages for polic
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| id | string | No | Variable ID (auto-generated on create, required for update) |
-| projectId | string | No | Project ID (usually auto-set by API, optional in request) |
 | name | string | Yes | Unique name of the variable |
 | description | string | No | Description for the variable |
 | type | EnumVariableType | Yes | Variable type. See [Variable Types](/management-api-docs/#variable-types) |
 
 ### Note
 
-- `id` and `projectId` are typically returned in responses and may be included in update requests
-- For create operations, `id` is auto-generated and `projectId` is usually set automatically based on the project context
 - `name` must be unique within a project
 
 ## Variable Types
