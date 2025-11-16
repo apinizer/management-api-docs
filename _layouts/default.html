@@ -9,11 +9,24 @@
     <base href="{{ site.baseurl }}/">
     {% seo %}
     <script>
-      // Sayfa yüklendiğinde aktif linki görünür yap
+      // Sayfa yüklendiğinde aktif linki görünür yap ve linkleri düzelt
       document.addEventListener('DOMContentLoaded', function() {
         const activeLink = document.querySelector('.sidebar-nav a.active');
         if (activeLink) {
           activeLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Tüm internal linkleri baseurl ile düzelt
+        const baseurl = '{{ site.baseurl }}';
+        if (baseurl) {
+          const links = document.querySelectorAll('main a[href^="/"]');
+          links.forEach(function(link) {
+            const href = link.getAttribute('href');
+            // External link değilse baseurl ekle
+            if (href && !href.startsWith('//') && !href.startsWith('http')) {
+              link.setAttribute('href', baseurl + href);
+            }
+          });
         }
       });
     </script>
