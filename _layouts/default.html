@@ -80,19 +80,6 @@
         
         <main class="main-content">
           <section>
-            {% comment %}
-              Kök neden: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor.
-              Çözüm: Liquid filter kullanarak markdown içeriğindeki linkleri işle.
-              Ancak markdown zaten HTML'e render edilmiş durumda geldiği için,
-              içeriği string replacement ile işliyoruz.
-            {% endcomment %}
-            {% assign processed_content = content %}
-            {% if site.baseurl and site.baseurl != '' %}
-              {% assign baseurl_prefix = site.baseurl | append: '/' %}
-              {% comment %}Absolute path'leri baseurl ile birleştir{% endcomment %}
-              {% assign processed_content = processed_content | replace: 'href="/', 'href="' | append: site.baseurl | append: '/' %}
-              {% comment %}Yukarıdaki yaklaşım çalışmıyor, bu yüzden JavaScript kullanıyoruz{% endcomment %}
-            {% endif %}
             {{ content }}
           </section>
           
@@ -100,26 +87,6 @@
             <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
           </footer>
         </main>
-        <script>
-          // Kök neden: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor
-          // Liquid filter'lar markdown içeriğinde çalışmıyor çünkü içerik zaten HTML'e render edilmiş
-          // Bu yüzden post-render script kullanıyoruz
-          (function() {
-            const baseurl = '{{ site.baseurl }}';
-            if (baseurl && baseurl !== '') {
-              const mainContent = document.querySelector('main.main-content section');
-              if (mainContent) {
-                const links = mainContent.querySelectorAll('a[href^="/"]');
-                links.forEach(function(link) {
-                  const href = link.getAttribute('href');
-                  if (href && !href.startsWith('//') && !href.startsWith('http') && !href.startsWith(baseurl)) {
-                    link.setAttribute('href', baseurl + href);
-                  }
-                });
-              }
-            }
-          })();
-        </script>
       </div>
     </div>
   </body>
