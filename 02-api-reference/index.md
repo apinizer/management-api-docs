@@ -110,7 +110,7 @@ See [Base URL](/02-api-reference/01-getting-started/base-url/) for more details.
 
 ## Error Handling
 
-All endpoints follow a consistent error response format. See [Error Handling](/02-api-reference/01-getting-started/error-handling/) for details.
+All endpoints follow a consistent error response format. See [Error Handling](../01-getting-started/error-handling/) for details.
 
 ## Related Documentation
 
