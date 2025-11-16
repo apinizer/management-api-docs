@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:  # Allow manual trigger
 permissions:
   contents: write
 jobs:
@@ -11,9 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for git info
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
