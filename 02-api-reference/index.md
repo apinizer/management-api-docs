@@ -97,7 +97,7 @@ All endpoints (except test endpoints) require authentication using a Personal AP
 Authorization: Bearer YOUR_TOKEN
 ```
 
-See [Authentication Guide](/02-api-reference/01-getting-started/authentication/) for details.
+See [Authentication Guide](../01-getting-started/authentication/) for details.
 
 ## Base URL
 
