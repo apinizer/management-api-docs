@@ -163,6 +163,6 @@ Tokens inherit the permissions of the user who created them. Ensure your user ac
 
 ## Next Steps
 
-- [Learn about base URLs](/01-getting-started/01-getting-started/base-url/)
-- [Understand error handling](/01-getting-started/01-getting-started/error-handling/)
+- [Learn about base URLs](base-url/)
+- [Understand error handling](error-handling/)
 - [Start using the API](/01-getting-started/02-api-reference/)

@@ -483,8 +483,8 @@ Variables are used in various policies:
 
 ## Related Documentation
 
-- [Enum Reference](/03-appendix/03-appendix/enum-reference/) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
-- [Glossary](/03-appendix/03-appendix/glossary/) - Terms and definitions
+- [Enum Reference](enum-reference/) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
+- [Glossary](glossary/) - Terms and definitions
 - [API Based Throttling Policy](/03-appendix/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Uses variables for client identification
 - [RLCL API](/03-appendix/02-api-reference/12-rlcl/) - Uses variables for rate limit control
 - [Script Policy](/03-appendix/02-api-reference/05-policies/policies/policy-script/) - Script language types
