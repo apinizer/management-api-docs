@@ -77,7 +77,7 @@ None
 
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
-**Note:** Policy lists are not included. Use [List Endpoint Policies](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policy details.
+**Note:** Policy lists are not included. Use [List Endpoint Policies](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policy details.
 
 ### Error Response (400 Bad Request)
 
@@ -120,13 +120,13 @@ This endpoint does not require a request body.
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
-- **Policy Details**: Policy lists are not included. Use [List Endpoint Policies](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policies
+- **Endpoint ID**: Use [List Endpoints](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Policy Details**: Policy lists are not included. Use [List Endpoint Policies](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policies
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
-- [List Endpoint Policies](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) - List endpoint policies
-- [Update Endpoint](../../../../02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update an endpoint
-- [Delete Endpoint](../../../../02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint
+- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [List Endpoint Policies](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) - List endpoint policies
+- [Update Endpoint](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update an endpoint
+- [Delete Endpoint](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint

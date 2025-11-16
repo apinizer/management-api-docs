@@ -228,20 +228,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ###### targetVariableForIdentity
 
-See [Variable Definition](../../../../03-appendix/variable-definition/) for complete variable documentation.
+See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](../../../../03-appendix/variable-definition/) |
+| type | string | Yes | Variable type. See [Variable Types](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../../03-appendix/variable-definition/) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../../03-appendix/variable-definition/) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../../03-appendix/variable-definition/) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -261,7 +261,7 @@ See [Variable Definition](../../../../03-appendix/variable-definition/) for comp
 - `REQUEST_HTTP_METHOD` - HTTP method
 - `REQUEST_USERNAME_KEY` - Username or key
 
-For complete list of context values, see [EnumVariableContextValue](../../../../03-appendix/variable-definition/).
+For complete list of context values, see [EnumVariableContextValue](/02-api-reference/05-policies/policies/03-appendix/variable-definition/).
 
 ###### detailList (Optional)
 | Field | Type | Required | Description |
@@ -537,7 +537,7 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](../../../../02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](../../../../02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](../../../../02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](../../../../02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide

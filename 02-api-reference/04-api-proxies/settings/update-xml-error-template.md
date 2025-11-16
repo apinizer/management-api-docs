@@ -178,5 +178,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update JSON Error Template](../../../../02-api-reference/04-api-proxies/settings/update-json-error-template/) - Update JSON error template
-- [Get API Proxy](../../../../02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update JSON Error Template](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/settings/update-json-error-template/) - Update JSON error template
+- [Get API Proxy](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details

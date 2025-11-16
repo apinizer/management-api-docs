@@ -344,8 +344,8 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from URL](../../../../02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create from URL instead of file
-- [List API Proxies](../../../../02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
-- [Get API Proxy](../../../../02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
-- [Update API Proxy](../../../../02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy
-- [Delete API Proxy](../../../../02-api-reference/04-api-proxies/crud/delete-api-proxy/) - Delete API proxy
+- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create from URL instead of file
+- [List API Proxies](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy
+- [Delete API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/delete-api-proxy/) - Delete API proxy

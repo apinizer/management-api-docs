@@ -168,6 +168,6 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Add Policy](../../../../02-api-reference/05-policies/crud/add-policy/) - Add a new policy
-- [Update Policy](../../../../02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
-- [Delete Policy](../../../../02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [Add Policy](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
+- [Update Policy](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [Delete Policy](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy

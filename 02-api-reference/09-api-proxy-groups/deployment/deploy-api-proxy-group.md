@@ -129,5 +129,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Undeploy API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/deployment/undeploy-api-proxy-group/) - Undeploy group from environment
-- [List Environments](../../../../02-api-reference/09-api-proxy-groups/deployment/list-environments/) - List environments for group
+- [Undeploy API Proxy Group](/02-api-reference/09-api-proxy-groups/deployment/02-api-reference/09-api-proxy-groups/deployment/undeploy-api-proxy-group/) - Undeploy group from environment
+- [List Environments](/02-api-reference/09-api-proxy-groups/deployment/02-api-reference/09-api-proxy-groups/deployment/list-environments/) - List environments for group

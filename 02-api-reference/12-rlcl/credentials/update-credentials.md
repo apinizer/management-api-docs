@@ -27,7 +27,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Credentials. See [Add Credentials](../../../../02-api-reference/12-rlcl/credentials/add-credentials/) for field descriptions.
+Same structure as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) for field descriptions.
 
 ### Important Notes
 
@@ -36,7 +36,7 @@ Same structure as Add Credentials. See [Add Credentials](../../../../02-api-refe
 
 ### Response
 
-Same as Add Credentials. See [Add Credentials](../../../../02-api-reference/12-rlcl/credentials/add-credentials/) for response format.
+Same as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) for response format.
 
 ## cURL Example
 
@@ -63,5 +63,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Credentials](../../../../02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials without removing existing ones
-- [Delete Credentials](../../../../02-api-reference/12-rlcl/credentials/delete-credentials/) - Remove specific credentials
+- [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials without removing existing ones
+- [Delete Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/delete-credentials/) - Remove specific credentials

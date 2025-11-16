@@ -137,7 +137,7 @@ Type of variable used in policies and conditions.
 
 Used in `VariableDTO` to specify how to extract data.
 
-See [Variable Definition](../../03-appendix/variable-definition/) for complete documentation.
+See [Variable Definition](/03-appendix/03-appendix/variable-definition/) for complete documentation.
 
 ## Variable Parameter Types
 
@@ -205,6 +205,6 @@ Used when importing or creating API Proxies from specification files.
 
 ## Related Documentation
 
-- [Variable Definition](../../03-appendix/variable-definition/) - Complete variable documentation
-- [Glossary](../../03-appendix/glossary/) - Terms and definitions
-- [OpenAPI Spec](../../03-appendix/openapi-spec/) - OpenAPI specification access
+- [Variable Definition](/03-appendix/03-appendix/variable-definition/) - Complete variable documentation
+- [Glossary](/03-appendix/03-appendix/glossary/) - Terms and definitions
+- [OpenAPI Spec](/03-appendix/03-appendix/openapi-spec/) - OpenAPI specification access

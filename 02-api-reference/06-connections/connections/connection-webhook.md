@@ -512,8 +512,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](../../../../02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](../../../../02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](../../../../02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](../../../../02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](../../../../02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

@@ -175,6 +175,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update NTLM Settings](../../../../02-api-reference/04-api-proxies/settings/update-ntlm-settings/) - Update NTLM settings
-- [Update Connection Settings](../../../../02-api-reference/04-api-proxies/settings/update-connection-settings/) - Update connection settings
-- [Get API Proxy](../../../../02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update NTLM Settings](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/settings/update-ntlm-settings/) - Update NTLM settings
+- [Update Connection Settings](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/settings/update-connection-settings/) - Update connection settings
+- [Get API Proxy](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details

@@ -53,7 +53,7 @@ The current OpenAPI specification version is **3.0**.
 
 ## Related Documentation
 
-- [Base URL](../../01-getting-started/base-url/) - How to construct API URLs
-- [Authentication](../../01-getting-started/authentication/) - How to authenticate API requests
-- [Enum Reference](../../03-appendix/enum-reference/) - Enumeration values used in the API
-- [Glossary](../../03-appendix/glossary/) - Terms and definitions
+- [Base URL](/03-appendix/01-getting-started/base-url/) - How to construct API URLs
+- [Authentication](/03-appendix/01-getting-started/authentication/) - How to authenticate API requests
+- [Enum Reference](/03-appendix/03-appendix/enum-reference/) - Enumeration values used in the API
+- [Glossary](/03-appendix/03-appendix/glossary/) - Terms and definitions

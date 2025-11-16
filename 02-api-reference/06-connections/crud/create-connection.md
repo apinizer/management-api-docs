@@ -98,10 +98,10 @@ Authorization: Bearer YOUR_TOKEN
 - `logback` - Logback connection
 
 **Note:** Connection-specific fields vary by connection type. See individual connection type documentation for complete field descriptions:
-- [Email Connection](../../../../02-api-reference/06-connections/connections/connection-email/)
-- [Kafka Connection](../../../../02-api-reference/06-connections/connections/connection-kafka/)
-- [Database Connection](../../../../02-api-reference/06-connections/connections/connection-database/)
-- ... (see [Connections Index](../../../../02-api-reference/06-connections/) for complete list)
+- [Email Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-email/)
+- [Kafka Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-kafka/)
+- [Database Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-database/)
+- ... (see [Connections Index](/02-api-reference/06-connections/crud/02-api-reference/06-connections/) for complete list)
 
 ## Response
 
@@ -239,10 +239,10 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Connections](../../../../02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](../../../../02-api-reference/06-connections/crud/get-connection/) - Get connection details
-- [Update Connection](../../../../02-api-reference/06-connections/crud/update-connection/) - Update a connection
-- [Delete Connection](../../../../02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
-- [Email Connection](../../../../02-api-reference/06-connections/connections/connection-email/) - Email connection details
-- [Database Connection](../../../../02-api-reference/06-connections/connections/connection-database/) - Database connection details
-- [Kafka Connection](../../../../02-api-reference/06-connections/connections/connection-kafka/) - Kafka connection details
+- [List Connections](/02-api-reference/06-connections/crud/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/crud/get-connection/) - Get connection details
+- [Update Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/crud/update-connection/) - Update a connection
+- [Delete Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
+- [Email Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-email/) - Email connection details
+- [Database Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-database/) - Database connection details
+- [Kafka Connection](/02-api-reference/06-connections/crud/02-api-reference/06-connections/connections/connection-kafka/) - Kafka connection details

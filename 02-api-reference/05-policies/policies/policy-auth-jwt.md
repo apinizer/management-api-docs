@@ -510,7 +510,7 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](../../../../02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](../../../../02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](../../../../02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](../../../../02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide

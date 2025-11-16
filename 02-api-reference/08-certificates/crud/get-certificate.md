@@ -73,7 +73,7 @@ None.
 
 #### Response Fields
 
-Same as List Certificates. See [List Certificates](../../../../02-api-reference/08-certificates/crud/list-certificates/) for field descriptions.
+Same as List Certificates. See [List Certificates](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/list-certificates/) for field descriptions.
 
 ### Notes
 
@@ -100,5 +100,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Certificates](../../../../02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
-- [Create Certificate](../../../../02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [List Certificates](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
+- [Create Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate

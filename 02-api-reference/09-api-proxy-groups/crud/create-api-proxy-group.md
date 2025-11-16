@@ -285,6 +285,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List API Proxy Groups](../../../../02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups
-- [Update API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/update-api-proxy-group/) - Update an API Proxy Group
-- [Add API Proxy to Group](../../../../02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group/) - Add API Proxies to group
+- [List API Proxy Groups](/02-api-reference/09-api-proxy-groups/crud/02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups
+- [Update API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/02-api-reference/09-api-proxy-groups/crud/update-api-proxy-group/) - Update an API Proxy Group
+- [Add API Proxy to Group](/02-api-reference/09-api-proxy-groups/crud/02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group/) - Add API Proxies to group
