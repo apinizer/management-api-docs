@@ -56,16 +56,18 @@ header {
     padding: 0;
     margin: 0;
     
-    li {
+    > li {
       margin: 0;
       
-      a {
+      > a {
         display: block;
-        padding: 8px 20px;
+        padding: 10px 20px;
         color: #333;
         text-decoration: none;
         font-size: 14px;
+        font-weight: 500;
         transition: background-color 0.2s;
+        border-left: 3px solid transparent;
         
         &:hover {
           background-color: #e9ecef;
@@ -81,7 +83,7 @@ header {
       }
       
       &.nav-section {
-        margin-top: 20px;
+        margin-top: 15px;
         
         &:first-child {
           margin-top: 0;
@@ -89,21 +91,33 @@ header {
         
         .nav-section-title {
           display: block;
-          padding: 8px 20px;
+          padding: 10px 20px;
           font-weight: 600;
-          font-size: 12px;
+          font-size: 11px;
           text-transform: uppercase;
           color: #666;
           letter-spacing: 0.5px;
+          margin-bottom: 5px;
         }
         
-        ul {
-          margin-top: 5px;
+        > ul {
+          margin-top: 0;
           
-          li {
-            a {
-              padding-left: 35px;
+          > li {
+            margin: 0;
+            
+            > a {
+              padding: 8px 20px 8px 35px;
               font-size: 13px;
+              font-weight: 400;
+              
+              &.active {
+                background-color: #e7f3ff;
+                color: #0366d6;
+                font-weight: 600;
+                border-left: 3px solid #0366d6;
+                padding-left: 32px;
+              }
             }
           }
         }

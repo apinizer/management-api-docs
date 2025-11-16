@@ -25,13 +25,11 @@
               <li class="nav-section">
                 <span class="nav-section-title">Getting Started</span>
                 <ul>
-                  <li><a href="{{ '/01-getting-started/' | relative_url }}" {% if page.url contains '/01-getting-started/' %}class="active"{% endif %}>Overview</a></li>
-                  {% assign getting_started_pages = site.pages | where_exp: "item", "item.path contains '01-getting-started/' and item.path != '01-getting-started/index.md'" | sort: "path" %}
-                  {% for item in getting_started_pages %}
-                    {% unless item.path contains 'index.md' %}
-                    <li><a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title | default: item.name | replace: '.md', '' | capitalize }}</a></li>
-                    {% endunless %}
-                  {% endfor %}
+                  <li><a href="{{ '/01-getting-started/' | relative_url }}" {% if page.url == '/01-getting-started/' %}class="active"{% endif %}>Overview</a></li>
+                  <li><a href="{{ '/01-getting-started/overview' | relative_url }}" {% if page.url contains '/overview' %}class="active"{% endif %}>Overview</a></li>
+                  <li><a href="{{ '/01-getting-started/authentication' | relative_url }}" {% if page.url contains '/authentication' %}class="active"{% endif %}>Authentication</a></li>
+                  <li><a href="{{ '/01-getting-started/base-url' | relative_url }}" {% if page.url contains '/base-url' %}class="active"{% endif %}>Base URL</a></li>
+                  <li><a href="{{ '/01-getting-started/error-handling' | relative_url }}" {% if page.url contains '/error-handling' %}class="active"{% endif %}>Error Handling</a></li>
                 </ul>
               </li>
               
@@ -61,12 +59,10 @@
                 <span class="nav-section-title">Appendix</span>
                 <ul>
                   <li><a href="{{ '/03-appendix/' | relative_url }}" {% if page.url == '/03-appendix/' %}class="active"{% endif %}>Overview</a></li>
-                  {% assign appendix_pages = site.pages | where_exp: "item", "item.path contains '03-appendix/' and item.path != '03-appendix/index.md'" | sort: "path" %}
-                  {% for item in appendix_pages %}
-                    {% unless item.path contains 'index.md' %}
-                    <li><a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title | default: item.name | replace: '.md', '' | capitalize }}</a></li>
-                    {% endunless %}
-                  {% endfor %}
+                  <li><a href="{{ '/03-appendix/glossary' | relative_url }}" {% if page.url contains '/glossary' %}class="active"{% endif %}>Glossary</a></li>
+                  <li><a href="{{ '/03-appendix/variable-definition' | relative_url }}" {% if page.url contains '/variable-definition' %}class="active"{% endif %}>Variable Definition</a></li>
+                  <li><a href="{{ '/03-appendix/enum-reference' | relative_url }}" {% if page.url contains '/enum-reference' %}class="active"{% endif %}>Enum Reference</a></li>
+                  <li><a href="{{ '/03-appendix/openapi-spec' | relative_url }}" {% if page.url contains '/openapi-spec' %}class="active"{% endif %}>OpenAPI Spec</a></li>
                 </ul>
               </li>
             </ul>
