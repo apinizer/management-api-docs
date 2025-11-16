@@ -35,9 +35,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Query Parameters
 
-None
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Connection type. Valid values: `email`, `kafka`, `elasticsearch`, `rabbitMq`, `ftp`, `graylog`, `syslog`, `webhook`, `logback`, `activeMq`, `snmp`, `linux-script`, `database`, `ldap` |
 
 ## Response
+
 
 ### Success Response (200 OK)
 
@@ -46,9 +49,7 @@ None
   "success": true,
   "resultList": [
     {
-      "_class": "email",
-      "id": "connection-id-1",
-      "projectId": "project-id",
+      "type": "email",
       "name": "my-email-connection",
       "description": "Email connection for notifications",
       "deployToWorker": true,
@@ -63,9 +64,7 @@ None
       "from": "noreply@example.com"
     },
     {
-      "_class": "kafka",
-      "id": "connection-id-2",
-      "projectId": "project-id",
+      "type": "kafka",
       "name": "my-kafka-connection",
       "description": "Kafka connection for event streaming",
       "deployToWorker": true,
@@ -91,9 +90,7 @@ None
 
 | Field | Type | Description |
 |-------|------|-------------|
-| _class | string | Connection type identifier |
-| id | string | Connection unique identifier |
-| projectId | string | Project ID |
+| type | string | Connection type discriminator field. Identifies the connection type in API responses. |
 | name | string | Connection name |
 | description | string | Connection description |
 | deployToWorker | boolean | Whether to deploy to worker |
@@ -119,11 +116,29 @@ None
 }
 ```
 
-## cURL Example
+## cURL Examples
+
+### List Connections by Type (Database)
 
 ```bash
 curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/connections/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/?type=database" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### List Connections by Type (Email)
+
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/?type=email" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### List Connections by Type (Kafka)
+
+```bash
+curl -X GET \
+  "https://demo.apinizer.com/apiops/projects/MyProject/connections/?type=kafka" \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
@@ -136,6 +151,8 @@ This endpoint does not require a request body.
 - **Secret Fields**: Secret fields (password, apiKey, etc.) are masked and returned as `null` in list operations
 - **Get Single Connection**: Use [Get Connection](./get-connection.md) to retrieve full connection details including secrets
 - **Connection Types**: Each connection type has different fields. See individual connection type documentation for details
+- **Type Parameter Required**: The `type` query parameter is required. Since connections are stored in separate collections by type, you must specify the connection type to query
+- **Valid Type Values**: `email`, `kafka`, `elasticsearch`, `rabbitMq`, `ftp`, `graylog`, `syslog`, `webhook`, `logback`, `activeMq`, `snmp`, `linux-script`, `database`, `ldap`
 
 ## Related Documentation
 

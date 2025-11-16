@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "kafka",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "kafka",
       "name": "my-kafka-connection",
       "description": "Kafka connection for event streaming",
       "deployToWorker": true,
@@ -138,9 +136,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "kafka",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "kafka",
       "name": "my-kafka-connection",
       "description": "Kafka connection for event streaming",
       "deployToWorker": true,
@@ -209,7 +205,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example
 ```json
 {
-  "_class": "kafka",
+  "type": "kafka",
   "name": "my-kafka-connection",
   "description": "Kafka connection for event streaming",
   "deployToWorker": true,
@@ -253,7 +249,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `kafka` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -332,7 +328,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "kafka",
+    "type": "kafka",
     "name": "my-kafka-connection",
     "description": "Kafka connection for event streaming",
     "deployToWorker": true,
@@ -388,8 +384,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example
 ```json
 {
-  "_class": "kafka",
-  "id": "connection-id",
+  "type": "kafka",
   "name": "my-kafka-connection",
   "description": "Updated Kafka connection description",
   "deployToWorker": true,
@@ -420,7 +415,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 }
 ```
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection.
+**Note:** Request body structure is the same as Create Connection.
 
 ### Response
 
@@ -442,8 +437,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "kafka",
-    "id": "connection-id",
+    "type": "kafka",
     "name": "my-kafka-connection",
     "description": "Updated Kafka connection description",
     "deployToWorker": true,

@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "ldap",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "ldap",
       "name": "my-ldap-connection",
       "description": "LDAP connection for authentication",
       "deployToWorker": true,
@@ -132,9 +130,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "ldap",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "ldap",
       "name": "my-ldap-connection",
       "description": "LDAP connection for authentication",
       "deployToWorker": true,
@@ -193,7 +189,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic LDAP Connection
 ```json
 {
-  "_class": "ldap",
+  "type": "ldap",
   "name": "my-ldap-connection",
   "description": "LDAP connection for authentication",
   "deployToWorker": true,
@@ -215,7 +211,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - LDAP with SSL
 ```json
 {
-  "_class": "ldap",
+  "type": "ldap",
   "name": "my-ldap-ssl",
   "description": "LDAP connection with SSL",
   "deployToWorker": true,
@@ -237,7 +233,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Active Directory
 ```json
 {
-  "_class": "ldap",
+  "type": "ldap",
   "name": "my-ad-connection",
   "description": "Active Directory LDAP connection",
   "deployToWorker": true,
@@ -259,7 +255,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - LDAP with Certificate Validation
 ```json
 {
-  "_class": "ldap",
+  "type": "ldap",
   "name": "my-ldap-secure",
   "description": "LDAP with certificate validation",
   "deployToWorker": true,
@@ -283,7 +279,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `ldap` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -362,7 +358,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "ldap",
+    "type": "ldap",
     "name": "my-ldap-connection",
     "description": "LDAP connection for authentication",
     "deployToWorker": true,
@@ -403,7 +399,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

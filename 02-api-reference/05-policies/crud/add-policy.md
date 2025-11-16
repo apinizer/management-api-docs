@@ -148,8 +148,8 @@ The policy object structure varies by policy type. All policies share common bas
 
 Each policy type has its own specific fields. See individual policy documentation pages for details:
 - [API Based Throttling](../policies/policy-api-based-throttling.md)
-- [Black IP](../policies/policy-black-ip.md)
-- [White IP](../policies/policy-white-ip.md)
+- [Blocked IP List](../policies/policy-black-ip.md)
+- [Allowed IP List](../policies/policy-white-ip.md)
 - [Authentication Basic](../policies/policy-authentication-basic.md)
 - ... (see [Policies Index](../index.md) for complete list)
 

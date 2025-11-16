@@ -40,23 +40,25 @@ Authorization: Bearer YOUR_TOKEN
 #### Full JSON Body Example
 
 ```json
-[
-  {
-    "address": "https://backend1.example.com",
-    "weight": 100,
-    "soapType": "SOAP11"
-  },
-  {
-    "address": "https://backend2.example.com",
-    "weight": 50,
-    "soapType": "SOAP11"
-  }
-]
+{
+  "routingAddressList": [
+    {
+      "address": "https://backend1.example.com",
+      "weight": 100,
+      "soapType": "SOAP11"
+    },
+    {
+      "address": "https://backend2.example.com",
+      "weight": 50,
+      "soapType": "SOAP11"
+    }
+  ]
+}
 ```
 
 #### Request Body Fields
 
-The request body is an array of routing address objects.
+The request body is an object containing an array of routing address objects.
 
 **Routing Address Object:**
 
@@ -70,7 +72,14 @@ The request body is an array of routing address objects.
 - `SOAP11` - SOAP 1.1
 - `SOAP12` - SOAP 1.2
 
+**Request Body Object:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| routingAddressList | array | Yes | Array of routing address objects |
+
 **Note:** 
+- Request body must be an object with `routingAddressList` array
 - For REST APIs, `soapType` is not required
 - For SOAP APIs, `soapType` defaults to `SOAP11` if not provided
 - Weight is used when load balancing algorithm is `WEIGHTED`
@@ -127,16 +136,18 @@ curl -X PATCH \
   "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/addresses/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "address": "https://backend1.example.com",
-      "weight": 100
-    },
-    {
-      "address": "https://backend2.example.com",
-      "weight": 50
-    }
-  ]'
+  -d '{
+    "routingAddressList": [
+      {
+        "address": "https://backend1.example.com",
+        "weight": 100
+      },
+      {
+        "address": "https://backend2.example.com",
+        "weight": 50
+      }
+    ]
+  }'
 ```
 
 ### Example 2: Update SOAP API Backend Addresses
@@ -146,22 +157,25 @@ curl -X PATCH \
   "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/settings/addresses/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "address": "https://soap-backend.example.com/Service",
-      "weight": 100,
-      "soapType": "SOAP11"
-    },
-    {
-      "address": "https://soap-backend2.example.com/Service",
-      "weight": 50,
-      "soapType": "SOAP12"
-    }
-  ]'
+  -d '{
+    "routingAddressList": [
+      {
+        "address": "https://soap-backend.example.com/Service",
+        "weight": 100,
+        "soapType": "SOAP11"
+      },
+      {
+        "address": "https://soap-backend2.example.com/Service",
+        "weight": 50,
+        "soapType": "SOAP12"
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings
 
+- **Request Body Format**: Request body must be an object with `routingAddressList` array
 - **Address Format**: Must be a valid URL (http:// or https://)
 - **Weight**: Used for weighted load balancing (higher weight = more traffic)
 - **SOAP Type**: Required for SOAP APIs, defaults to `SOAP11` if not provided

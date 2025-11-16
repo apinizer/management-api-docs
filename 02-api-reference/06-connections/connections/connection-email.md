@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "email",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "email",
       "name": "my-email-connection",
       "description": "Email connection for notifications",
       "deployToWorker": true,
@@ -131,9 +129,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "email",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "email",
       "name": "my-email-connection",
       "description": "Email connection for notifications",
       "deployToWorker": true,
@@ -191,7 +187,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example
 ```json
 {
-  "_class": "email",
+  "type": "email",
   "name": "my-email-connection",
   "description": "Email connection for sending notifications",
   "deployToWorker": true,
@@ -214,7 +210,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `email` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -262,7 +258,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "email",
+    "type": "email",
     "name": "my-email-connection",
     "description": "Email connection for sending notifications",
     "deployToWorker": true,
@@ -306,8 +302,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example
 ```json
 {
-  "_class": "email",
-  "id": "connection-id",
+  "type": "email",
   "name": "my-email-connection",
   "description": "Updated email connection description",
   "deployToWorker": true,
@@ -324,7 +319,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 }
 ```
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection.
+**Note:** Request body structure is the same as Create Connection.
 
 ### Response
 
@@ -346,8 +341,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "email",
-    "id": "connection-id",
+    "type": "email",
     "name": "my-email-connection",
     "description": "Updated email connection description",
     "deployToWorker": true,

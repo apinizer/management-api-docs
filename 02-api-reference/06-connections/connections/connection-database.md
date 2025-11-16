@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "database",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "database",
       "name": "my-database-connection",
       "description": "Database connection for data storage",
       "deployToWorker": true,
@@ -139,9 +137,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "database",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "database",
       "name": "my-database-connection",
       "description": "Database connection for data storage",
       "deployToWorker": true,
@@ -207,7 +203,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - PostgreSQL Connection
 ```json
 {
-  "_class": "database",
+  "type": "database",
   "name": "my-database-connection",
   "description": "PostgreSQL database connection",
   "deployToWorker": true,
@@ -236,7 +232,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - MySQL Connection
 ```json
 {
-  "_class": "database",
+  "type": "database",
   "name": "my-mysql-connection",
   "description": "MySQL database connection",
   "deployToWorker": true,
@@ -265,7 +261,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Oracle Connection
 ```json
 {
-  "_class": "database",
+  "type": "database",
   "name": "my-oracle-connection",
   "description": "Oracle database connection",
   "deployToWorker": true,
@@ -294,7 +290,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - MongoDB Connection
 ```json
 {
-  "_class": "database",
+  "type": "database",
   "name": "my-mongodb-connection",
   "description": "MongoDB database connection",
   "deployToWorker": true,
@@ -323,7 +319,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - High-Performance Pool
 ```json
 {
-  "_class": "database",
+  "type": "database",
   "name": "my-high-performance-db",
   "description": "High-performance database connection",
   "deployToWorker": true,
@@ -354,7 +350,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `database` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -445,7 +441,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "database",
+    "type": "database",
     "name": "my-database-connection",
     "description": "PostgreSQL database connection",
     "deployToWorker": true,
@@ -495,7 +491,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

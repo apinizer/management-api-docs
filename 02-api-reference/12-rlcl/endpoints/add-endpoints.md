@@ -40,83 +40,93 @@ Authorization: Bearer YOUR_TOKEN
 #### Full JSON Body Example - Single Endpoint
 
 ```json
-[
-  {
-    "apiProxyId": "MyAPI",
-    "endpointName": "GET /users",
-    "permittedMessageCount": 100,
-    "timeIntervalPeriodLength": 1,
-    "timeInterval": "ONE_MINUTE",
-    "cacheConnectionTimeoutInSeconds": 3,
-    "cacheErrorHandlingType": "FAIL",
-    "timeIntervalWindowType": "FIXED",
-    "showRateLimitStatisticsInResponseHeader": false,
-    "enabled": true
-  }
-]
+{
+  "endpointRateLimitList": [
+    {
+      "apiProxyName": "MyAPI",
+      "endpointName": "/users",
+      "endpointHTTPMethod": "GET",
+      "permittedMessageCount": 100,
+      "timeIntervalPeriodLength": 1,
+      "timeInterval": "ONE_MINUTE",
+      "cacheConnectionTimeoutInSeconds": 3,
+      "cacheErrorHandlingType": "FAIL",
+      "timeIntervalWindowType": "FIXED",
+      "showRateLimitStatisticsInResponseHeader": false,
+      "enabled": true
+    }
+  ]
+}
 ```
 
 #### Full JSON Body Example - Multiple Endpoints
 
 ```json
-[
-  {
-    "apiProxyId": "MyAPI",
-    "endpointName": "GET /users",
-    "permittedMessageCount": 100,
-    "timeIntervalPeriodLength": 1,
-    "timeInterval": "ONE_MINUTE",
-    "cacheConnectionTimeoutInSeconds": 3,
-    "cacheErrorHandlingType": "FAIL",
-    "timeIntervalWindowType": "FIXED",
-    "showRateLimitStatisticsInResponseHeader": false,
-    "enabled": true
-  },
-  {
-    "apiProxyId": "MyAPI",
-    "endpointName": "POST /orders",
-    "permittedMessageCount": 50,
-    "timeIntervalPeriodLength": 1,
-    "timeInterval": "ONE_MINUTE",
-    "cacheConnectionTimeoutInSeconds": 3,
-    "cacheErrorHandlingType": "FAIL",
-    "timeIntervalWindowType": "SLIDING",
-    "showRateLimitStatisticsInResponseHeader": true,
-    "enabled": true
-  }
-]
+{
+  "endpointRateLimitList": [
+    {
+      "apiProxyName": "MyAPI",
+      "endpointName": "/users",
+      "endpointHTTPMethod": "GET",
+      "permittedMessageCount": 100,
+      "timeIntervalPeriodLength": 1,
+      "timeInterval": "ONE_MINUTE",
+      "cacheConnectionTimeoutInSeconds": 3,
+      "cacheErrorHandlingType": "FAIL",
+      "timeIntervalWindowType": "FIXED",
+      "showRateLimitStatisticsInResponseHeader": false,
+      "enabled": true
+    },
+    {
+      "apiProxyName": "MyAPI",
+      "endpointName": "/orders",
+      "endpointHTTPMethod": "POST",
+      "permittedMessageCount": 50,
+      "timeIntervalPeriodLength": 1,
+      "timeInterval": "ONE_MINUTE",
+      "cacheConnectionTimeoutInSeconds": 3,
+      "cacheErrorHandlingType": "FAIL",
+      "timeIntervalWindowType": "SLIDING",
+      "showRateLimitStatisticsInResponseHeader": true,
+      "enabled": true
+    }
+  ]
+}
 ```
 
 #### Full JSON Body Example - All Endpoints
 
 ```json
-[
-  {
-    "apiProxyId": "MyAPI",
-    "endpointName": "ALL",
-    "permittedMessageCount": 200,
-    "timeIntervalPeriodLength": 1,
-    "timeInterval": "ONE_HOUR",
-    "cacheConnectionTimeoutInSeconds": 3,
-    "cacheErrorHandlingType": "FAIL",
-    "timeIntervalWindowType": "FIXED",
-    "showRateLimitStatisticsInResponseHeader": false,
-    "enabled": true
-  }
-]
+{
+  "endpointRateLimitList": [
+    {
+      "apiProxyName": "MyAPI",
+      "endpointName": "ALL",
+      "endpointHTTPMethod": "ALL",
+      "permittedMessageCount": 200,
+      "timeIntervalPeriodLength": 1,
+      "timeInterval": "ONE_HOUR",
+      "cacheConnectionTimeoutInSeconds": 3,
+      "cacheErrorHandlingType": "FAIL",
+      "timeIntervalWindowType": "FIXED",
+      "showRateLimitStatisticsInResponseHeader": false,
+      "enabled": true
+    }
+  ]
+}
 ```
 
 #### Request Body Fields
 
-The request body is an array of endpoint rate limit objects.
+The request body is an object containing an array of endpoint rate limit objects.
 
 **Endpoint Rate Limit Object:**
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| apiProxyId | string | Yes | - | API Proxy name (not ID) |
-| endpointName | string | Yes | - | Endpoint name (e.g., "GET /users") or "ALL" for all endpoints |
-| endpointId | string | No | - | Endpoint ID (auto-filled if endpointName is provided) |
+| apiProxyName | string | Yes | - | API Proxy name |
+| endpointName | string | Yes* | - | Endpoint path (e.g., "/users") or "ALL" for all endpoints. Required if endpointHTTPMethod is not "ALL" |
+| endpointHTTPMethod | string | Yes* | - | HTTP method. See [EnumHttpRequestMethod](#enumhttprequestmethod). Required if endpointName is not "ALL" |
 | permittedMessageCount | integer | Yes | - | Maximum number of messages allowed per time interval |
 | timeIntervalPeriodLength | integer | Yes | - | Length of time interval period |
 | timeInterval | string | Yes | - | Time interval unit. See [EnumRateLimitTimeInterval](#enumratelimittimeinterval) |
@@ -127,6 +137,17 @@ The request body is an array of endpoint rate limit objects.
 | targetIdentityValue | string\|null | No | null | Target identity value (if not using targetVariable) |
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
 | enabled | boolean | No | true | Enable rate limiting for this endpoint |
+
+**EnumHttpRequestMethod (endpointHTTPMethod):**
+- `GET` - GET method
+- `POST` - POST method
+- `PUT` - PUT method
+- `DELETE` - DELETE method
+- `PATCH` - PATCH method
+- `HEAD` - HEAD method
+- `OPTIONS` - OPTIONS method
+- `TRACE` - TRACE method
+- `ALL` - All HTTP methods
 
 **EnumRateLimitTimeInterval (timeInterval):**
 - `ONE_SECOND` - One second
@@ -161,11 +182,20 @@ See [Variable Definition](../../../../03-appendix/variable-definition.md) for co
 | contextValue | string | No* | Context value (required if type=CONTEXT_VALUES) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 
+**Request Body Object:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| endpointRateLimitList | array | Yes | Array of endpoint rate limit objects |
+
 **Notes:**
-- Request body must be an array (even for single endpoint)
-- `apiProxyId` is the API Proxy name (not ID)
-- `endpointName` can be specific endpoint (e.g., "GET /users") or "ALL" for all endpoints
-- `endpointId` is auto-filled if `endpointName` is provided
+- Request body must be an object with `endpointRateLimitList` array (even for single endpoint)
+- `apiProxyName` is the API Proxy name
+- `endpointName` is the endpoint path (e.g., "/users"), not including HTTP method
+- `endpointHTTPMethod` is the HTTP method (e.g., "GET", "POST")
+- If `endpointName` is "ALL", `endpointHTTPMethod` should also be "ALL" or can be omitted
+- If `endpointHTTPMethod` is "ALL", `endpointName` should also be "ALL" or can be omitted
+- `endpointId` is automatically resolved from `endpointName` and `endpointHTTPMethod` (not sent in request)
 - Duplicate endpoints are ignored (not added twice)
 - Endpoints are added to the existing list
 
@@ -183,7 +213,7 @@ See [Variable Definition](../../../../03-appendix/variable-definition.md) for co
 ```json
 {
   "error": "bad_request",
-  "error_description": "endpointRateLimits value can not be empty!"
+  "error_description": "endpointRateLimitList value can not be empty!"
 }
 ```
 
@@ -201,7 +231,7 @@ or
 ```json
 {
   "error": "bad_request",
-  "error_description": "API Endpoint with name (GET /users) is not found in API Proxy!"
+  "error_description": "API Endpoint with name (/users) and method type (GET) is not found in API Proxy!"
 }
 ```
 
@@ -212,33 +242,38 @@ curl -X POST \
   "https://demo.apinizer.com/apiops/projects/MyProject/rlcl/PremiumUserRLCL/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "apiProxyId": "MyAPI",
-      "endpointName": "GET /users",
-      "permittedMessageCount": 100,
-      "timeIntervalPeriodLength": 1,
-      "timeInterval": "ONE_MINUTE",
-      "cacheConnectionTimeoutInSeconds": 3,
-      "cacheErrorHandlingType": "FAIL",
-      "timeIntervalWindowType": "FIXED",
-      "showRateLimitStatisticsInResponseHeader": false,
-      "enabled": true
-    }
-  ]'
+  -d '{
+    "endpointRateLimitList": [
+      {
+        "apiProxyName": "MyAPI",
+        "endpointName": "/users",
+        "endpointHTTPMethod": "GET",
+        "permittedMessageCount": 100,
+        "timeIntervalPeriodLength": 1,
+        "timeInterval": "ONE_MINUTE",
+        "cacheConnectionTimeoutInSeconds": 3,
+        "cacheErrorHandlingType": "FAIL",
+        "timeIntervalWindowType": "FIXED",
+        "showRateLimitStatisticsInResponseHeader": false,
+        "enabled": true
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings
 
-- **Array Format**: 
-  - Request body must be an array
-  - Even for single endpoint, use array format
+- **Request Body Format**: 
+  - Request body must be an object with `endpointRateLimitList` array
+  - Even for single endpoint, use object format with array inside
 - **API Proxy Name**: 
-  - Use API Proxy name (not ID) in `apiProxyId`
+  - Use API Proxy name in `apiProxyName`
   - API Proxy must exist in the project
-- **Endpoint Name**: 
-  - Use endpoint name format: "HTTP_METHOD /path" (e.g., "GET /users")
-  - Use "ALL" to apply to all endpoints
+- **Endpoint Name and Method**: 
+  - `endpointName` is the endpoint path (e.g., "/users"), not including HTTP method
+  - `endpointHTTPMethod` is the HTTP method (e.g., "GET", "POST", "PUT", "DELETE")
+  - Use "ALL" for both `endpointName` and `endpointHTTPMethod` to apply to all endpoints
+  - Both `endpointName` and `endpointHTTPMethod` are required for specific endpoints
 - **Duplicate Handling**: 
   - Duplicate endpoints are ignored
   - No error is thrown for duplicates
@@ -249,4 +284,3 @@ curl -X POST \
 
 - [Update Endpoints](./update-endpoints.md) - Replace all endpoints
 - [Delete Endpoints](./delete-endpoints.md) - Remove endpoints
-- [Endpoint Rate Limit Policy](../../05-policies/policies/policy-endpoint-rate-limit.md) - Related policy documentation

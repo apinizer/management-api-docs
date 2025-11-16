@@ -39,7 +39,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "credentialNames": [
+    "credentialNameList": [
       "new-user-1",
       "new-user-2"
     ]

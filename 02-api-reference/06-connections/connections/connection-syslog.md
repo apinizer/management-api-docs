@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "syslog",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "syslog",
       "name": "my-syslog-connection",
       "description": "Syslog connection for logging",
       "deployToWorker": true,
@@ -129,9 +127,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "syslog",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "syslog",
       "name": "my-syslog-connection",
       "description": "Syslog connection for logging",
       "deployToWorker": true,
@@ -187,7 +183,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic UDP Connection
 ```json
 {
-  "_class": "syslog",
+  "type": "syslog",
   "name": "my-syslog-connection",
   "description": "Syslog connection for logging",
   "deployToWorker": true,
@@ -208,7 +204,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - TCP with SSL
 ```json
 {
-  "_class": "syslog",
+  "type": "syslog",
   "name": "my-syslog-tcp-ssl",
   "description": "Syslog TCP connection with SSL",
   "deployToWorker": true,
@@ -229,7 +225,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - RFC 5425 Format
 ```json
 {
-  "_class": "syslog",
+  "type": "syslog",
   "name": "my-syslog-rfc5425",
   "description": "Syslog connection with RFC 5425 format",
   "deployToWorker": true,
@@ -252,7 +248,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `syslog` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -354,7 +350,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "syslog",
+    "type": "syslog",
     "name": "my-syslog-connection",
     "description": "Syslog connection for logging",
     "deployToWorker": true,
@@ -394,7 +390,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

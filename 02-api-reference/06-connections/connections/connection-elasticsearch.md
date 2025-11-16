@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "elasticsearch",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "elasticsearch",
       "name": "my-elasticsearch-connection",
       "description": "Elasticsearch connection for logging",
       "deployToWorker": true,
@@ -160,9 +158,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "elasticsearch",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "elasticsearch",
       "name": "my-elasticsearch-connection",
       "description": "Elasticsearch connection for logging",
       "deployToWorker": true,
@@ -269,7 +265,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic Configuration
 ```json
 {
-  "_class": "elasticsearch",
+  "type": "elasticsearch",
   "name": "my-elasticsearch-connection",
   "description": "Elasticsearch connection for logging",
   "deployToWorker": true,
@@ -319,7 +315,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With Authentication
 ```json
 {
-  "_class": "elasticsearch",
+  "type": "elasticsearch",
   "name": "my-elasticsearch-connection",
   "description": "Elasticsearch connection with authentication",
   "deployToWorker": true,
@@ -345,7 +341,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With Encryption (PKCS12)
 ```json
 {
-  "_class": "elasticsearch",
+  "type": "elasticsearch",
   "name": "my-elasticsearch-connection",
   "description": "Elasticsearch connection with PKCS12 encryption",
   "deployToWorker": true,
@@ -381,7 +377,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With Encryption (PEM)
 ```json
 {
-  "_class": "elasticsearch",
+  "type": "elasticsearch",
   "name": "my-elasticsearch-connection",
   "description": "Elasticsearch connection with PEM encryption",
   "deployToWorker": true,
@@ -417,7 +413,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With Index Lifecycle Policy and Template
 ```json
 {
-  "_class": "elasticsearch",
+  "type": "elasticsearch",
   "name": "my-elasticsearch-connection",
   "description": "Elasticsearch connection with ILM and template",
   "deployToWorker": true,
@@ -470,7 +466,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `elasticsearch` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -592,7 +588,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "elasticsearch",
+    "type": "elasticsearch",
     "name": "my-elasticsearch-connection",
     "description": "Elasticsearch connection for logging",
     "deployToWorker": true,
@@ -636,7 +632,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

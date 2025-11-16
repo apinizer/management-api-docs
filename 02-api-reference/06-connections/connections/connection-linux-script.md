@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "linuxscript",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "linuxscript",
       "name": "my-linux-script-connection",
       "description": "Linux script connection via SSH",
       "deployToWorker": true,
@@ -125,9 +123,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "linuxscript",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "linuxscript",
       "name": "my-linux-script-connection",
       "description": "Linux script connection via SSH",
       "deployToWorker": true,
@@ -179,7 +175,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic SSH Connection
 ```json
 {
-  "_class": "linuxscript",
+  "type": "linuxscript",
   "name": "my-linux-script-connection",
   "description": "Linux script connection via SSH",
   "deployToWorker": true,
@@ -194,7 +190,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Custom SSH Port
 ```json
 {
-  "_class": "linuxscript",
+  "type": "linuxscript",
   "name": "my-linux-script-custom-port",
   "description": "Linux script connection with custom SSH port",
   "deployToWorker": true,
@@ -211,7 +207,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `linuxscript` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -257,7 +253,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "linuxscript",
+    "type": "linuxscript",
     "name": "my-linux-script-connection",
     "description": "Linux script connection via SSH",
     "deployToWorker": true,
@@ -294,7 +290,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

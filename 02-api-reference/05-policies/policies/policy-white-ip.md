@@ -1,4 +1,4 @@
-# White IP Policy
+# Allowed IP List Policy
 
 ## General Information
 
@@ -467,4 +467,4 @@ curl -X DELETE \
 - [Add Policy](../crud/add-policy.md) - General policy addition guide
 - [Update Policy](../crud/update-policy.md) - General policy update guide
 - [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-- [Black IP Policy](./policy-black-ip.md) - Block specific IPs
+- [Blocked IP List Policy](./policy-black-ip.md) - Block specific IPs

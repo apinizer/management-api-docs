@@ -40,36 +40,40 @@ Authorization: Bearer YOUR_TOKEN
 #### Full JSON Body Example - Grant Access to Single API Proxy
 
 ```json
-[
-  {
-    "name": "MyAPI",
-    "type": "API_PROXY"
-  }
-]
+{
+  "credentialAccessList": [
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    }
+  ]
+}
 ```
 
 #### Full JSON Body Example - Grant Access to Multiple Resources
 
 ```json
-[
-  {
-    "name": "MyAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "PaymentAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "MyAPIGroup",
-    "type": "API_PROXY_GROUP"
-  }
-]
+{
+  "credentialAccessList": [
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    },
+    {
+      "name": "PaymentAPI",
+      "type": "API_PROXY"
+    },
+    {
+      "name": "MyAPIGroup",
+      "type": "API_PROXY_GROUP"
+    }
+  ]
+}
 ```
 
 #### Request Body Fields
 
-The request body is an array of access objects.
+The request body is an object containing an array of access objects.
 
 **Access Object:**
 
@@ -82,8 +86,14 @@ The request body is an array of access objects.
 - `API_PROXY` - Grant access to a specific API Proxy
 - `API_PROXY_GROUP` - Grant access to an API Proxy Group
 
+**Request Body Object:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| credentialAccessList | array | Yes | Array of access objects |
+
 **Notes:**
-- Request body must be an array (even for single access)
+- Request body must be an object with `credentialAccessList` array (even for single access)
 - Each access object must have `name` and `type`
 - `name` must match an existing API Proxy or API Proxy Group
 - `type` must be either `API_PROXY` or `API_PROXY_GROUP`
@@ -168,12 +178,14 @@ curl -X PUT \
   "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "name": "MyAPI",
-      "type": "API_PROXY"
-    }
-  ]'
+  -d '{
+    "credentialAccessList": [
+      {
+        "name": "MyAPI",
+        "type": "API_PROXY"
+      }
+    ]
+  }'
 ```
 
 ### Example 2: Grant Access to Multiple Resources
@@ -183,23 +195,25 @@ curl -X PUT \
   "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "name": "MyAPI",
-      "type": "API_PROXY"
-    },
-    {
-      "name": "MyAPIGroup",
-      "type": "API_PROXY_GROUP"
-    }
-  ]'
+  -d '{
+    "credentialAccessList": [
+      {
+        "name": "MyAPI",
+        "type": "API_PROXY"
+      },
+      {
+        "name": "MyAPIGroup",
+        "type": "API_PROXY_GROUP"
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings
 
-- **Array Format**: 
-  - Request body must be an array
-  - Even for single access, use array format
+- **Request Body Format**: 
+  - Request body must be an object with `credentialAccessList` array
+  - Even for single access, use object format with array inside
 - **Access Validation**: 
   - API Proxy or API Proxy Group must exist
   - Must be within the project scope

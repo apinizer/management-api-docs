@@ -37,36 +37,40 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Grant Access. Array of access objects.
+Same structure as Grant Access. Object containing an array of access objects.
 
 #### Full JSON Body Example - Revoke Access from Single API Proxy
 
 ```json
-[
-  {
-    "name": "MyAPI",
-    "type": "API_PROXY"
-  }
-]
+{
+  "credentialAccessList": [
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    }
+  ]
+}
 ```
 
 #### Full JSON Body Example - Revoke Access from Multiple Resources
 
 ```json
-[
-  {
-    "name": "MyAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "PaymentAPI",
-    "type": "API_PROXY"
-  },
-  {
-    "name": "MyAPIGroup",
-    "type": "API_PROXY_GROUP"
-  }
-]
+{
+  "credentialAccessList": [
+    {
+      "name": "MyAPI",
+      "type": "API_PROXY"
+    },
+    {
+      "name": "PaymentAPI",
+      "type": "API_PROXY"
+    },
+    {
+      "name": "MyAPIGroup",
+      "type": "API_PROXY_GROUP"
+    }
+  ]
+}
 ```
 
 #### Request Body Fields
@@ -74,7 +78,7 @@ Same structure as Grant Access. Array of access objects.
 Same as Grant Access. See [Grant Access](./grant-access.md#request-body-fields) for field descriptions.
 
 **Notes:**
-- Request body must be an array
+- Request body must be an object with `credentialAccessList` array
 - Each access object must have `name` and `type`
 - `name` must match an existing API Proxy or API Proxy Group
 - `type` must be either `API_PROXY` or `API_PROXY_GROUP`
@@ -140,12 +144,14 @@ curl -X DELETE \
   "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "name": "MyAPI",
-      "type": "API_PROXY"
-    }
-  ]'
+  -d '{
+    "credentialAccessList": [
+      {
+        "name": "MyAPI",
+        "type": "API_PROXY"
+      }
+    ]
+  }'
 ```
 
 ### Example 2: Revoke Access from Multiple Resources
@@ -155,23 +161,25 @@ curl -X DELETE \
   "https://demo.apinizer.com/apiops/projects/MyProject/credentials/api-user/access/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "name": "MyAPI",
-      "type": "API_PROXY"
-    },
-    {
-      "name": "MyAPIGroup",
-      "type": "API_PROXY_GROUP"
-    }
-  ]'
+  -d '{
+    "credentialAccessList": [
+      {
+        "name": "MyAPI",
+        "type": "API_PROXY"
+      },
+      {
+        "name": "MyAPIGroup",
+        "type": "API_PROXY_GROUP"
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings
 
-- **Array Format**: 
-  - Request body must be an array
-  - Even for single revocation, use array format
+- **Request Body Format**: 
+  - Request body must be an object with `credentialAccessList` array
+  - Even for single revocation, use object format with array inside
 - **Access Must Exist**: 
   - Access must exist to be revoked
   - Revoking non-existent access will fail silently

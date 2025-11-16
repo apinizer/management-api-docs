@@ -118,7 +118,6 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| environmentId | string | No | Environment ID (deprecated, use environmentName) |
 | environmentName | string | Yes | Environment name |
 | value | string | Yes | Value for this environment |
 | visible | boolean | No | false | Whether the value is visible (not secret) |

@@ -39,7 +39,7 @@ curl -X DELETE \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "credentialNames": [
+    "credentialNameList": [
       "api-user-1"
     ]
   }'

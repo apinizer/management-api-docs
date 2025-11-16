@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "logback",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "logback",
       "name": "my-logback-connection",
       "description": "Logback connection for file logging",
       "deployToWorker": true,
@@ -127,9 +125,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "logback",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "logback",
       "name": "my-logback-connection",
       "description": "Logback connection for file logging",
       "deployToWorker": true,
@@ -183,7 +179,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic Logback Connection
 ```json
 {
-  "_class": "logback",
+  "type": "logback",
   "name": "my-logback-connection",
   "description": "Logback connection for file logging",
   "deployToWorker": true,
@@ -202,7 +198,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Custom Pattern
 ```json
 {
-  "_class": "logback",
+  "type": "logback",
   "name": "my-custom-logback",
   "description": "Logback with custom pattern",
   "deployToWorker": true,
@@ -221,7 +217,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Unbounded Retention
 ```json
 {
-  "_class": "logback",
+  "type": "logback",
   "name": "my-unbounded-logback",
   "description": "Logback with unbounded retention",
   "deployToWorker": true,
@@ -242,7 +238,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `logback` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -313,7 +309,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "logback",
+    "type": "logback",
     "name": "my-logback-connection",
     "description": "Logback connection for file logging",
     "deployToWorker": true,
@@ -354,7 +350,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

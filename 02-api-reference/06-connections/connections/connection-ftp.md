@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "ftp",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "ftp",
       "name": "my-ftp-connection",
       "description": "FTP connection for file transfer",
       "deployToWorker": true,
@@ -132,9 +130,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "ftp",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "ftp",
       "name": "my-ftp-connection",
       "description": "FTP connection for file transfer",
       "deployToWorker": true,
@@ -193,7 +189,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - FTP
 ```json
 {
-  "_class": "ftp",
+  "type": "ftp",
   "name": "my-ftp-connection",
   "description": "FTP connection for file transfer",
   "deployToWorker": true,
@@ -215,7 +211,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SFTP
 ```json
 {
-  "_class": "ftp",
+  "type": "ftp",
   "name": "my-sftp-connection",
   "description": "SFTP connection for secure file transfer",
   "deployToWorker": true,
@@ -237,7 +233,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - FTPS (Implicit)
 ```json
 {
-  "_class": "ftp",
+  "type": "ftp",
   "name": "my-ftps-implicit-connection",
   "description": "FTPS connection with implicit SSL",
   "deployToWorker": true,
@@ -259,7 +255,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - FTPS (Explicit)
 ```json
 {
-  "_class": "ftp",
+  "type": "ftp",
   "name": "my-ftps-explicit-connection",
   "description": "FTPS connection with explicit SSL",
   "deployToWorker": true,
@@ -283,7 +279,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `ftp` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -342,7 +338,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "ftp",
+    "type": "ftp",
     "name": "my-ftp-connection",
     "description": "FTP connection for file transfer",
     "deployToWorker": true,
@@ -383,7 +379,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

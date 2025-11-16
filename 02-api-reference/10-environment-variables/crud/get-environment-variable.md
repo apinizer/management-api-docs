@@ -47,7 +47,6 @@ None.
   "success": true,
   "resultList": [
     {
-      "id": "var-id-1",
       "projectId": "project-id",
       "name": "API_BASE_URL",
       "description": "Base URL for API calls",
@@ -57,13 +56,11 @@ None.
       "projectName": "MyProject",
       "environmentValueList": [
         {
-          "environmentId": "env-id-1",
           "environmentName": "production",
           "value": "https://api.production.example.com",
           "visible": true
         },
         {
-          "environmentId": "env-id-2",
           "environmentName": "staging",
           "value": "https://api.staging.example.com",
           "visible": true

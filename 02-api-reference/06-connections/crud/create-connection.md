@@ -37,11 +37,13 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
+**Note:** The API uses DTOs (Data Transfer Objects) for requests and responses. The `type` field is used as the discriminator field to identify the connection type, replacing the previous `_class` field used in internal entity models.
+
 #### Full JSON Body Example (Email Connection)
 
 ```json
 {
-  "_class": "email",
+  "type": "email",
   "name": "my-email-connection",
   "description": "Email connection for sending notifications",
   "deployToWorker": true,
@@ -65,7 +67,7 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type (discriminator field) |
+| type | string | Yes | - | Connection type discriminator field. Used to identify the connection type in API requests/responses. Valid values: `email`, `kafka`, `elasticsearch`, `database`, `ldap`, `ftp`, `rabbitMq`, `activeMq`, `snmp`, `linux-script`, `graylog`, `syslog`, `webhook`, `logback` |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -159,7 +161,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "email",
+    "type": "email",
     "name": "my-email-connection",
     "description": "Email connection for sending notifications",
     "deployToWorker": true,
@@ -183,7 +185,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "database",
+    "type": "database",
     "name": "my-db-connection",
     "description": "PostgreSQL database connection",
     "deployToWorker": true,
@@ -206,7 +208,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "kafka",
+    "type": "kafka",
     "name": "my-kafka-connection",
     "description": "Kafka connection for event streaming",
     "deployToWorker": true,

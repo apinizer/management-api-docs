@@ -41,8 +41,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "_class": "email",
-  "id": "connection-id",
+  "type": "email",
   "name": "my-email-connection",
   "description": "Updated email connection description",
   "deployToWorker": true,
@@ -63,14 +62,13 @@ Authorization: Bearer YOUR_TOKEN
 
 The request body structure is identical to [Create Connection](./create-connection.md). See that documentation for complete field descriptions.
 
-**Important:** The `id` field is required for update operations. Include the existing connection ID in the request body.
+**Important:** Connection name in path parameter must match the existing connection name.
 
 ##### Common Fields
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type (must match existing type) |
-| id | string | Yes | - | Connection ID (from existing connection) |
+| type | string | Yes | - | Connection type discriminator field. Must match the existing connection type. Used to identify the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter, or new name if renaming) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -144,8 +142,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "email",
-    "id": "connection-id",
+    "type": "email",
     "name": "my-email-connection",
     "description": "Updated email connection",
     "deployToWorker": true,
@@ -171,8 +168,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "email",
-    "id": "connection-id",
+    "type": "email",
     "name": "new-connection-name",
     "description": "Renamed connection",
     "deployToWorker": true,
@@ -197,8 +193,7 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "database",
-    "id": "connection-id",
+    "type": "database",
     "name": "my-db-connection",
     "description": "Updated database connection - disabled",
     "deployToWorker": true,
@@ -213,9 +208,8 @@ curl -X PUT \
 
 ## Notes and Warnings
 
-- **ID Required**: The `id` field is required for update operations. Get the connection first to obtain the ID.
-- **Name Matching**: Connection name in path parameter must match the existing name (or new name if renaming)
-- **Type Cannot Change**: Connection type (`_class`) cannot be changed. Use Delete and Create to change type.
+- **Name Matching**: Connection name in path parameter must match the existing connection name (or new name if renaming)
+- **Type Cannot Change**: Connection type (`type`) cannot be changed. Use Delete and Create to change type.
 - **Name Conflicts**: If renaming, ensure the new name doesn't conflict with existing connections
 - **Secret Fields**: Secret fields can be updated. Ensure you have the correct values.
 - **Deployment**: If `deployToWorker: true`, connection is automatically redeployed to workers
@@ -223,7 +217,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Get Connection](./get-connection.md) - Get connection details (to obtain ID)
+- [Get Connection](./get-connection.md) - Get connection details
 - [Create Connection](./create-connection.md) - Create a new connection
 - [Delete Connection](./delete-connection.md) - Delete a connection
 - [Email Connection](../connections/connection-email.md) - Email connection details

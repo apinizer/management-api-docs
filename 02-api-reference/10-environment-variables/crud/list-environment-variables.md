@@ -46,7 +46,6 @@ None.
   "success": true,
   "resultList": [
     {
-      "id": "var-id-1",
       "projectId": "project-id",
       "name": "API_BASE_URL",
       "description": "Base URL for API calls",
@@ -56,13 +55,11 @@ None.
       "projectName": "MyProject",
       "environmentValueList": [
         {
-          "environmentId": "env-id-1",
           "environmentName": "production",
           "value": "https://api.production.example.com",
           "visible": true
         },
         {
-          "environmentId": "env-id-2",
           "environmentName": "staging",
           "value": "https://api.staging.example.com",
           "visible": true
@@ -70,7 +67,6 @@ None.
       ]
     },
     {
-      "id": "var-id-2",
       "projectId": "project-id",
       "name": "API_KEY",
       "description": "API Key for external service",
@@ -97,7 +93,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | string | Environment variable ID |
 | projectId | string | Project ID |
 | name | string | Environment variable name (unique identifier) |
 | description | string | Environment variable description |
@@ -111,7 +106,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| environmentId | string | Environment ID (deprecated, use environmentName) |
 | environmentName | string | Environment name |
 | value | string\|null | Value for this environment. Null if visible=false (secret) |
 | visible | boolean | Whether the value is visible (not secret) |

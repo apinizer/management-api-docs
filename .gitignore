@@ -1,0 +1,13 @@
+# Session-specific files (not to be committed)
+SESSION_SUMMARY.md
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+

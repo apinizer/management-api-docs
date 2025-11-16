@@ -26,7 +26,8 @@ Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md#request-
 **Important Notes:**
 - Only the specified endpoints are removed
 - Endpoints not in the RLCL are ignored (no error)
-- Match is based on `apiProxyId` and `endpointId`
+- Match is based on `apiProxyName`, `endpointName`, and `endpointHTTPMethod`
+- `endpointId` is automatically resolved from `endpointName` and `endpointHTTPMethod` (not sent in request)
 
 ### Response
 
@@ -39,12 +40,15 @@ curl -X DELETE \
   "https://demo.apinizer.com/apiops/projects/MyProject/rlcl/PremiumUserRLCL/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "apiProxyId": "MyAPI",
-      "endpointName": "GET /users"
-    }
-  ]'
+  -d '{
+    "endpointRateLimitList": [
+      {
+        "apiProxyName": "MyAPI",
+        "endpointName": "/users",
+        "endpointHTTPMethod": "GET"
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings
@@ -53,8 +57,8 @@ curl -X DELETE \
   - Only the specified endpoints are removed
   - Other endpoints remain in the RLCL
 - **Match Criteria**: 
-  - Endpoints are matched by `apiProxyId` and `endpointId`
-  - `endpointName` can be used to find `endpointId`
+  - Endpoints are matched by `apiProxyName`, `endpointName`, and `endpointHTTPMethod`
+  - `endpointId` is automatically resolved from `endpointName` and `endpointHTTPMethod` (not sent in request)
 
 ## Related Documentation
 

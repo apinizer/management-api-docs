@@ -41,7 +41,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "credentialNames": [
+  "credentialNameList": [
     "api-user"
   ]
 }
@@ -51,7 +51,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "credentialNames": [
+  "credentialNameList": [
     "api-user-1",
     "api-user-2",
     "premium-user"
@@ -63,10 +63,10 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| credentialNames | array[string] | Yes | - | List of credential names (usernames) to add |
+| credentialNameList | array[string] | Yes | - | List of credential names (usernames) to add |
 
 **Notes:**
-- `credentialNames` must not be empty
+- `credentialNameList` must not be empty
 - Credential names must exist in the project
 - Duplicate credentials are ignored (not added twice)
 - Credentials are added to the existing list
@@ -85,7 +85,7 @@ Authorization: Bearer YOUR_TOKEN
 ```json
 {
   "error": "bad_request",
-  "error_description": "credentialNames value can not be empty!"
+  "error_description": "credentialNameList value can not be empty!"
 }
 ```
 
@@ -106,7 +106,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "credentialNames": [
+    "credentialNameList": [
       "api-user-1",
       "api-user-2"
     ]

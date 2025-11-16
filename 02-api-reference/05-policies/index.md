@@ -45,12 +45,11 @@ Policies are organized by type. Each policy type has its own documentation page 
 ### Rate Limiting & Quota Policies
 - [API Based Throttling](./policies/policy-api-based-throttling.md)
 - [API Based Quota](./policies/policy-api-based-quota.md)
-- [Endpoint Rate Limit](./policies/policy-endpoint-rate-limit.md)
 - [Client Banner](./policies/policy-client-banner.md)
 
 ### IP Filtering Policies
-- [Black IP](./policies/policy-black-ip.md)
-- [White IP](./policies/policy-white-ip.md)
+- [Blocked IP List](./policies/policy-black-ip.md)
+- [Allowed IP List](./policies/policy-white-ip.md)
 
 ### Transformation Policies
 - [JSON Transformation](./policies/policy-json-transformation.md)

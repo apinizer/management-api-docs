@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "rabbitMq",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "rabbitMq",
       "name": "my-rabbitmq-connection",
       "description": "RabbitMQ connection for messaging",
       "deployToWorker": true,
@@ -150,9 +148,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "rabbitMq",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "rabbitMq",
       "name": "my-rabbitmq-connection",
       "description": "RabbitMQ connection for messaging",
       "deployToWorker": true,
@@ -235,7 +231,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic Configuration
 ```json
 {
-  "_class": "rabbitMq",
+  "type": "rabbitMq",
   "name": "my-rabbitmq-connection",
   "description": "RabbitMQ connection for messaging",
   "deployToWorker": true,
@@ -275,7 +271,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With Authentication
 ```json
 {
-  "_class": "rabbitMq",
+  "type": "rabbitMq",
   "name": "my-rabbitmq-connection",
   "description": "RabbitMQ connection with authentication",
   "deployToWorker": true,
@@ -318,7 +314,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - With SSL
 ```json
 {
-  "_class": "rabbitMq",
+  "type": "rabbitMq",
   "name": "my-rabbitmq-connection",
   "description": "RabbitMQ connection with SSL",
   "deployToWorker": true,
@@ -358,7 +354,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - High Availability
 ```json
 {
-  "_class": "rabbitMq",
+  "type": "rabbitMq",
   "name": "my-rabbitmq-connection",
   "description": "RabbitMQ connection with multiple hosts",
   "deployToWorker": true,
@@ -399,7 +395,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `rabbitMq` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -475,7 +471,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "rabbitMq",
+    "type": "rabbitMq",
     "name": "my-rabbitmq-connection",
     "description": "RabbitMQ connection for messaging",
     "deployToWorker": true,
@@ -521,7 +517,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

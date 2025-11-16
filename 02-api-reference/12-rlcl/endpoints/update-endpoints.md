@@ -38,20 +38,23 @@ curl -X PUT \
   "https://demo.apinizer.com/apiops/projects/MyProject/rlcl/PremiumUserRLCL/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '[
-    {
-      "apiProxyId": "MyAPI",
-      "endpointName": "GET /users",
-      "permittedMessageCount": 200,
-      "timeIntervalPeriodLength": 1,
-      "timeInterval": "ONE_HOUR",
-      "cacheConnectionTimeoutInSeconds": 3,
-      "cacheErrorHandlingType": "FAIL",
-      "timeIntervalWindowType": "FIXED",
-      "showRateLimitStatisticsInResponseHeader": false,
-      "enabled": true
-    }
-  ]'
+  -d '{
+    "endpointRateLimitList": [
+      {
+        "apiProxyName": "MyAPI",
+        "endpointName": "/users",
+        "endpointHTTPMethod": "GET",
+        "permittedMessageCount": 200,
+        "timeIntervalPeriodLength": 1,
+        "timeInterval": "ONE_HOUR",
+        "cacheConnectionTimeoutInSeconds": 3,
+        "cacheErrorHandlingType": "FAIL",
+        "timeIntervalWindowType": "FIXED",
+        "showRateLimitStatisticsInResponseHeader": false,
+        "enabled": true
+      }
+    ]
+  }'
 ```
 
 ## Notes and Warnings

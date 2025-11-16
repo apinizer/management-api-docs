@@ -47,9 +47,7 @@ None
   "success": true,
   "resultList": [
     {
-      "_class": "email",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "email",
       "name": "my-email-connection",
       "description": "Email connection for notifications",
       "deployToWorker": true,
@@ -82,9 +80,7 @@ None
 
 | Field | Type | Description |
 |-------|------|-------------|
-| _class | string | Connection type identifier |
-| id | string | Connection unique identifier |
-| projectId | string | Project ID |
+| type | string | Connection type discriminator field. Identifies the connection type in API responses. |
 | name | string | Connection name |
 | description | string | Connection description |
 | deployToWorker | boolean | Whether to deploy to worker |

@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "webhook",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "webhook",
       "name": "my-webhook-connection",
       "description": "Webhook connection for notifications",
       "deployToWorker": true,
@@ -134,9 +132,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "webhook",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "webhook",
       "name": "my-webhook-connection",
       "description": "Webhook connection for notifications",
       "deployToWorker": true,
@@ -197,7 +193,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic POST Webhook
 ```json
 {
-  "_class": "webhook",
+  "type": "webhook",
   "name": "my-webhook-connection",
   "description": "Webhook connection for notifications",
   "deployToWorker": true,
@@ -219,7 +215,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - GET Webhook with Authentication
 ```json
 {
-  "_class": "webhook",
+  "type": "webhook",
   "name": "my-get-webhook",
   "description": "GET webhook with authentication",
   "deployToWorker": true,
@@ -245,7 +241,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - PUT Webhook with Custom Headers
 ```json
 {
-  "_class": "webhook",
+  "type": "webhook",
   "name": "my-put-webhook",
   "description": "PUT webhook with custom headers",
   "deployToWorker": true,
@@ -275,7 +271,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - HTTPS Webhook
 ```json
 {
-  "_class": "webhook",
+  "type": "webhook",
   "name": "my-https-webhook",
   "description": "Secure HTTPS webhook",
   "deployToWorker": true,
@@ -303,7 +299,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `webhook` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -370,7 +366,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "webhook",
+    "type": "webhook",
     "name": "my-webhook-connection",
     "description": "Webhook connection for notifications",
     "deployToWorker": true,
@@ -412,7 +408,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

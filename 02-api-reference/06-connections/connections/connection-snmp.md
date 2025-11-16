@@ -69,9 +69,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "_class": "snmp",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "snmp",
       "name": "my-snmp-connection",
       "description": "SNMP connection for traps",
       "deployToWorker": true,
@@ -140,9 +138,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "_class": "snmp",
-      "id": "connection-id",
-      "projectId": "project-id",
+      "type": "snmp",
       "name": "my-snmp-connection",
       "description": "SNMP connection for traps",
       "deployToWorker": true,
@@ -209,7 +205,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SNMP v1 Trap
 ```json
 {
-  "_class": "snmp",
+  "type": "snmp",
   "name": "my-snmp-connection",
   "description": "SNMP v1 trap connection",
   "deployToWorker": true,
@@ -240,7 +236,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SNMP v2c Inform
 ```json
 {
-  "_class": "snmp",
+  "type": "snmp",
   "name": "my-snmp-v2c",
   "description": "SNMP v2c inform connection",
   "deployToWorker": true,
@@ -270,7 +266,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SNMP v3 with Authentication and Privacy
 ```json
 {
-  "_class": "snmp",
+  "type": "snmp",
   "name": "my-snmp-v3-secure",
   "description": "SNMP v3 with authentication and privacy",
   "deployToWorker": true,
@@ -303,7 +299,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SNMP v3 with Authentication Only
 ```json
 {
-  "_class": "snmp",
+  "type": "snmp",
   "name": "my-snmp-v3-auth",
   "description": "SNMP v3 with authentication only",
   "deployToWorker": true,
@@ -333,7 +329,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - SNMP v3 No Authentication
 ```json
 {
-  "_class": "snmp",
+  "type": "snmp",
   "name": "my-snmp-v3-noauth",
   "description": "SNMP v3 without authentication",
   "deployToWorker": true,
@@ -365,7 +361,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| _class | string | Yes | - | Connection type: `snmp` |
+| type | string | Yes | - | Connection type discriminator field. Identifies the connection type in API requests/responses. |
 | name | string | Yes | - | Connection name (must match path parameter) |
 | description | string | No | - | Connection description |
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
@@ -467,7 +463,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "_class": "snmp",
+    "type": "snmp",
     "name": "my-snmp-connection",
     "description": "SNMP v1 trap connection",
     "deployToWorker": true,
@@ -511,7 +507,7 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
-**Note:** The `id` field is required for update operations. Request body structure is the same as Create Connection. All fields should be provided for update.
+**Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
 

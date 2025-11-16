@@ -442,7 +442,6 @@ Context values available for `CONTEXT_VALUES` type variables.
 Variables are used in various policies:
 
 - **API Based Throttling** - `targetVariableForIdentity` to identify clients
-- **Endpoint Rate Limit** - `targetVariable` to identify clients per endpoint
 - **RLCL** - `targetVariable` for rate limiting
 - **Conditions** - `firstVariable` and `secondVariable` for condition rules
 - **Content Filter** - Variables to filter content
@@ -474,6 +473,5 @@ Variables are used in various policies:
 - [Enum Reference](./enum-reference.md) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
 - [Glossary](./glossary.md) - Terms and definitions
 - [API Based Throttling Policy](../02-api-reference/05-policies/policies/policy-api-based-throttling.md) - Uses variables for client identification
-- [Endpoint Rate Limit Policy](../02-api-reference/05-policies/policies/policy-endpoint-rate-limit.md) - Uses variables for endpoint rate limiting
 - [RLCL API](../02-api-reference/12-rlcl/index.md) - Uses variables for rate limit control
 - [Script Policy](../02-api-reference/05-policies/policies/policy-script.md) - Script language types
