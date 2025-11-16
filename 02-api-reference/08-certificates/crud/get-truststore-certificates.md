@@ -73,7 +73,7 @@ None.
 
 #### Response Fields
 
-Same as List Certificates. See [List Certificates](list-certificates.md) for field descriptions.
+Same as List Certificates. See [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) for field descriptions.
 
 ### Notes
 
@@ -120,5 +120,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Certificates](list-certificates.md) - List all certificates
-- [Get Certificate](get-certificate.md) - Get a specific certificate
+- [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
+- [Get Certificate](/management-api-docs/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate

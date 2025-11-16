@@ -67,4 +67,4 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Secure Hello](secure-hello.md) - Test authentication
+- [Secure Hello](/management-api-docs/02-api-reference/16-test/secure-hello/) - Test authentication

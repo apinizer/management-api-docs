@@ -90,5 +90,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Upload MMDB File](upload-mmdb-file.md) - Upload MMDB file
-- [Enable Geolocation](enable-geolocation.md) - Enable geolocation
+- [Upload MMDB File](/management-api-docs/02-api-reference/13-geolocation/upload-mmdb-file/) - Upload MMDB file
+- [Enable Geolocation](/management-api-docs/02-api-reference/13-geolocation/enable-geolocation/) - Enable geolocation

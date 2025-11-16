@@ -12,30 +12,30 @@ The Connections API provides endpoints for managing connections to external syst
 ## Endpoints
 
 ### CRUD Operations
-- [List Connections](crud/list-connections.md) - Get all connections for a project
-- [Get Connection](crud/get-connection.md) - Get connection details
-- [Create Connection](crud/create-connection.md) - Create a new connection (general)
-- [Update Connection](crud/update-connection.md) - Update a connection (general)
-- [Delete Connection](crud/delete-connection.md) - Delete a connection
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - Get all connections for a project
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get connection details
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection (general)
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - Update a connection (general)
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
 
 ### Connection Types
 
 Each connection type has its own documentation page with complete examples:
 
-- [Email Connection](connections/connection-email.md)
-- [Kafka Connection](connections/connection-kafka.md)
-- [Elasticsearch Connection](connections/connection-elasticsearch.md)
-- [RabbitMQ Connection](connections/connection-rabbitmq.md)
-- [FTP Connection](connections/connection-ftp.md)
-- [Graylog Connection](connections/connection-graylog.md)
-- [Syslog Connection](connections/connection-syslog.md)
-- [Webhook Connection](connections/connection-webhook.md)
-- [Logback Connection](connections/connection-logback.md)
-- [Apache ActiveMQ Connection](connections/connection-activemq.md)
-- [SNMP Connection](connections/connection-snmp.md)
-- [Linux Script Connection](connections/connection-linux-script.md)
-- [Database Connection](connections/connection-database.md)
-- [LDAP Connection](connections/connection-ldap.md)
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/)
+- [Kafka Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-kafka/)
+- [Elasticsearch Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-elasticsearch/)
+- [RabbitMQ Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-rabbitmq/)
+- [FTP Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-ftp/)
+- [Graylog Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-graylog/)
+- [Syslog Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-syslog/)
+- [Webhook Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-webhook/)
+- [Logback Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-logback/)
+- [Apache ActiveMQ Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-activemq/)
+- [SNMP Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-snmp/)
+- [Linux Script Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-linux-script/)
+- [Database Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-database/)
+- [LDAP Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-ldap/)
 
 ## Authentication
 
@@ -53,5 +53,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats

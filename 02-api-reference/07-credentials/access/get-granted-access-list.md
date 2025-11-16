@@ -80,7 +80,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | Name of the API Proxy or API Proxy Group |
-| type | string | Type of access. See [EnumAccessType](../../...md#enumaccesstype) |
+| type | string | Type of access. See [EnumAccessType](/management-api-docs/#enumaccesstype) |
 
 ### EnumAccessType (type)
 
@@ -143,6 +143,6 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Grant Access](grant-access.md) - Grant access to API Proxy or Group
-- [Revoke Access](revoke-access.md) - Revoke access from API Proxy or Group
-- [List Credentials](../crud/list-credentials.md) - List all credentials
+- [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group
+- [Revoke Access](/management-api-docs/02-api-reference/07-credentials/access/revoke-access/) - Revoke access from API Proxy or Group
+- [List Credentials](/management-api-docs/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials

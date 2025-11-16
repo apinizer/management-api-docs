@@ -7,7 +7,7 @@ permalink: /02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/
 
 ## Overview
 
-Retrieves all policies (request, response, and error) for a specific endpoint (API method). This endpoint returns the same information as [Get Endpoint](get-endpoint.md) but includes policy details.
+Retrieves all policies (request, response, and error) for a specific endpoint (API method). This endpoint returns the same information as [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) but includes policy details.
 
 ## Endpoint
 
@@ -102,7 +102,7 @@ None
 | description | string | Policy description |
 | active | boolean | Whether policy is active |
 
-**Note:** Policy objects contain only basic information. For full policy details, use the [Policies API](../../../../../05-policies.md).
+**Note:** Policy objects contain only basic information. For full policy details, use the [Policies API](/management-api-docs/05-policies/).
 
 ### EnumHttpRequestMethod
 
@@ -149,13 +149,13 @@ This endpoint does not require a request body.
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](list-endpoints.md) to get endpoint IDs
-- **Policy Details**: Policy objects contain basic information only. For full policy configuration, use the [Policies API](../../../../../05-policies.md)
+- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Policy Details**: Policy objects contain basic information only. For full policy configuration, use the [Policies API](/management-api-docs/05-policies/)
 - **Empty Lists**: If no policies exist in a pipeline, an empty array is returned
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](list-endpoints.md) - List all endpoints
-- [Get Endpoint](get-endpoint.md) - Get endpoint details (without policies)
-- [Policies API](../../../../../05-policies.md) - Policy management API
+- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details (without policies)
+- [Policies API](/management-api-docs/05-policies/) - Policy management API

@@ -147,9 +147,9 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | apiProxyName | string | Yes | - | API Proxy name (must exist for update) |
 | apiProxyDescription | string | No | - | API Proxy description (if empty, keeps existing description) |
-| apiProxyCreationType | string | Yes | - | API creation type. Must match existing API Proxy type. See [EnumApiProxySpecType](../../...md#enumapiproxyspectype) |
-| clientRoute | object | Yes | - | Client route configuration. See [ClientRoute](../../...md#clientroute) |
-| routingInfo | object | No | - | Routing configuration. See [RoutingInfo](../../...md#routinginfo) |
+| apiProxyCreationType | string | Yes | - | API creation type. Must match existing API Proxy type. See [EnumApiProxySpecType](/management-api-docs/#enumapiproxyspectype) |
+| clientRoute | object | Yes | - | Client route configuration. See [ClientRoute](/management-api-docs/#clientroute) |
+| routingInfo | object | No | - | Routing configuration. See [RoutingInfo](/management-api-docs/#routinginfo) |
 | deploy | boolean | No | false | Whether to deploy after update |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | reParse | boolean | No | true | Whether to reparse API proxy (should be true for update) |
@@ -157,7 +157,7 @@ Authorization: Bearer YOUR_TOKEN
 | enableWSA | boolean | No | false | Enable WS-Addressing (SOAP only) |
 | enableWSRM | boolean | No | false | Enable WS-ReliableMessaging (SOAP only) |
 | backendApiVersion | string | No | - | Backend API version |
-| maintenanceModeSetting | object | No | - | Maintenance mode settings. See [MaintenanceModeSetting](../../...md#maintenancemodesetting) |
+| maintenanceModeSetting | object | No | - | Maintenance mode settings. See [MaintenanceModeSetting](/management-api-docs/#maintenancemodesetting) |
 
 ### EnumApiProxySpecType (apiProxyCreationType)
 
@@ -179,8 +179,8 @@ Authorization: Bearer YOUR_TOKEN
 ### RoutingInfo (routingInfo)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| routingAddressList | array | No | List of routing addresses. See [RoutingAddress](../../...md#routingaddress) |
-| loadBalanceAlgorithm | string | No | Load balancing algorithm. See [EnumRoutingAlgorithm](../../...md#enumroutingalgorithm) |
+| routingAddressList | array | No | List of routing addresses. See [RoutingAddress](/management-api-docs/#routingaddress) |
+| loadBalanceAlgorithm | string | No | Load balancing algorithm. See [EnumRoutingAlgorithm](/management-api-docs/#enumroutingalgorithm) |
 | connectTimeout | integer | No | Connection timeout in seconds |
 | readTimeout | integer | No | Read timeout in seconds |
 | retryCount | integer | No | Number of retries |
@@ -285,6 +285,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from File](create-api-proxy-from-file.md) - Create new API Proxy from file
-- [Update API Proxy](update-api-proxy.md) - Update API Proxy metadata
-- [Deploy API Proxy](../deployment/deploy.md) - Deploy API Proxy to environments
+- [Create API Proxy from File](/management-api-docs/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/) - Create new API Proxy from file
+- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API Proxy metadata
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments

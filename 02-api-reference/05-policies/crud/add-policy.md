@@ -156,11 +156,11 @@ The policy object structure varies by policy type. All policies share common bas
 ###### Policy Types
 
 Each policy type has its own specific fields. See individual policy documentation pages for details:
-- [API Based Throttling](../policies/policy-api-based-throttling.md)
-- [Blocked IP List](../policies/policy-black-ip.md)
-- [Allowed IP List](../policies/policy-white-ip.md)
-- [Authentication Basic](../policies/policy-auth-basic.md)
-- ... (see [Policies Index](..) for complete list)
+- [API Based Throttling](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-throttling/)
+- [Blocked IP List](/management-api-docs/02-api-reference/05-policies/policies/policy-black-ip/)
+- [Allowed IP List](/management-api-docs/02-api-reference/05-policies/policies/policy-white-ip/)
+- [Authentication Basic](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-basic/)
+- ... (see [Policies Index](/management-api-docs/02-api-reference/05-policies/) for complete list)
 
 ###### Policy Condition (PolicyConditionDTO)
 
@@ -337,7 +337,7 @@ If `deploy: true` is set in the request, the response includes deployment result
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](../../...md#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/management-api-docs/#deployment-result-object) |
 
 ### Deployment Result Object (deploymentResult)
 
@@ -384,9 +384,9 @@ If `deploy: true` is set in the request, the response includes deployment result
 
 ### Error Messages
 
-See [Error Response 400 Bad Request](../../...md#error-response-400-bad-request) and [Common Causes](../../...md#common-causes) above for details.
+See [Error Response 400 Bad Request](/management-api-docs/#error-response-400-bad-request) and [Common Causes](/management-api-docs/#common-causes) above for details.
 
-**Note:** For detailed error response documentation, see [Error Response (400 Bad Request)](../../...md#error-response-400-bad-request) section above.
+**Note:** For detailed error response documentation, see [Error Response (400 Bad Request)](/management-api-docs/#error-response-400-bad-request) section above.
 
 ### Error Response (401 Unauthorized)
 
@@ -522,7 +522,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Policies](list-policies.md) - List all policies
-- [Update Policy](update-policy.md) - Update an existing policy
-- [Delete Policy](delete-policy.md) - Delete a policy
-- [Policy API Based Throttling](../policies/policy-api-based-throttling.md) - Example policy documentation
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [Policy API Based Throttling](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Example policy documentation

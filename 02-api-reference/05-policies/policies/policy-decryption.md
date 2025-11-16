@@ -317,10 +317,10 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Must be `"policy-decryption"` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether the policy is active |
-| policyCondition | object | No | null | Policy condition. See [Policy Condition](../../...md#policy-condition) |
-| errorMessageList | array | No | [] | List of error messages. See [Error Messages](../../...md#error-messages) |
-| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](../../...md#policy-operation-metadata) |
-| policyDecryptionDefList | array | Yes | - | List of decryption definitions. See [Decryption Definition](../../...md#decryption-definition) |
+| policyCondition | object | No | null | Policy condition. See [Policy Condition](/management-api-docs/#policy-condition) |
+| errorMessageList | array | No | [] | List of error messages. See [Error Messages](/management-api-docs/#error-messages) |
+| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](/management-api-docs/#policy-operation-metadata) |
+| policyDecryptionDefList | array | Yes | - | List of decryption definitions. See [Decryption Definition](/management-api-docs/#decryption-definition) |
 
 ### Decryption Definition (policyDecryptionDefList)
 
@@ -329,17 +329,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | id | string | No | - | Definition ID |
 | description | string | No | - | Definition description |
-| sourceVar | object | Yes | - | Source variable containing encrypted data. See [Variable Object](../../...md#variable-object) |
-| targetVar | object | Yes | - | Target variable for decrypted data. See [Variable Object](../../...md#variable-object) |
-| cipherAlgorithm | string | No | null | Cipher algorithm (if static). See [EnumCipherAlgorithm](../../...md#enumcipheralgorithm) |
+| sourceVar | object | Yes | - | Source variable containing encrypted data. See [Variable Object](/management-api-docs/#variable-object) |
+| targetVar | object | Yes | - | Target variable for decrypted data. See [Variable Object](/management-api-docs/#variable-object) |
+| cipherAlgorithm | string | No | null | Cipher algorithm (if static). See [EnumCipherAlgorithm](/management-api-docs/#enumcipheralgorithm) |
 | cipherAlgorithmVar | object | No | null | Variable containing cipher algorithm name (if dynamic) |
 | cryptoKeyInfoId | string | No | null | Crypto key info ID (for symmetric algorithms or asymmetric with KEY type) |
 | certificateId | string | No | null | Certificate ID (for asymmetric algorithms with CERTIFICATE type) |
-| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](../../...md#enumkeycertificatetype) |
+| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](/management-api-docs/#enumkeycertificatetype) |
 | ivExists | boolean | No | false | Whether initialization vector (IV) exists |
 | ivVar | object | No | null | Variable containing IV (if ivExists=true) |
-| ivEncodingType | string | No | null | IV encoding type (if ivExists=true). See [EnumEncodingType](../../...md#enumencodingtype) |
-| inputEncodingType | string | Yes | - | Input encoding type of encrypted data. See [EnumEncodingType](../../...md#enumencodingtype) |
+| ivEncodingType | string | No | null | IV encoding type (if ivExists=true). See [EnumEncodingType](/management-api-docs/#enumencodingtype) |
+| inputEncodingType | string | Yes | - | Input encoding type of encrypted data. See [EnumEncodingType](/management-api-docs/#enumencodingtype) |
 
 ### EnumCipherAlgorithm (cipherAlgorithm)
 
@@ -375,20 +375,20 @@ Asymmetric Algorithms:
 
 ### Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -403,15 +403,15 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 ### Policy Condition (policyCondition)
 
-See [Policy Condition Documentation](../crud/add-policy.md) for detailed information.
+See [Policy Condition Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Policy Operation Metadata (operationMetadata)
 
-See [Policy Operation Metadata Documentation](../crud/add-policy.md) for detailed information.
+See [Policy Operation Metadata Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Error Messages (errorMessageList)
 
-See [Error Messages Documentation](../crud/add-policy.md) for detailed information.
+See [Error Messages Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Response
 
@@ -629,8 +629,8 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - Add a policy
-- [Update Policy](../crud/update-policy.md) - Update a policy
-- [Delete Policy](../crud/delete-policy.md) - Delete a policy
-- [Encryption Policy](policy-encryption.md) - Encrypt data
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a policy
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update a policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [Encryption Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-encryption/) - Encrypt data

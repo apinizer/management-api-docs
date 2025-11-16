@@ -170,4 +170,4 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details

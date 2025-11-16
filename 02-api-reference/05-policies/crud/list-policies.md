@@ -112,7 +112,7 @@ None
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | API Proxy name |
-| type | string | API type. See [EnumApiType](../../...md#enumapitype) |
+| type | string | API type. See [EnumApiType](/management-api-docs/#enumapitype) |
 | relativePath | string | Relative path (from clientRoute) |
 | soapToRest | boolean | Whether SOAP to REST transformation is enabled |
 | requestPolicyList | array | List of request pipeline policies |
@@ -168,6 +168,6 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Add Policy](add-policy.md) - Add a new policy
-- [Update Policy](update-policy.md) - Update an existing policy
-- [Delete Policy](delete-policy.md) - Delete a policy
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy

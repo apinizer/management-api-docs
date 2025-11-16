@@ -107,7 +107,7 @@ None
 - `TRACE` - TRACE method
 - `ALL` - All methods
 
-**Note:** Policy lists (`requestPolicyList`, `responsePolicyList`, `errorPolicyList`) are not included in list operations. Use [Get Endpoint](get-endpoint.md) or [List Endpoint Policies](list-endpoint-policies.md) to retrieve policy details.
+**Note:** Policy lists (`requestPolicyList`, `responsePolicyList`, `errorPolicyList`) are not included in list operations. Use [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) or [List Endpoint Policies](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policy details.
 
 ### Error Response (401 Unauthorized)
 
@@ -148,7 +148,7 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Get Endpoint](get-endpoint.md) - Get detailed endpoint information
-- [List Endpoint Policies](list-endpoint-policies.md) - List endpoint policies
-- [Create Endpoint](create-endpoint.md) - Create a new endpoint
-- [Update Endpoint](update-endpoint.md) - Update an endpoint
+- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get detailed endpoint information
+- [List Endpoint Policies](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) - List endpoint policies
+- [Create Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/create-endpoint/) - Create a new endpoint
+- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update an endpoint

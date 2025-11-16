@@ -10,40 +10,40 @@ This section contains endpoints for configuring various settings of API proxies.
 ## Settings Endpoints
 
 ### General Settings
-- [Metadata](update-metadata.md) - Update API proxy metadata (name, description, category, sharing)
-- [Client Route](update-client-route.md) - Configure client route metadata
+- [Metadata](/management-api-docs/02-api-reference/04-api-proxies/settings/update-metadata/) - Update API proxy metadata (name, description, category, sharing)
+- [Client Route](/management-api-docs/02-api-reference/04-api-proxies/settings/update-client-route/) - Configure client route metadata
 
 ### Security Settings
-- [CORS Settings](update-cors-settings.md) - Configure Cross-Origin Resource Sharing (CORS)
-- [mTLS Settings](update-mtls-settings.md) - Configure mutual TLS
-- [NTLM Settings](update-ntlm-settings.md) - Configure NTLM authentication
-- [API Keys](update-api-keys.md) - Configure API keys
+- [CORS Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cors-settings/) - Configure Cross-Origin Resource Sharing (CORS)
+- [mTLS Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-mtls-settings/) - Configure mutual TLS
+- [NTLM Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-ntlm-settings/) - Configure NTLM authentication
+- [API Keys](/management-api-docs/02-api-reference/04-api-proxies/settings/update-api-keys/) - Configure API keys
 
 ### Routing Settings
-- [Routing Addresses](update-routing-addresses.md) - Configure backend routing addresses
-- [Routing Status](update-routing-status.md) - Enable or disable routing
-- [Connection Settings](update-connection-settings.md) - Configure connection settings
-- [Proxy Server Settings](update-proxy-server-settings.md) - Configure proxy server settings
+- [Routing Addresses](/management-api-docs/02-api-reference/04-api-proxies/settings/update-routing-addresses/) - Configure backend routing addresses
+- [Routing Status](/management-api-docs/02-api-reference/04-api-proxies/settings/update-routing-status/) - Enable or disable routing
+- [Connection Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-connection-settings/) - Configure connection settings
+- [Proxy Server Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-proxy-server-settings/) - Configure proxy server settings
 
 ### Performance Settings
-- [Cache Settings](update-cache-settings.md) - Configure caching behavior
-- [Circuit Breaker Settings](update-circuit-breaker-settings.md) - Configure circuit breaker
+- [Cache Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cache-settings/) - Configure caching behavior
+- [Circuit Breaker Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-circuit-breaker-settings/) - Configure circuit breaker
 
 ### Logging & Monitoring
-- [Traffic Log Settings](update-traffic-log-settings.md) - Configure traffic logging
+- [Traffic Log Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-traffic-log-settings/) - Configure traffic logging
 
 ### Error Handling
-- [JSON Error Template](update-json-error-template.md) - Configure JSON error response template
-- [XML Error Template](update-xml-error-template.md) - Configure XML error response template
+- [JSON Error Template](/management-api-docs/02-api-reference/04-api-proxies/settings/update-json-error-template/) - Configure JSON error response template
+- [XML Error Template](/management-api-docs/02-api-reference/04-api-proxies/settings/update-xml-error-template/) - Configure XML error response template
 
 ### Other Settings
-- [Forwarded IP Header](update-forwarded-ip-header.md) - Configure forwarded IP header
-- [Hide API Definition](update-hide-spec-file.md) - Hide API specification file from public access
+- [Forwarded IP Header](/management-api-docs/02-api-reference/04-api-proxies/settings/update-forwarded-ip-header/) - Configure forwarded IP header
+- [Hide API Definition](/management-api-docs/02-api-reference/04-api-proxies/settings/update-hide-spec-file/) - Hide API specification file from public access
 
 ## Related Documentation
 
-- [API Proxies Overview](..) - Complete API Proxy management documentation
-- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete API proxies
-- [Deployment](../../../../deployment.md) - Deploy and undeploy API proxies
-- [Endpoints](../../../../endpoints.md) - Manage API proxy endpoints
+- [API Proxies Overview](/management-api-docs/02-api-reference/04-api-proxies/) - Complete API Proxy management documentation
+- [CRUD Operations](/management-api-docs/crud/) - Create, read, update, and delete API proxies
+- [Deployment](/management-api-docs/deployment/) - Deploy and undeploy API proxies
+- [Endpoints](/management-api-docs/endpoints/) - Manage API proxy endpoints
 

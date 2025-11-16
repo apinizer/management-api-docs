@@ -316,13 +316,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
-| sigPartList | array | No | [] | Signature parts list. See [WsSecurityToTargetPart](../../...md#wssecuritytotargetpart) |
+| sigPartList | array | No | [] | Signature parts list. See [WsSecurityToTargetPart](/management-api-docs/#wssecuritytotargetpart) |
 | sigCustomKeyIdentifier | string | No | null | Custom key identifier for signature (used when sigKeyIdType=CUSTOM_KEY_INFO) |
 | sigCustomKeyIdentifierValueType | string | No* | null | Custom key identifier value type (required if sigCustomKeyIdentifier is provided) |
-| sigKeyIdType | string | No | null | Signature key identifier type. See [EnumWsSecurityKeyIdentifierType](../../...md#enumwssecuritykeyidentifiertype) |
-| sigSigAlgorithm | string | Yes | - | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](../../...md#enumwssecuritysignaturealgorithm) |
-| sigC14n | string | Yes | - | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](../../...md#enumwssecuritysignaturecanonicalization) |
-| sigDigAlgorithm | string | Yes | - | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](../../...md#enum-ws-security-signature-digest-algorithm) |
+| sigKeyIdType | string | No | null | Signature key identifier type. See [EnumWsSecurityKeyIdentifierType](/management-api-docs/#enumwssecuritykeyidentifiertype) |
+| sigSigAlgorithm | string | Yes | - | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](/management-api-docs/#enumwssecuritysignaturealgorithm) |
+| sigC14n | string | Yes | - | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](/management-api-docs/#enumwssecuritysignaturecanonicalization) |
+| sigDigAlgorithm | string | Yes | - | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](/management-api-docs/#enum-ws-security-signature-digest-algorithm) |
 | sigUseSingleCert | boolean | No | false | Use single certificate for signature |
 | sigWsiBSPCompliant | boolean | No | false | WSI BSP compliance for signature |
 | sigKeyStoreName | string | Yes | - | Signature keystore name |
@@ -388,7 +388,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | Part name (e.g., "Body", "Timestamp") |
 | namespace | string | Yes | - | Part namespace URI |
-| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](../../...md#enumwssecurityencryptionpartencodetype) |
+| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](/management-api-docs/#enumwssecurityencryptionpartencodetype) |
 
 ### EnumWsSecurityEncryptionPartEncodeType
 
@@ -591,8 +591,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-- [WS Security Sign Validation Policy](policy-ws-security-sign-validation.md) - Verify WS-Security signatures
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [WS Security Sign Validation Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-sign-validation/) - Verify WS-Security signatures

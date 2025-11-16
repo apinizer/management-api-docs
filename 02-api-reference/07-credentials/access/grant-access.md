@@ -86,7 +86,7 @@ The request body is an object containing an array of access objects.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Name of the API Proxy or API Proxy Group |
-| type | string | Yes | Type of access. See [EnumAccessType](../../...md#enumaccesstype) |
+| type | string | Yes | Type of access. See [EnumAccessType](/management-api-docs/#enumaccesstype) |
 
 ### EnumAccessType (type)
 
@@ -242,6 +242,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Get Granted Access List](get-granted-access-list.md) - Get list of granted accesses
-- [Revoke Access](revoke-access.md) - Revoke access from API Proxy or Group
-- [List Credentials](../crud/list-credentials.md) - List all credentials
+- [Get Granted Access List](/management-api-docs/02-api-reference/07-credentials/access/get-granted-access-list/) - Get list of granted accesses
+- [Revoke Access](/management-api-docs/02-api-reference/07-credentials/access/revoke-access/) - Revoke access from API Proxy or Group
+- [List Credentials](/management-api-docs/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials

@@ -83,5 +83,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Create IP Group](create-ip-group.md) - Create a new IP Group
-- [Update IP Group](update-ip-group.md) - Update an IP Group
+- [Create IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/create-ip-group/) - Create a new IP Group
+- [Update IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/update-ip-group/) - Update an IP Group

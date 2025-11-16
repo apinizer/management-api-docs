@@ -69,5 +69,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add Condition](add-condition.md) - Add condition to RLCL
-- [Update Condition](update-condition.md) - Update condition in RLCL
+- [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) - Add condition to RLCL
+- [Update Condition](/management-api-docs/02-api-reference/12-rlcl/condition/update-condition/) - Update condition in RLCL

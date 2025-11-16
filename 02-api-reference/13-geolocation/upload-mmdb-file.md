@@ -132,5 +132,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Enable Geolocation](enable-geolocation.md) - Enable geolocation functionality
-- [Disable Geolocation](disable-geolocation.md) - Disable geolocation functionality
+- [Enable Geolocation](/management-api-docs/02-api-reference/13-geolocation/enable-geolocation/) - Enable geolocation functionality
+- [Disable Geolocation](/management-api-docs/02-api-reference/13-geolocation/disable-geolocation/) - Disable geolocation functionality

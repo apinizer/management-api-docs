@@ -364,7 +364,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Database-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| dbType | string | Yes | - | Database type. See [EnumDatabaseType](../../...md#enumdatabasetype) |
+| dbType | string | Yes | - | Database type. See [EnumDatabaseType](/management-api-docs/#enumdatabasetype) |
 | jdbcUrl | string | Yes | - | JDBC connection URL |
 | useCredentials | boolean | No | true | Whether to use username/password authentication |
 | username | string | No | - | Database username (required if useCredentials=true) |
@@ -601,8 +601,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](../crud/list-connections.md) - List all connections
-- [Get Connection](../crud/get-connection.md) - Get a specific connection
-- [Create Connection](../crud/create-connection.md) - General connection creation guide
-- [Update Connection](../crud/update-connection.md) - General connection update guide
-- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

@@ -9,17 +9,17 @@ This section contains endpoints for creating, reading, updating, and deleting po
 
 ## Endpoints
 
-- [List Policies](list-policies.md) - Get all policies for an API proxy
-- [Add Policy](add-policy.md) - Add a new policy to an API proxy
-- [Update Policy](update-policy.md) - Update an existing policy
-- [Delete Policy](delete-policy.md) - Delete a policy from an API proxy
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - Get all policies for an API proxy
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a new policy to an API proxy
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy from an API proxy
 
 ## Policy Types
 
-For detailed documentation on specific policy types, see [Policy Types](../../../../policies.md).
+For detailed documentation on specific policy types, see [Policy Types](/management-api-docs/policies/).
 
 ## Related Documentation
 
-- [Policies Overview](..) - Complete policy management documentation
-- [Policy Types](../../../../policies.md) - Detailed documentation for each policy type
+- [Policies Overview](/management-api-docs/02-api-reference/05-policies/) - Complete policy management documentation
+- [Policy Types](/management-api-docs/policies/) - Detailed documentation for each policy type
 

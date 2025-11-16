@@ -132,14 +132,14 @@ The request body is an object containing an array of endpoint rate limit objects
 |-------|------|----------|---------|-------------|
 | apiProxyName | string | Yes | - | API Proxy name |
 | endpointName | string | Yes* | - | Endpoint path (e.g., "/users") or "ALL" for all endpoints. Required if endpointHTTPMethod is not "ALL" |
-| endpointHTTPMethod | string | Yes* | - | HTTP method. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod). Required if endpointName is not "ALL" |
+| endpointHTTPMethod | string | Yes* | - | HTTP method. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod). Required if endpointName is not "ALL" |
 | permittedMessageCount | integer | Yes | - | Maximum number of messages allowed per time interval |
 | timeIntervalPeriodLength | integer | Yes | - | Length of time interval period |
-| timeInterval | string | Yes | - | Time interval unit. See [EnumRateLimitTimeInterval](../../...md#enumratelimittimeinterval) |
-| targetVariable | object\|null | No | null | Variable used to identify clients. See [Variable Object](../../...md#variable-object) |
+| timeInterval | string | Yes | - | Time interval unit. See [EnumRateLimitTimeInterval](/management-api-docs/#enumratelimittimeinterval) |
+| targetVariable | object\|null | No | null | Variable used to identify clients. See [Variable Object](/management-api-docs/#variable-object) |
 | cacheConnectionTimeoutInSeconds | integer | Yes | - | Cache connection timeout in seconds |
-| cacheErrorHandlingType | string | Yes | - | Cache error handling type. See [EnumCacheErrorHandlingType](../../...md#enumcacheerrorhandlingtype) |
-| timeIntervalWindowType | string | Yes | - | Time interval window type. See [EnumIntervalWindowType](../../...md#enumintervalwindowtype) |
+| cacheErrorHandlingType | string | Yes | - | Cache error handling type. See [EnumCacheErrorHandlingType](/management-api-docs/#enumcacheerrorhandlingtype) |
+| timeIntervalWindowType | string | Yes | - | Time interval window type. See [EnumIntervalWindowType](/management-api-docs/#enumintervalwindowtype) |
 | targetIdentityValue | string\|null | No | null | Target identity value (if not using targetVariable) |
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
 | enabled | boolean | No | true | Enable rate limiting for this endpoint |
@@ -176,12 +176,12 @@ The request body is an object containing an array of endpoint rate limit objects
 
 ### Variable Object (targetVariable)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -293,5 +293,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Endpoints](update-endpoints.md) - Replace all endpoints
-- [Delete Endpoints](delete-endpoints.md) - Remove endpoints
+- [Update Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/update-endpoints/) - Replace all endpoints
+- [Delete Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove endpoints

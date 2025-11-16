@@ -9,18 +9,18 @@ This section contains endpoints for creating, reading, updating, and deleting co
 
 ## Endpoints
 
-- [List Connections](list-connections.md) - Get all connections for a project
-- [Get Connection](get-connection.md) - Get detailed information about a specific connection
-- [Create Connection](create-connection.md) - Create a new connection
-- [Update Connection](update-connection.md) - Update an existing connection
-- [Delete Connection](delete-connection.md) - Delete a connection
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - Get all connections for a project
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get detailed information about a specific connection
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - Update an existing connection
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
 
 ## Connection Types
 
-For detailed documentation on specific connection types, see [Connection Types](../../../../connections.md).
+For detailed documentation on specific connection types, see [Connection Types](/management-api-docs/connections/).
 
 ## Related Documentation
 
-- [Connections Overview](..) - Complete connection management documentation
-- [Connection Types](../../../../connections.md) - Detailed documentation for each connection type
+- [Connections Overview](/management-api-docs/02-api-reference/06-connections/) - Complete connection management documentation
+- [Connection Types](/management-api-docs/connections/) - Detailed documentation for each connection type
 

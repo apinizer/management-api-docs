@@ -118,7 +118,7 @@ Authorization: Bearer YOUR_TOKEN
 | global | boolean | No | false | Whether the variable is global (true) or environment-specific (false) |
 | globalValue | string\|null | No | null | Global value (required if global=true) |
 | globalVisible | boolean | No | true | Whether global value is visible (not secret) |
-| environmentValueList | array[object]\|null | No | null | List of environment-specific values (required if global=false). See [Environment Value Object](../../...md#environment-value-object) |
+| environmentValueList | array[object]\|null | No | null | List of environment-specific values (required if global=false). See [Environment Value Object](/management-api-docs/#environment-value-object) |
 
 ### Environment Value Object (environmentValueList)
 
@@ -270,5 +270,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Environment Variables](list-environment-variables.md) - List all environment variables
-- [Update Environment Variable](update-environment-variable.md) - Update an environment variable
+- [List Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/crud/list-environment-variables/) - List all environment variables
+- [Update Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/update-environment-variable/) - Update an environment variable

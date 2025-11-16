@@ -175,6 +175,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update IPs in Group](update-ips-in-group.md) - Replace all IPs in group
-- [Delete IPs from Group](delete-ips-from-group.md) - Remove IPs from group
-- [Create IP Group](../crud/create-ip-group.md) - Create a new IP Group
+- [Update IPs in Group](/management-api-docs/02-api-reference/11-ip-groups/ips/update-ips-in-group/) - Replace all IPs in group
+- [Delete IPs from Group](/management-api-docs/02-api-reference/11-ip-groups/ips/delete-ips-from-group/) - Remove IPs from group
+- [Create IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/create-ip-group/) - Create a new IP Group

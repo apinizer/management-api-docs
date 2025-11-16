@@ -133,6 +133,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Credentials](update-credentials.md) - Replace all credentials
-- [Delete Credentials](delete-credentials.md) - Remove credentials
-- [Create RLCL](../crud/create-rlcl.md) - Create a new RLCL
+- [Update Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/update-credentials/) - Replace all credentials
+- [Delete Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/delete-credentials/) - Remove credentials
+- [Create RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/create-rlcl/) - Create a new RLCL

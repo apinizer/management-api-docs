@@ -409,7 +409,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### RabbitMQ-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| hostPortList | array | Yes | - | List of RabbitMQ host/port pairs. See [ConfigRabbitMqHostPort](../../...md#configrabbitmqhostport) |
+| hostPortList | array | Yes | - | List of RabbitMQ host/port pairs. See [ConfigRabbitMqHostPort](/management-api-docs/#configrabbitmqhostport) |
 | connectionFactoryVirtualHost | string | No | / | Virtual host name |
 | authenticationEnabled | boolean | No | false | Enable authentication |
 | connectionFactoryUsername | string | No* | null | RabbitMQ username (required if authenticationEnabled=true) |
@@ -628,8 +628,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](../crud/list-connections.md) - List all connections
-- [Get Connection](../crud/get-connection.md) - Get a specific connection
-- [Create Connection](../crud/create-connection.md) - General connection creation guide
-- [Update Connection](../crud/update-connection.md) - General connection update guide
-- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

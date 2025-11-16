@@ -138,15 +138,15 @@ This endpoint does not require a request body.
 - **Secret Fields**: Unlike list operations, secret fields (password, apiKey, etc.) are returned in full when getting a single connection
 - **Security**: Never log or expose connection responses containing secrets
 - **Connection Types**: Each connection type has different fields. See individual connection type documentation for details:
-  - [Email Connection](../connections/connection-email.md)
-  - [Kafka Connection](../connections/connection-kafka.md)
-  - [Database Connection](../connections/connection-database.md)
-  - ... (see [Connections Index](..) for complete list)
+  - [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/)
+  - [Kafka Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-kafka/)
+  - [Database Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-database/)
+  - ... (see [Connections Index](/management-api-docs/02-api-reference/06-connections/) for complete list)
 
 ## Related Documentation
 
-- [List Connections](list-connections.md) - List all connections (secrets masked)
-- [Create Connection](create-connection.md) - Create a new connection
-- [Update Connection](update-connection.md) - Update a connection
-- [Delete Connection](delete-connection.md) - Delete a connection
-- [Email Connection](../connections/connection-email.md) - Email connection details
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections (secrets masked)
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - Update a connection
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/) - Email connection details

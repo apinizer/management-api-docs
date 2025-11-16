@@ -100,7 +100,7 @@ Authorization: Bearer YOUR_TOKEN
 
 #### Request Body Fields
 
-The request body structure is identical to [Add Policy](add-policy.md). See that documentation for complete field descriptions.
+The request body structure is identical to [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/). See that documentation for complete field descriptions.
 
 ##### operationMetadata
 
@@ -173,7 +173,7 @@ If `deploy: true` is set in the request, the response includes deployment result
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](../../...md#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/management-api-docs/#deployment-result-object) |
 
 ### Deployment Result Object (deploymentResult)
 
@@ -374,7 +374,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Policy](add-policy.md) - Add a new policy
-- [Delete Policy](delete-policy.md) - Delete a policy
-- [List Policies](list-policies.md) - List all policies
-- [Policy API Based Throttling](../policies/policy-api-based-throttling.md) - Example policy documentation
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Policy API Based Throttling](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Example policy documentation

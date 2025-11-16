@@ -98,10 +98,10 @@ Authorization: Bearer YOUR_TOKEN
 - `logback` - Logback connection
 
 **Note:** Connection-specific fields vary by connection type. See individual connection type documentation for complete field descriptions:
-- [Email Connection](../connections/connection-email.md)
-- [Kafka Connection](../connections/connection-kafka.md)
-- [Database Connection](../connections/connection-database.md)
-- ... (see [Connections Index](..) for complete list)
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/)
+- [Kafka Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-kafka/)
+- [Database Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-database/)
+- ... (see [Connections Index](/management-api-docs/02-api-reference/06-connections/) for complete list)
 
 ## Response
 
@@ -239,10 +239,10 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Connections](list-connections.md) - List all connections
-- [Get Connection](get-connection.md) - Get connection details
-- [Update Connection](update-connection.md) - Update a connection
-- [Delete Connection](delete-connection.md) - Delete a connection
-- [Email Connection](../connections/connection-email.md) - Email connection details
-- [Database Connection](../connections/connection-database.md) - Database connection details
-- [Kafka Connection](../connections/connection-kafka.md) - Kafka connection details
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get connection details
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - Update a connection
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/) - Email connection details
+- [Database Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-database/) - Database connection details
+- [Kafka Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-kafka/) - Kafka connection details

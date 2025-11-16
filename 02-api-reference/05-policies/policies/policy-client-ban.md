@@ -304,20 +304,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](../../...md#policyoperationmetadatadto) |
-| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](../../...md#policyconditiondto) |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](/management-api-docs/#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/management-api-docs/#policyconditiondto) |
 
 ###### Client Ban Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](../../...md#variabledto) |
+| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](/management-api-docs/#variabledto) |
 | thresholdWindowInSeconds | integer | Yes | 10 | Time window in seconds for threshold calculation |
 | thresholdCountPerWindow | integer | Yes | 1 | Threshold count or percentage per window |
-| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](../../...md#enumerrorthresholdtype) |
+| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](/management-api-docs/#enumerrorthresholdtype) |
 | banTimeInSeconds | integer | Yes | 10 | Duration to ban client in seconds |
 | enableRetryAfterHeader | boolean | No | false | Enable Retry-After header in ban response |
 | ignoreWhenKeyIsEmpty | boolean | No | false | Ignore requests when identity key is empty |
-| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](../../...md#policyconditiondto) |
+| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](/management-api-docs/#policyconditiondto) |
 
 ### EnumErrorThresholdType (thresholdCalculationType)
 
@@ -326,20 +326,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ### VariableDTO (clientIdentityVariableList item)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -358,8 +358,8 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](../../...md#enumconditioncriteria) |
-| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](../../...md#conditionruledto) |
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/management-api-docs/#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](/management-api-docs/#conditionruledto) |
 
 ### EnumConditionCriteria (assertionCondition.criteria)
 
@@ -372,10 +372,10 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| variable | object | Yes | Variable to check. See [Variable Definition](../../../03-appendix/variable-definition.md) |
-| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](../../...md#enumconditionvaluecomparisonoperator) |
+| variable | object | Yes | Variable to check. See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) |
+| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/management-api-docs/#enumconditionvaluecomparisonoperator) |
 | value | string | Yes | Value to compare against |
-| valueSource | string | No | Value source. See [EnumConditionValueSource](../../...md#enumconditionvaluesource) |
+| valueSource | string | No | Value source. See [EnumConditionValueSource](/management-api-docs/#enumconditionvaluesource) |
 
 ### EnumConditionValueComparisonOperator (comparisonOperator)
 
@@ -405,10 +405,10 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](../../...md#enumpolicytargetscope) |
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](/management-api-docs/#enumpolicytargetscope) |
 | targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
 | targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
-| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](../../...md#enumpolicytargetpipeline) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](/management-api-docs/#enumpolicytargetpipeline) |
 | deploy | boolean | No | true | Whether to deploy immediately |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
@@ -625,9 +625,9 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-- [Blocked IP List Policy](policy-black-ip.md) - Static IP blocking policy
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [Blocked IP List Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-black-ip/) - Static IP blocking policy
 

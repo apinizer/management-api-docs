@@ -113,7 +113,7 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | API Proxy Group name (unique identifier) |
 | description | string | No | - | API Proxy Group description |
-| clientRoute | object | Yes | - | Client route configuration. See [Client Route Object](../../...md#client-route-object) |
+| clientRoute | object | Yes | - | Client route configuration. See [Client Route Object](/management-api-docs/#client-route-object) |
 
 ### Client Route Object (clientRoute)
 
@@ -121,9 +121,9 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | relativePathList | array[string] | Yes | - | List of relative paths to match. Must have at least one path, and first path must not be empty |
-| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
+| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod) |
 | hostList | array[string] | No | null | List of host names to match |
-| headerList | array[object] | No | null | List of headers to match. See [Header Object](../../...md#header-object) |
+| headerList | array[object] | No | null | List of headers to match. See [Header Object](/management-api-docs/#header-object) |
 | bufferRequest | boolean | No | true | Buffer request body |
 | bufferResponse | boolean | No | true | Buffer response body |
 
@@ -285,6 +285,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List API Proxy Groups](list-api-proxy-groups.md) - List all API Proxy Groups
-- [Update API Proxy Group](update-api-proxy-group.md) - Update an API Proxy Group
-- [Add API Proxy to Group](../api-proxies/add-api-proxy-to-group.md) - Add API Proxies to group
+- [List API Proxy Groups](/management-api-docs/02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups
+- [Update API Proxy Group](/management-api-docs/02-api-reference/09-api-proxy-groups/crud/update-api-proxy-group/) - Update an API Proxy Group
+- [Add API Proxy to Group](/management-api-docs/02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group/) - Add API Proxies to group

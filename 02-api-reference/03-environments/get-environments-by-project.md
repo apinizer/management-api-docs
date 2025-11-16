@@ -156,6 +156,6 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [List Environments](list-environments.md) - Get all environments (admin only)
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-- [Projects API](../../../02-projects.md) - Project management
+- [List Environments](/management-api-docs/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Projects API](/management-api-docs/02-projects/) - Project management

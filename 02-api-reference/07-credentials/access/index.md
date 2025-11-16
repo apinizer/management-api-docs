@@ -9,12 +9,12 @@ This section contains endpoints for managing access to credentials.
 
 ## Endpoints
 
-- [Get Granted Access List](get-granted-access-list.md) - Get list of users/organizations with access to a credential
-- [Grant Access](grant-access.md) - Grant access to a credential to users or organizations
-- [Revoke Access](revoke-access.md) - Revoke access to a credential from users or organizations
+- [Get Granted Access List](/management-api-docs/02-api-reference/07-credentials/access/get-granted-access-list/) - Get list of users/organizations with access to a credential
+- [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) - Grant access to a credential to users or organizations
+- [Revoke Access](/management-api-docs/02-api-reference/07-credentials/access/revoke-access/) - Revoke access to a credential from users or organizations
 
 ## Related Documentation
 
-- [Credentials Overview](..) - Complete credential management documentation
-- [CRUD Operations](../../../../crud.md) - Create, read, update, and delete credentials
+- [Credentials Overview](/management-api-docs/02-api-reference/07-credentials/) - Complete credential management documentation
+- [CRUD Operations](/management-api-docs/crud/) - Create, read, update, and delete credentials
 

@@ -45,7 +45,7 @@ Authorization: Bearer YOUR_TOKEN
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| metadata | string (JSON) | Yes | Metadata for API Proxy creation/update. See [Metadata Object](../../...md#metadata-object) |
+| metadata | string (JSON) | Yes | Metadata for API Proxy creation/update. See [Metadata Object](/management-api-docs/#metadata-object) |
 | apiProxyExportFile | file | Yes | ZIP file containing the API Proxy export. Must have `.zip` extension |
 
 ### Metadata Object
@@ -105,15 +105,15 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 |-------|------|----------|---------|-------------|
 | deploy | boolean | No | false | Deploy API Proxy after import |
 | deployTargetEnvironmentNameList | array[string] | No | null | List of environment names to deploy to (if deploy=true) |
-| routing | object | No | null | Routing configuration. See [Routing Object](../../...md#routing-object) |
+| routing | object | No | null | Routing configuration. See [Routing Object](/management-api-docs/#routing-object) |
 | maintenanceMode | boolean | No | null | Enable/disable maintenance mode |
 
 ### Routing Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| algorithm | string | No | Routing algorithm. See [EnumRoutingAlgorithm](../../...md#enumroutingalgorithm) |
-| addressList | array[object] | No | List of routing addresses. See [Routing Address Object](../../...md#routing-address-object) |
+| algorithm | string | No | Routing algorithm. See [EnumRoutingAlgorithm](/management-api-docs/#enumroutingalgorithm) |
+| addressList | array[object] | No | List of routing addresses. See [Routing Address Object](/management-api-docs/#routing-address-object) |
 
 ### EnumRoutingAlgorithm (routing.algorithm)
 
@@ -130,7 +130,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 |-------|------|----------|-------------|
 | address | string | Yes | Backend address URL |
 | weight | integer | No | Weight for weighted algorithms (default: 1) |
-| soapType | string | No | SOAP version for SOAP APIs. See [EnumSoapApiPortType](../../...md#enumsoapapiporttype) |
+| soapType | string | No | SOAP version for SOAP APIs. See [EnumSoapApiPortType](/management-api-docs/#enumsoapapiporttype) |
 
 ### EnumSoapApiPortType (soapType)
 - `SOAP11` - SOAP 1.1
@@ -172,7 +172,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](../../...md#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/management-api-docs/#deployment-result-object) |
 
 ### Deployment Result Object
 
@@ -356,7 +356,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Export API Proxy](export-api-proxy.md) - Export API Proxy to ZIP file
-- [Import API Proxy (Without Override)](import-api-proxy.md) - Import API Proxy without override
-- [Deploy API Proxy](../deployment/deploy.md) - Deploy API Proxy to environments
-- [Update Routing Addresses](../settings/update-routing-addresses.md) - Update routing configuration
+- [Export API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/export-api-proxy/) - Export API Proxy to ZIP file
+- [Import API Proxy (Without Override)](/management-api-docs/02-api-reference/04-api-proxies/crud/import-api-proxy/) - Import API Proxy without override
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments
+- [Update Routing Addresses](/management-api-docs/02-api-reference/04-api-proxies/settings/update-routing-addresses/) - Update routing configuration

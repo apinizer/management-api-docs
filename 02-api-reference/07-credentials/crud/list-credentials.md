@@ -166,6 +166,6 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Create Credential](create-credential.md) - Create a new credential
-- [Update Credential](update-credential.md) - Update a credential
-- [Get Granted Access List](../access/get-granted-access-list.md) - Get access list for credential
+- [Create Credential](/management-api-docs/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
+- [Update Credential](/management-api-docs/02-api-reference/07-credentials/crud/update-credential/) - Update a credential
+- [Get Granted Access List](/management-api-docs/02-api-reference/07-credentials/access/get-granted-access-list/) - Get access list for credential

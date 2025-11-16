@@ -85,12 +85,12 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | - | RLCL name (unique identifier within project) |
 | description | string | No | - | RLCL description |
 | enabled | boolean | No | true | Whether the RLCL is enabled |
-| executionOrder | string | No | FIRST | Execution order. See [EnumExecutionOrder](../../...md#enumexecutionorder) |
+| executionOrder | string | No | FIRST | Execution order. See [EnumExecutionOrder](/management-api-docs/#enumexecutionorder) |
 | cacheConnectionTimeoutInSeconds | integer | No | 3 | Cache connection timeout in seconds |
-| cacheErrorHandlingType | string | No | FAIL | Cache error handling type. See [EnumCacheErrorHandlingType](../../...md#enumcacheerrorhandlingtype) |
-| timeIntervalWindowType | string | No | FIXED | Time interval window type. See [EnumIntervalWindowType](../../...md#enumintervalwindowtype) |
+| cacheErrorHandlingType | string | No | FAIL | Cache error handling type. See [EnumCacheErrorHandlingType](/management-api-docs/#enumcacheerrorhandlingtype) |
+| timeIntervalWindowType | string | No | FIXED | Time interval window type. See [EnumIntervalWindowType](/management-api-docs/#enumintervalwindowtype) |
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
-| targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](../../...md#variable-object) |
+| targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](/management-api-docs/#variable-object) |
 
 ### EnumExecutionOrder (executionOrder)
 
@@ -109,20 +109,20 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Variable Object (targetVariable)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -197,6 +197,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update RLCL](update-rlcl.md) - Update an RLCL
-- [Add Credentials](../credentials/add-credentials.md) - Add credentials to RLCL
-- [Add Endpoints](../endpoints/add-endpoints.md) - Add endpoints to RLCL
+- [Update RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an RLCL
+- [Add Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
+- [Add Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/add-endpoints/) - Add endpoints to RLCL

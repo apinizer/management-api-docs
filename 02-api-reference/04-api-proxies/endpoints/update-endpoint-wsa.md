@@ -91,8 +91,8 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | wsaEnabled | boolean | No | false | Enable WS-Addressing |
-| wsaMustUnderstand | string | No | NONE | MustUnderstand attribute value. See [EnumSoapWsaMustUnderstand](../../...md#enumsoapwsamustunderstand) |
-| wsaVersion | string | No | V200508 | WSA version. See [EnumSoapWsaVersion](../../...md#enumsoapwsaversion) |
+| wsaMustUnderstand | string | No | NONE | MustUnderstand attribute value. See [EnumSoapWsaMustUnderstand](/management-api-docs/#enumsoapwsamustunderstand) |
+| wsaVersion | string | No | V200508 | WSA version. See [EnumSoapWsaVersion](/management-api-docs/#enumsoapwsaversion) |
 | wsaAddDefaultAction | boolean | No | false | Add default Action from SOAP action |
 | wsaAction | string | No | null | Custom Action URI (if wsaAddDefaultAction is false) |
 | wsaAddDefaultTo | boolean | No | false | Add default To address from target |
@@ -177,6 +177,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [List Endpoints](list-endpoints.md) - List all endpoints
-- [Get Endpoint](get-endpoint.md) - Get endpoint details
-- [Update Endpoint](update-endpoint.md) - Update endpoint configuration
+- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
+- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration

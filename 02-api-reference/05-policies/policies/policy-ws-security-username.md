@@ -236,7 +236,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
 | username | string | Yes | - | UsernameToken username |
 | password | string | Yes | - | UsernameToken password |
-| passwordType | string | Yes | - | UsernameToken password type. See [EnumWsSecurityPasswordType](../../...md#enumwssecuritypasswordtype) |
+| passwordType | string | Yes | - | UsernameToken password type. See [EnumWsSecurityPasswordType](/management-api-docs/#enumwssecuritypasswordtype) |
 | nonce | boolean | No | false | Add nonce to UsernameToken |
 | created | boolean | No | false | Add created timestamp to UsernameToken |
 
@@ -418,8 +418,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-- [WS Security To Target Policy](policy-ws-security-to-target.md) - Complete WS-Security configuration
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [WS Security To Target Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-to-target/) - Complete WS-Security configuration

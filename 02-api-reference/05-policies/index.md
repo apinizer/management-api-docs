@@ -11,77 +11,77 @@ The Policies API provides endpoints for managing policies in API proxies. Polici
 
 ## Endpoints
 
-- [List Policies](crud/list-policies.md) - Get all policies for an API proxy
-- [Add Policy](crud/add-policy.md) - Add a new policy to an API proxy
-- [Update Policy](crud/update-policy.md) - Update an existing policy
-- [Delete Policy](crud/delete-policy.md) - Delete a policy from an API proxy
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - Get all policies for an API proxy
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a new policy to an API proxy
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy from an API proxy
 
 ## Policy Types
 
 Policies are organized by type. Each policy type has its own documentation page with complete examples:
 
 ### Authentication Policies
-- [Basic Authentication](policies/policy-auth-basic.md)
-- [Clear Text Authentication](policies/policy-auth-clear-text.md)
-- [Digest Authentication](policies/policy-auth-digest.md)
-- [JWT Authentication](policies/policy-auth-jwt.md)
-- [OAuth2 Authentication](policies/policy-auth-oauth2.md)
-- [OIDC Authentication](policies/policy-oidc.md)
-- [mTLS Authentication](policies/policy-auth-mtls.md)
-- [API Authentication](policies/policy-api-authentication.md)
-- [SAML Validation](policies/policy-saml-validation.md)
+- [Basic Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-basic/)
+- [Clear Text Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-clear-text/)
+- [Digest Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-digest/)
+- [JWT Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-jwt/)
+- [OAuth2 Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-oauth2/)
+- [OIDC Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-oidc/)
+- [mTLS Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-auth-mtls/)
+- [API Authentication](/management-api-docs/02-api-reference/05-policies/policies/policy-api-authentication/)
+- [SAML Validation](/management-api-docs/02-api-reference/05-policies/policies/policy-saml-validation/)
 
 ### Security Policies
-- [WS-Security Encrypt](policies/policy-ws-security-encrypt.md)
-- [WS-Security Decrypt](policies/policy-ws-security-decrypt.md)
-- [WS-Security Sign](policies/policy-ws-security-sign.md)
-- [WS-Security Sign Validation](policies/policy-ws-security-sign-validation.md)
-- [WS-Security Username Token](policies/policy-ws-security-username.md)
-- [WS-Security Timestamp](policies/policy-ws-security-timestamp.md)
-- [WS-Security From Target](policies/policy-ws-security-from-target.md)
-- [WS-Security To Target](policies/policy-ws-security-to-target.md)
-- [JOSE Validation](policies/policy-jose-validation.md)
-- [JOSE Implementation](policies/policy-jose-implementation.md)
-- [Digital Sign](policies/policy-digital-sign.md)
-- [Digital Sign Verification](policies/policy-digital-sign-verification.md)
-- [Encryption](policies/policy-encryption.md)
-- [Decryption](policies/policy-decryption.md)
+- [WS-Security Encrypt](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-encrypt/)
+- [WS-Security Decrypt](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-decrypt/)
+- [WS-Security Sign](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-sign/)
+- [WS-Security Sign Validation](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-sign-validation/)
+- [WS-Security Username Token](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-username/)
+- [WS-Security Timestamp](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-timestamp/)
+- [WS-Security From Target](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-from-target/)
+- [WS-Security To Target](/management-api-docs/02-api-reference/05-policies/policies/policy-ws-security-to-target/)
+- [JOSE Validation](/management-api-docs/02-api-reference/05-policies/policies/policy-jose-validation/)
+- [JOSE Implementation](/management-api-docs/02-api-reference/05-policies/policies/policy-jose-implementation/)
+- [Digital Sign](/management-api-docs/02-api-reference/05-policies/policies/policy-digital-sign/)
+- [Digital Sign Verification](/management-api-docs/02-api-reference/05-policies/policies/policy-digital-sign-verification/)
+- [Encryption](/management-api-docs/02-api-reference/05-policies/policies/policy-encryption/)
+- [Decryption](/management-api-docs/02-api-reference/05-policies/policies/policy-decryption/)
 
 ### Rate Limiting & Quota Policies
-- [API Based Throttling](policies/policy-api-based-throttling.md)
-- [API Based Quota](policies/policy-api-based-quota.md)
-- [Client Ban](policies/policy-client-ban.md)
+- [API Based Throttling](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-throttling/)
+- [API Based Quota](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-quota/)
+- [Client Ban](/management-api-docs/02-api-reference/05-policies/policies/policy-client-ban/)
 
 ### IP Filtering Policies
-- [Blocked IP List](policies/policy-black-ip.md)
-- [Allowed IP List](policies/policy-white-ip.md)
+- [Blocked IP List](/management-api-docs/02-api-reference/05-policies/policies/policy-black-ip/)
+- [Allowed IP List](/management-api-docs/02-api-reference/05-policies/policies/policy-white-ip/)
 
 ### Transformation Policies
-- [JSON Transformation](policies/policy-json-transformation.md)
-- [XML Transformation](policies/policy-xml-transformation.md)
-- [Request Protocol Transformation](policies/policy-request-protocol-transformation.md)
-- [Response Protocol Transformation](policies/policy-response-protocol-transformation.md)
+- [JSON Transformation](/management-api-docs/02-api-reference/05-policies/policies/policy-json-transformation/)
+- [XML Transformation](/management-api-docs/02-api-reference/05-policies/policies/policy-xml-transformation/)
+- [Request Protocol Transformation](/management-api-docs/02-api-reference/05-policies/policies/policy-request-protocol-transformation/)
+- [Response Protocol Transformation](/management-api-docs/02-api-reference/05-policies/policies/policy-response-protocol-transformation/)
 
 ### Validation Policies
-- [JSON Schema Validation](policies/policy-json-schema-validation.md)
-- [XML Schema Validation](policies/policy-xml-schema-validation.md)
-- [Max Message Size](policies/policy-max-message-size.md)
-- [Min Message Size](policies/policy-min-message-size.md)
+- [JSON Schema Validation](/management-api-docs/02-api-reference/05-policies/policies/policy-json-schema-validation/)
+- [XML Schema Validation](/management-api-docs/02-api-reference/05-policies/policies/policy-xml-schema-validation/)
+- [Max Message Size](/management-api-docs/02-api-reference/05-policies/policies/policy-max-message-size/)
+- [Min Message Size](/management-api-docs/02-api-reference/05-policies/policies/policy-min-message-size/)
 
 ### Content Policies
-- [Content Filter](policies/policy-content-filter.md)
-- [Redaction](policies/policy-redaction.md)
+- [Content Filter](/management-api-docs/02-api-reference/05-policies/policies/policy-content-filter/)
+- [Redaction](/management-api-docs/02-api-reference/05-policies/policies/policy-redaction/)
 
 ### Scripting Policies
-- [Script](policies/policy-script.md)
+- [Script](/management-api-docs/02-api-reference/05-policies/policies/policy-script/)
 
 ### Integration Policies
-- [API Call](policies/policy-api-call.md)
+- [API Call](/management-api-docs/02-api-reference/05-policies/policies/policy-api-call/)
 
 ### Advanced Policies
-- [Time Restriction](policies/policy-time-restriction.md)
-- [Business Rule](policies/policy-business-rule.md)
-- [Policy Group](policies/policy-group.md)
+- [Time Restriction](/management-api-docs/02-api-reference/05-policies/policies/policy-time-restriction/)
+- [Business Rule](/management-api-docs/02-api-reference/05-policies/policies/policy-business-rule/)
+- [Policy Group](/management-api-docs/02-api-reference/05-policies/policies/policy-group/)
 
 ## Authentication
 
@@ -94,5 +94,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats

@@ -71,7 +71,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | success | boolean | Indicates if the request was successful |
-| deploymentResult | object | Deployment result. See [Deployment Result Object](../../...md#deployment-result-object) |
+| deploymentResult | object | Deployment result. See [Deployment Result Object](/management-api-docs/#deployment-result-object) |
 
 ### Deployment Result Object
 
@@ -129,5 +129,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Undeploy API Proxy Group](undeploy-api-proxy-group.md) - Undeploy group from environment
-- [List Environments](list-environments.md) - List environments for group
+- [Undeploy API Proxy Group](/management-api-docs/02-api-reference/09-api-proxy-groups/deployment/undeploy-api-proxy-group/) - Undeploy group from environment
+- [List Environments](/management-api-docs/02-api-reference/09-api-proxy-groups/deployment/list-environments/) - List environments for group

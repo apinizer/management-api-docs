@@ -44,7 +44,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-The request body uses the same `CacheSettings` structure as API Proxy-level cache settings. See [Update Cache Settings](../settings/update-cache-settings.md) for detailed field descriptions.
+The request body uses the same `CacheSettings` structure as API Proxy-level cache settings. See [Update Cache Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cache-settings/) for detailed field descriptions.
 
 #### Full JSON Body Example - Basic Cache Configuration
 
@@ -103,14 +103,14 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 | description | string | No | - | Cache settings description |
 | cacheActive | boolean | No | false | Enable/disable cache for this endpoint |
 | cacheOnlyHttpGetRequests | boolean | No | true | Cache only GET requests (if false, caches all methods) |
-| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](../../...md#enumcachekeytype) |
-| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](../../...md#enumcachestoragetype) |
+| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](/management-api-docs/#enumcachekeytype) |
+| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](/management-api-docs/#enumcachestoragetype) |
 | capacity | integer | No | - | Maximum cache capacity (number of entries) |
 | ttl | integer | No | - | Time to live in seconds |
-| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](../../...md#enumcachehandlingaction) |
+| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](/management-api-docs/#enumcachehandlingaction) |
 | invalidationRequiresAuthn | boolean | No | false | Require authentication for cache invalidation |
 | cacheNullValue | boolean | No | false | Cache null/empty responses |
-| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](../../...md#variable-object) |
+| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](/management-api-docs/#variable-object) |
 
 ### EnumCacheKeyType (cacheKeyType)
 
@@ -128,20 +128,20 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 
 ### Variable Object (for variableList when cacheKeyType=CUSTOM)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -300,7 +300,7 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Cache Settings](../settings/update-cache-settings.md) - Update API Proxy-level cache settings
-- [Get Endpoint](get-endpoint.md) - Get endpoint details
-- [List Endpoints](list-endpoints.md) - List all endpoints
-- [Update Endpoint](update-endpoint.md) - Update endpoint configuration
+- [Update Cache Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cache-settings/) - Update API Proxy-level cache settings
+- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
+- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration

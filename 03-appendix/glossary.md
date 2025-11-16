@@ -44,7 +44,7 @@ Limiting the rate of requests to prevent overload.
 A limit on the total number of requests allowed over a period of time.
 
 ### Variable
-A reference to data that can be extracted from requests, responses, or context. See [Variable Definition](variable-definition.md) for complete documentation.
+A reference to data that can be extracted from requests, responses, or context. See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete documentation.
 
 ### Policy Condition
 A condition that determines when a policy should be executed.
@@ -83,7 +83,7 @@ Security Assertion Markup Language - An XML-based standard for exchanging authen
 JSON Object Signing and Encryption - Standards for signing and encrypting JSON data.
 
 ### Enum
-An enumeration - a fixed set of named values used in API requests and responses. See [Enum Reference](enum-reference.md) for complete list.
+An enumeration - a fixed set of named values used in API requests and responses. See [Enum Reference](/management-api-docs/03-appendix/enum-reference/) for complete list.
 
 ### Status
 Response status indicating success or failure of an operation. Values: `SUCCESS`, `FAILURE`.
@@ -102,6 +102,6 @@ The type of API Proxy. Values: `REST`, `SOAP`, `GRPC`, `WEBSOCKET`.
 
 ## Related Documentation
 
-- [Enum Reference](enum-reference.md) - Complete enumeration reference
-- [Variable Definition](variable-definition.md) - Variable documentation
-- [OpenAPI Spec](openapi-spec.md) - OpenAPI specification access
+- [Enum Reference](/management-api-docs/03-appendix/enum-reference/) - Complete enumeration reference
+- [Variable Definition](/management-api-docs/03-appendix/variable-definition/) - Variable documentation
+- [OpenAPI Spec](/management-api-docs/03-appendix/openapi-spec/) - OpenAPI specification access

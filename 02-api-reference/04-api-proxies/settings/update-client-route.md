@@ -125,9 +125,9 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | relativePathList | array[string] | No | null | List of relative paths to match. Paths must be at least 2 characters long |
-| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
+| methodList | array[string] | No | null | List of HTTP methods to match. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod) |
 | hostList | array[string] | No | null | List of host names to match |
-| headerList | array[object] | No | null | List of headers to match. See [Header Object](../../...md#header-object) |
+| headerList | array[object] | No | null | List of headers to match. See [Header Object](/management-api-docs/#header-object) |
 | bufferRequest | boolean | No | true | Buffer request body (enables request body access in policies) |
 | bufferResponse | boolean | No | true | Buffer response body (enables response body access in policies) |
 
@@ -330,6 +330,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
-- [Update API Proxy](../crud/update-api-proxy.md) - Update API proxy configuration
-- [Deploy API Proxy](../deployment/deploy.md) - Deploy API proxy
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy configuration
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy

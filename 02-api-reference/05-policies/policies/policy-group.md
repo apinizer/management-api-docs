@@ -154,17 +154,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](../../...md#policyoperationmetadatadto) |
-| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](../../...md#policyconditiondto) |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](/management-api-docs/#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/management-api-docs/#policyconditiondto) |
 
 ### PolicyOperationMetadataDTO (operationMetadata)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](../../...md#enumpolicytargetscope) |
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](/management-api-docs/#enumpolicytargetscope) |
 | targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
 | targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
-| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](../../...md#enumpolicytargetpipeline) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](/management-api-docs/#enumpolicytargetpipeline) |
 | deploy | boolean | No | true | Whether to deploy immediately |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
@@ -185,8 +185,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](../../...md#enumconditioncriteria) |
-| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](../../...md#conditionruledto) |
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/management-api-docs/#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](/management-api-docs/#conditionruledto) |
 
 ### EnumConditionCriteria (condition.criteria)
 
@@ -197,7 +197,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ### ConditionRuleDTO (condition.rules item)
 
-See [Add Policy](../crud/add-policy.md#conditionrulelist-item) for detailed documentation. The structure matches the `ConditionRuleDTO` defined in the Add Policy documentation.
+See [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/#conditionrulelist-item) for detailed documentation. The structure matches the `ConditionRuleDTO` defined in the Add Policy documentation.
 
 ### Notes
 
@@ -346,7 +346,7 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide

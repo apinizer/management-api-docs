@@ -106,7 +106,7 @@ None.
 | globalValue | string\|null | Global value (if global=true). Null if globalVisible=false (secret) |
 | globalVisible | boolean | Whether global value is visible (if global=true) |
 | projectName | string | Project name |
-| environmentValueList | array[object]\|null | List of environment-specific values (if global=false). See [Environment Value Object](../../...md#environment-value-object) |
+| environmentValueList | array[object]\|null | List of environment-specific values (if global=false). See [Environment Value Object](/management-api-docs/#environment-value-object) |
 
 ### Environment Value Object (environmentValueList)
 
@@ -168,5 +168,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Environment Variable](get-environment-variable.md) - Get a specific environment variable
-- [Create Environment Variable](create-environment-variable.md) - Create a new environment variable
+- [Get Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/get-environment-variable/) - Get a specific environment variable
+- [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable

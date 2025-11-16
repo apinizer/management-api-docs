@@ -81,7 +81,7 @@ Same structure as Grant Access. Object containing an array of access objects.
 
 #### Request Body Fields
 
-Same as Grant Access. See [Grant Access](grant-access.md) for field descriptions.
+Same as Grant Access. See [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) for field descriptions.
 
 ### Notes
 
@@ -204,6 +204,6 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Get Granted Access List](get-granted-access-list.md) - Get list of granted accesses
-- [Grant Access](grant-access.md) - Grant access to API Proxy or Group
-- [Delete Credential](../crud/delete-credential.md) - Delete a credential
+- [Get Granted Access List](/management-api-docs/02-api-reference/07-credentials/access/get-granted-access-list/) - Get list of granted accesses
+- [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group
+- [Delete Credential](/management-api-docs/02-api-reference/07-credentials/crud/delete-credential/) - Delete a credential

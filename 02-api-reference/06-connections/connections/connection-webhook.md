@@ -313,7 +313,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Webhook-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| httpMethod | string | No | GET | HTTP method. See [EnumHttpRequestMethod](../../...md#enumhttprequestmethod) |
+| httpMethod | string | No | GET | HTTP method. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod) |
 | fullUrl | string | Yes | - | Full webhook URL (including protocol, host, path, and optional query parameters) |
 | headerList | array | No | [] | List of HTTP headers to include in requests |
 | timeout | integer | No | 2 | Connection timeout in seconds |
@@ -512,8 +512,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](../crud/list-connections.md) - List all connections
-- [Get Connection](../crud/get-connection.md) - Get a specific connection
-- [Create Connection](../crud/create-connection.md) - General connection creation guide
-- [Update Connection](../crud/update-connection.md) - General connection update guide
-- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

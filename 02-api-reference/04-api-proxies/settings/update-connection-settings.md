@@ -181,6 +181,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Circuit Breaker Settings](update-circuit-breaker-settings.md) - Update circuit breaker settings
-- [Update Routing Addresses](update-routing-addresses.md) - Update routing addresses
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Update Circuit Breaker Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-circuit-breaker-settings/) - Update circuit breaker settings
+- [Update Routing Addresses](/management-api-docs/02-api-reference/04-api-proxies/settings/update-routing-addresses/) - Update routing addresses
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
