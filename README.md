@@ -28,7 +28,7 @@ See [OpenAPI Spec](./03-appendix/openapi-spec.md) for more information.
 
 ## 📚 Table of Contents
 
-- [Getting Started](./01-getting-started/overview.md)
+- [Getting Started](./01-getting-started/)
   - [Overview](./01-getting-started/overview.md)
   - [Authentication](./01-getting-started/authentication.md)
   - [Base URL](./01-getting-started/base-url.md)
