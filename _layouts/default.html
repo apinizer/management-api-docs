@@ -75,9 +75,34 @@
                 <span class="nav-section-title" onclick="toggleSection(this)">API Reference</span>
                 <ul style="display: {% if page.url contains '/02-api-reference' %}block{% else %}none{% endif %};">
                   <li><a href="{{ '/02-api-reference/' | relative_url }}" {% if page.url == '/02-api-reference/' or page.url == '/02-api-reference' %}class="active"{% endif %}>Overview</a></li>
-                  <li><a href="{{ '/02-api-reference/01-auth/' | relative_url }}" {% if page.url contains '/01-auth/' or page.url contains '/01-auth/create-token' %}class="active"{% endif %}>Authentication</a></li>
-                  <li><a href="{{ '/02-api-reference/02-projects/' | relative_url }}" {% if page.url contains '/02-projects/' or page.url contains '/02-projects/list-projects' %}class="active"{% endif %}>Projects</a></li>
-                  <li><a href="{{ '/02-api-reference/03-environments/' | relative_url }}" {% if page.url contains '/03-environments/' %}class="active"{% endif %}>Environments</a></li>
+                  <li class="nav-subsection {% if page.url contains '/01-auth/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/01-auth/' | relative_url }}" {% if page.url contains '/01-auth/' %}class="active"{% endif %}>Authentication</a>
+                    {% if page.url contains '/01-auth/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/01-auth/' | relative_url }}" {% if page.url == '/02-api-reference/01-auth/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/01-auth/create-token/' | relative_url }}" {% if page.url contains '/01-auth/create-token' %}class="active"{% endif %}>Create Token</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/02-projects/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/02-projects/' | relative_url }}" {% if page.url contains '/02-projects/' %}class="active"{% endif %}>Projects</a>
+                    {% if page.url contains '/02-projects/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/02-projects/' | relative_url }}" {% if page.url == '/02-api-reference/02-projects/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/02-projects/list-projects/' | relative_url }}" {% if page.url contains '/02-projects/list-projects' %}class="active"{% endif %}>List Projects</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/03-environments/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/03-environments/' | relative_url }}" {% if page.url contains '/03-environments/' %}class="active"{% endif %}>Environments</a>
+                    {% if page.url contains '/03-environments/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/03-environments/' | relative_url }}" {% if page.url == '/02-api-reference/03-environments/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/03-environments/list-environments/' | relative_url }}" {% if page.url contains '/03-environments/list-environments' %}class="active"{% endif %}>List Environments</a></li>
+                      <li><a href="{{ '/02-api-reference/03-environments/get-environments-by-project/' | relative_url }}" {% if page.url contains '/03-environments/get-environments-by-project' %}class="active"{% endif %}>Get Environments by Project</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
                   <li class="nav-subsection {% if page.url contains '/04-api-proxies/' %}active-subsection{% endif %}">
                     <a href="{{ '/02-api-reference/04-api-proxies/' | relative_url }}" {% if page.url contains '/04-api-proxies/' %}class="active"{% endif %}>API Proxies</a>
                     {% if page.url contains '/04-api-proxies/' %}
@@ -110,16 +135,123 @@
                     </ul>
                     {% endif %}
                   </li>
-                  <li><a href="{{ '/02-api-reference/06-connections/' | relative_url }}" {% if page.url contains '/06-connections/' %}class="active"{% endif %}>Connections</a></li>
-                  <li><a href="{{ '/02-api-reference/07-credentials/' | relative_url }}" {% if page.url contains '/07-credentials/' %}class="active"{% endif %}>Credentials</a></li>
-                  <li><a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url contains '/08-certificates/' %}class="active"{% endif %}>Certificates</a></li>
-                  <li><a href="{{ '/02-api-reference/09-api-proxy-groups/' | relative_url }}" {% if page.url contains '/09-api-proxy-groups/' %}class="active"{% endif %}>API Proxy Groups</a></li>
-                  <li><a href="{{ '/02-api-reference/10-environment-variables/' | relative_url }}" {% if page.url contains '/10-environment-variables/' %}class="active"{% endif %}>Environment Variables</a></li>
-                  <li><a href="{{ '/02-api-reference/11-ip-groups/' | relative_url }}" {% if page.url contains '/11-ip-groups/' %}class="active"{% endif %}>IP Groups</a></li>
-                  <li><a href="{{ '/02-api-reference/12-rlcl/' | relative_url }}" {% if page.url contains '/12-rlcl/' %}class="active"{% endif %}>RLCL</a></li>
-                  <li><a href="{{ '/02-api-reference/13-geolocation/' | relative_url }}" {% if page.url contains '/13-geolocation/' %}class="active"{% endif %}>GeoLocation</a></li>
-                  <li><a href="{{ '/02-api-reference/14-reports/' | relative_url }}" {% if page.url contains '/14-reports/' %}class="active"{% endif %}>Reports</a></li>
-                  <li><a href="{{ '/02-api-reference/16-test/' | relative_url }}" {% if page.url contains '/16-test/' %}class="active"{% endif %}>Test</a></li>
+                  <li class="nav-subsection {% if page.url contains '/06-connections/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/06-connections/' | relative_url }}" {% if page.url contains '/06-connections/' %}class="active"{% endif %}>Connections</a>
+                    {% if page.url contains '/06-connections/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/06-connections/' | relative_url }}" {% if page.url == '/02-api-reference/06-connections/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/crud/' | relative_url }}" {% if page.url contains '/06-connections/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>Connection Types</strong></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/' | relative_url }}" {% if page.url contains '/06-connections/connections/' %}class="active"{% endif %}>Connection Types Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/07-credentials/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/07-credentials/' | relative_url }}" {% if page.url contains '/07-credentials/' %}class="active"{% endif %}>Credentials</a>
+                    {% if page.url contains '/07-credentials/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/07-credentials/' | relative_url }}" {% if page.url == '/02-api-reference/07-credentials/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/07-credentials/crud/' | relative_url }}" {% if page.url contains '/07-credentials/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>Access Management</strong></li>
+                      <li><a href="{{ '/02-api-reference/07-credentials/access/' | relative_url }}" {% if page.url contains '/07-credentials/access/' %}class="active"{% endif %}>Access Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/08-certificates/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url contains '/08-certificates/' %}class="active"{% endif %}>Certificates</a>
+                    {% if page.url contains '/08-certificates/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url == '/02-api-reference/08-certificates/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/08-certificates/crud/' | relative_url }}" {% if page.url contains '/08-certificates/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/09-api-proxy-groups/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/09-api-proxy-groups/' | relative_url }}" {% if page.url contains '/09-api-proxy-groups/' %}class="active"{% endif %}>API Proxy Groups</a>
+                    {% if page.url contains '/09-api-proxy-groups/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/09-api-proxy-groups/' | relative_url }}" {% if page.url == '/02-api-reference/09-api-proxy-groups/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/09-api-proxy-groups/crud/' | relative_url }}" {% if page.url contains '/09-api-proxy-groups/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>Deployment</strong></li>
+                      <li><a href="{{ '/02-api-reference/09-api-proxy-groups/deployment/' | relative_url }}" {% if page.url contains '/09-api-proxy-groups/deployment/' %}class="active"{% endif %}>Deployment Index</a></li>
+                      <li><strong>API Proxies</strong></li>
+                      <li><a href="{{ '/02-api-reference/09-api-proxy-groups/api-proxies/' | relative_url }}" {% if page.url contains '/09-api-proxy-groups/api-proxies/' %}class="active"{% endif %}>API Proxies Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/10-environment-variables/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/10-environment-variables/' | relative_url }}" {% if page.url contains '/10-environment-variables/' %}class="active"{% endif %}>Environment Variables</a>
+                    {% if page.url contains '/10-environment-variables/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/10-environment-variables/' | relative_url }}" {% if page.url == '/02-api-reference/10-environment-variables/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/10-environment-variables/crud/' | relative_url }}" {% if page.url contains '/10-environment-variables/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/11-ip-groups/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/11-ip-groups/' | relative_url }}" {% if page.url contains '/11-ip-groups/' %}class="active"{% endif %}>IP Groups</a>
+                    {% if page.url contains '/11-ip-groups/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/11-ip-groups/' | relative_url }}" {% if page.url == '/02-api-reference/11-ip-groups/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/11-ip-groups/crud/' | relative_url }}" {% if page.url contains '/11-ip-groups/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>IP Management</strong></li>
+                      <li><a href="{{ '/02-api-reference/11-ip-groups/ips/' | relative_url }}" {% if page.url contains '/11-ip-groups/ips/' %}class="active"{% endif %}>IPs Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/12-rlcl/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/12-rlcl/' | relative_url }}" {% if page.url contains '/12-rlcl/' %}class="active"{% endif %}>RLCL</a>
+                    {% if page.url contains '/12-rlcl/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/12-rlcl/' | relative_url }}" {% if page.url == '/02-api-reference/12-rlcl/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/12-rlcl/crud/' | relative_url }}" {% if page.url contains '/12-rlcl/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>Endpoints</strong></li>
+                      <li><a href="{{ '/02-api-reference/12-rlcl/endpoints/' | relative_url }}" {% if page.url contains '/12-rlcl/endpoints/' %}class="active"{% endif %}>Endpoints Index</a></li>
+                      <li><strong>Condition</strong></li>
+                      <li><a href="{{ '/02-api-reference/12-rlcl/condition/' | relative_url }}" {% if page.url contains '/12-rlcl/condition/' %}class="active"{% endif %}>Condition Index</a></li>
+                      <li><strong>Credentials</strong></li>
+                      <li><a href="{{ '/02-api-reference/12-rlcl/credentials/' | relative_url }}" {% if page.url contains '/12-rlcl/credentials/' %}class="active"{% endif %}>Credentials Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/13-geolocation/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/13-geolocation/' | relative_url }}" {% if page.url contains '/13-geolocation/' %}class="active"{% endif %}>GeoLocation</a>
+                    {% if page.url contains '/13-geolocation/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/13-geolocation/' | relative_url }}" {% if page.url == '/02-api-reference/13-geolocation/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/13-geolocation/enable-geolocation/' | relative_url }}" {% if page.url contains '/13-geolocation/enable-geolocation' %}class="active"{% endif %}>Enable GeoLocation</a></li>
+                      <li><a href="{{ '/02-api-reference/13-geolocation/disable-geolocation/' | relative_url }}" {% if page.url contains '/13-geolocation/disable-geolocation' %}class="active"{% endif %}>Disable GeoLocation</a></li>
+                      <li><a href="{{ '/02-api-reference/13-geolocation/upload-mmdb-file/' | relative_url }}" {% if page.url contains '/13-geolocation/upload-mmdb-file' %}class="active"{% endif %}>Upload MMDB File</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/14-reports/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/14-reports/' | relative_url }}" {% if page.url contains '/14-reports/' %}class="active"{% endif %}>Reports</a>
+                    {% if page.url contains '/14-reports/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/14-reports/' | relative_url }}" {% if page.url == '/02-api-reference/14-reports/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/14-reports/api-report/' | relative_url }}" {% if page.url contains '/14-reports/api-report' %}class="active"{% endif %}>API Report</a></li>
+                      <li><a href="{{ '/02-api-reference/14-reports/organization-api-data-model-access-report/' | relative_url }}" {% if page.url contains '/14-reports/organization-api-data-model-access-report' %}class="active"{% endif %}>Organization API Data Model Access Report</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/16-test/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/16-test/' | relative_url }}" {% if page.url contains '/16-test/' %}class="active"{% endif %}>Test</a>
+                    {% if page.url contains '/16-test/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/16-test/' | relative_url }}" {% if page.url == '/02-api-reference/16-test/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/16-test/healthcheck/' | relative_url }}" {% if page.url contains '/16-test/healthcheck' %}class="active"{% endif %}>Healthcheck</a></li>
+                      <li><a href="{{ '/02-api-reference/16-test/secure-hello/' | relative_url }}" {% if page.url contains '/16-test/secure-hello' %}class="active"{% endif %}>Secure Hello</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
                 </ul>
               </li>
               
