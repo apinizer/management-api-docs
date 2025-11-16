@@ -79,7 +79,8 @@ grant_type=client_credentials&client_id=your_username&client_secret=your_passwor
 }
 ```
 
-**Causes:**
+### Causes
+
 - Invalid username or password
 - Account is disabled or locked
 - Credentials are incorrect
@@ -128,4 +129,4 @@ curl -X POST \
 ## Related Documentation
 
 - [Authentication Guide](../../01-getting-started/authentication.md) - Detailed authentication information
-- [Using Tokens](../../01-getting-started/authentication.md#using-the-token) - How to use tokens in API requests
+- [Using Tokens](../../01-getting-started/authentication.md) - How to use tokens in API requests

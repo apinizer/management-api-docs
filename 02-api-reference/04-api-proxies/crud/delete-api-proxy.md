@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -88,7 +89,8 @@ This endpoint does not require a request body.
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy name does not exist
 - API Proxy name is empty
 

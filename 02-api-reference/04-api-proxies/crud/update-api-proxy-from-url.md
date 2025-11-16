@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/apiProxies/url/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -181,33 +182,34 @@ Authorization: Bearer YOUR_TOKEN
 | maintenanceModeSetting | object | No | - | Maintenance mode settings. See [MaintenanceModeSetting](#maintenancemodesetting) |
 | specAuthorizationValueList | array | No | [] | Authorization headers for accessing spec URL. See [SpecAuthorizationValue](#specauthorizationvalue) |
 
-**EnumApiProxySpecType (apiProxyCreationType)**
+### EnumApiProxySpecType (apiProxyCreationType)
+
 - `OPEN_API` - OpenAPI 3.0 specification
 - `SWAGGER` - Swagger 2.0 specification
 - `WSDL` - WSDL specification (SOAP)
 - `REVERSE_PROXY` - Reverse proxy (no specification)
 
-**ClientRoute (clientRoute)**
+### ClientRoute (clientRoute)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | relativePathList | array | Yes | List of relative paths (at least one required, first cannot be empty) |
 | virtualHostList | array | No | List of virtual hosts |
 
-**RoutingInfo (routingInfo)**
+### RoutingInfo (routingInfo)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | routingAddressList | array | No | List of routing addresses. See [RoutingAddress](#routingaddress) |
 | routingEnabled | boolean | No | Whether routing is enabled |
 | mirrorEnabled | boolean | No | Whether mirroring is enabled |
 
-**RoutingAddress (routingInfo.routingAddressList item)**
+### RoutingAddress (routingInfo.routingAddressList item)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | address | string | Yes | Backend server address |
 | weight | integer | No | Routing weight (for load balancing) |
 | healthCheckEnabled | boolean | No | Enable health check |
 
-**MaintenanceModeSetting (maintenanceModeSetting)**
+### MaintenanceModeSetting (maintenanceModeSetting)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | enabled | boolean | No | Whether maintenance mode is enabled |
@@ -215,13 +217,14 @@ Authorization: Bearer YOUR_TOKEN
 | contentType | string | No | Content type for maintenance response |
 | message | string | No | Maintenance message |
 
-**SpecAuthorizationValue (specAuthorizationValueList item)**
+### SpecAuthorizationValue (specAuthorizationValueList item)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | headerName | string | Yes | Header name (e.g., "Authorization") |
 | headerValue | string | Yes | Header value (e.g., "Bearer token123") |
 
-**Notes:**
+### Notes
+
 - `apiProxyName` must exist (API Proxy will be updated, not created).
 - `apiProxyCreationType` must match the existing API Proxy type (cannot change type).
 - `specUrl` is required unless `apiProxyCreationType` is `REVERSE_PROXY`.

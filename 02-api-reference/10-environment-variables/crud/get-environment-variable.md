@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/environmentVariables/{name}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -74,9 +75,10 @@ None.
 
 #### Response Fields
 
-Same as List Environment Variables. See [List Environment Variables](./list-environment-variables.md#response-fields) for field descriptions.
+Same as List Environment Variables. See [List Environment Variables](./list-environment-variables.md) for field descriptions.
 
-**Notes:**
+### Notes
+
 - Secret values (`visible=false` or `globalVisible=false`) are masked (returned as `null`)
 - Returns single environment variable matching the name
 

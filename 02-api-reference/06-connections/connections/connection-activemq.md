@@ -296,21 +296,24 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | clientID | string | No | - | Client identifier for durable subscriptions |
 | contentEncoding | string | No | - | Content encoding (e.g., `UTF-8`) |
 
-**EnumActiveMqConnectionProtocolType (activeMqConnectionProtocolType)**
+### EnumActiveMqConnectionProtocolType (activeMqConnectionProtocolType)
+
 - `TCP` - TCP protocol (standard ActiveMQ protocol, port 61616)
 - `AMQP` - AMQP protocol (Advanced Message Queuing Protocol, port 5672)
 
-**EnumDestinationType (destinationType)**
+### EnumDestinationType (destinationType)
+
 - `QUEUE` - Point-to-point messaging (one consumer per message)
 - `TOPIC` - Publish-subscribe messaging (multiple consumers per message)
 
-**EnumSessionAcknowledgmentType (sessionAcknowledgement)**
+### EnumSessionAcknowledgmentType (sessionAcknowledgement)
 - `AUTO_ACKNOWLEDGE` - Messages are automatically acknowledged when received (default)
 - `CLIENT_ACKNOWLEDGE` - Client must explicitly acknowledge messages
 - `DUPS_OK_ACKNOWLEDGE` - Allows duplicate messages (lazy acknowledgment)
 - `SESSION_TRANSACTED` - Session is transactional (messages committed/rolled back)
 
-**Notes:**
+### Notes
+
 - `activeMqConnectionProtocolType`, `brokerURL`, `destinationType`, and `destinationName` are required.
 - `brokerURL` format:
   - TCP: `tcp://hostname:61616` or `tcp://hostname:61616?options`

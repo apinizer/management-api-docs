@@ -14,7 +14,8 @@ GET /apiops/projects/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -71,7 +72,8 @@ None
 | name | string | Project name |
 | description | string | Project description |
 
-**Enum: status**
+### EnumStatus
+
 - `SUCCESS` - Operation successful
 - `FAILURE` - Operation failed
 
@@ -84,7 +86,8 @@ None
 }
 ```
 
-**Causes:**
+### Causes
+
 - Missing or invalid Authorization header
 - Token expired or revoked
 - Invalid token format

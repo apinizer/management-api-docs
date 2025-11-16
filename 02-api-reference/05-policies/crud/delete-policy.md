@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -66,16 +67,19 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** The `order` field is not used for delete operations.
 
-**Enum: targetScope (EnumPolicyTargetScope)**
+### EnumPolicyTargetScope
+
 - `ALL` - Delete policy from all endpoints
 - `ENDPOINT` - Delete policy only from specified endpoint
 
-**Enum: targetPipeline (EnumPolicyTargetPipeline)**
+### EnumPolicyTargetPipeline
+
 - `REQUEST` - Delete from request pipeline
 - `RESPONSE` - Delete from response pipeline
 - `ERROR` - Delete from error pipeline
 
-**Enum: targetEndpointHTTPMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
 **Note:** When `targetScope` is `ENDPOINT`, both `targetEndpoint` and `targetEndpointHTTPMethod` are required.
@@ -118,7 +122,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 | status | string | Response status: `SUCCESS` or `FAILURE` |
 | deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](#deployment-result-object) |
 
-**Deployment Result Object (deploymentResult):**
+### Deployment Result Object (deploymentResult)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -126,7 +131,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 | responseTime | integer | Total deployment response time in milliseconds |
 | detailList | array | List of deployment details per pod/environment |
 
-**Deployment Detail Object (detailList item):**
+### Deployment Detail Object (detailList item)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -136,7 +142,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 | success | boolean | Deployment success status for this pod |
 | responseTime | integer | Deployment response time for this pod in milliseconds |
 
-**Enum: status**
+### EnumStatus
+
 - `SUCCESS` - Operation successful
 - `FAILURE` - Operation failed
 
@@ -149,7 +156,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Policy name does not exist
 - Invalid targetScope (ENDPOINT without targetEndpoint)
 - Invalid targetEndpoint (endpoint not found in API Proxy)

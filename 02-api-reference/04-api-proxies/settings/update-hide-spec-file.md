@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/hide-spe
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -106,7 +107,8 @@ The request body structure is identical to [Create Connection](./create-connecti
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Connection name does not exist
 - Connection name in path does not match name in body (unless renaming)
 - New connection name conflicts with existing connection

@@ -13,10 +13,12 @@ Response status values used in all API responses.
 | `SUCCESS` | Operation completed successfully |
 | `FAILURE` | Operation failed |
 
-**Usage:**
+### Usage
+
 All API responses include a `status` field with one of these values.
 
-**Example:**
+### Example
+
 ```json
 {
   "status": "SUCCESS",
@@ -38,7 +40,8 @@ Type of API Proxy.
 | `GRPC` | gRPC Service |
 | `WEBSOCKET` | WebSocket Service |
 
-**Usage:**
+### Usage
+
 Used in API Proxy objects to indicate the API type.
 
 ## HTTP Methods
@@ -59,7 +62,8 @@ HTTP request methods supported by the API.
 | `TRACE` | Echo request for debugging |
 | `ALL` | All HTTP methods |
 
-**Usage:**
+### Usage
+
 Used in endpoint definitions, client routes, and policy target specifications.
 
 ## Policy Scope
@@ -73,7 +77,8 @@ Scope where a policy applies.
 | `ALL` | Policy applies to all endpoints in the API Proxy |
 | `ENDPOINT` | Policy applies only to a specific endpoint |
 
-**Usage:**
+### Usage
+
 Used in policy operation metadata (`operationMetadata.targetScope`).
 
 **Note:** When `targetScope` is `ENDPOINT`, both `targetEndpoint` and `targetEndpointHTTPMethod` must be provided.
@@ -90,7 +95,8 @@ Pipeline where a policy executes.
 | `RESPONSE` | Executes after receiving response from backend |
 | `ERROR` | Executes when an error occurs |
 
-**Usage:**
+### Usage
+
 Used in policy operation metadata (`operationMetadata.targetPipeline`).
 
 ## Access Type
@@ -104,7 +110,8 @@ Type of resource that can be accessed.
 | `API_PROXY` | API Proxy resource |
 | `API_PROXY_GROUP` | API Proxy Group resource |
 
-**Usage:**
+### Usage
+
 Used in credential access management to specify which type of resource access is granted.
 
 ## Variable Types
@@ -121,7 +128,8 @@ Type of variable used in policies and conditions.
 | `CONTEXT_VALUES` | Extract value from context (e.g., current time, IP address) |
 | `CUSTOM` | Custom variable defined with script |
 
-**Usage:**
+### Usage
+
 Used in `VariableDTO` to specify how to extract data.
 
 See [Variable Definition](./variable-definition.md) for complete documentation.
@@ -138,7 +146,8 @@ Type of parameter when `VariableDTO.type` is `PARAMETER`.
 | `PATH` | Path parameter (e.g., `/users/{id}`) |
 | `FORM` | Form parameter (from form data) |
 
-**Usage:**
+### Usage
+
 Used in `VariableDTO.paramType` when `type` is `PARAMETER`.
 
 ## Message Content Types
@@ -153,7 +162,8 @@ Content type of message body.
 | `XML` | XML format |
 | `FORM` | Form data format |
 
-**Usage:**
+### Usage
+
 Used in `VariableDTO.messageContentType` when extracting data from body (`type=BODY`).
 
 ## Script Types
@@ -167,7 +177,8 @@ Script language for custom variables and script policies.
 | `GROOVY` | Groovy script |
 | `JAVASCRIPT` | JavaScript (Nashorn) script |
 
-**Usage:**
+### Usage
+
 Used in `VariableDTO.scriptLanguage` and script-based policies.
 
 ## API Proxy Spec Types
@@ -183,7 +194,8 @@ Type of API specification used to create an API Proxy.
 | `OPEN_API` | OpenAPI 3.0 specification |
 | `REVERSE_PROXY` | Reverse proxy (no specification file) |
 
-**Usage:**
+### Usage
+
 Used when importing or creating API Proxies from specification files.
 
 ## Related Documentation

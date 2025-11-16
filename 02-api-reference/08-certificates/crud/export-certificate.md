@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/certificates/{certificateName}/export/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -44,16 +45,19 @@ None.
 
 The response is a ZIP file containing certificate files.
 
-**Headers:**
+### Headers
+
 - `Content-Type: application/octet-stream`
 - `Content-Disposition: attachment; filename="{certificateName}-certificates.zip"`
 - `Content-Length: {file-size}`
 
-**Response Body:**
+### Response Body
+
 - Binary ZIP file containing:
   - `{certificateName}-{environmentName}.cer` - Certificate file for each environment
 
-**ZIP File Contents:**
+### ZIP File Contents
+
 - One .cer file per environment
 - Files are named: `{certificateName}-{environmentName}.cer`
 - Each file contains the certificate in binary DER format

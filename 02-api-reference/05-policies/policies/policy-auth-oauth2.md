@@ -200,7 +200,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | grantType | string | No | PASSWORD | Grant type for token issuance |
 | deletePrevious | boolean | No | false | Delete previous tokens when issuing new token |
 
-**Enum: tokenExpiresInUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLI_SECONDS` - Milliseconds
 - `SECONDS` - Seconds
 - `MINUTES` - Minutes
@@ -210,7 +211,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `MONTHS` - Months
 - `YEARS` - Years
 
-**Enum: refreshTokenExpiresInUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLI_SECONDS` - Milliseconds
 - `SECONDS` - Seconds
 - `MINUTES` - Minutes
@@ -220,11 +222,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `MONTHS` - Months
 - `YEARS` - Years
 
-**Enum: grantType (EnumPolicyAuthenticationGrantType)**
+### EnumPolicyAuthenticationGrantType
+
 - `PASSWORD` - Password grant type (username/password)
 - `CLIENT_CREDENTIALS` - Client credentials grant type (client_id/client_secret)
 
-**Note:** 
+### Note
+
 - If `tokenNeverExpires: false`, both `tokenExpiresInAmount` and `tokenExpiresInUnit` are required.
 - `refreshTokenCount` limits the number of active refresh tokens per user.
 - When `deletePrevious: true`, issuing a new token deletes previous tokens for the same user.

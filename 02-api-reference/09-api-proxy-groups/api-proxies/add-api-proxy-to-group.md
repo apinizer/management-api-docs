@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxyGroups/{apiProxyGroupName}/apiProxie
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -48,7 +49,8 @@ None.
 }
 ```
 
-**Notes:**
+### Notes
+
 - If API Proxy is already a member of the group, the operation succeeds without error
 - API Proxy is added to the group if not already a member
 

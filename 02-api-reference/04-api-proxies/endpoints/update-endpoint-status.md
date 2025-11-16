@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpoi
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -77,7 +78,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Endpoint ID does not exist
 - Missing `active` field
 

@@ -173,7 +173,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
 | timeToLive | integer | Yes | - | Timestamp time to live in seconds (must be >= 0) |
 
-**Note:**
+### Note
+
 - `timeToLive` is required and must be >= 0.
 - `timeToLive` determines how long the timestamp is valid (in seconds).
 

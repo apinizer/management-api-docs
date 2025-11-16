@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/keys/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -69,7 +70,8 @@ Authorization: Bearer YOUR_TOKEN
 | publicKey | string | No | - | API Proxy public key (API Key). If provided, must not be blank |
 | secretKey | string | No | - | API Proxy secret key. If provided, must not be blank |
 
-**Notes:**
+### Notes
+
 - At least one of `publicKey` or `secretKey` must be provided
 - If a key is provided, it must not be blank (empty string or whitespace)
 - Keys are stored securely and used for API Proxy authentication
@@ -101,7 +103,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Both `publicKey` and `secretKey` are missing or null
 - Provided key is blank (empty string or whitespace)
 

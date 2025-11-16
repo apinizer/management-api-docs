@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/addresse
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -60,7 +61,7 @@ Authorization: Bearer YOUR_TOKEN
 
 The request body is an object containing an array of routing address objects.
 
-**Routing Address Object:**
+### Routing Address Object
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -68,17 +69,19 @@ The request body is an object containing an array of routing address objects.
 | weight | integer | No | 1 | Load balancing weight (required if loadBalanceAlgorithm=WEIGHTED) |
 | soapType | string | No* | SOAP11 | SOAP version (required if API type is SOAP) |
 
-**Enum: soapType (EnumSoapApiPortType)**
+### EnumSoapApiPortType
+
 - `SOAP11` - SOAP 1.1
 - `SOAP12` - SOAP 1.2
 
-**Request Body Object:**
+### Request Body Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | routingAddressList | array | Yes | Array of routing address objects |
 
-**Note:** 
+### Note
+
 - Request body must be an object with `routingAddressList` array
 - For REST APIs, `soapType` is not required
 - For SOAP APIs, `soapType` defaults to `SOAP11` if not provided

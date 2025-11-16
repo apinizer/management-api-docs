@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -94,7 +95,7 @@ Authorization: Bearer YOUR_TOKEN
 
 #### Request Body Fields
 
-##### operationMetadata
+##### Policy Operation Metadata
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -106,16 +107,19 @@ Authorization: Bearer YOUR_TOKEN
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | null | Policy execution order (starts from 1). If null or >= list size, policy is added at the end |
 
-**Enum: targetScope (EnumPolicyTargetScope)**
+### EnumPolicyTargetScope
+
 - `ALL` - Policy applies to all endpoints
 - `ENDPOINT` - Policy applies only to specified endpoint
 
-**Enum: targetPipeline (EnumPolicyTargetPipeline)**
+### EnumPolicyTargetPipeline
+
 - `REQUEST` - Executes in request pipeline
 - `RESPONSE` - Executes in response pipeline
 - `ERROR` - Executes in error pipeline
 
-**Enum: targetEndpointHTTPMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET` - GET method
 - `POST` - POST method
 - `PUT` - PUT method
@@ -150,10 +154,10 @@ Each policy type has its own specific fields. See individual policy documentatio
 - [API Based Throttling](../policies/policy-api-based-throttling.md)
 - [Blocked IP List](../policies/policy-black-ip.md)
 - [Allowed IP List](../policies/policy-white-ip.md)
-- [Authentication Basic](../policies/policy-authentication-basic.md)
+- [Authentication Basic](../policies/policy-auth-basic.md)
 - ... (see [Policies Index](../index.md) for complete list)
 
-###### policyCondition (PolicyConditionDTO)
+###### Policy Condition (PolicyConditionDTO)
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -175,18 +179,21 @@ Each policy type has its own specific fields. See individual policy documentatio
 | secondValue | string | No* | - | Second value for comparison (required if secondValueSource=VALUE) |
 | secondVariable | object | No* | - | Second variable for comparison (required if secondValueSource=VARIABLE) |
 
-**Enum: conditionCriteria (EnumConditionCriteria)**
+### EnumConditionCriteria
+
 - `VALUE` - Value comparison
 - `NOT` - Negation
 - `AND` - Logical AND
 - `OR` - Logical OR
 
-**Enum: variableDataType (EnumConditionVariableDataType)**
+### EnumConditionVariableDataType
+
 - `STRING` - String type
 - `NUMERIC` - Numeric type
 - `DATE` - Date type
 
-**Enum: valueComparisonOperator (EnumConditionValueComparisonOperator)**
+### EnumConditionValueComparisonOperator
+
 - `LT` - Less than
 - `LE` - Less than or equal to
 - `GT` - Greater than
@@ -204,7 +211,8 @@ Each policy type has its own specific fields. See individual policy documentatio
 - `IN` - In list
 - `NOT_IN` - Not in list
 
-**Enum: secondValueSource (EnumConditionValueSource)**
+### EnumConditionValueSource
+
 - `VALUE` - Compare with a constant value
 - `VARIABLE` - Compare with another variable
 
@@ -231,24 +239,28 @@ Each policy type has its own specific fields. See individual policy documentatio
 | scriptLanguage | string | No | - | Script language: `GROOVY`, `JAVASCRIPT` (required if initWithScript=true) |
 | scriptBody | string | No | - | Script body (required if initWithScript=true) |
 
-**Enum: type (EnumVariableType)**
+### EnumVariableType
+
 - `HEADER` - HTTP header
 - `PARAMETER` - Query/path/form parameter
 - `BODY` - Request/response body
 - `CONTEXT_VALUES` - Context values (e.g., current time, IP address)
 - `CUSTOM` - Custom variable (script-based)
 
-**Enum: paramType (EnumVariableParameterType)**
+### EnumVariableParameterType
+
 - `QUERY` - Query parameter
 - `PATH` - Path parameter
 - `FORM` - Form parameter
 
-**Enum: messageContentType (EnumMessageContentType)**
+### EnumMessageContentType
+
 - `JSON` - JSON content
 - `XML` - XML content
 - `FORM` - Form content
 
-**Enum: contextValue (EnumVariableContextValue)**
+### EnumVariableContextValue
+
 - `CURRENT_TIME` - Current timestamp
 - `CURRENT_DATE` - Current date
 - `CLIENT_IP` - Client IP address
@@ -279,7 +291,8 @@ Each policy type has its own specific fields. See individual policy documentatio
 - `ZONE_ID` - Zone ID
 - `TIMEZONE_ID` - Timezone ID
 
-**Enum: scriptLanguage (EnumScriptType)**
+### EnumScriptType
+
 - `GROOVY` - Groovy script
 - `JAVASCRIPT` - JavaScript script
 
@@ -321,7 +334,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 | status | string | Response status: `SUCCESS` or `FAILURE` |
 | deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](#deployment-result-object) |
 
-**Deployment Result Object (deploymentResult):**
+### Deployment Result Object (deploymentResult)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -329,7 +343,8 @@ If `deploy: true` is set in the request, the response includes deployment result
 | responseTime | integer | Total deployment response time in milliseconds |
 | detailList | array | List of deployment details per pod/environment |
 
-**Deployment Detail Object (detailList item):**
+### Deployment Detail Object (detailList item)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -339,11 +354,12 @@ If `deploy: true` is set in the request, the response includes deployment result
 | success | boolean | Deployment success status for this pod |
 | responseTime | integer | Deployment response time for this pod in milliseconds |
 
-**Enum: status**
+### EnumStatus
+
 - `SUCCESS` - Operation successful
 - `FAILURE` - Operation failed
 
-### Error Response (400 Bad Request)
+### Error Response 400 Bad Request
 
 ```json
 {
@@ -352,13 +368,20 @@ If `deploy: true` is set in the request, the response includes deployment result
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Policy name already exists
 - Invalid targetScope (ENDPOINT without targetEndpoint)
 - Invalid targetEndpoint (endpoint not found in API Proxy)
 - Invalid policy type
 - Missing required policy fields
 - Invalid condition configuration
+
+### Error Messages
+
+See [Error Response 400 Bad Request](#error-response-400-bad-request) and [Common Causes](#common-causes) above for details.
+
+**Note:** For detailed error response documentation, see [Error Response (400 Bad Request)](#error-response-400-bad-request) section above.
 
 ### Error Response (401 Unauthorized)
 

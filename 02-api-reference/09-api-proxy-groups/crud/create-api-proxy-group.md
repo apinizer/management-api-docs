@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxyGroups/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -109,7 +110,8 @@ Authorization: Bearer YOUR_TOKEN
 | description | string | No | - | API Proxy Group description |
 | clientRoute | object | Yes | - | Client route configuration. See [Client Route Object](#client-route-object) |
 
-**Client Route Object (clientRoute):**
+### Client Route Object (clientRoute)
+
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -120,7 +122,8 @@ Authorization: Bearer YOUR_TOKEN
 | bufferRequest | boolean | No | true | Buffer request body |
 | bufferResponse | boolean | No | true | Buffer response body |
 
-**EnumHttpRequestMethod (methodList):**
+### EnumHttpRequestMethod (methodList)
+
 - `GET` - HTTP GET method
 - `POST` - HTTP POST method
 - `PUT` - HTTP PUT method
@@ -131,14 +134,16 @@ Authorization: Bearer YOUR_TOKEN
 - `TRACE` - HTTP TRACE method
 - `ALL` - All HTTP methods
 
-**Header Object (headerList):**
+### Header Object (headerList)
+
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Header name (case-insensitive) |
 | value | string | Yes | Header value to match |
 
-**Notes:**
+### Notes
+
 - `name` must be unique within the project
 - `clientRoute.relativePathList` must have at least one path
 - First path in `relativePathList` must not be empty
@@ -199,7 +204,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required fields (`name`, `clientRoute`)
 - Empty `relativePathList` or empty first path
 - API Proxy Group name already exists

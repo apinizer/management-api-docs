@@ -207,11 +207,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | xmlToJsonUseNullForNil | boolean | No | false | Use null for xsi:nil attributes |
 | xmlToJsonArrayPathList | array | No | [] | XPath expressions for array elements |
 
-**Enum: transformationType (EnumXmlTransformationType)**
+### EnumXmlTransformationType
+
 - `XML2XML` - Transform XML to XML using XSLT stylesheet
 - `XML2JSON` - Convert XML to JSON format
 
-**XSLT Stylesheet:**
+### XSLT Stylesheet
+
 XSLT (eXtensible Stylesheet Language Transformations) is used for XML-to-XML transformations. It supports:
 - Template matching
 - Element/attribute selection
@@ -219,7 +221,8 @@ XSLT (eXtensible Stylesheet Language Transformations) is used for XML-to-XML tra
 - Conditional logic
 - Loops and iterations
 
-**XML to JSON Options:**
+### XML to JSON Options
+
 - `xmlToJsonUnwrapElement`: When `true`, removes root wrapper element from JSON
 - `xmlToJsonIgnoreNull`: When `true`, null values are omitted from JSON
 - `xmlToJsonIgnoreEmpty`: When `true`, empty strings/elements are omitted from JSON
@@ -227,7 +230,8 @@ XSLT (eXtensible Stylesheet Language Transformations) is used for XML-to-XML tra
 - `xmlToJsonUseNullForNil`: When `true`, uses `null` for `xsi:nil="true"` attributes
 - `xmlToJsonArrayPathList`: XPath expressions that identify elements to convert as arrays
 
-**Note:** 
+### Note
+
 - `transformationType` is required.
 - If `transformationType: XML2XML`, `xsltValue` is required.
 - XML-to-JSON options are only used when `transformationType: XML2JSON`.

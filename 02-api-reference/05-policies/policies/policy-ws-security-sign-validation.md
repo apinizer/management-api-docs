@@ -251,7 +251,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | verKeyStoreName | string | Yes | - | Verification keystore name |
 | removeSignature | boolean | No | false | Remove signature after validation |
 
-**Note:**
+### Note
+
 - `verKeyStoreName` is required.
 
 ### Response

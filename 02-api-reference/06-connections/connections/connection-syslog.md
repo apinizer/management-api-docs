@@ -268,16 +268,18 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | syslogSeverity | string | No | INFORMATIONAL | Syslog severity level. See [Severity](#severity) |
 | syslogSslEnabled | boolean | No | false | Enable SSL/TLS encryption (TCP only) |
 
-**EnumSyslogProtocolType (syslogProtocolType)**
+### EnumSyslogProtocolType (syslogProtocolType)
+
 - `TCP` - TCP transport (reliable, ordered delivery, supports SSL)
 - `UDP` - UDP transport (faster, but unreliable, no SSL support)
 
-**MessageFormat (syslogMessageFormat)**
+### MessageFormat (syslogMessageFormat)
+
 - `RFC_3164` - BSD Syslog Protocol (RFC 3164)
 - `RFC_5424` - The Syslog Protocol (RFC 5424)
 - `RFC_5425` - Transport Layer Security (TLS) Transport Mapping for Syslog (RFC 5425)
 
-**Facility (syslogFacility)**
+### Facility (syslogFacility)
 - `KERN` - Kernel messages
 - `USER` - User-level messages
 - `MAIL` - Mail system
@@ -303,7 +305,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `LOCAL6` - Local use 6
 - `LOCAL7` - Local use 7
 
-**Severity (syslogSeverity)**
+### Severity (syslogSeverity)
 - `EMERGENCY` - System is unusable
 - `ALERT` - Action must be taken immediately
 - `CRITICAL` - Critical conditions
@@ -313,7 +315,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `INFORMATIONAL` - Informational messages
 - `DEBUG` - Debug-level messages
 
-**Notes:**
+### Notes
+
 - `syslogServerHostname` is required.
 - `syslogPort` defaults to 514 (standard Syslog port).
 - `syslogProtocolType` defaults to TCP.

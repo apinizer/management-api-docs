@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/import/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -42,7 +43,7 @@ Authorization: Bearer YOUR_TOKEN
 | metadata | string (JSON) | Yes | Metadata for API Proxy creation/update. See [Metadata Object](#metadata-object) |
 | apiProxyExportFile | file | Yes | ZIP file containing the API Proxy export. Must have `.zip` extension |
 
-**Metadata Object:**
+### Metadata Object
 
 The `metadata` parameter is a JSON string containing optional configuration for the import process.
 
@@ -102,14 +103,15 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 | routing | object | No | null | Routing configuration. See [Routing Object](#routing-object) |
 | maintenanceMode | boolean | No | null | Enable/disable maintenance mode |
 
-**Routing Object:**
+### Routing Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | algorithm | string | No | Routing algorithm. See [EnumRoutingAlgorithm](#enumroutingalgorithm) |
 | addressList | array[object] | No | List of routing addresses. See [Routing Address Object](#routing-address-object) |
 
-**EnumRoutingAlgorithm (routing.algorithm)**
+### EnumRoutingAlgorithm (routing.algorithm)
+
 - `ROUND_ROBIN` - Round-robin load balancing
 - `WEIGHTED_ROUND_ROBIN` - Weighted round-robin load balancing
 - `LEAST_CONNECTIONS` - Least connections load balancing
@@ -117,7 +119,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 - `IP_HASH` - IP hash-based routing
 - `URL_HASH` - URL hash-based routing
 
-**Routing Address Object:**
+### Routing Address Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -125,11 +127,12 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 | weight | integer | No | Weight for weighted algorithms (default: 1) |
 | soapType | string | No | SOAP version for SOAP APIs. See [EnumSoapApiPortType](#enumsoapapiporttype) |
 
-**EnumSoapApiPortType (soapType)**
+### EnumSoapApiPortType (soapType)
 - `SOAP11` - SOAP 1.1
 - `SOAP12` - SOAP 1.2
 
-**Notes:**
+### Notes
+
 - File must be a valid ZIP archive
 - File must end with `.zip` extension (case-insensitive)
 - ZIP file must contain a valid API Proxy export JSON file
@@ -158,14 +161,15 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 }
 ```
 
-**Response Fields:**
+### Response Fields
+
 
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
 | deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](#deployment-result-object) |
 
-**Deployment Result Object:**
+### Deployment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -173,7 +177,7 @@ The `metadata` parameter is a JSON string containing optional configuration for 
 | message | string | Deployment message |
 | environmentResults | array[object] | Results per environment |
 
-**Environment Result Object:**
+### Environment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -225,7 +229,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Empty `projectName` or `apiProxyName`
 - Empty or missing file
 - File is not a ZIP archive

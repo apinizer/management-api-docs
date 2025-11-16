@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/rlcl/{rlclName}/condition/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -102,7 +103,7 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
 
-**ConditionRuleDTO (conditionRuleList item):**
+### ConditionRuleDTO (conditionRuleList item)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -116,18 +117,21 @@ Authorization: Bearer YOUR_TOKEN
 | secondValue | string | No | Static value for comparison (if secondValueSource is STATIC) |
 | secondVariable | object | No | Second variable for comparison (if secondValueSource is VARIABLE) |
 
-**EnumConditionCriteria (conditionCriteria):**
+### EnumConditionCriteria (conditionCriteria)
+
 - `AND` - All conditions must match
 - `OR` - Any condition must match
 - `NOT` - Condition must not match
 
-**EnumConditionVariableDataType (variableDataType):**
+### EnumConditionVariableDataType (variableDataType)
+
 - `STRING` - String data type
 - `NUMBER` - Number data type
 - `BOOLEAN` - Boolean data type
 - `DATE` - Date data type
 
-**EnumConditionValueComparisonOperator (valueComparisonOperator):**
+### EnumConditionValueComparisonOperator (valueComparisonOperator)
+
 - `EQUALS` - Equal to
 - `NOT_EQUALS` - Not equal to
 - `CONTAINS` - Contains
@@ -141,18 +145,19 @@ Authorization: Bearer YOUR_TOKEN
 - `REGEX_MATCH` - Regular expression match
 - `REGEX_NOT_MATCH` - Regular expression does not match
 
-**EnumConditionValueSource (secondValueSource):**
+### EnumConditionValueSource (secondValueSource)
+
 - `STATIC` - Static value (use `secondValue`)
 - `VARIABLE` - Variable value (use `secondVariable`)
 
-**Variable Object (firstVariable/secondVariable):**
+### Variable Object (firstVariable/secondVariable)
 
-See [Variable Definition](../../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "request.header.X-User-Type", "client.ip") |
-| type | string | Yes | Variable type. See [Variable Types](../../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -160,10 +165,11 @@ See [Variable Definition](../../../../03-appendix/variable-definition.md) for co
 | messageContentType | string | No* | Message content type (required if type=BODY) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 
-**Notes:**
+### Notes
+
 - Conditions are evaluated before applying rate limiting
 - If condition evaluates to false, RLCL is not applied
 - Nested conditions are supported for complex logic
@@ -227,4 +233,4 @@ curl -X POST \
 
 - [Update Condition](./update-condition.md) - Update condition in RLCL
 - [Delete Condition](./delete-condition.md) - Remove condition from RLCL
-- [Policy Conditions](../../05-policies/policies/policy-api-based-throttling.md#policyconditiondto) - Detailed condition documentation
+- [Policy Conditions](../../05-policies/crud/add-policy.md) - Detailed condition documentation

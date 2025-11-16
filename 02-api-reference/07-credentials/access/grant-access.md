@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/credentials/{username}/access/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -75,24 +76,26 @@ Authorization: Bearer YOUR_TOKEN
 
 The request body is an object containing an array of access objects.
 
-**Access Object:**
+### Access Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Name of the API Proxy or API Proxy Group |
 | type | string | Yes | Type of access. See [EnumAccessType](#enumaccesstype) |
 
-**EnumAccessType (type):**
+### EnumAccessType (type)
+
 - `API_PROXY` - Grant access to a specific API Proxy
 - `API_PROXY_GROUP` - Grant access to an API Proxy Group
 
-**Request Body Object:**
+### Request Body Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | credentialAccessList | array | Yes | Array of access objects |
 
-**Notes:**
+### Notes
+
 - Request body must be an object with `credentialAccessList` array (even for single access)
 - Each access object must have `name` and `type`
 - `name` must match an existing API Proxy or API Proxy Group
@@ -162,7 +165,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Empty access object
 - Missing `name` or `type` field
 - API Proxy or API Proxy Group does not exist

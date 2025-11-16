@@ -301,42 +301,50 @@ Each action is an object with the following fields:
 | xmlToJsonArrayPathList | array | No | [] | XML to JSON array path list |
 | claimJsonPath | string | No | - | JWT claim JSON path |
 
-**Enum: actionType (EnumActionType)**
+### EnumActionType
+
 - `ADD` - Add new value to target variable
 - `MODIFY` - Modify existing value in source variable
 - `DELETE` - Delete value from source variable
 - `STOP` - Stop request/response flow
 
-**Enum: sourceDataType (EnumActionSourceDataType)**
+### EnumActionSourceDataType
+
 - `STRING` - String data type
 - `NUMERIC` - Numeric data type
 - `TEMPORAL` - Date/time data type
 
-**Enum: operator (EnumActionSourceValueModificationOperator)**
+### EnumActionSourceValueModificationOperator
+
 - **Numeric operations:** `ADD`, `SUBTRACT`, `MULTIPLY`, `DIVIDE`, `MODULUS`, `POWER`
 - **String operations:** `CONCAT`, `REPLACE_IN`, `REPLACE_WITH`, `REPLACE_FIRST`, `SUBSTRING`, `MASK`, `FORMAT`, `TRANSFORM`, `INSERT`, `TRIM`, `ENCODE`, `DECODE`, `URL_ENCODE`, `URL_DECODE`, `EXTRACT_JWT_HEADER_CLAIM`, `EXTRACT_JWT_BODY_CLAIM`
 - **Temporal operations:** `ADD_TEMPORAL`, `SUBTRACT_TEMPORAL`
 
-**Enum: targetValSource (EnumValueSource)**
+### EnumValueSource
+
 - `VALUE` - Use static value
 - `VARIABLE` - Extract from variable
 
-**Enum: transformationContentType (EnumTransformationContentType)**
+### EnumTransformationContentType
+
 - `XSLT` - XSLT transformation
 - `JOLT` - JOLT transformation
 - `XML2JSON` - XML to JSON conversion
 - `JSON2XML` - JSON to XML conversion
 
-**Enum: temporalOperatorTimeUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`, `DAY`, `WEEK`, `MONTH`, `YEAR`
 
-**Action Requirements:**
+### Action Requirements
+
 - **ADD**: Requires `sourceVar`, `targetValSource`, `targetVar`. If `targetValSource=VALUE`, requires `targetVal`.
 - **MODIFY**: Requires `sourceVar`, `sourceDataType`, `operator`, `targetValSource`. If `targetValSource=VALUE`, requires `targetVal`. Operator-specific fields required based on operator.
 - **DELETE**: Requires `sourceVar` only.
 - **STOP**: No additional fields required.
 
-**Operator-Specific Fields:**
+### Operator-Specific Fields
+
 - **SUBSTRING**: Requires `substringFrom` (and optionally `substringTo`)
 - **MASK**: Requires `maskFrom` (and optionally `maskTo`)
 - **INSERT**: Requires `insertOffset`

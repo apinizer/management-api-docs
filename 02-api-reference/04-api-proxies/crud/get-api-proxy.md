@@ -16,7 +16,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -88,7 +89,8 @@ None
 | routing | object | Routing configuration |
 | deploymentList | array | Deployment status per environment |
 
-**Enum: apiType (EnumApiType)**
+### EnumApiType
+
 - `REST` - REST API
 - `SOAP` - SOAP API
 

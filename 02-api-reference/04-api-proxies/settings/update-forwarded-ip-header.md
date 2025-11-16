@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/forwarde
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -55,7 +56,8 @@ Authorization: Bearer YOUR_TOKEN
 | value | string | No | X-Forwarded-For | Header name to use for forwarded IP |
 | xffOrder | string | No | FIRST | Order of IP address in X-Forwarded-For header |
 
-**Enum: xffOrder (EnumPolicyXFFOrder)**
+### EnumPolicyXFFOrder
+
 - `FIRST` - Use first IP address in X-Forwarded-For header
 - `SECOND` - Use second IP address in X-Forwarded-For header
 - `THIRD` - Use third IP address in X-Forwarded-For header
@@ -65,7 +67,8 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** All fields are optional. Only provided fields are updated.
 
-**X-Forwarded-For Header:**
+### X-Forwarded-For Header
+
 The X-Forwarded-For header contains a comma-separated list of IP addresses:
 ```
 X-Forwarded-For: client-ip, proxy1-ip, proxy2-ip

@@ -429,7 +429,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | basicPropertiesUserId | string | No | null | User ID for message properties |
 | basicPropertiesClusterId | string | No | null | Cluster ID for message properties |
 
-**Note:**
+### Note
+
 - `hostPortList` must contain at least one host/port pair.
 - If `authenticationEnabled: true`, both `connectionFactoryUsername` and `connectionFactoryPassword` are required.
 - `connectionFactoryVirtualHost` defaults to "/" (root virtual host).

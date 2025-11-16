@@ -273,11 +273,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | modifyMessage | boolean | No | false | Modify message flag |
 | newBodyContentSourceType | string | No | - | Source type for new body content |
 
-**Enum: callType (EnumPolicyRestApiCallType)**
+### EnumPolicyRestApiCallType
+
 - `SYNCHRONOUS` - Two-way call, waits for response (supports caching)
 - `ONE_WAY` - Fire-and-forget call, no response expected (no caching)
 
-**Enum: httpMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET` - GET request
 - `POST` - POST request
 - `PUT` - PUT request
@@ -286,31 +288,37 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `OPTIONS` - OPTIONS request
 - `HEAD` - HEAD request
 
-**Enum: enumTestConsoleRequestBodyType (EnumMessageTemplateContentType)**
+### EnumMessageTemplateContentType
+
 - `XML` - XML content
 - `JSON` - JSON content
 - `RAW` - Raw text content
 - `URL_ENCODED` - application/x-www-form-urlencoded
 
-**Enum: cacheStorageType (EnumCacheStorageType)**
+### EnumCacheStorageType
+
 - `LOCAL` - Local cache (per node)
 - `DISTRIBUTED` - Distributed cache (shared across nodes)
 
-**Enum: afterCallBodyOperationType (EnumOriginalMessageOperationType)**
+### EnumOriginalMessageOperationType
+
 - `NOT_CHANGE_BODY` - Keep original body unchanged
 - `REPLACE_BODY` - Replace original body with API call response
 - `CLEAR_BODY` - Clear original body after call
 
-**Enum: messageTemplateContentTypeAfterCall (EnumMessageTemplateContentType)**
+### EnumMessageTemplateContentType
+
 - `XML` - XML content
 - `JSON` - JSON content
 - `RAW` - Raw text content
 
-**Enum: newBodyContentSourceType (EnumBodyContentSourceType)**
+### EnumBodyContentSourceType
+
 - `VALUE` - Use static value
 - `VARIABLE` - Use variable value
 
-**Note:** 
+### Note
+
 - `url` and `httpMethod` are required.
 - `callType` is required.
 - If `enableCache: true`, `capacity` and `ttl` are required, and `callType` must be `SYNCHRONOUS`.
@@ -328,17 +336,20 @@ Each header is an object with the following fields:
 | variable | object | No* | Variable object (required if valueSource=VARIABLE) |
 | prefix | string | No | Header prefix |
 
-**Enum: valueSource (EnumValueSource)**
+### EnumValueSource
+
 - `VALUE` - Use static value
 - `VARIABLE` - Extract from variable
 
-**Enum: prefix (EnumRestApiHeaderPrefix)**
+### EnumRestApiHeaderPrefix
+
 - `NONE` - No prefix
 - `BASIC` - Basic prefix (for Authorization header)
 - `BEARER` - Bearer prefix (for Authorization header)
 - `DIGEST` - Digest prefix (for Authorization header)
 
-**Note:** 
+### Note
+
 - If `valueSource: VALUE`, provide `value`.
 - If `valueSource: VARIABLE`, provide `variable` object.
 
@@ -353,11 +364,13 @@ Each parameter is an object with the following fields:
 | value | string | No* | Parameter value (required if valueSource=VALUE) |
 | variable | object | No* | Variable object (required if valueSource=VARIABLE) |
 
-**Enum: valueSource (EnumValueSource)**
+### EnumValueSource
+
 - `VALUE` - Use static value
 - `VARIABLE` - Extract from variable
 
-**Note:** 
+### Note
+
 - If `valueSource: VALUE`, provide `value`.
 - If `valueSource: VARIABLE`, provide `variable` object.
 
@@ -386,12 +399,14 @@ Each data manipulation is an object with the following fields:
 | targetVar | object | No | Target variable |
 | targetValue | string | No | Target value |
 
-**Enum: operation (EnumRestApiDataManipulationDefOperation)**
+### EnumRestApiDataManipulationDefOperation
+
 - `ADD` - Add new field
 - `ADD_OR_EDIT` - Add or edit existing field
 - `DELETE` - Delete field
 
-**Enum: sourceValueSource / targetValueSource (EnumValueSource)**
+### EnumValueSource
+
 - `VALUE` - Use static value
 - `VARIABLE` - Extract from variable
 

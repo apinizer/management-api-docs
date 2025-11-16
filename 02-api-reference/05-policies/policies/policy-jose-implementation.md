@@ -458,13 +458,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | encodedClaimsTargetForDataManipulation | string | No | BODY | Target for encoded claims data manipulation. See [EnumJoseTarget](#enumjosetarget) |
 | decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for encoded claims target (required if encodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
 
-**Enum: joseTarget (EnumJoseImplementationSignedTarget)**
+### EnumJoseImplementationSignedTarget
+
 - `BODY` - Place JOSE token in request/response body
 - `AUTHORIZATION_HEADER` - Place JOSE token in Authorization header
 - `CHOOSE_FROM_VARIABLE` - Place JOSE token location specified by variable (requires `joseTargetVariable`)
 - `EMPTY` - Do not place token (for internal use only)
 
-**Enum: expirationTimeUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLI_SECONDS` - Milliseconds
 - `SECONDS` - Seconds
 - `MINUTES` - Minutes
@@ -474,7 +476,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `MONTHS` - Months
 - `YEARS` - Years
 
-**Enum: encryptionMethod (EnumJwkEncryptionMethod)**
+### EnumJwkEncryptionMethod
+
 - `A128CBC_HS256` - AES-128-CBC with HMAC-SHA-256 (recommended)
 - `A192CBC_HS384` - AES-192-CBC with HMAC-SHA-384
 - `A256CBC_HS512` - AES-256-CBC with HMAC-SHA-512
@@ -485,12 +488,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `A256GCM` - AES-256-GCM (recommended for GCM)
 - `XC20P` - XChaCha20-Poly1305
 
-**Enum: encodedClaimsTargetForDataManipulation (EnumJoseTarget)**
+### EnumJoseTarget
+
 - `BODY` - Place encoded claims in request/response body
 - `AUTHORIZATION_HEADER` - Place encoded claims in Authorization header
 - `CHOOSE_FROM_VARIABLE` - Place encoded claims in variable (requires `decodedClaimsTargetVariableForDataManipulation`)
 
-**Note:**
+### Note
+
 - If `joseTarget: CHOOSE_FROM_VARIABLE`, `joseTargetVariable` is required.
 - If `addIssuer: true`, `issuer` is required.
 - If `addAudience: true`, `audienceList` is required and must contain at least one value.
@@ -526,24 +531,28 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | scriptLanguage | string | No | - | Script language: `GROOVY`, `JAVASCRIPT` (required if initWithScript=true) |
 | scriptBody | string | No | - | Script body (required if initWithScript=true) |
 
-**Enum: type (EnumVariableType)**
+### EnumVariableType
+
 - `HEADER` - HTTP header
 - `PARAMETER` - Query/path/form parameter
 - `BODY` - Request/response body
 - `CONTEXT_VALUES` - Context values (e.g., current time, IP address)
 - `CUSTOM` - Custom variable (script-based)
 
-**Enum: paramType (EnumVariableParameterType)**
+### EnumVariableParameterType
+
 - `QUERY` - Query parameter
 - `PATH` - Path parameter
 - `FORM` - Form parameter
 
-**Enum: messageContentType (EnumMessageContentType)**
+### EnumMessageContentType
+
 - `JSON` - JSON content
 - `XML` - XML content
 - `FORM` - Form content
 
-**Enum: contextValue (EnumVariableContextValue)**
+### EnumVariableContextValue
+
 - `CURRENT_TIME` - Current timestamp
 - `CURRENT_DATE` - Current date
 - `CLIENT_IP` - Client IP address
@@ -574,7 +583,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `ZONE_ID` - Zone ID
 - `TIMEZONE_ID` - Timezone ID
 
-**Enum: scriptLanguage (EnumScriptType)**
+### EnumScriptType
+
 - `GROOVY` - Groovy script
 - `JAVASCRIPT` - JavaScript script
 
@@ -585,7 +595,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | value | string | Yes | - | Claim value |
 | valueType | string | No | STRING | Value type. See [MapValueType](#mapvaluetype) |
 
-**Enum: valueType (MapValueType)**
+### MapValueType
+
 - `STRING` - String value
 - `BOOLEAN` - Boolean value
 - `INTEGER` - Integer value

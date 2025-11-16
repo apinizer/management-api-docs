@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/environments/{envi
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -84,7 +85,8 @@ This endpoint does not require a request body.
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy name does not exist
 - Environment name does not exist
 - User does not have access to the environment
@@ -132,5 +134,4 @@ This endpoint does not require a request body.
 ## Related Documentation
 
 - [Undeploy API Proxy](./undeploy.md) - Undeploy API proxy from environment
-- [Deployment Status](./deployment-status.md) - Check deployment status
 - [List API Proxies](../crud/list-api-proxies.md) - List all API proxies

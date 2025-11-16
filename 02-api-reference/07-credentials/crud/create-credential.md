@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/credentials/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -127,7 +128,8 @@ Authorization: Bearer YOUR_TOKEN
 | ipList | array[string] | No | [] | List of allowed IP addresses/CIDR ranges |
 | expireDate | string\|null | No | null | Expiration date in ISO 8601 format (e.g., "2024-12-31T23:59:59.000Z") |
 
-**Notes:**
+### Notes
+
 - `username` must be unique across all credentials
 - `password` must not be empty
 - `email` must be a valid email address format
@@ -171,7 +173,7 @@ Authorization: Bearer YOUR_TOKEN
 | success | boolean | Indicates if the request was successful |
 | deploymentResult | object | Deployment result. See [Deployment Result Object](#deployment-result-object) |
 
-**Deployment Result Object:**
+### Deployment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -179,7 +181,7 @@ Authorization: Bearer YOUR_TOKEN
 | message | string | Deployment message |
 | environmentResults | array[object] | Results per environment |
 
-**Environment Result Object:**
+### Environment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -232,7 +234,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required fields (`username`, `password`, `fullName`, `email`)
 - Username already exists
 - Invalid email format

@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/ipGroups/{ipGroupName}/ips/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,9 +38,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group.md#request-body-fields) for field descriptions.
+Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - This endpoint replaces ALL existing IPs with the provided list
 - If you want to add IPs without removing existing ones, use Add IPs endpoint
 - Empty list will remove all IPs from the group

@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/apiProxyGroups/{apiProxyGroupName}/apiProx
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -48,7 +49,8 @@ None.
 }
 ```
 
-**Notes:**
+### Notes
+
 - If API Proxy is not a member of the group, operation still succeeds
 - API Proxy is removed from the group if it is a member
 

@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/routing-
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -55,11 +56,13 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** All fields are optional. Only provided fields are updated.
 
-**Routing:**
+### Routing
+
 - When `routingEnabled=true`, requests are forwarded to backend
 - When `routingEnabled=false`, requests are not forwarded (useful for testing/maintenance)
 
-**Mirroring:**
+### Mirroring
+
 - When `mirrorEnabled=true`, requests are sent to both primary and mirror backends
 - Mirror backend receives a copy but response is returned from primary backend
 - Useful for testing new backends without affecting production traffic

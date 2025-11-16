@@ -38,7 +38,8 @@ None.
 OK
 ```
 
-**Notes:**
+### Notes
+
 - Returns plain text "OK" if API is accessible
 - No authentication required
 - Useful for load balancer health checks

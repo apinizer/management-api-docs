@@ -14,22 +14,24 @@ PUT /apiops/projects/{projectName}/rlcl/{rlclName}/condition/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
 
 ## Request
 
-Same structure as Add Condition. See [Add Condition](./add-condition.md#request-body-fields) for field descriptions.
+Same structure as Add Condition. See [Add Condition](./add-condition.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - Replaces the existing condition completely
 - Same structure as Add Condition
 
 ### Response
 
-Same as Add Condition. See [Add Condition](./add-condition.md#response) for response format.
+Same as Add Condition. See [Add Condition](./add-condition.md) for response format.
 
 ## cURL Example
 

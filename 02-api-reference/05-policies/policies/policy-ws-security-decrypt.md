@@ -193,7 +193,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | allowCaseInsensitiveId | boolean | No | false | Allow case insensitive ID attribute matching (for cross-platform compatibility) |
 | decKeyStoreName | string | Yes | - | Decryption keystore name |
 
-**Note:**
+### Note
+
 - `decKeyStoreName` is required.
 
 ### Response

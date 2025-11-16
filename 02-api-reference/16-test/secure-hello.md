@@ -14,7 +14,8 @@ GET /apiops/test/hello/{name}
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -47,12 +48,14 @@ None.
 Hello {name}
 ```
 
-**Example:**
+### Example
+
 ```
 Hello John
 ```
 
-**Notes:**
+### Notes
+
 - Returns "Hello {name}" if authentication is successful
 - Name is taken from path parameter
 - Response is plain text

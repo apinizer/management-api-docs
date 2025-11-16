@@ -213,13 +213,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | validateAgainstSpec | boolean | No | false | Validate against WSDL specification instead of custom schemas |
 | schemaDefinitionList | array | No* | [] | List of XML schema definitions (required if validateAgainstSpec=false) |
 
-**XPath Examples:**
+### XPath Examples
+
 - `/` - Root of XML document
 - `/root` - Root element named "root"
 - `/root/data` - Data element under root
 - `/soap:Envelope/soap:Body/*` - SOAP body content
 
-**Note:** 
+### Note
+
 - If `validateAgainstSpec: false`, `schemaDefinitionList` must contain at least one schema definition.
 - If `validateAgainstSpec: true`, validation uses the WSDL specification from the API Proxy (schemaDefinitionList is ignored).
 
@@ -234,7 +236,8 @@ Each schema definition is an object with the following fields:
 | targetNamespace | string | No | null | Target namespace extracted from schema |
 | rootSchema | boolean | No | false | Whether this is the root schema |
 
-**XML Schema Format:**
+### XML Schema Format
+
 The `schemaBody` must be a valid XML Schema (XSD). Example:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -250,7 +253,8 @@ The `schemaBody` must be a valid XML Schema (XSD). Example:
 </xs:schema>
 ```
 
-**Schema Numbering:**
+### Schema Numbering
+
 - `schemaNo` is used for ordering when multiple schemas are defined
 - Schemas are validated in order
 - `rootSchema: true` indicates the primary schema

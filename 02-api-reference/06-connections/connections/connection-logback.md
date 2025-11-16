@@ -256,7 +256,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | maxHistory | integer | Yes | 0 | Maximum number of days/hours to keep rolled log files (0 = unbounded) |
 | totalSizeCap | integer | Yes | 0 | Maximum total size of all log files in GB (0 = unbounded) |
 
-**Log Pattern Format:**
+### Log Pattern Format
+
 - `%d{pattern}` - Date/time with pattern (e.g., `yyyy-MM-dd HH:mm:ss.SSS`)
 - `%m` - Message content
 - `%n` - Newline
@@ -266,12 +267,14 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `%msg` - Message
 - See Logback PatternLayout documentation for full pattern syntax
 
-**Filename Pattern Format:**
+### Filename Pattern Format
+
 - `%d{pattern}` - Date pattern for rolled files (e.g., `yyyy-MM-dd`)
 - `%i` - Index number for files rolled on the same day
 - Example: `%d{yyyy-MM-dd}.%i.log` creates files like `2024-01-15.0.log`, `2024-01-15.1.log`
 
-**Notes:**
+### Notes
+
 - `logPath` is required and should end with `/` (automatically added if missing).
 - `logFileName` is required and should not start with `/` (automatically removed if present).
 - `logPodName` is auto-filled with hostname if empty or not provided.

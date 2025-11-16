@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/json-err
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -57,7 +58,8 @@ Authorization: Bearer YOUR_TOKEN
 | contentType | string | No | application/json;charset=UTF-8 | Content type for error response |
 | permitSpecialChars | boolean | No | false | Permit special characters in template |
 
-**Template Variables:**
+### Template Variables
+
 The JSON template can use the following variables (replaced at runtime):
 - `#CORRELATIONID#` - Request correlation ID
 - `#FAULTCODE#` - Error fault code
@@ -65,7 +67,8 @@ The JSON template can use the following variables (replaced at runtime):
 - `#FAULTSTATUSCODE#` - HTTP status code
 - `#RESPONSEFROMAPI#` - Response from backend API (if available)
 
-**Default Template:**
+### Default Template
+
 ```json
 {
   "fault": {

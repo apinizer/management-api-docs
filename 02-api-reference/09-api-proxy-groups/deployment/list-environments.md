@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxyGroups/{apiProxyGroupName}/environmen
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -71,14 +72,15 @@ None.
 | resultList | array[object] | List of environments |
 | resultCount | integer | Total number of environments |
 
-**Environment Object:**
+### Environment Object
 
 | Field | Type | Description |
 |-------|------|-------------|
 | environmentName | string | Environment name |
 | deployed | boolean | Whether the API Proxy Group is deployed to this environment |
 
-**Notes:**
+### Notes
+
 - Returns environments where the group is deployed
 - Empty list (`[]`) is returned if group is not deployed to any environment
 - `resultCount` is 0 if no deployments exist

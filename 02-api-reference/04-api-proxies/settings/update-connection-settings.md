@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/connecti
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -77,7 +78,8 @@ Authorization: Bearer YOUR_TOKEN
 | connectionPoolManagementType | string | No | - | Connection pool management type |
 | customConnectionPoolSize | integer | No* | - | Custom connection pool size (required if connectionPoolManagementType=CUSTOM) |
 
-**Enum: connectionPoolManagementType (EnumConnectionPoolManagementType)**
+### EnumConnectionPoolManagementType
+
 - `GENERAL` - General connection pool (shared pool)
 - `CUSTOM` - Custom connection pool (requires customConnectionPoolSize)
 - `NONE` - No connection pool

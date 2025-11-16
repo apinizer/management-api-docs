@@ -14,22 +14,24 @@ PUT /apiops/projects/{projectName}/rlcl/{rlclName}/endpoints/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
 
 ## Request
 
-Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md#request-body-fields) for field descriptions.
+Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - This endpoint replaces ALL existing endpoints with the provided list
 - If you want to add endpoints without removing existing ones, use Add Endpoints endpoint
 
 ### Response
 
-Same as Add Endpoints. See [Add Endpoints](./add-endpoints.md#response) for response format.
+Same as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for response format.
 
 ## cURL Example
 

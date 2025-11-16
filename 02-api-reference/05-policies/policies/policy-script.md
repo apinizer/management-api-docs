@@ -180,11 +180,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `SYNC` - Synchronous execution (blocks request/response until script completes)
 - `ASYNC` - Asynchronous execution (non-blocking, script runs in background)
 
-**Enum: scriptLanguage**
+### EnumScriptType (scriptLanguage)
+
 - `GROOVY` - Groovy scripting language
 - `JAVASCRIPT` - JavaScript (Nashorn engine)
 
-**Script Context Variables:**
+### Script Context Variables
+
 The script has access to the following variables:
 - `messageContext` - Message context object (request/response)
 - `request` - HTTP request object (available in REQUEST pipeline)

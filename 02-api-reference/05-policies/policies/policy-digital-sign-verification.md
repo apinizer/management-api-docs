@@ -307,20 +307,24 @@ Each verification definition is an object with the following fields:
 | certificateId | string | No* | null | Certificate ID (required if enumKeyCertificateType=CERTIFICATE) |
 | inputEncodingType | string | No | BASE64 | Input encoding type: `BASE64` or `HEXADECIMAL` |
 
-**Enum: signatureAlgorithm (EnumSignatureAlgorithm)**
+### EnumSignatureAlgorithm
+
 - **RSA algorithms:** `NONEwithRSA`, `MD2withRSA`, `MD5withRSA`, `SHA1withRSA`, `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA`
 - **DSA algorithms:** `NONEwithDSA`, `SHA1withDSA`, `SHA224withDSA`, `SHA256withDSA`
 - **ECDSA algorithms:** `NONEwithECDSA`, `SHA1withECDSA`, `SHA224withECDSA`, `SHA256withECDSA`, `SHA384withECDSA`, `SHA512withECDSA`
 
-**Enum: enumKeyCertificateType (EnumKeyCertificateType)**
+### EnumKeyCertificateType
+
 - `KEY` - Use public key from CryptoKeyInfo
 - `CERTIFICATE` - Use certificate (extracts public key from certificate)
 
-**Enum: inputEncodingType (EnumEncodingType)**
+### EnumEncodingType
+
 - `BASE64` - Base64 encoding (matches BASE64 output from sign policy)
 - `HEXADECIMAL` - Hexadecimal encoding (matches HEXADECIMAL output from sign policy)
 
-**Note:** 
+### Note
+
 - `sourceVar` and `signatureVar` are required.
 - Either `signatureAlgorithm` or `signatureAlgorithmVar` must be provided.
 - If `enumKeyCertificateType: KEY`, `cryptoKeyInfoId` is required.

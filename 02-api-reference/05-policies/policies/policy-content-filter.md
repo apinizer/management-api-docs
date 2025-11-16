@@ -239,23 +239,27 @@ Each filter definition is an object with the following fields:
 | contentType | string | No | XML | Content type: `XML`, `JSON`, or `ALL_BODY` |
 | content | string | No | null | Additional content configuration |
 
-**Enum: action (EnumContentFilterAction)**
+### EnumContentFilterAction
+
 - `BLOCK` - Block the request/response if pattern matches
 - `DELETE` - Delete matching content from request/response
 
-**Enum: contentType (EnumMessageContentType)**
+### EnumMessageContentType
+
 - `XML` - Filter XML content
 - `JSON` - Filter JSON content
 - `ALL_BODY` - Filter all body content types
 
-**Regex Pattern:**
+### Regex Pattern
+
 - `ruleValue` must be a valid Java regex pattern
 - Use `(?i)` prefix for case-insensitive matching
 - Use `\\b` for word boundaries
 - Use `\\d` for digits, `\\s` for whitespace
 - Use `[]` for character classes, `()` for groups
 
-**Note:** 
+### Note
+
 - At least one of `headerActive`, `bodyActive`, or `paramActive` must be `true`.
 - `name` and `ruleValue` are required.
 - `action` defaults to `BLOCK` if not specified.

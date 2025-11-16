@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/proxy-se
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -65,7 +66,8 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** All fields are optional. Only provided fields are updated.
 
-**Proxy from Header:**
+### Proxy from Header
+
 When `proxyFromHeaderEnabled=true`, proxy settings are read from request headers:
 - `X-Proxy-Host` - Proxy hostname
 - `X-Proxy-Port` - Proxy port

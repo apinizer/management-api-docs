@@ -267,7 +267,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | encKeyEncAlgorithm | string | No | null | Key encryption algorithm. See [EnumWsSecurityKeyEncryptionAlgorithm](#enumwssecuritykeyencryptionalgorithm) |
 | encKeyStoreName | string | Yes | - | Encryption keystore name |
 
-**Enum: encKeyIdType (EnumWsSecurityKeyIdentifierType)**
+### EnumWsSecurityKeyIdentifierType
+
 - `BINARY_SECURITY_TOKEN` - Binary Security Token
 - `ISSUER_NAME_AND_SERIAL_NUMBER` - Issuer Name and Serial Number
 - `X509_CERTIFICATE` - X509 Certificate (recommended)
@@ -277,16 +278,19 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `EMBED_SECURITY_TOKEN_REFERENCE` - Embed Security Token Reference
 - `CUSTOM_KEY_INFO` - Custom Key Info
 
-**Enum: encSymEncAlgorithm (EnumWsSecuritySymmetricEncodingAlgorithm)**
+### EnumWsSecuritySymmetricEncodingAlgorithm
+
 - `AES_128_CBC` - AES-128-CBC (http://www.w3.org/2001/04/xmlenc#aes128-cbc)
 - `AES_192_CBC` - AES-192-CBC (http://www.w3.org/2001/04/xmlenc#aes192-cbc)
 - `AES_256_CBC` - AES-256-CBC (http://www.w3.org/2001/04/xmlenc#aes256-cbc) (recommended)
 
-**Enum: encKeyEncAlgorithm (EnumWsSecurityKeyEncryptionAlgorithm)**
+### EnumWsSecurityKeyEncryptionAlgorithm
+
 - `RSA` - RSA v1.5 (http://www.w3.org/2001/04/xmlenc#rsa-1_5) (legacy)
 - `OAEP` - RSA-OAEP (http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p) (recommended, more secure)
 
-**Note:**
+### Note
+
 - `encKeyStoreName` is required.
 - If `encKeyIdType: EMBEDDED_KEY_INFO`, `encEmbeddedKeyName` should be provided.
 
@@ -298,11 +302,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | namespace | string | Yes | - | Part namespace URI |
 | encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](#enumwssecurityencryptionpartencodetype) |
 
-**Enum: encodeType (EnumWsSecurityEncryptionPartEncodeType)**
+### EnumWsSecurityEncryptionPartEncodeType
+
 - `CONTENT` - Encrypt content only
 - `ELEMENT` - Encrypt entire element
 
-**Common Part Names and Namespaces:**
+### Common Part Names and Namespaces
+
 - Body: `name: "Body"`, `namespace: "http://schemas.xmlsoap.org/soap/envelope/"`
 - UsernameToken: `name: "UsernameToken"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"`
 - Timestamp: `name: "Timestamp"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`

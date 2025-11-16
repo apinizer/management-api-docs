@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/circuit-
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -61,7 +62,8 @@ Authorization: Bearer YOUR_TOKEN
 | sleepWindow | integer | No | - | Sleep window in seconds (circuit breaker stays open) |
 | halfOpenEnabled | boolean | No | - | Enable half-open state (test requests) |
 
-**Enum: enumErrorThresholdType (EnumErrorThresholdType)**
+### EnumErrorThresholdType
+
 - `COUNT` - Error threshold is a count (e.g., 5 errors)
 - `PERCENT` - Error threshold is a percentage (e.g., 50% error rate)
 

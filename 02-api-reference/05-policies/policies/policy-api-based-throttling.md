@@ -228,33 +228,35 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
 
-**Variable Types:**
+### Variable Types
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query/path/form parameter
 - `BODY` - Extract from request body (XML, JSON, or raw)
 - `CONTEXT_VALUES` - Extract from system context values (e.g., CLIENT_IP, REQUEST_URI)
 - `CUSTOM` - Extract using custom script
 
-**Common Context Values:**
+### Common Context Values
+
 - `REQUEST_REMOTE_ADDRESS` - Client IP address
 - `REQUEST_REQUEST_URI` - Request URI
 - `REQUEST_HTTP_METHOD` - HTTP method
 - `REQUEST_USERNAME_KEY` - Username or key
 
-For complete list of context values, see [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue).
+For complete list of context values, see [EnumVariableContextValue](../../../03-appendix/variable-definition.md).
 
 ###### detailList (Optional)
 | Field | Type | Required | Description |

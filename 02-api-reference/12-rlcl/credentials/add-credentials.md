@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/rlcl/{rlclName}/credentials/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -65,7 +66,8 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | credentialNameList | array[string] | Yes | - | List of credential names (usernames) to add |
 
-**Notes:**
+### Notes
+
 - `credentialNameList` must not be empty
 - Credential names must exist in the project
 - Duplicate credentials are ignored (not added twice)

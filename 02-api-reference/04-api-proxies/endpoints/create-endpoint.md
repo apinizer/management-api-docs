@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -59,7 +60,8 @@ Authorization: Bearer YOUR_TOKEN
 | backendResourceUrl | string | Yes | - | Backend resource URL |
 | backendHttpMethod | string | Yes | - | HTTP method for backend call |
 
-**Enum: httpMethod / backendHttpMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET` - GET method
 - `POST` - POST method
 - `PUT` - PUT method
@@ -95,7 +97,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy is not REST type (SOAP proxies don't support manual endpoint creation)
 - Endpoint name and HTTP method combination already exists
 - Missing required fields (name, httpMethod, backendResourceUrl, backendHttpMethod)

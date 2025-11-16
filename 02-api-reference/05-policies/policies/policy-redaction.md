@@ -272,13 +272,15 @@ Each redaction definition is an object with the following fields:
 | keyValueListStr | string | No* | - | Comma-separated list of values to match (required for KEY_VALUE) |
 | redactionDefDetailList | array | Yes | - | List of redaction actions (at least one required) |
 
-**Enum: redactionType (EnumPolicyRedactionType)**
+### EnumPolicyRedactionType
+
 - `KEY_EXISTENCE` - Redact if key exists (uses `keyValueVar`)
 - `KEY_VALUE` - Redact if key value matches (uses `keyValueVar` and `keyValueListStr`)
 - `USER` - Redact based on user context
 - `ROLE` - Redact based on role context
 
-**Note:** 
+### Note
+
 - For `KEY_EXISTENCE` and `KEY_VALUE`, `keyValueVar` is required.
 - For `KEY_VALUE`, `keyValueListStr` is required (comma-separated values).
 - `redactionDefDetailList` must contain at least one detail.
@@ -332,34 +334,41 @@ Action object with the following fields:
 | xmlToJsonArrayPathList | array | No | [] | XML to JSON array path list |
 | claimJsonPath | string | No | - | JWT claim JSON path |
 
-**Enum: actionType (EnumActionType)**
+### EnumActionType
+
 - `MODIFY` - Modify the value (mask, replace, transform, etc.)
 - `DELETE` - Delete the value completely
 
-**Enum: sourceDataType (EnumActionSourceDataType)**
+### EnumActionSourceDataType
+
 - `STRING` - String data type
 - `NUMERIC` - Numeric data type
 - `TEMPORAL` - Date/time data type
 
-**Enum: operator (EnumActionSourceValueModificationOperator)**
+### EnumActionSourceValueModificationOperator
+
 - **Numeric operations:** `ADD`, `SUBTRACT`, `MULTIPLY`, `DIVIDE`, `MODULUS`, `POWER`
 - **String operations:** `CONCAT`, `REPLACE_IN`, `REPLACE_WITH`, `REPLACE_FIRST`, `SUBSTRING`, `MASK`, `FORMAT`, `TRANSFORM`, `INSERT`, `TRIM`, `ENCODE`, `DECODE`, `URL_ENCODE`, `URL_DECODE`, `EXTRACT_JWT_HEADER_CLAIM`, `EXTRACT_JWT_BODY_CLAIM`
 - **Temporal operations:** `ADD_TEMPORAL`, `SUBTRACT_TEMPORAL`
 
-**Enum: targetValSource (EnumValueSource)**
+### EnumValueSource
+
 - `VALUE` - Use static value
 - `VARIABLE` - Extract from variable
 
-**Enum: transformationContentType (EnumTransformationContentType)**
+### EnumTransformationContentType
+
 - `XSLT` - XSLT transformation
 - `JOLT` - JOLT transformation
 - `XML2JSON` - XML to JSON conversion
 - `JSON2XML` - JSON to XML conversion
 
-**Enum: temporalOperatorTimeUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`, `DAY`, `WEEK`, `MONTH`, `YEAR`
 
-**Note:** 
+### Note
+
 - For `DELETE` action, only `actionType` and `sourceVar` are required.
 - For `MODIFY` action, `sourceDataType`, `operator`, and `targetValSource` are required.
 - Operator-specific fields (e.g., `maskFrom`, `maskTo` for MASK) are required based on the operator.

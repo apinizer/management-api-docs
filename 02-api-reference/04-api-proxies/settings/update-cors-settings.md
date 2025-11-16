@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/cors/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -80,7 +81,8 @@ Authorization: Bearer YOUR_TOKEN
 | allowCredentials | string | No | "false" | Allow credentials (`"true"` or `"false"`) |
 | maxAge | integer | No | 3600 | Max age for preflight requests in seconds |
 
-**Enum: allowMethodList items (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET` - GET method
 - `POST` - POST method
 - `PUT` - PUT method
@@ -91,7 +93,8 @@ Authorization: Bearer YOUR_TOKEN
 - `TRACE` - TRACE method
 - `ALL` - All methods
 
-**Note:** 
+### Note
+
 - `allowOriginList` can contain `"*"` to allow all origins, but this cannot be used with `allowCredentials: "true"`
 - `allowHeaderList` can contain `"*"` to allow all headers
 - `allowCredentials` must be a string (`"true"` or `"false"`), not a boolean

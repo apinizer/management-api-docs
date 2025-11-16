@@ -14,22 +14,24 @@ PUT /apiops/projects/{projectName}/rlcl/{rlclName}/credentials/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
 
 ## Request
 
-Same structure as Add Credentials. See [Add Credentials](./add-credentials.md#request-body-fields) for field descriptions.
+Same structure as Add Credentials. See [Add Credentials](./add-credentials.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - This endpoint replaces ALL existing credentials with the provided list
 - If you want to add credentials without removing existing ones, use Add Credentials endpoint
 
 ### Response
 
-Same as Add Credentials. See [Add Credentials](./add-credentials.md#response) for response format.
+Same as Add Credentials. See [Add Credentials](./add-credentials.md) for response format.
 
 ## cURL Example
 

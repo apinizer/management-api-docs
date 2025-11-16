@@ -200,11 +200,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | jsonToXmlUseNullForNil | boolean | No | false | Use null for nil attributes in XML |
 | jsonToXmlUnwrapElement | boolean | No | false | Unwrap root element in XML output |
 
-**Enum: transformationType (EnumJsonTransformationType)**
+### EnumJsonTransformationType
+
 - `JSON2JSON` - Transform JSON to JSON using JOLT specification
 - `JSON2XML` - Convert JSON to XML format
 
-**JOLT Specification:**
+### JOLT Specification
+
 JOLT (JSON to JSON Transformation Language) is used for JSON-to-JSON transformations. It supports operations like:
 - `shift` - Move/rename fields
 - `default` - Set default values
@@ -213,13 +215,15 @@ JOLT (JSON to JSON Transformation Language) is used for JSON-to-JSON transformat
 - `modify` - Modify values
 - `cardinality` - Handle array cardinality
 
-**JSON to XML Options:**
+### JSON to XML Options
+
 - `jsonToXmlIgnoreNull`: When `true`, null values are omitted from XML
 - `jsonToXmlIgnoreEmpty`: When `true`, empty strings/arrays are omitted from XML
 - `jsonToXmlUseNullForNil`: When `true`, uses `xsi:nil="true"` for null values
 - `jsonToXmlUnwrapElement`: When `true`, removes root wrapper element
 
-**Note:** 
+### Note
+
 - `transformationType` is required.
 - If `transformationType: JSON2JSON`, `joltValue` is required.
 - JSON-to-XML options are only used when `transformationType: JSON2XML`.

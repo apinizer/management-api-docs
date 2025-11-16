@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/environmentVariables/{name}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

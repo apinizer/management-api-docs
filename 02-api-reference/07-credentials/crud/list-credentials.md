@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/credentials/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -86,7 +87,7 @@ None.
 | success | boolean | Indicates if the request was successful |
 | resultList | array[object] | List of credentials |
 
-**Credential Object:**
+### Credential Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -100,7 +101,8 @@ None.
 | ipList | array[string] | List of allowed IP addresses/CIDR ranges |
 | expireDate | string\|null | Expiration date in ISO 8601 format (e.g., "2024-12-31T23:59:59.000Z") |
 
-**Notes:**
+### Notes
+
 - `password` field is always `null` in list responses for security reasons
 - `expireDate` is in ISO 8601 format (UTC)
 - `ipList` can contain individual IP addresses or CIDR ranges

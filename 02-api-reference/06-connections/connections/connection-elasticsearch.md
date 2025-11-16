@@ -509,16 +509,19 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | maxConnectionTotal | integer | No | null | Maximum total connections |
 | type | string | No | READ_WRITE | Elasticsearch connection type. See [EnumElasticsearchType](#enumelasticsearchtype) |
 
-**Enum: encryptCommunicationType (EnumEncryptCommunicationType)**
+### EnumEncryptCommunicationType
+
 - `CA_CERTIFICATE_IN_PKCS_12` - CA certificate is available in a PKCS#12 keystore
 - `CA_IN_PEM_FILE` - CA certificate is available as a PEM encoded file
 - `CERT_AND_PRIVATE_KEY_IN_PKCS_12` - Certificate and a private key that are stored in a PKCS#12 keystore
 
-**Enum: type (EnumElasticsearchType)**
+### EnumElasticsearchType
+
 - `READ_WRITE` - Read and write access (can create indices, templates, policies)
 - `READ` - Read-only access (can only query, cannot create/modify)
 
-**Note:**
+### Note
+
 - `elasticHostList` must contain at least one host.
 - If `authenticate: true`, both `elasticUsername` and `elasticPassword` are required.
 - If `encryptCommunication: true`, `encryptCommunicationType` is required.
@@ -557,7 +560,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | enableDeletePhase | boolean | No | false | Enable delete phase |
 | minAgeOfDelete | integer | No | null | Minimum age for delete phase (in days) |
 
-**Note:** 
+### Note
+
 - Age values are in days.
 - Size values are in GB.
 - At least one phase must be enabled.

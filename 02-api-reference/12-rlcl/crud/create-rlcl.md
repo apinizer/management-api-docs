@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/rlcl/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -86,39 +87,43 @@ Authorization: Bearer YOUR_TOKEN
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
 | targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](#variable-object) |
 
-**EnumExecutionOrder (executionOrder):**
+### EnumExecutionOrder (executionOrder)
+
 - `FIRST` - Execute first (before other RLCLs)
 - `LAST` - Execute last (after other RLCLs)
 
-**EnumCacheErrorHandlingType (cacheErrorHandlingType):**
+### EnumCacheErrorHandlingType (cacheErrorHandlingType)
+
 - `FAIL` - Fail the request if cache error occurs
 - `CONTINUE` - Continue processing if cache error occurs
 
-**EnumIntervalWindowType (timeIntervalWindowType):**
+### EnumIntervalWindowType (timeIntervalWindowType)
+
 - `FIXED` - Fixed time interval window
 - `SLIDING` - Sliding time interval window
 
-**Variable Object (targetVariable):**
+### Variable Object (targetVariable)
 
 See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
 
-**Notes:**
+### Notes
+
 - `name` must be unique within the project
 - `name` must not be empty
 - RLCL is created empty (no credentials or endpoints)

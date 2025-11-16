@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -114,11 +115,13 @@ None
 | errorPolicyList | array | List of error pipeline policies |
 | endpointList | array | List of endpoints with their policies |
 
-**Enum: type (EnumApiType)**
+### EnumApiType
+
 - `REST` - REST API
 - `SOAP` - SOAP API
 
-**Enum: status**
+### EnumStatus
+
 - `SUCCESS` - Operation successful
 - `FAILURE` - Operation failed
 

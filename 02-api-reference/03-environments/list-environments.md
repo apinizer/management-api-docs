@@ -14,7 +14,8 @@ GET /apiops/environments/
 
 Requires a Personal API Access Token with admin role.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -89,12 +90,14 @@ None
 | deployed | boolean | Whether API proxies are deployed (may be null) |
 | redeployRequired | boolean | Whether redeployment is required (may be null) |
 
-**Enum: type (EnumEnvironmentType)**
+### EnumEnvironmentType
+
 - `PRODUCTION` - Production environment
 - `SANDBOX` - Sandbox environment
 - `TEST` - Test environment
 
-**Enum: status (EnumPublishStatus)**
+### EnumPublishStatus
+
 - `PUBLISHED` - Environment is published and available
 - `UNPUBLISHED` - Environment is unpublished
 - `REPUBLISH_REQUIRED` - Environment requires republishing
@@ -108,7 +111,8 @@ None
 }
 ```
 
-**Causes:**
+### Causes
+
 - Missing or invalid Authorization header
 - Token expired or revoked
 - User does not have admin role

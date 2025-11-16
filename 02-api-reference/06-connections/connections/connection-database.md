@@ -378,7 +378,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | maxIdleTime | integer | No | 120000 | Maximum idle time before closing connection (milliseconds) |
 | selectedEnvironmentId | string | No | null | Selected environment ID |
 
-**EnumDatabaseType (dbType)**
+### EnumDatabaseType (dbType)
 - `ORACLE` - Oracle Database
 - `MYSQL` - MySQL Database
 - `POSTGRES` - PostgreSQL Database
@@ -390,14 +390,16 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `MONGODB` - MongoDB (NoSQL)
 - `TRINO` - Trino (formerly PrestoSQL)
 
-**JDBC URL Examples:**
+### JDBC URL Examples
+
 - PostgreSQL: `jdbc:postgresql://host:5432/database`
 - MySQL: `jdbc:mysql://host:3306/database`
 - Oracle: `jdbc:oracle:thin:@host:1521:SID` or `jdbc:oracle:thin:@host:1521/service`
 - SQL Server: `jdbc:sqlserver://host:1433;databaseName=database`
 - MongoDB: `jdbc:mongodb://host:27017/database`
 
-**Notes:**
+### Notes
+
 - `dbType` and `jdbcUrl` are required.
 - `useCredentials` defaults to `true`. If `false`, `username` and `password` are not used.
 - `username` and `password` are required if `useCredentials: true`.

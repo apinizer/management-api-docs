@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/rlcl/{rlclName}/condition/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

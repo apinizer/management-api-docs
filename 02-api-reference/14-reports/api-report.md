@@ -14,7 +14,8 @@ GET /apiops/reports/api-proxies
 
 Requires a Personal API Access Token with admin or analyzer privileges.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,7 +38,8 @@ None.
 |-----------|------|----------|-------------|
 | includeEndpoints | boolean | No | Whether to include endpoint details in the report |
 
-**Notes:**
+### Notes
+
 - `includeEndpoints=true` - Includes detailed endpoint information
 - `includeEndpoints=false` or omitted - Excludes endpoint details (faster response)
 
@@ -76,7 +78,7 @@ None.
 | resultList | array[object] | List of API Proxy reports |
 | resultCount | integer | Total number of API Proxies |
 
-**API Proxy Report Object:**
+### API Proxy Report Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -86,7 +88,8 @@ None.
 | type | string | API Proxy type (REST, SOAP, etc.) |
 | endpoints | array[object] | List of endpoints (if includeEndpoints=true) |
 
-**Notes:**
+### Notes
+
 - Response structure may vary based on `includeEndpoints` parameter
 - Empty list (`[]`) is returned if no API Proxies exist
 - Only accessible by sysAdmin or sysAnalyzer users

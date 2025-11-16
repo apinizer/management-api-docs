@@ -16,7 +16,8 @@ Variable is a structure used to extract data from API traffic messages for polic
 | description | string | No | Description for the variable |
 | type | EnumVariableType | Yes | Variable type. See [Variable Types](#variable-types) |
 
-**Note:** 
+### Note
+
 - `id` and `projectId` are typically returned in responses and may be included in update requests
 - For create operations, `id` is auto-generated and `projectId` is usually set automatically based on the project context
 - `name` must be unique within a project
@@ -42,7 +43,8 @@ Extract data from HTTP headers.
 | type | string | Yes | Must be `HEADER` |
 | headerName | string | Yes | Name of the HTTP header field in request or response message |
 
-**Example:**
+### Example
+
 ```json
 {
   "name": "apiKeyVariable",
@@ -64,12 +66,14 @@ Extract data from URL parameters (query, path, or form).
 | paramPath | string | Yes* | Template path to use for "path" parameter (required if paramType=PATH) |
 | formName | string | No | Form field name (optional, used if paramType=FORM and differs from paramName) |
 
-**Note:**
+### Note
+
 - For `paramType=QUERY`: Use `paramName` only
 - For `paramType=PATH`: Use `paramName` and `paramPath` (required)
 - For `paramType=FORM`: Use `paramName` (required), `formName` is optional and typically same as `paramName` unless you need a different field name
 
-**EnumVariableParameterType (paramType):**
+### EnumVariableParameterType (paramType)
+
 - `QUERY` - Query parameter (e.g., `?userId=123`)
 - `PATH` - Path parameter (e.g., `/users/{userId}`)
 - `FORM` - Form parameter (form data)
@@ -120,7 +124,8 @@ Extract data from request/response body (XML, JSON, or raw body).
 | xpathValue | string | Yes* | XPath expression for XML body data (required if messageContentType=XML) |
 | jsonPathValue | string | Yes* | JsonPath expression for JSON body data (required if messageContentType=JSON) |
 
-**EnumMessageContentType (messageContentType):**
+### EnumMessageContentType (messageContentType)
+
 - `XML` - XML content type
 - `JSON` - JSON content type
 - `ALL_BODY` - Raw body content (all body)
@@ -167,7 +172,8 @@ Extract data from system context values.
 | contextValue | string | Yes | Context value type. See [EnumVariableContextValue](#enumvariablecontextvalue) |
 | zoneId | string | Yes* | Time zone ID (required for some context values, e.g., date/time values) |
 
-**Example:**
+### Example
+
 ```json
 {
   "name": "requestTime",
@@ -186,14 +192,16 @@ Custom variable defined with script.
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `CUSTOM` |
 | initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
-| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](../../02-api-reference/05-policies/policies/policy-script.md#enumscripttype) |
+| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](../02-api-reference/05-policies/policies/policy-script.md) |
 | scriptBody | string | Yes* | - | Script body code (required if initWithScript=true) |
 
-**Note:** 
+### Note
+
 - If `initWithScript` is `true`, both `scriptLanguage` and `scriptBody` must be provided
 - If `initWithScript` is `false` (default), script fields are optional
 
-**Example:**
+### Example
+
 ```json
 {
   "name": "customVariable",

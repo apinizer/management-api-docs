@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/certificates/{certificateName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

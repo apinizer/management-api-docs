@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/environmentVariables/{name}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -114,7 +115,8 @@ Authorization: Bearer YOUR_TOKEN
 | globalVisible | boolean | No | true | Whether global value is visible (not secret) |
 | environmentValueList | array[object]\|null | No | null | List of environment-specific values (required if global=false). See [Environment Value Object](#environment-value-object) |
 
-**Environment Value Object (environmentValueList):**
+### Environment Value Object (environmentValueList)
+
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -122,7 +124,8 @@ Authorization: Bearer YOUR_TOKEN
 | value | string | Yes | Value for this environment |
 | visible | boolean | No | false | Whether the value is visible (not secret) |
 
-**Notes:**
+### Notes
+
 - `name` in path must match `name` in body
 - `name` must be unique within the project
 - If `global=true`, provide `globalValue` and set `environmentValueList=null`
@@ -184,7 +187,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing or empty `name` field
 - Name in path does not match name in body
 - Environment variable name already exists

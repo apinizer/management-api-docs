@@ -32,12 +32,14 @@ All error responses follow this format:
 
 ### 400 Bad Request
 
-**Error Codes:**
+### Error Codes
+
 - `bad_request` - General validation error
 - `validation_failed` - Request validation failed
 - `invalid_parameter` - Invalid parameter value
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "validation_failed",
@@ -45,7 +47,8 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required fields
 - Invalid field values
 - Invalid data types
@@ -53,12 +56,14 @@ All error responses follow this format:
 
 ### 401 Unauthorized
 
-**Error Codes:**
+### Error Codes
+
 - `unauthorized_client` - Invalid credentials
 - `invalid_token` - Token is invalid or expired
 - `token_expired` - Token has expired
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "invalid_token",
@@ -66,7 +71,8 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing `Authorization` header
 - Invalid token format
 - Expired token
@@ -74,11 +80,13 @@ All error responses follow this format:
 
 ### 403 Forbidden
 
-**Error Codes:**
+### Error Codes
+
 - `forbidden` - Insufficient permissions
 - `access_denied` - Access denied for this resource
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "forbidden",
@@ -86,18 +94,21 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - User lacks required role
 - Resource access restrictions
 - Project-level permissions
 
 ### 404 Not Found
 
-**Error Codes:**
+### Error Codes
+
 - `not_found` - Resource not found
 - `resource_not_found` - Specific resource not found
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "not_found",
@@ -105,18 +116,21 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Incorrect resource name
 - Resource was deleted
 - Wrong project/environment context
 
 ### 409 Conflict
 
-**Error Codes:**
+### Error Codes
+
 - `conflict` - Resource conflict
 - `duplicate_name` - Name already exists
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "duplicate_name",
@@ -124,17 +138,20 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Duplicate resource name
 - Unique constraint violation
 
 ### 500 Internal Server Error
 
-**Error Codes:**
+### Error Codes
+
 - `internal_error` - Internal server error
 - `server_error` - Unexpected server error
 
-**Example Response:**
+### Example Response
+
 ```json
 {
   "error": "internal_error",
@@ -142,7 +159,8 @@ All error responses follow this format:
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Database errors
 - System failures
 - Unexpected exceptions

@@ -17,7 +17,6 @@ The API Proxies API provides endpoints for managing API proxies in Apinizer. API
 ### Deployment
 - [Deploy API Proxy](./deployment/deploy.md) - Deploy API proxy to environments
 - [Undeploy API Proxy](./deployment/undeploy.md) - Undeploy API proxy from environments
-- [Deployment Status](./deployment/deployment-status.md) - Get deployment status
 
 ### Endpoints Management
 - [List Endpoints](./endpoints/list-endpoints.md) - List all endpoints
@@ -30,21 +29,23 @@ The API Proxies API provides endpoints for managing API proxies in Apinizer. API
 - [Update Endpoint Cache](./endpoints/update-endpoint-cache.md) - Update endpoint cache settings
 
 ### Settings
-- [CORS Settings](./settings/cors-settings.md) - Configure CORS
-- [Cache Settings](./settings/cache-settings.md) - Configure caching
-- [Routing Settings](./settings/routing-settings.md) - Configure routing
-- [Connection Settings](./settings/connection-settings.md) - Configure connection settings
-- [Circuit Breaker](./settings/circuit-breaker.md) - Configure circuit breaker
-- [mTLS Settings](./settings/mtls-settings.md) - Configure mTLS
-- [NTLM Settings](./settings/ntlm-settings.md) - Configure NTLM
-- [Proxy Server Settings](./settings/proxy-server-settings.md) - Configure proxy server
-- [Traffic Log Settings](./settings/traffic-log-settings.md) - Configure traffic logging
-- [Error Response Templates](./settings/error-response-templates.md) - Configure error templates
-- [Forwarded IP Header](./settings/forwarded-ip-header.md) - Configure forwarded IP header
-- [Hide API Definition](./settings/hide-api-definition.md) - Hide API definition file
-- [Client Route](./settings/client-route.md) - Configure client route metadata
-- [Keys Settings](./settings/keys-settings.md) - Configure API keys
-- [Metadata](./settings/metadata.md) - Update metadata (name, description, category, sharing)
+- [CORS Settings](./settings/update-cors-settings.md) - Configure CORS
+- [Cache Settings](./settings/update-cache-settings.md) - Configure caching
+- [Routing Addresses](./settings/update-routing-addresses.md) - Configure routing addresses
+- [Routing Status](./settings/update-routing-status.md) - Configure routing status
+- [Connection Settings](./settings/update-connection-settings.md) - Configure connection settings
+- [Circuit Breaker Settings](./settings/update-circuit-breaker-settings.md) - Configure circuit breaker
+- [mTLS Settings](./settings/update-mtls-settings.md) - Configure mTLS
+- [NTLM Settings](./settings/update-ntlm-settings.md) - Configure NTLM
+- [Proxy Server Settings](./settings/update-proxy-server-settings.md) - Configure proxy server
+- [Traffic Log Settings](./settings/update-traffic-log-settings.md) - Configure traffic logging
+- [JSON Error Template](./settings/update-json-error-template.md) - Configure JSON error template
+- [XML Error Template](./settings/update-xml-error-template.md) - Configure XML error template
+- [Forwarded IP Header](./settings/update-forwarded-ip-header.md) - Configure forwarded IP header
+- [Hide API Definition](./settings/update-hide-spec-file.md) - Hide API definition file
+- [Client Route](./settings/update-client-route.md) - Configure client route metadata
+- [API Keys](./settings/update-api-keys.md) - Configure API keys
+- [Metadata](./settings/update-metadata.md) - Update metadata (name, description, category, sharing)
 
 ## Authentication
 

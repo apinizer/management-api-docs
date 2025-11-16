@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxies/url/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -101,7 +102,8 @@ Authorization: Bearer YOUR_TOKEN
 | maintenanceModeSetting | object | No | - | Maintenance mode settings |
 | specAuthorizationValueList | array | No | [] | Authorization headers for spec URL access |
 
-**Enum: apiProxyCreationType (EnumApiProxySpecType)**
+### EnumApiProxySpecType
+
 - `OPEN_API` - OpenAPI 3.0 specification
 - `SWAGGER` - Swagger 2.0 specification
 - `WSDL` - WSDL specification (SOAP)
@@ -186,7 +188,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy name already exists
 - Invalid specification URL
 - Invalid API creation type

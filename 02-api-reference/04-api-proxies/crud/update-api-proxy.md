@@ -20,7 +20,8 @@ PUT /apiops/projects/{projectName}/apiProxies/file/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -128,7 +129,8 @@ The request body structure is identical to [Create API Proxy from URL](./create-
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy name does not exist (must create first)
 - API Proxy creation type mismatch (cannot change type)
 - Invalid specification URL or file

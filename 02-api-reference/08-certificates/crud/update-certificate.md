@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/certificates/{certificateName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,9 +38,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Form Data
 
-Same as Create Certificate. See [Create Certificate](./create-certificate.md#form-data) for field descriptions.
+Same as Create Certificate. See [Create Certificate](./create-certificate.md) for field descriptions.
 
-**Notes:**
+### Notes
+
 - Certificate name in path must match existing certificate
 - All form fields are required
 - Old certificate is deleted and new one is created
@@ -47,7 +49,7 @@ Same as Create Certificate. See [Create Certificate](./create-certificate.md#for
 
 ### Response
 
-Same as Create Certificate. See [Create Certificate](./create-certificate.md#response) for response format.
+Same as Create Certificate. See [Create Certificate](./create-certificate.md) for response format.
 
 ## cURL Example
 

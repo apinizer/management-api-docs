@@ -206,7 +206,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | addUserToHeader | boolean | No | false | Add authenticated user to header |
 | userHeaderName | string | No* | - | Header name to add authenticated user (required if addUserToHeader=true) |
 
-**Note:** 
+### Note
+
 - `usernameVar` and `passwordVar` are required.
 - `nonceVar` and `createdVar` are optional but recommended for enhanced security.
 - `userHeaderName` is required when `addUserToHeader` is `true`.
@@ -219,20 +220,23 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | contextValue | string | No* | Context value (required if type=CONTEXT) |
 
-**Enum: Variable Type (type)**
+### type
+
 - `HEADER` - Extract from HTTP header (typically "Authorization")
 - `PARAMETER` - Extract from query/path parameter
 - `BODY` - Extract from request body
 - `CONTEXT` - Extract from context (e.g., CLIENT_IP)
 - `SCRIPT` - Extract using script
 
-**Enum: Context Value (contextValue)**
+### contextValue
+
 - `CLIENT_IP` - Client IP address
 - `REQUEST_URI` - Request URI
 - `REQUEST_METHOD` - HTTP method
 - `USER_AGENT` - User agent string
 
-**Digest Authentication Format:**
+### Digest Authentication Format
+
 The Authorization header contains digest authentication parameters:
 ```
 Authorization: Digest username="user", realm="realm", nonce="nonce", uri="/path", response="response", algorithm=MD5, qop=auth

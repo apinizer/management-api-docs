@@ -14,7 +14,8 @@ PUT /apiops/settings/geolocation/mmdb
 
 Requires a Personal API Access Token with admin privileges.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -39,7 +40,8 @@ None.
 | file | file | Yes | MMDB file (MaxMind GeoIP2 database file) |
 | fileName | string | No | File name (if not provided, uses original filename or "geolocation.mmdb") |
 
-**Notes:**
+### Notes
+
 - `file` must be a valid MMDB file
 - `file` must not be empty
 - `fileName` is optional (uses original filename if not provided)

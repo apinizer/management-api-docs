@@ -317,7 +317,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](#policy-operation-metadata) |
 | policyDecryptionDefList | array | Yes | - | List of decryption definitions. See [Decryption Definition](#decryption-definition) |
 
-**Decryption Definition (policyDecryptionDefList):**
+### Decryption Definition (policyDecryptionDefList)
+
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -335,7 +336,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | ivEncodingType | string | No | null | IV encoding type (if ivExists=true). See [EnumEncodingType](#enumencodingtype) |
 | inputEncodingType | string | Yes | - | Input encoding type of encrypted data. See [EnumEncodingType](#enumencodingtype) |
 
-**EnumCipherAlgorithm (cipherAlgorithm):**
+### EnumCipherAlgorithm (cipherAlgorithm)
+
 
 Symmetric Algorithms:
 - `AES_CBC_NoPadding` - AES/CBC/NoPadding
@@ -356,52 +358,55 @@ Asymmetric Algorithms:
 - `RSA_ECB_OAEPWithSHA_1AndMGF1Padding` - RSA/ECB/OAEPWithSHA-1AndMGF1Padding
 - `RSA_ECB_OAEPWithSHA_256AndMGF1Padding` - RSA/ECB/OAEPWithSHA-256AndMGF1Padding
 
-**EnumEncodingType (inputEncodingType, ivEncodingType):**
+### EnumEncodingType (inputEncodingType, ivEncodingType)
+
 - `BASE64` - Base64 encoding
 - `HEXADECIMAL` - Hexadecimal encoding
 
-**EnumKeyCertificateType (enumKeyCertificateType):**
+### EnumKeyCertificateType (enumKeyCertificateType)
+
 - `KEY` - Use cryptographic key (from cryptoKeyInfoId)
 - `CERTIFICATE` - Use certificate (from certificateId)
 
-**Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar):**
+### Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar)
 
 See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
 
-**Variable Types:**
+### Variable Types
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query/path/form parameter
 - `BODY` - Extract from request/response body (XML, JSON, or raw)
 - `CONTEXT_VALUES` - Extract from system context values
 - `CUSTOM` - Extract using custom script
 
-**Policy Condition (policyCondition):**
+### Policy Condition (policyCondition)
 
-See [Policy Condition Documentation](../crud/add-policy.md#policy-condition) for detailed information.
+See [Policy Condition Documentation](../crud/add-policy.md) for detailed information.
 
-**Policy Operation Metadata (operationMetadata):**
+### Policy Operation Metadata (operationMetadata)
 
-See [Policy Operation Metadata Documentation](../crud/add-policy.md#policy-operation-metadata) for detailed information.
+See [Policy Operation Metadata Documentation](../crud/add-policy.md) for detailed information.
 
-**Error Messages (errorMessageList):**
+### Error Messages (errorMessageList)
 
-See [Error Messages Documentation](../crud/add-policy.md#error-messages) for detailed information.
+See [Error Messages Documentation](../crud/add-policy.md) for detailed information.
 
 ### Response
 

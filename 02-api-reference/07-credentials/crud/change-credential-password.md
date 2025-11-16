@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/credentials/{username}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -51,7 +52,8 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | password | string | Yes | - | New password for the credential |
 
-**Notes:**
+### Notes
+
 - Only `password` field is required
 - Other fields are ignored if provided
 - Password must not be empty

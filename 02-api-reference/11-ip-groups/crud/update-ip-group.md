@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/ipGroups/{ipGroupName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -53,7 +54,8 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | - | IP Group name (must match path parameter, cannot be changed) |
 | description | string | No | - | IP Group description (can be updated) |
 
-**Notes:**
+### Notes
+
 - `name` must match the IP Group name in path (cannot be changed)
 - Only `description` can be updated
 - IP addresses are not updated by this endpoint (use IP management endpoints)

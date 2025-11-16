@@ -321,7 +321,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | name | string | Yes | Header name (e.g., "Content-Type", "Authorization") |
 | value | string | Yes | Header value |
 
-**EnumHttpRequestMethod (httpMethod)**
+### EnumHttpRequestMethod (httpMethod)
 - `GET` - GET request (default)
 - `POST` - POST request
 - `PUT` - PUT request
@@ -330,7 +330,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `HEAD` - HEAD request
 - `OPTIONS` - OPTIONS request
 
-**Notes:**
+### Notes
+
 - `fullUrl` is required and must be a valid URL (http:// or https://).
 - `httpMethod` defaults to GET.
 - `timeout` is specified in seconds (default: 2 seconds).

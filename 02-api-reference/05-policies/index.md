@@ -21,7 +21,7 @@ Policies are organized by type. Each policy type has its own documentation page 
 - [Digest Authentication](./policies/policy-auth-digest.md)
 - [JWT Authentication](./policies/policy-auth-jwt.md)
 - [OAuth2 Authentication](./policies/policy-auth-oauth2.md)
-- [OIDC Authentication](./policies/policy-auth-oidc.md)
+- [OIDC Authentication](./policies/policy-oidc.md)
 - [mTLS Authentication](./policies/policy-auth-mtls.md)
 - [API Authentication](./policies/policy-api-authentication.md)
 - [SAML Validation](./policies/policy-saml-validation.md)
@@ -45,7 +45,7 @@ Policies are organized by type. Each policy type has its own documentation page 
 ### Rate Limiting & Quota Policies
 - [API Based Throttling](./policies/policy-api-based-throttling.md)
 - [API Based Quota](./policies/policy-api-based-quota.md)
-- [Client Banner](./policies/policy-client-banner.md)
+- [Client Ban](./policies/policy-client-ban.md)
 
 ### IP Filtering Policies
 - [Blocked IP List](./policies/policy-black-ip.md)

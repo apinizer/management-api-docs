@@ -201,11 +201,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | clearSaml | boolean | No | false | Clear SAML assertion after validation |
 | clearSamlPath | string | No* | null | XPath to SAML assertion to clear (required if clearSaml=true) |
 
-**Note:** 
+### Note
+
 - `keyStoreId` is required and must reference a valid KeyStore containing SAML signing certificates.
 - If `clearSaml: true`, `clearSamlPath` is required (XPath expression to locate SAML assertion).
 
-**XPath Examples:**
+### XPath Examples
+
 - `/soap:Envelope/soap:Header/wsse:Security/saml:Assertion` - SOAP header SAML assertion
 - `//saml:Assertion` - Anywhere in document
 - `/root/saml:Assertion` - Root element SAML assertion

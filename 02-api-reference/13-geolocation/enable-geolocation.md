@@ -14,7 +14,8 @@ PUT /apiops/settings/geolocation/enable
 
 Requires a Personal API Access Token with admin privileges.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

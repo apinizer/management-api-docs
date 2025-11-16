@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxies/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -82,11 +83,13 @@ None
 | relativePath | string | Relative path (from clientRoute) |
 | soapToRest | boolean | Whether SOAP to REST transformation is enabled |
 
-**Enum: type (EnumApiType)**
+### EnumApiType
+
 - `REST` - REST API
 - `SOAP` - SOAP API
 
-**Enum: status**
+### EnumStatus
+
 - `SUCCESS` - Operation successful
 - `FAILURE` - Operation failed
 

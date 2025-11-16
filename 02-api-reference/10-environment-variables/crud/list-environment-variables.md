@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/environmentVariables/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -89,7 +90,7 @@ None.
 | resultList | array[object] | List of environment variables |
 | resultCount | integer | Total number of environment variables |
 
-**Environment Variable Object:**
+### Environment Variable Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -102,7 +103,8 @@ None.
 | projectName | string | Project name |
 | environmentValueList | array[object]\|null | List of environment-specific values (if global=false). See [Environment Value Object](#environment-value-object) |
 
-**Environment Value Object (environmentValueList):**
+### Environment Value Object (environmentValueList)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -110,7 +112,8 @@ None.
 | value | string\|null | Value for this environment. Null if visible=false (secret) |
 | visible | boolean | Whether the value is visible (not secret) |
 
-**Notes:**
+### Notes
+
 - Secret values (`visible=false` or `globalVisible=false`) are masked (returned as `null`) in list responses
 - Global variables have `global=true` and use `globalValue`
 - Environment-specific variables have `global=false` and use `environmentValueList`

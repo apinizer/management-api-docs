@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpoint
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -67,7 +68,8 @@ None
 | backendResourceUrl | string | Backend resource URL |
 | backendHttpMethod | string | HTTP method for backend call |
 
-**Enum: httpMethod / backendHttpMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
 **Note:** Policy lists are not included. Use [List Endpoint Policies](./list-endpoint-policies.md) to retrieve policy details.

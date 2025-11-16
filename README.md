@@ -8,7 +8,8 @@ The Management API allows you to perform many operations without needing the web
 
 The Management API base URL is constructed by appending `/apiops` to your Apinizer Manager application URL.
 
-**Example:**
+### Example
+
 - If Manager application runs at `https://demo.apinizer.com`, the API base URL is `https://demo.apinizer.com/apiops/`
 
 For more details, see [Base URL](./01-getting-started/base-url.md).

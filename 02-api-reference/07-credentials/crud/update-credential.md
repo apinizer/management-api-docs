@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/credentials/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -61,9 +62,10 @@ Same structure as Create Credential. All fields are required for update.
 
 #### Request Body Fields
 
-Same as Create Credential. See [Create Credential](./create-credential.md#request-body-fields) for field descriptions.
+Same as Create Credential. See [Create Credential](./create-credential.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - `username` must match the existing credential username (cannot be changed)
 - All fields are required (same as create)
 - Password can be updated
@@ -71,7 +73,7 @@ Same as Create Credential. See [Create Credential](./create-credential.md#reques
 
 ### Response
 
-Same as Create Credential. See [Create Credential](./create-credential.md#response) for response format.
+Same as Create Credential. See [Create Credential](./create-credential.md) for response format.
 
 ## cURL Example
 

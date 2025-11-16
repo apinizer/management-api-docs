@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -73,7 +74,8 @@ Authorization: Bearer YOUR_TOKEN
 | deployToWorker | boolean | No | true | Whether to deploy to worker |
 | enabled | boolean | No | true | Whether connection is enabled |
 
-**Connection Types:**
+### Connection Types
+
 - `email` - Email (SMTP) connection
 - `kafka` - Kafka connection
 - `elasticsearch` - Elasticsearch connection
@@ -126,7 +128,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Connection name already exists
 - Connection name in path does not match name in body
 - Invalid connection type

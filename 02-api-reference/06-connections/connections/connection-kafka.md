@@ -265,12 +265,14 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | keyStoreName | string | No* | - | KeyStore name (required if enableSecure=true) |
 | trustStoreName | string | No | - | TrustStore name (optional, for server certificate validation) |
 
-**propertiesMap Structure:**
+### propertiesMap Structure
+
 Each property in `propertiesMap` is a `MapValue` object with:
 - `value` (string) - Property value
 - `valueType` (string) - Value type
 
-**Enum: valueType (MapValueType)**
+### MapValueType
+
 - `STRING` - String value
 - `BOOLEAN` - Boolean value
 - `INTEGER` - Integer value
@@ -280,7 +282,8 @@ Each property in `propertiesMap` is a `MapValue` object with:
 - `STRING_LIST` - Comma-separated string list
 - `URI` - URI value
 
-**Common Kafka Properties:**
+### Common Kafka Properties
+
 - `bootstrap.servers` (STRING) - Kafka broker addresses (e.g., "localhost:9092" or "broker1:9092,broker2:9092")
 - `key.serializer` (STRING) - Key serializer class (e.g., "org.apache.kafka.common.serialization.StringSerializer")
 - `value.serializer` (STRING) - Value serializer class (e.g., "org.apache.kafka.common.serialization.StringSerializer")
@@ -290,14 +293,16 @@ Each property in `propertiesMap` is a `MapValue` object with:
 - `batch.size` (INTEGER) - Batch size in bytes
 - `linger.ms` (INTEGER) - Time to wait before sending batch
 
-**Enum: protocolTypes (EnumSSLContextProtocolType)**
+### EnumSSLContextProtocolType
+
 - `TLS_1_3` - TLS 1.3
 - `TLS_1_2` - TLS 1.2
 - `TLS_1_1` - TLS 1.1
 - `TLS_1_0` - TLS 1.0
 - `SSL_3_0` - SSL 3.0 (deprecated)
 
-**Note:** 
+### Note
+
 - `propertiesMap` must contain at least `bootstrap.servers`, `key.serializer`, and `value.serializer`
 - If `enableSecure: true`, `protocolTypes` and `keyStoreName` are required
 - `keyStoreName` and `trustStoreName` refer to KeyStore names (not IDs) - they are converted to IDs internally

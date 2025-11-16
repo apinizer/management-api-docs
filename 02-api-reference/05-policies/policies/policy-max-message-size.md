@@ -170,13 +170,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | active | boolean | No | true | Whether policy is active |
 | maxMessageSize | long | Yes | - | Maximum message size in bytes |
 
-**Size Examples:**
+### Size Examples
+
 - `1024` - 1 KB
 - `1048576` - 1 MB (1024 * 1024)
 - `10485760` - 10 MB
 - `104857600` - 100 MB
 
-**Note:** 
+### Note
+
 - `maxMessageSize` must be greater than 0.
 - Size is measured in bytes.
 - Messages exceeding this size are rejected with an error.

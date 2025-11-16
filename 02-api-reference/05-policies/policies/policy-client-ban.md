@@ -1,17 +1,17 @@
-# Client Banner Policy
+# Client Ban Policy
 
 ## General Information
 
 ### Policy Type
 ```
-policy-client-banner
+policy-client-ban
 ```
 
 ### UI Documentation
 > 📖 **For detailed information:** [UI Documentation Link - Link will be added here]
 
 ### Description
-Client Banner policy automatically bans clients (identified by variables such as API key, IP address, or user ID) when they exceed a threshold of errors or failures within a time window. Banned clients are blocked for a specified duration. This policy is useful for protecting APIs from abusive clients, brute force attacks, or clients causing excessive errors.
+Client Ban policy automatically bans clients (identified by variables such as API key, IP address, or user ID) when they exceed a threshold of errors or failures within a time window. Banned clients are blocked for a specified duration. This policy is useful for protecting APIs from abusive clients, brute force attacks, or clients causing excessive errors.
 
 ### Endpoints
 
@@ -69,8 +69,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
         "name": "MyAPI",
         "requestPolicyList": [
           {
-            "type": "policy-client-banner",
-            "name": "client-banner-policy",
+            "type": "policy-client-ban",
+            "name": "client-ban-policy",
             "description": "Ban clients exceeding error threshold",
             "active": true,
             "clientIdentityVariableList": [
@@ -142,11 +142,11 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 #### Request Body
 
-##### Full JSON Body Example - Basic Client Banner
+##### Full JSON Body Example - Basic Client Ban
 ```json
 {
-  "type": "policy-client-banner",
-  "name": "client-banner-policy",
+  "type": "policy-client-ban",
+  "name": "client-ban-policy",
   "description": "Ban clients exceeding error threshold",
   "active": true,
   "clientIdentityVariableList": [
@@ -188,11 +188,11 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 }
 ```
 
-##### Full JSON Body Example - IP-Based Banner with Percentage Threshold
+##### Full JSON Body Example - IP-Based Ban with Percentage Threshold
 ```json
 {
-  "type": "policy-client-banner",
-  "name": "ip-banner-policy",
+  "type": "policy-client-ban",
+  "name": "ip-ban-policy",
   "description": "Ban IPs with high error percentage",
   "active": true,
   "clientIdentityVariableList": [
@@ -233,11 +233,11 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 }
 ```
 
-##### Full JSON Body Example - Multi-Variable Client Banner
+##### Full JSON Body Example - Multi-Variable Client Ban
 ```json
 {
-  "type": "policy-client-banner",
-  "name": "multi-variable-banner",
+  "type": "policy-client-ban",
+  "name": "multi-variable-ban",
   "description": "Ban clients using multiple identity variables",
   "active": true,
   "clientIdentityVariableList": [
@@ -295,14 +295,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 ###### Common Policy Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| type | string | Yes | - | Policy type: `policy-client-banner` |
+| type | string | Yes | - | Policy type: `policy-client-ban` |
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
 | operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](#policyoperationmetadatadto) |
 | condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](#policyconditiondto) |
 
-###### Client Banner Specific Fields
+###### Client Ban Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](#variabledto) |
@@ -314,31 +314,33 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | ignoreWhenKeyIsEmpty | boolean | No | false | Ignore requests when identity key is empty |
 | assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](#policyconditiondto) |
 
-**EnumErrorThresholdType (thresholdCalculationType)**
+### EnumErrorThresholdType (thresholdCalculationType)
+
 - `COUNT` - Count-based threshold (number of errors)
 - `PERCENT` - Percentage-based threshold (percentage of errors)
 
-**VariableDTO (clientIdentityVariableList item)**
+### VariableDTO (clientIdentityVariableList item)
 
 See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
 
-**Variable Types:**
+### Variable Types
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query/path/form parameter
 - `BODY` - Extract from request/response body (XML, JSON, or raw)
@@ -347,19 +349,22 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 **Note:** For client IP, use `type=CONTEXT_VALUES` with `contextValue=REQUEST_REMOTE_ADDRESS`.
 
-**PolicyConditionDTO (assertionCondition)**
+### PolicyConditionDTO (assertionCondition)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](#enumconditioncriteria) |
 | rules | array | Yes | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
 
-**EnumConditionCriteria (assertionCondition.criteria)**
+### EnumConditionCriteria (assertionCondition.criteria)
+
 - `ALWAYS` - Always count
 - `IF_ALL_MATCH` - Count if all rules match
 - `IF_ANY_MATCH` - Count if any rule matches (common for error conditions)
 - `IF_NONE_MATCH` - Count if no rules match
 
-**ConditionRuleDTO (assertionCondition.rules item)**
+### ConditionRuleDTO (assertionCondition.rules item)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | variable | object | Yes | Variable to check. See [Variable Definition](../../../03-appendix/variable-definition.md) |
@@ -367,7 +372,32 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 | value | string | Yes | Value to compare against |
 | valueSource | string | No | Value source. See [EnumConditionValueSource](#enumconditionvaluesource) |
 
-**PolicyOperationMetadataDTO (operationMetadata)**
+### EnumConditionValueComparisonOperator (comparisonOperator)
+
+- `LT` - Less than
+- `LE` - Less than or equal to
+- `GT` - Greater than
+- `GE` - Greater than or equal to
+- `EQ` - Equal to
+- `NE` - Not equal to
+- `STARTS_WITH` - Starts with
+- `ENDS_WITH` - Ends with
+- `CONTAINS` - Contains
+- `NOT_CONTAINS` - Does not contain
+- `IS_EMPTY` - Exists and is empty
+- `IS_NOT_EMPTY` - Exists and is not empty
+- `IS_EXISTS` - Exists
+- `IS_NOT_EXISTS` - Does not exist
+- `IN` - In list
+- `NOT_IN` - Not in list
+
+### EnumConditionValueSource (valueSource)
+
+- `VALUE` - Compare with a constant value
+- `VARIABLE` - Compare with another variable
+
+### PolicyOperationMetadataDTO (operationMetadata)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](#enumpolicytargetscope) |
@@ -378,17 +408,19 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
 
-**EnumPolicyTargetScope (operationMetadata.targetScope)**
+### EnumPolicyTargetScope (operationMetadata.targetScope)
+
 - `API_PROXY` - Apply to entire API Proxy
 - `ENDPOINT` - Apply to specific endpoint
 - `GLOBAL` - Apply globally
 
-**EnumPolicyTargetPipeline (operationMetadata.targetPipeline)**
+### EnumPolicyTargetPipeline (operationMetadata.targetPipeline)
 - `REQUEST` - Request pipeline
 - `RESPONSE` - Response pipeline
-- `ERROR` - Error pipeline (recommended for client banner)
+- `ERROR` - Error pipeline (recommended for client ban)
 
-**Notes:**
+### Notes
+
 - `clientIdentityVariableList` must contain at least one variable.
 - `thresholdWindowInSeconds` must be greater than 0.
 - `thresholdCountPerWindow` must be greater than 0.
@@ -421,12 +453,12 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 ### cURL Example
 ```bash
 curl -X POST \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/client-banner-policy/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/policies/client-ban-policy/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "type": "policy-client-banner",
-    "name": "client-banner-policy",
+    "type": "policy-client-ban",
+    "name": "client-ban-policy",
     "description": "Ban clients exceeding error threshold",
     "active": true,
     "clientIdentityVariableList": [
@@ -593,3 +625,4 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 - [Update Policy](../crud/update-policy.md) - General policy update guide
 - [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
 - [Blocked IP List Policy](./policy-black-ip.md) - Static IP blocking policy
+

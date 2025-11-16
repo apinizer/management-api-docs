@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/cache/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -73,19 +74,23 @@ Authorization: Bearer YOUR_TOKEN
 | cacheNullValue | boolean | No | false | Cache null/empty responses |
 | variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM) |
 
-**Enum: cacheKeyType (EnumCacheKeyType)**
+### EnumCacheKeyType
+
 - `QUERY_PARAMS` - Use query parameters as cache key
 - `CUSTOM` - Use custom variables as cache key (requires variableList)
 
-**Enum: cacheStorageType (EnumCacheStorageType)**
+### EnumCacheStorageType
+
 - `LOCAL` - Local cache (per worker instance)
 - `DISTRIBUTED` - Distributed cache (shared across all workers)
 
-**Enum: handlingAction (EnumCacheHandlingAction)**
+### EnumCacheHandlingAction
+
 - `CONTINUE` - Return cached response and continue to backend (for logging/monitoring)
 - `STOP` - Return cached response and stop (do not call backend)
 
-**Variable Object (for variableList when cacheKeyType=CUSTOM):**
+### Variable Object (for variableList when cacheKeyType=CUSTOM)
+
 ```json
 {
   "name": "userId",
@@ -94,14 +99,16 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Enum: Variable type (EnumVariableType)**
+### EnumVariableType
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query parameter
 - `BODY` - Extract from request body
 - `CONTEXT_VALUES` - Extract from context values
 - `CUSTOM` - Custom variable
 
-**Enum: Variable dataType (EnumConditionVariableDataType)**
+### EnumConditionVariableDataType
+
 - `NUMERIC` - Numeric value
 - `STRING` - String value
 - `DATE` - Date value
@@ -131,7 +138,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required field `handlingAction`
 - Invalid enum values
 - Invalid cache configuration

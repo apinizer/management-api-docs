@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/traffic-
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -78,7 +79,8 @@ Authorization: Bearer YOUR_TOKEN
 | enabledApplicationLog | boolean | No | - | Enable/disable application log |
 | apiProxyTrafficLogSettingsList | array | No | [] | List of environment-specific traffic log settings |
 
-**Traffic Log Setting Item (apiProxyTrafficLogSettingsList):**
+### Traffic Log Setting Item (apiProxyTrafficLogSettingsList)
+
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -105,8 +107,9 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** All fields are optional. Only provided fields are updated.
 
-**Connectors:**
-Connectors must be created and configured before enabling them. See [Connections API](../06-connections/) for connector management.
+### Connectors
+
+Connectors must be created and configured before enabling them. See [Connections API](../../06-connections/index.md) for connector management.
 
 ## Response
 
@@ -133,7 +136,8 @@ Connectors must be created and configured before enabling them. See [Connections
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing `environmentName` in traffic log settings item
 - Environment name does not exist
 - Invalid connector configuration
@@ -214,7 +218,7 @@ curl -X PATCH \
 
 - **Environment-Specific**: Traffic log settings are configured per environment
 - **Environment Name**: Must match an existing environment name
-- **Connectors**: Connectors must be created before enabling (see [Connections API](../06-connections/))
+- **Connectors**: Connectors must be created before enabling (see [Connections API](../../06-connections/index.md))
 - **Logging Overhead**: Logging request/response bodies can impact performance
 - **Data Privacy**: Be careful when logging sensitive data (passwords, tokens, etc.)
 - **Trace Log**: `enabledTraceLog` enables trace logging for debugging
@@ -224,5 +228,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Connections API](../06-connections/) - Manage connectors for log export
+- [Connections API](../../06-connections/index.md) - Manage connectors for log export
 - [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details

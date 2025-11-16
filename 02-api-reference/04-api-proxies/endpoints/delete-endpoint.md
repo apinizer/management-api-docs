@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpo
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -68,7 +69,8 @@ This endpoint does not require a request body.
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy is not REST type (SOAP endpoints cannot be deleted manually)
 - Endpoint ID does not exist
 

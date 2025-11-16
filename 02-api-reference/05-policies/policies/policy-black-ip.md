@@ -184,12 +184,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | targetVariableForIP | object | No | null | Variable to extract IP address (null = use Apinizer default) |
 | ipList | array | Yes | - | List of IP addresses or CIDR ranges to block |
 
-**IP Address Formats:**
+### IP Address Formats
+
 - Single IP: `192.168.1.100` (IPv4) or `2001:db8::1` (IPv6)
 - CIDR Range: `10.0.0.0/8` (IPv4) or `2001:db8::/32` (IPv6)
 - Multiple entries: Array of IPs and CIDR ranges
 
-**Note:** 
+### Note
+
 - `ipList` must contain at least one IP address or CIDR range.
 - When `targetVariableForIP` is `null`, Apinizer uses default IP detection (from X-Forwarded-For header or direct connection).
 
@@ -201,20 +203,23 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | contextValue | string | No* | Context value (required if type=CONTEXT) |
 
-**Enum: Variable Type (type)**
+### type
+
 - `HEADER` - Extract from HTTP header (e.g., X-Forwarded-For, X-Real-IP)
 - `PARAMETER` - Extract from query/path parameter
 - `BODY` - Extract from request body
 - `CONTEXT` - Extract from context (e.g., CLIENT_IP)
 - `SCRIPT` - Extract using script
 
-**Enum: Context Value (contextValue)**
+### contextValue
+
 - `CLIENT_IP` - Client IP address (recommended for IP filtering)
 - `REQUEST_URI` - Request URI
 - `REQUEST_METHOD` - HTTP method
 - `USER_AGENT` - User agent string
 
-**Default IP Detection:**
+### Default IP Detection
+
 When `targetVariableForIP` is `null`, Apinizer automatically detects the client IP from:
 1. X-Forwarded-For header (if present)
 2. Direct connection IP address

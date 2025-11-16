@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -89,7 +90,8 @@ None
 | backendResourceUrl | string | Backend resource URL |
 | backendHttpMethod | string | HTTP method for backend call |
 
-**Enum: httpMethod / backendHttpMethod (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET` - GET method
 - `POST` - POST method
 - `PUT` - PUT method

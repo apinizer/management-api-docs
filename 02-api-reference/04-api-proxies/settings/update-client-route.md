@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/client-r
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -125,7 +126,7 @@ Authorization: Bearer YOUR_TOKEN
 | bufferRequest | boolean | No | true | Buffer request body (enables request body access in policies) |
 | bufferResponse | boolean | No | true | Buffer response body (enables response body access in policies) |
 
-**EnumHttpRequestMethod (methodList)**
+### EnumHttpRequestMethod (methodList)
 - `GET` - HTTP GET method
 - `POST` - HTTP POST method
 - `PUT` - HTTP PUT method
@@ -136,14 +137,16 @@ Authorization: Bearer YOUR_TOKEN
 - `TRACE` - HTTP TRACE method
 - `ALL` - All HTTP methods
 
-**Header Object (headerList):**
+### Header Object (headerList)
+
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Header name (case-insensitive) |
 | value | string | Yes | Header value to match |
 
-**Notes:**
+### Notes
+
 - At least one of `relativePathList`, `methodList`, `hostList`, or `headerList` must be provided
 - If `relativePathList` is provided, all paths must be at least 2 characters long
 - Route matching is done using AND logic: all specified conditions must match
@@ -175,7 +178,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - All route lists are empty or null
 - Relative paths are less than 2 characters
 - Invalid HTTP method values

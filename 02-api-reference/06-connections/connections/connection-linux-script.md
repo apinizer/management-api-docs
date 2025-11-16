@@ -221,7 +221,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | username | string | Yes | - | SSH username |
 | password | string | Yes | - | SSH password (secret field) |
 
-**Notes:**
+### Notes
+
 - `hostName`, `username`, and `password` are required.
 - `sshPort` defaults to 22 (standard SSH port).
 - Connection uses SSH protocol for secure remote script execution.

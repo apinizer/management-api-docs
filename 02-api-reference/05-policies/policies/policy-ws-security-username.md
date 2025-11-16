@@ -235,11 +235,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | nonce | boolean | No | false | Add nonce to UsernameToken |
 | created | boolean | No | false | Add created timestamp to UsernameToken |
 
-**Enum: passwordType (EnumWsSecurityPasswordType)**
+### EnumWsSecurityPasswordType
+
 - `PasswordText` - Plain text password (less secure)
 - `PasswordDigest` - Password digest (hashed password, more secure, recommended)
 
-**Note:**
+### Note
+
 - `username`, `password`, and `passwordType` are required.
 - `nonce` and `created` add additional security to UsernameToken.
 

@@ -10,7 +10,8 @@ Creates an API proxy by parsing an OpenAPI (Swagger), WSDL specification from an
 POST /apiops/projects/{projectName}/apiProxies/file/
 ```
 
-**Alternative Endpoint (PUT for update):**
+### Alternative Endpoint (PUT for update)
+
 ```
 PUT /apiops/projects/{projectName}/apiProxies/file/
 ```
@@ -19,7 +20,8 @@ PUT /apiops/projects/{projectName}/apiProxies/file/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -112,7 +114,8 @@ Authorization: Bearer YOUR_TOKEN
 | backendApiVersion | string | No | - | Backend API version |
 | maintenanceModeSetting | object | No | - | Maintenance mode settings |
 
-**Enum: apiProxyCreationType (EnumApiProxySpecType)**
+### EnumApiProxySpecType
+
 - `OPEN_API` - OpenAPI 3.0 specification
 - `SWAGGER` - Swagger 2.0 specification
 - `WSDL` - WSDL specification (SOAP)
@@ -131,7 +134,8 @@ Authorization: Bearer YOUR_TOKEN
 | bufferRequest | boolean | No | true | Buffer request body |
 | bufferResponse | boolean | No | true | Buffer response body |
 
-**Enum: methodList items (EnumHttpRequestMethod)**
+### EnumHttpRequestMethod
+
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
 ##### routingInfo
@@ -146,7 +150,8 @@ Authorization: Bearer YOUR_TOKEN
 | failoverRetryCount | integer | No | 0 | Number of failover retries |
 | ignoreRoutingError | boolean | No | false | Ignore routing errors |
 
-**Enum: loadBalanceAlgorithm (EnumRoutingAlgorithm)**
+### EnumRoutingAlgorithm
+
 - `ROUND_ROBIN` - Round-robin load balancing
 - `LRU` - Least recently used
 - `WEIGHTED` - Weighted load balancing (requires weight in routingAddressList)
@@ -161,7 +166,8 @@ Authorization: Bearer YOUR_TOKEN
 | weight | integer | No* | 1 | Load balancing weight (required if loadBalanceAlgorithm=WEIGHTED) |
 | soapType | string | No* | SOAP11 | SOAP version (required if API type is SOAP) |
 
-**Enum: soapType (EnumSoapApiPortType)**
+### EnumSoapApiPortType
+
 - `SOAP11` - SOAP 1.1
 - `SOAP12` - SOAP 1.2
 
@@ -212,7 +218,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - API Proxy name already exists
 - Invalid specification file format
 - Invalid API creation type

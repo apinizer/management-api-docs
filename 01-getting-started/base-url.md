@@ -50,7 +50,8 @@ Where:
 
 ### Path Parameter Rules
 
-- Path parameters are **case-sensitive**
+- Path parameters are ### Case Sensitive
+
 - Use the exact name as it appears in the system
 - Special characters should be URL-encoded if needed
 - Spaces are not allowed in names (use hyphens or underscores)

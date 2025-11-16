@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpoi
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -106,39 +107,42 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 | cacheNullValue | boolean | No | false | Cache null/empty responses |
 | variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](#variable-object) |
 
-**EnumCacheKeyType (cacheKeyType)**
+### EnumCacheKeyType (cacheKeyType)
+
 - `QUERY_PARAMS` - Use query parameters as cache key
 - `CUSTOM` - Use custom variables as cache key (requires variableList)
 
-**EnumCacheStorageType (cacheStorageType)**
+### EnumCacheStorageType (cacheStorageType)
+
 - `LOCAL` - Local cache (per worker instance)
 - `DISTRIBUTED` - Distributed cache (shared across all workers)
 
-**EnumCacheHandlingAction (handlingAction)**
+### EnumCacheHandlingAction (handlingAction)
 - `CONTINUE` - Return cached response and continue to backend (for logging/monitoring)
 - `STOP` - Return cached response and stop (do not call backend)
 
-**Variable Object (for variableList when cacheKeyType=CUSTOM):**
+### Variable Object (for variableList when cacheKeyType=CUSTOM)
 
-See [Variable Definition](../../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](../../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../../03-appendix/variable-definition.md#enumvariableparametertype) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../../03-appendix/variable-definition.md#enummessagecontenttype) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../../03-appendix/variable-definition.md#enumvariablecontextvalue) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
 
-**Variable Types:**
+### Variable Types
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query/path/form parameter
 - `BODY` - Extract from request/response body (XML, JSON, or raw)
@@ -169,7 +173,8 @@ See [Variable Definition](../../../../03-appendix/variable-definition.md) for co
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required field `handlingAction`
 - Invalid enum values
 - Invalid cache configuration

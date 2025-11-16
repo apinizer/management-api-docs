@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/ipGroups/{ipGroupName}/ips/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,9 +38,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group.md#request-body-fields) for field descriptions.
+Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - Only the specified IPs are removed
 - IPs not in the group are ignored (no error)
 - Empty list will result in no changes

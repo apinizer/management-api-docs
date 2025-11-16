@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/export/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -44,17 +45,20 @@ None.
 
 The response is a ZIP file containing the API Proxy export.
 
-**Headers:**
+### Headers
+
 - `Content-Type: application/octet-stream`
 - `Content-Disposition: attachment; filename="apiProxyExportFile.zip"`
 
-**Response Body:**
+### Response Body
+
 - Binary ZIP file containing:
   - API Proxy JSON definition file
   - All associated policies
   - All configurations and settings
 
-**ZIP File Contents:**
+### ZIP File Contents
+
 - `{apiProxyName}.json` - Complete API Proxy definition in JSON format
 - Contains all endpoints, policies, settings, routing configurations, etc.
 
@@ -85,7 +89,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Empty `projectName` or `apiProxyName`
 - API Proxy does not exist in the project
 - Project does not exist or user does not have access

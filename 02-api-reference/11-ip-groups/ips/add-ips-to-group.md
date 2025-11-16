@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/ipGroups/{ipGroupName}/ips/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -78,12 +79,14 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | ipList | array[string] | Yes | - | List of IP addresses or CIDR ranges to add |
 
-**IP Address Formats:**
+### IP Address Formats
+
 - Individual IP addresses: `192.168.1.100`
 - CIDR ranges: `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`
 - IPv4 format only
 
-**Notes:**
+### Notes
+
 - `ipList` must not be empty
 - IPs are added to the existing list
 - Duplicate IPs are ignored (not added twice)

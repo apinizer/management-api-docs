@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/metadata
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -89,13 +90,14 @@ Authorization: Bearer YOUR_TOKEN
 | categoryList | array[string] | No | - | List of category names for API Proxy organization |
 | sharingType | string | No | - | Sharing type for API Proxy. See [EnumSharingType](#enumsharingtype) |
 
-**EnumSharingType (sharingType)**
+### EnumSharingType (sharingType)
 - `BOTH` - Share with both internal and external users
 - `NONE` - Do not share (private)
 - `EXTERNAL` - Share only with external users
 - `INTERNAL` - Share only with internal users
 
-**Notes:**
+### Notes
+
 - All fields are optional
 - At least one field must be provided
 - If `name` is provided, it must be unique within the project
@@ -127,7 +129,8 @@ Authorization: Bearer YOUR_TOKEN
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Provided `name` already exists in the project
 - Invalid `sharingType` value
 

@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/apiProxyGroups/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -68,7 +69,7 @@ None.
 | resultList | array[object] | List of API Proxy Groups |
 | resultCount | integer | Total number of API Proxy Groups |
 
-**API Proxy Group Object:**
+### API Proxy Group Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -76,7 +77,8 @@ None.
 | name | string | API Proxy Group name |
 | description | string | API Proxy Group description |
 
-**Notes:**
+### Notes
+
 - Returns only basic information (id, name, description)
 - Empty list (`[]`) is returned if no groups exist
 - `resultCount` is 0 if no groups exist

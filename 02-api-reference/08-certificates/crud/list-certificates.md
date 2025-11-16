@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/certificates/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -80,7 +81,7 @@ None.
 | success | boolean | Indicates if the request was successful |
 | resultList | array[object] | List of certificates |
 
-**Certificate Object:**
+### Certificate Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -88,7 +89,7 @@ None.
 | description | string | Certificate description |
 | certificateEnvironmentList | array[object] | List of certificate environments. See [Certificate Environment Object](#certificate-environment-object) |
 
-**Certificate Environment Object:**
+### Certificate Environment Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -100,7 +101,8 @@ None.
 | subjectDn | string | Subject Distinguished Name (DN) of the certificate |
 | alias | string | Certificate alias (unique per environment) |
 
-**Notes:**
+### Notes
+
 - Certificate content is base64-encoded
 - Each certificate can be deployed to multiple environments
 - Each environment has its own alias

@@ -257,7 +257,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | addUserToHeader | boolean | No | false | Add authenticated user to header |
 | userHeaderName | string | No* | - | Header name for authenticated user (required if addUserToHeader=true) |
 
-**Note:** 
+### Note
+
 - `usernameVar` is required.
 - If `checkPassword: true`, `passwordVar` is required.
 - If `addUserToHeader: true`, `userHeaderName` is required.
@@ -274,19 +275,22 @@ Variable object with the following fields:
 | bodyXPath | string | No* | XPath (required if type=BODY for XML) |
 | contextValue | string | No* | Context value (required if type=CONTEXT_VALUES) |
 
-**Enum: type (EnumVariableType)**
+### EnumVariableType
+
 - `HEADER` - Extract from HTTP header
 - `PARAMETER` - Extract from query/path parameter
 - `BODY` - Extract from request body (JSON path or XPath)
 - `CONTEXT_VALUES` - Extract from context values
 - `CUSTOM` - Extract from custom variable
 
-**JSON Path Examples:**
+### JSON Path Examples
+
 - `$.username` - Root level field
 - `$.user.name` - Nested field
 - `$.users[0].name` - Array element
 
-**XPath Examples:**
+### XPath Examples
+
 - `/root/username` - Absolute path
 - `//username` - Anywhere in document
 - `/root/user[@id='1']/name` - With attribute condition

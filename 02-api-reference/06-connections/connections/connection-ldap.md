@@ -300,28 +300,32 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | useSsl | boolean | No | false | Enable SSL/TLS encryption (use `ldaps://` in serverAddress) |
 | selectedEnvironmentId | string | No | null | Selected environment ID |
 
-**EnumLdapRequireCertificateType (requireCertificateType)**
+### EnumLdapRequireCertificateType (requireCertificateType)
+
 - `NOT_REQUIRED` - No certificate validation (default)
 - `REQUIRED_CN` - Certificate Common Name (CN) must match server hostname
 - `REQUIRED_AN_PN` - Certificate Alternative Name or Principal Name must match
 
-**EnumSearchScope (searchScope)**
+### EnumSearchScope (searchScope)
 - `OBJECT` - Search only the base object itself
 - `ONE_LEVEL` - Search immediate children of base object
 - `SUBTREE` - Search base object and all descendants (default, most common)
 
-**Server Address Format:**
+### Server Address Format
+
 - LDAP: `ldap://hostname:389` (standard port 389)
 - LDAPS: `ldaps://hostname:636` (secure port 636)
 - Can include additional connection parameters
 
-**LDAP Filter Examples:**
+### LDAP Filter Examples
+
 - `(uid={0})` - Search by UID attribute (OpenLDAP)
 - `(sAMAccountName={0})` - Search by sAMAccountName (Active Directory)
 - `(cn={0})` - Search by Common Name
 - `(&(objectClass=person)(uid={0}))` - Combined filter with object class
 
-**Notes:**
+### Notes
+
 - `serverAddress`, `username`, `password`, and `baseDn` are required.
 - `serverAddress` format: `ldap://host:port` or `ldaps://host:port`
 - `username` is the bind DN (Distinguished Name) for LDAP authentication.

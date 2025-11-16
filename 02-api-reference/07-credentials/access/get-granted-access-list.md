@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/credentials/{username}/access/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -69,18 +70,20 @@ None.
 | success | boolean | Indicates if the request was successful |
 | resultList | array[object] | List of granted access items |
 
-**Access Item Object:**
+### Access Item Object
 
 | Field | Type | Description |
 |-------|------|-------------|
 | name | string | Name of the API Proxy or API Proxy Group |
 | type | string | Type of access. See [EnumAccessType](#enumaccesstype) |
 
-**EnumAccessType (type):**
+### EnumAccessType (type)
+
 - `API_PROXY` - Access to a specific API Proxy
 - `API_PROXY_GROUP` - Access to an API Proxy Group
 
-**Notes:**
+### Notes
+
 - Returns both API Proxy and API Proxy Group accesses
 - Empty list (`[]`) is returned if credential has no access
 - Only shows accesses within the project scope

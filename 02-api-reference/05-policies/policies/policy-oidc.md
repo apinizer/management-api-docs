@@ -272,24 +272,28 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | disableUserinfoHeader | boolean | No | false | Disable userinfo header in response |
 | userinfoHeaderName | string | No | "UserInfo" | Userinfo header name |
 
-**Enum: flowType (EnumOIDCFlowType)**
+### EnumOIDCFlowType
+
 - `AUTHORIZATION_CODE` - Authorization Code Flow (recommended, most secure)
 - `IMPLICIT` - Implicit Flow (less secure, deprecated)
 - `HYBRID` - Hybrid Flow (combines authorization code and implicit)
 - `OAUTH2_AUTHORIZATION_CODE` - OAuth 2.0 Authorization Code Flow (without OIDC)
 
-**Enum: authenticationMode (EnumOIDCAuthenticationMode)**
+### EnumOIDCAuthenticationMode
+
 - `EXTERNAL_ONLY` - External OIDC Provider Only
 - `INTERNAL_ONLY` - Internal Apinizer Credentials Only
 - `HYBRID` - Hybrid - External OIDC + Internal Credentials
 
-**JWT Signing Algorithms:**
+### JWT Signing Algorithms
+
 - `RS256`, `RS384`, `RS512` - RSA with SHA-256/384/512
 - `ES256`, `ES384`, `ES512` - ECDSA with SHA-256/384/512
 - `PS256`, `PS384`, `PS512` - RSASSA-PSS with SHA-256/384/512
 - `EdDSA` - Edwards-curve Digital Signature Algorithm
 
-**Note:** 
+### Note
+
 - `issuer`, `authorizationEndpoint`, `tokenEndpoint`, `clientId`, and `redirectUri` are required.
 - `scopes` must contain at least "openid" for OIDC flows.
 - If `validateJwtSignature: true`, `jwksEndpoint` is required.
@@ -305,7 +309,8 @@ Each role mapping is an object with the following fields:
 | roleName | string | Yes | - | Apinizer role name to assign when claim matches |
 | required | boolean | No | false | Whether this is a required role mapping |
 
-**Claim Path Examples:**
+### Claim Path Examples
+
 - `"roles"` - Simple claim name
 - `"groups"` - Groups claim
 - `"$.realm_access.roles"` - JSONPath for nested claim

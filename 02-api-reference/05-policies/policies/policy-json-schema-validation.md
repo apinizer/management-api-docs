@@ -189,13 +189,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | pathForBody | string | Yes | - | JSONPath expression to locate JSON body to validate |
 | schemaDefinitionList | array | Yes | - | List of JSON schema definitions (at least one required) |
 
-**JSONPath Examples:**
+### JSONPath Examples
+
 - `$` - Root of JSON document
 - `$.data` - Data property at root
 - `$.users[0]` - First element in users array
 - `$.request.body` - Nested path
 
-**Note:** 
+### Note
+
 - `pathForBody` must be a valid JSONPath expression.
 - `schemaDefinitionList` must contain at least one schema definition.
 
@@ -210,7 +212,8 @@ Each schema definition is an object with the following fields:
 | targetNamespace | string | No | null | Target namespace (for XML compatibility) |
 | rootSchema | boolean | No | false | Whether this is the root schema |
 
-**JSON Schema Format:**
+### JSON Schema Format
+
 The `schemaBody` must be a valid JSON Schema (draft-07 or compatible). Example:
 ```json
 {

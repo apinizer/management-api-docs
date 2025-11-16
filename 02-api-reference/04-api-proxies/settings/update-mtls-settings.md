@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/settings/mtls/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -62,7 +63,8 @@ Authorization: Bearer YOUR_TOKEN
 | supportedProtocolList | array | No | [] | List of supported TLS/SSL protocols |
 | hostnameVerifierType | string | No | NOOP | Hostname verifier type |
 
-**Enum: supportedProtocolList items (EnumSSLContextProtocolType)**
+### EnumSSLContextProtocolType
+
 - `TLS_1_3` - TLS 1.3 (Java name: "TLSv1.3")
 - `TLS_1_2` - TLS 1.2 (Java name: "TLSv1.2")
 - `TLS_1_1` - TLS 1.1 (Java name: "TLSv1.1")
@@ -71,7 +73,8 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** If `supportedProtocolList` is empty, all protocols are supported.
 
-**Enum: hostnameVerifierType (EnumHostnameVerifierType)**
+### EnumHostnameVerifierType
+
 - `NOOP` - No hostname verification (not recommended for production)
 - `DEFAULT` - Default hostname verification (RFC 2818, RFC 6125)
 - `STRICT` - Strict hostname verification (exact match required)

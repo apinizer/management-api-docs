@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxies/import/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -40,7 +41,8 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | apiProxyExportFile | file | Yes | ZIP file containing the API Proxy export. Must have `.zip` extension |
 
-**Notes:**
+### Notes
+
 - File must be a valid ZIP archive
 - File must end with `.zip` extension (case-insensitive)
 - ZIP file must contain a valid API Proxy export JSON file
@@ -88,7 +90,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Empty `projectName`
 - Empty or missing file
 - File is not a ZIP archive

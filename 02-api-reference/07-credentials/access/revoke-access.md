@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/credentials/{username}/access/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -75,9 +76,10 @@ Same structure as Grant Access. Object containing an array of access objects.
 
 #### Request Body Fields
 
-Same as Grant Access. See [Grant Access](./grant-access.md#request-body-fields) for field descriptions.
+Same as Grant Access. See [Grant Access](./grant-access.md) for field descriptions.
 
-**Notes:**
+### Notes
+
 - Request body must be an object with `credentialAccessList` array
 - Each access object must have `name` and `type`
 - `name` must match an existing API Proxy or API Proxy Group
@@ -129,7 +131,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Empty access object
 - Missing `name` or `type` field
 - API Proxy or API Proxy Group does not exist

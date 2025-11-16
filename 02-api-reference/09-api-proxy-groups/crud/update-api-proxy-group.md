@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/apiProxyGroups/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -36,9 +37,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create API Proxy Group. See [Create API Proxy Group](./create-api-proxy-group.md#request-body-fields) for field descriptions.
+Same structure as Create API Proxy Group. See [Create API Proxy Group](./create-api-proxy-group.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - `name` must match the existing API Proxy Group name (cannot be changed)
 - `clientRoute` can be updated
 - All fields are required (same as create)

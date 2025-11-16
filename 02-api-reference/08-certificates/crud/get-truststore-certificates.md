@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/certificates/truststore/{environmentName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -67,9 +68,10 @@ None.
 
 #### Response Fields
 
-Same as List Certificates. See [List Certificates](./list-certificates.md#response-fields) for field descriptions.
+Same as List Certificates. See [List Certificates](./list-certificates.md) for field descriptions.
 
-**Notes:**
+### Notes
+
 - Returns certificates from the environment's truststore
 - Only available for admin project
 - Includes all certificates stored in the truststore

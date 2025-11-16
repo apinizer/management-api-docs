@@ -14,7 +14,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -72,7 +73,8 @@ This endpoint does not require a request body.
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Connection name does not exist
 - Connection name is empty
 

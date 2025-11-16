@@ -152,7 +152,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](#policyoperationmetadatadto) |
 | condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](#policyconditiondto) |
 
-**PolicyOperationMetadataDTO (operationMetadata)**
+### PolicyOperationMetadataDTO (operationMetadata)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](#enumpolicytargetscope) |
@@ -163,29 +164,38 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
 
-**EnumPolicyTargetScope (operationMetadata.targetScope)**
+### EnumPolicyTargetScope (operationMetadata.targetScope)
+
 - `API_PROXY` - Apply to entire API Proxy
 - `ENDPOINT` - Apply to specific endpoint
 - `GLOBAL` - Apply globally
 
-**EnumPolicyTargetPipeline (operationMetadata.targetPipeline)**
+### EnumPolicyTargetPipeline (operationMetadata.targetPipeline)
+
 - `REQUEST` - Request pipeline
 - `RESPONSE` - Response pipeline
 - `ERROR` - Error pipeline
 
-**PolicyConditionDTO (condition)**
+### PolicyConditionDTO (condition)
+
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](#enumconditioncriteria) |
 | rules | array | Yes | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
 
-**EnumConditionCriteria (condition.criteria)**
+### EnumConditionCriteria (condition.criteria)
+
 - `ALWAYS` - Always execute policy
 - `IF_ALL_MATCH` - Execute if all rules match
 - `IF_ANY_MATCH` - Execute if any rule matches
 - `IF_NONE_MATCH` - Execute if no rules match
 
-**Notes:**
+### ConditionRuleDTO (condition.rules item)
+
+See [Add Policy](../crud/add-policy.md#conditionrulelist-item) for detailed documentation. The structure matches the `ConditionRuleDTO` defined in the Add Policy documentation.
+
+### Notes
+
 - This policy type is currently under development.
 - Policy Group specific fields may be added in future versions.
 - Currently, Policy Group acts as a container for organizing policies.

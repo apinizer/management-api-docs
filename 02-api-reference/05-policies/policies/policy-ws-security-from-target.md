@@ -251,7 +251,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | verKeyStoreName | string | No* | null | Verification keystore name (required if verExists=true) |
 | allowCaseInsensitiveId | boolean | No | false | Allow case insensitive ID attribute matching (for cross-platform compatibility) |
 
-**Note:**
+### Note
+
 - At least one of `decExists` or `verExists` must be `true`.
 - If `decExists: true`, `decKeyStoreName` is required.
 - If `verExists: true`, `verKeyStoreName` is required.

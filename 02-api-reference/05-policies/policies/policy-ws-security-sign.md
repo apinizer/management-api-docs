@@ -317,12 +317,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | sigKeyIdType | string | No | null | Signature key identifier type. See [EnumWsSecurityKeyIdentifierType](#enumwssecuritykeyidentifiertype) |
 | sigSigAlgorithm | string | Yes | - | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](#enumwssecuritysignaturealgorithm) |
 | sigC14n | string | Yes | - | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](#enumwssecuritysignaturecanonicalization) |
-| sigDigAlgorithm | string | Yes | - | Signature digest algorithm. See [EnumWsSecuritySignatureDigestAlgorithm](#enumwssecuritysignaturedgestalgorithm) |
+| sigDigAlgorithm | string | Yes | - | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](#enum-ws-security-signature-digest-algorithm) |
 | sigUseSingleCert | boolean | No | false | Use single certificate for signature |
 | sigWsiBSPCompliant | boolean | No | false | WSI BSP compliance for signature |
 | sigKeyStoreName | string | Yes | - | Signature keystore name |
 
-**Enum: sigKeyIdType (EnumWsSecurityKeyIdentifierType)**
+### EnumWsSecurityKeyIdentifierType
+
 - `BINARY_SECURITY_TOKEN` - Binary Security Token
 - `ISSUER_NAME_AND_SERIAL_NUMBER` - Issuer Name and Serial Number
 - `X509_CERTIFICATE` - X509 Certificate (recommended)
@@ -332,7 +333,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `EMBED_SECURITY_TOKEN_REFERENCE` - Embed Security Token Reference
 - `CUSTOM_KEY_INFO` - Custom Key Info (requires sigCustomKeyIdentifier)
 
-**Enum: sigSigAlgorithm (EnumWsSecuritySignatureAlgorithm)**
+### EnumWsSecuritySignatureAlgorithm
+
 - `RSA_SHA1` - RSA SHA-1 (http://www.w3.org/2000/09/xmldsig#rsa-sha1)
 - `RSA_SHA256` - RSA SHA-256 (http://www.w3.org/2001/04/xmldsig-more#rsa-sha256) (recommended)
 - `RSA_SHA384` - RSA SHA-384 (http://www.w3.org/2001/04/xmldsig-more#rsa-sha384)
@@ -348,7 +350,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `HMAC_SHA384` - HMAC SHA-384 (http://www.w3.org/2001/04/xmldsig-more#hmac-sha384)
 - `HMAC_SHA512` - HMAC SHA-512 (http://www.w3.org/2001/04/xmldsig-more#hmac-sha512)
 
-**Enum: sigC14n (EnumWsSecuritySignatureCanonicalization)**
+### EnumWsSecuritySignatureCanonicalization
+
 - `C14N_OMIT_COMMENTS` - C14N omit comments (http://www.w3.org/TR/2001/REC-xml-c14n-20010315)
 - `C14N_WITH_COMMENTS` - C14N with comments (http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments)
 - `C14N_EXCL_OMIT_COMMENTS` - Exclusive C14N omit comments (http://www.w3.org/2001/10/xml-exc-c14n#) (recommended)
@@ -356,7 +359,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `C14N_11_OMIT_COMMENTS` - C14N 1.1 omit comments (http://www.w3.org/2006/12/xml-c14n11)
 - `C14N_11_WITH_COMMENTS` - C14N 1.1 with comments (http://www.w3.org/2006/12/xml-c14n11#WithComments)
 
-**Enum: sigDigAlgorithm (EnumWsSecuritySignatureDigestAlgorithm)**
+### Enum Ws Security Signature Digest Algorithm
+
 - `SHA1` - SHA-1 (http://www.w3.org/2000/09/xmldsig#sha1)
 - `SHA256` - SHA-256 (http://www.w3.org/2001/04/xmlenc#sha256) (recommended)
 - `SHA384` - SHA-384 (http://www.w3.org/2001/04/xmldsig-more#sha384)
@@ -368,7 +372,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `HMAC_MD5` - HMAC MD5 (http://www.w3.org/2001/04/xmldsig-more#hmac-md5)
 - `MD5` - MD5 (http://www.w3.org/2001/04/xmldsig-more#md5)
 
-**Note:**
+### Note
+
 - `sigKeyStoreName`, `sigSigAlgorithm`, `sigC14n`, and `sigDigAlgorithm` are required.
 - If `sigKeyIdType: CUSTOM_KEY_INFO` and `sigCustomKeyIdentifier` is provided, `sigCustomKeyIdentifierValueType` is required.
 
@@ -380,11 +385,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | namespace | string | Yes | - | Part namespace URI |
 | encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](#enumwssecurityencryptionpartencodetype) |
 
-**Enum: encodeType (EnumWsSecurityEncryptionPartEncodeType)**
+### EnumWsSecurityEncryptionPartEncodeType
+
 - `CONTENT` - Sign content only
 - `ELEMENT` - Sign entire element
 
-**Common Part Names and Namespaces:**
+### Common Part Names and Namespaces
+
 - Body: `name: "Body"`, `namespace: "http://schemas.xmlsoap.org/soap/envelope/"`
 - Timestamp: `name: "Timestamp"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`
 - UsernameToken: `name: "UsernameToken"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"`

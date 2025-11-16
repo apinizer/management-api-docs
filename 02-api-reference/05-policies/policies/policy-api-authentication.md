@@ -349,24 +349,28 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | authApiId | string | No* | - | Authentication API ID (alternative to conditional expressions) |
 | apiAuthCondExpressionList | array | No* | [] | List of conditional authentication expressions (required if authApiId not provided) |
 
-**Enum: authType (EnumPolicyApiAuthenticationAuthType)**
+### EnumPolicyApiAuthenticationAuthType
+
 - `BASIC` - Plain text username/password authentication
 - `BASE64` - Base64 encoded authentication
 - `DIGEST` - HTTP Digest authentication
 - `API` - API-based authentication
 
-**Enum: sendType (EnumPolicyApiAuthenticationSendType)**
+### EnumPolicyApiAuthenticationSendType
+
 - `HEADER` - Send credentials via HTTP headers
 - `PARAM` - Send credentials via query/path parameters
 - `BODY_MESSAGE` - Send credentials via body message template
 - `BODY_INJECTION` - Inject credentials into existing body
 
-**Enum: messageContentType (EnumMessageContentType)**
+### EnumMessageContentType
+
 - `XML` - XML message content
 - `JSON` - JSON message content
 - `ALL_BODY` - All body content types
 
-**Note:** 
+### Note
+
 - Either `authApiId` or `apiAuthCondExpressionList` must be provided.
 - If using `apiAuthCondExpressionList`, `authType` and `sendType` are required.
 - Field name requirements vary by `authType` and `sendType` combination.
@@ -381,7 +385,8 @@ Each conditional expression is an object with the following fields:
 | password | string | Yes | - | Password for authentication (encrypted) |
 | policyCondition | object | No | null | Policy condition for conditional authentication |
 
-**Note:** 
+### Note
+
 - `username` and `password` are required.
 - `password` is encrypted when stored.
 - `policyCondition` allows conditional authentication based on request context.

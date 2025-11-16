@@ -14,7 +14,8 @@ GET /apiops/reports/organization-api-data-model-access
 
 Requires a Personal API Access Token with admin or analyzer privileges.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -62,14 +63,15 @@ None.
 | success | boolean | Indicates if the request was successful |
 | result | object | Report result. See [Report Result Object](#report-result-object) |
 
-**Report Result Object (result):**
+### Report Result Object (result)
 
 | Field | Type | Description |
 |-------|------|-------------|
 | apiProxyList | array[object] | List of API Proxy access information |
 | dataModelList | array[object] | List of data model access information |
 
-**API Proxy Access Object (apiProxyList item):**
+### API Proxy Access Object (apiProxyList item)
+
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -77,13 +79,15 @@ None.
 | sharingType | string | Sharing type. See [EnumSharingType](#enumsharingtype) |
 | accessList | array[object] | List of access information |
 
-**EnumSharingType (sharingType):**
+### EnumSharingType (sharingType)
+
 - `EXTERNAL` - Shared externally
 - `INTERNAL` - Shared internally only
 - `BOTH` - Shared both internally and externally
 - `NONE` - Not shared
 
-**Notes:**
+### Notes
+
 - Report includes only APIs with `EXTERNAL` or `BOTH` sharing types
 - Empty lists are returned if no data matches the criteria
 - Only accessible by sysAdmin or sysAnalyzer users

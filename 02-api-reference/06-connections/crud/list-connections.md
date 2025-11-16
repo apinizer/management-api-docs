@@ -14,7 +14,8 @@ GET /apiops/projects/{projectName}/connections/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```

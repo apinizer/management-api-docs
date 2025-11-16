@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/rlcl/{rlclName}/endpoints/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -120,7 +121,7 @@ Authorization: Bearer YOUR_TOKEN
 
 The request body is an object containing an array of endpoint rate limit objects.
 
-**Endpoint Rate Limit Object:**
+### Endpoint Rate Limit Object
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -138,7 +139,8 @@ The request body is an object containing an array of endpoint rate limit objects
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
 | enabled | boolean | No | true | Enable rate limiting for this endpoint |
 
-**EnumHttpRequestMethod (endpointHTTPMethod):**
+### EnumHttpRequestMethod (endpointHTTPMethod)
+
 - `GET` - GET method
 - `POST` - POST method
 - `PUT` - PUT method
@@ -149,29 +151,32 @@ The request body is an object containing an array of endpoint rate limit objects
 - `TRACE` - TRACE method
 - `ALL` - All HTTP methods
 
-**EnumRateLimitTimeInterval (timeInterval):**
+### EnumRateLimitTimeInterval (timeInterval)
+
 - `ONE_SECOND` - One second
 - `ONE_MINUTE` - One minute
 - `ONE_HOUR` - One hour
 - `ONE_DAY` - One day
 - `ONE_MONTH` - One month
 
-**EnumCacheErrorHandlingType (cacheErrorHandlingType):**
+### EnumCacheErrorHandlingType (cacheErrorHandlingType)
+
 - `FAIL` - Fail request when cache error occurs
 - `CONTINUE` - Continue processing when cache error occurs
 
-**EnumIntervalWindowType (timeIntervalWindowType):**
+### EnumIntervalWindowType (timeIntervalWindowType)
+
 - `FIXED` - Fixed window (resets at fixed intervals)
 - `SLIDING` - Sliding window (continuous rolling window)
 
-**Variable Object (targetVariable):**
+### Variable Object (targetVariable)
 
-See [Variable Definition](../../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](../../../../03-appendix/variable-definition.md#variable-types) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -182,13 +187,14 @@ See [Variable Definition](../../../../03-appendix/variable-definition.md) for co
 | contextValue | string | No* | Context value (required if type=CONTEXT_VALUES) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 
-**Request Body Object:**
+### Request Body Object
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | endpointRateLimitList | array | Yes | Array of endpoint rate limit objects |
 
-**Notes:**
+### Notes
+
 - Request body must be an object with `endpointRateLimitList` array (even for single endpoint)
 - `apiProxyName` is the API Proxy name
 - `endpointName` is the endpoint path (e.g., "/users"), not including HTTP method

@@ -375,7 +375,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | securityOrCommunityName | string | Yes | - | Community name (v1/v2c) or security name (v3) |
 | retryCount | integer | No | - | Number of retry attempts |
 | timeout | integer | No | - | Timeout in milliseconds |
-| messageType | string | No | - | Message type. See [EnumSnmpMessageType](#enumsnpmessagetype) |
+| messageType | string | No | - | Message type. See [Enum Snmp Message Type](#enum-snmp-message-type) |
 | pduOidForMessage | string | Yes | - | OID for message content |
 | pduOidForTime | string | No | - | OID for timestamp |
 | pduVariableMap | object | No | {} | Map of OID-value pairs for PDU variables |
@@ -392,21 +392,25 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | usmUserPrivacyProtocol | string | No | - | Privacy protocol (v3 only, required if securityLevel=AUTH_PRIV). See [EnumSnmpPrivacyProtocol](#enumsnmpprivacyprotocol) |
 | privPassphrase | string | No | - | Privacy passphrase (v3 only, required if securityLevel=AUTH_PRIV, secret field) |
 
-**EnumSnmpVersion (version)**
+### EnumSnmpVersion (version)
+
 - `V1` - SNMP version 1 (default)
 - `V2c` - SNMP version 2c (community-based)
 - `V3` - SNMP version 3 (user-based security)
 
-**EnumSnmpMessageType (messageType)**
+### Enum Snmp Message Type (messageType)
+
 - `TRAP` - SNMP trap (unacknowledged)
 - `INFORM` - SNMP inform (acknowledged)
 
-**EnumSnmpSecurityLevel (securityLevel) - v3 only**
+### EnumSnmpSecurityLevel (securityLevel) - v3 only
+
 - `NOAUTH_NOPRIV` - No authentication, no privacy
 - `AUTH_NOPRIV` - Authentication, no privacy
 - `AUTH_PRIV` - Authentication and privacy
 
-**EnumSnmpPrivacyProtocol (usmUserPrivacyProtocol, privacyProtocolList)**
+### EnumSnmpPrivacyProtocol (usmUserPrivacyProtocol, privacyProtocolList)
+
 - `PrivAES128` - AES 128-bit encryption
 - `PrivAES192` - AES 192-bit encryption
 - `PrivAES192with3DES` - AES 192-bit with 3DES
@@ -415,7 +419,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `PrivDES` - DES encryption
 - `Priv3DES` - 3DES encryption
 
-**EnumSnmpAuthenticationProtocol (usmUserAuthenticationProtocol)**
+### EnumSnmpAuthenticationProtocol (usmUserAuthenticationProtocol)
 - `AuthMD5` - MD5 authentication
 - `AuthSHA` - SHA-1 authentication
 - `AuthHMAC128SHA224` - HMAC-SHA224 authentication
@@ -423,7 +427,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `AuthHMAC256SHA384` - HMAC-SHA384 authentication
 - `AuthHMAC384SHA512` - HMAC-SHA512 authentication
 
-**Notes:**
+### Notes
+
 - `version`, `connectionString`, `securityOrCommunityName`, and `pduOidForMessage` are required.
 - `connectionString` format: `protocol:host/port` (e.g., `udp:192.168.1.2/162`, `tcp:192.168.1.2/162`)
 - For SNMP v1/v2c: `securityOrCommunityName` is the community name (e.g., "public").

@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/environmentVariables/{name}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,9 +38,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md#request-body-fields) for field descriptions.
+Same structure as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - `name` in path is the current name (used to find the variable)
 - `name` in body can be different (to rename the variable)
 - If renaming, new name must be unique
@@ -47,7 +49,7 @@ Same structure as Create Environment Variable. See [Create Environment Variable]
 
 ### Response
 
-Same as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md#response) for response format.
+Same as Create Environment Variable. See [Create Environment Variable](./create-environment-variable.md) for response format.
 
 ## cURL Example
 

@@ -414,27 +414,32 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | decodedClaimsTargetForDataManipulation | string | No | BODY | Target for decoded claims data manipulation. See [EnumJoseTarget](#enumjosetarget) |
 | decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for decoded claims target (required if decodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
 
-**Enum: joseTarget (EnumJoseTarget)**
+### EnumJoseTarget
+
 - `BODY` - JOSE token is in request/response body
 - `AUTHORIZATION_HEADER` - JOSE token is in Authorization header
 - `CHOOSE_FROM_VARIABLE` - JOSE token location is specified by variable (requires `joseTargetVariable`)
 
-**Enum: clientSourcePart (EnumJoseUserSourcePart)**
+### EnumJoseUserSourcePart
+
 - `HEADER` - Extract client information from JOSE header
 - `CLAIMS` - Extract client information from JOSE claims (default)
 - `VARIABLE` - Extract client information from variable (requires `clientSourceVariable`)
 
-**Enum: stripAndDecode (EnumJoseStripAndDecode)**
+### EnumJoseStripAndDecode
+
 - `NONE` - Do not strip or decode (default)
 - `ALL` - Strip and decode all claims
 - `PARTIAL` - Strip and decode only specified claims (requires `jwtClaimsToDecode`)
 
-**Enum: decodedClaimsTargetForDataManipulation (EnumJoseTarget)**
+### EnumJoseTarget
+
 - `BODY` - Place decoded claims in request/response body
 - `AUTHORIZATION_HEADER` - Place decoded claims in Authorization header
 - `CHOOSE_FROM_VARIABLE` - Place decoded claims in variable (requires `decodedClaimsTargetVariableForDataManipulation`)
 
-**Note:**
+### Note
+
 - If `joseTarget: CHOOSE_FROM_VARIABLE`, `joseTargetVariable` is required.
 - If `clientSourcePart: VARIABLE`, `clientSourceVariable` is required.
 - If `validateSign: true` and `validateByIssuer: false`, `jwkIdForValidationAndSign` is required.
@@ -466,24 +471,28 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | scriptLanguage | string | No | - | Script language: `GROOVY`, `JAVASCRIPT` (required if initWithScript=true) |
 | scriptBody | string | No | - | Script body (required if initWithScript=true) |
 
-**Enum: type (EnumVariableType)**
+### EnumVariableType
+
 - `HEADER` - HTTP header
 - `PARAMETER` - Query/path/form parameter
 - `BODY` - Request/response body
 - `CONTEXT_VALUES` - Context values (e.g., current time, IP address)
 - `CUSTOM` - Custom variable (script-based)
 
-**Enum: paramType (EnumVariableParameterType)**
+### EnumVariableParameterType
+
 - `QUERY` - Query parameter
 - `PATH` - Path parameter
 - `FORM` - Form parameter
 
-**Enum: messageContentType (EnumMessageContentType)**
+### EnumMessageContentType
+
 - `JSON` - JSON content
 - `XML` - XML content
 - `FORM` - Form content
 
-**Enum: contextValue (EnumVariableContextValue)**
+### EnumVariableContextValue
+
 - `CURRENT_TIME` - Current timestamp
 - `CURRENT_DATE` - Current date
 - `CLIENT_IP` - Client IP address
@@ -514,7 +523,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `ZONE_ID` - Zone ID
 - `TIMEZONE_ID` - Timezone ID
 
-**Enum: scriptLanguage (EnumScriptType)**
+### EnumScriptType
+
 - `GROOVY` - Groovy script
 - `JAVASCRIPT` - JavaScript script
 
@@ -525,7 +535,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | value | string | Yes | - | Claim value |
 | valueType | string | No | STRING | Value type. See [MapValueType](#mapvaluetype) |
 
-**Enum: valueType (MapValueType)**
+### MapValueType
+
 - `STRING` - String value
 - `BOOLEAN` - Boolean value
 - `INTEGER` - Integer value

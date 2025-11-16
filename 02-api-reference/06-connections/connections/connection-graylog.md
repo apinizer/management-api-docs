@@ -326,16 +326,18 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | appendToAttributes | boolean | No | true | Append additional data to GELF attributes |
 | appendToMessage | boolean | No | true | Append additional data to GELF message |
 
-**GelfTransports (transportType)**
+### Gelf Transports (transportType)
+
 - `TCP` - TCP transport (reliable, ordered delivery)
 - `UDP` - UDP transport (faster, but unreliable)
 
-**Compression (compressionType)**
+### Compression (compressionType)
+
 - `NONE` - No compression
 - `GZIP` - GZIP compression
 - `ZLIB` - ZLIB compression
 
-**GelfMessageLevel (gelfMessageLevel)**
+### Gelf Message Level (gelfMessageLevel)
 - `EMERGENCY` - Emergency level (0)
 - `ALERT` - Alert level (1)
 - `CRITICAL` - Critical level (2)
@@ -345,7 +347,8 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 - `INFO` - Info level (6)
 - `DEBUG` - Debug level (7)
 
-**Notes:**
+### Notes
+
 - `hostname` is required.
 - `port` defaults to 12201 (standard Graylog GELF port).
 - `transportType` defaults to TCP.

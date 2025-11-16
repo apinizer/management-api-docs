@@ -193,7 +193,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | validateCertificate | boolean | No | true | Validate client certificate |
 | validateACLForIssuer | boolean | No | true | Validate ACL for certificate issuer |
 
-**Note:** 
+### Note
+
 - `validateCertificate`: When `true`, validates client certificate (signature, expiration, chain).
 - `validateACLForIssuer`: When `true`, validates that certificate issuer is in the allowed ACL list.
 - Both validations are enabled by default for maximum security.

@@ -200,7 +200,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | grantType | string | No | PASSWORD | Grant type for token issuance |
 | jwtSignatureAlgorithm | string | Yes | - | JWT signature algorithm |
 
-**Enum: tokenExpiresInUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLI_SECONDS` - Milliseconds
 - `SECONDS` - Seconds
 - `MINUTES` - Minutes
@@ -210,7 +211,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `MONTHS` - Months
 - `YEARS` - Years
 
-**Enum: refreshTokenExpiresInUnit (EnumTimeUnit)**
+### EnumTimeUnit
+
 - `MILLI_SECONDS` - Milliseconds
 - `SECONDS` - Seconds
 - `MINUTES` - Minutes
@@ -220,11 +222,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `MONTHS` - Months
 - `YEARS` - Years
 
-**Enum: grantType (EnumPolicyAuthenticationGrantType)**
+### EnumPolicyAuthenticationGrantType
+
 - `PASSWORD` - Password grant type (username/password)
 - `CLIENT_CREDENTIALS` - Client credentials grant type (client_id/client_secret)
 
-**JWT Signature Algorithms:**
+### JWT Signature Algorithms
+
 Common algorithms supported:
 - `HS256` - HMAC SHA-256 (symmetric)
 - `HS384` - HMAC SHA-384 (symmetric)
@@ -236,7 +240,8 @@ Common algorithms supported:
 - `ES384` - ECDSA SHA-384 (asymmetric)
 - `ES512` - ECDSA SHA-512 (asymmetric)
 
-**Note:** 
+### Note
+
 - If `tokenNeverExpires: false`, both `tokenExpiresInAmount` and `tokenExpiresInUnit` are required.
 - `jwtSignatureAlgorithm` is required.
 - `refreshTokenCount` limits the number of active refresh tokens per user.

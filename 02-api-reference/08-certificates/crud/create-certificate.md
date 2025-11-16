@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/certificates/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -44,7 +45,8 @@ Authorization: Bearer YOUR_TOKEN
 | environmentList | array[string] | Yes | Comma-separated list of environment names to deploy to |
 | pemEncodedFile | file | Yes | PEM-encoded certificate file |
 
-**Notes:**
+### Notes
+
 - `certificateName` must be unique within the project
 - `alias` must be unique per environment (can be same across environments)
 - `environmentList` is comma-separated (e.g., "production,staging")
@@ -144,7 +146,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing required form fields
 - Certificate name already exists
 - Alias already exists in the environment

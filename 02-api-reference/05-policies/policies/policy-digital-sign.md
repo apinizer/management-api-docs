@@ -264,20 +264,24 @@ Each sign definition is an object with the following fields:
 | certificateId | string | No* | null | Certificate ID (required if enumKeyCertificateType=CERTIFICATE) |
 | outputEncodingType | string | No | BASE64 | Output encoding type: `BASE64` or `HEXADECIMAL` |
 
-**Enum: signatureAlgorithm (EnumSignatureAlgorithm)**
+### EnumSignatureAlgorithm
+
 - **RSA algorithms:** `NONEwithRSA`, `MD2withRSA`, `MD5withRSA`, `SHA1withRSA`, `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA`
 - **DSA algorithms:** `NONEwithDSA`, `SHA1withDSA`, `SHA224withDSA`, `SHA256withDSA`
 - **ECDSA algorithms:** `NONEwithECDSA`, `SHA1withECDSA`, `SHA224withECDSA`, `SHA256withECDSA`, `SHA384withECDSA`, `SHA512withECDSA`
 
-**Enum: enumKeyCertificateType (EnumKeyCertificateType)**
+### EnumKeyCertificateType
+
 - `KEY` - Use cryptographic key from CryptoKeyInfo
 - `CERTIFICATE` - Use certificate (extracts private key from certificate)
 
-**Enum: outputEncodingType (EnumEncodingType)**
+### EnumEncodingType
+
 - `BASE64` - Base64 encoding (recommended)
 - `HEXADECIMAL` - Hexadecimal encoding
 
-**Note:** 
+### Note
+
 - `sourceVar` and `signatureVar` are required.
 - `signatureAlgorithm` is required.
 - If `enumKeyCertificateType: KEY`, `cryptoKeyInfoId` is required.

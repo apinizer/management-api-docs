@@ -195,20 +195,23 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | contextValue | string | No* | Context value (required if type=CONTEXT) |
 
-**Enum: Variable Type (type)**
+### type
+
 - `HEADER` - Extract from HTTP header (typically "Authorization")
 - `PARAMETER` - Extract from query/path parameter
 - `BODY` - Extract from request body
 - `CONTEXT` - Extract from context (e.g., CLIENT_IP)
 - `SCRIPT` - Extract using script
 
-**Enum: Context Value (contextValue)**
+### contextValue
+
 - `CLIENT_IP` - Client IP address
 - `REQUEST_URI` - Request URI
 - `REQUEST_METHOD` - HTTP method
 - `USER_AGENT` - User agent string
 
-**Basic Authentication Format:**
+### Basic Authentication Format
+
 The Authorization header should contain: `Basic <base64(username:password)>`
 
 Example: `Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=`

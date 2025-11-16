@@ -12,7 +12,8 @@ The Management API base URL is constructed by appending `/apiops` to your Apiniz
 {management_console_url}/apiops/
 ```
 
-**Example:**
+### Example
+
 - Manager URL: `https://demo.apinizer.com`
 - API Base URL: `https://demo.apinizer.com/apiops/`
 

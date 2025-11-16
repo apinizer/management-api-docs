@@ -236,16 +236,19 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | zoneId | string | No | "+03:00" | Time zone ID (e.g., "+03:00", "Europe/Istanbul") |
 | restrictionList | array | Yes | - | List of time restriction rules (at least one required) |
 
-**Enum: actionType (EnumRestrictionType)**
+### EnumRestrictionType
+
 - `ALLOW` - Allow access during specified time periods
 - `RESTRICT` - Restrict access during specified time periods
 
-**Zone ID Format:**
+### Zone ID Format
+
 - Offset format: `+03:00`, `-05:00`, `+00:00`
 - Zone name: `Europe/Istanbul`, `America/New_York`, `UTC`
 - Must be a valid Java ZoneId
 
-**Note:** 
+### Note
+
 - `restrictionList` must contain at least one restriction rule.
 - When `actionType: ALLOW`, access is allowed only during specified periods.
 - When `actionType: RESTRICT`, access is blocked during specified periods.
@@ -269,11 +272,13 @@ Each restriction is an object with the following fields:
 | endMinute | integer | No* | - | End minute (required if wholeDay=false, 0-60) |
 | endSecond | integer | No* | - | End second (required if wholeDay=false, 0-60) |
 
-**Enum: dayType (EnumDayType)**
+### EnumDayType
+
 - `WEEK` - Restriction applies to specific weekdays
 - `CUSTOM` - Restriction applies to specific dates
 
-**Enum: enumWeekDayList (EnumWeekDays)**
+### EnumWeekDays
+
 - `MONDAY` - Monday
 - `TUESDAY` - Tuesday
 - `WEDNESDAY` - Wednesday
@@ -283,19 +288,22 @@ Each restriction is an object with the following fields:
 - `SUNDAY` - Sunday
 - `ALL` - All days of the week
 
-**Day and Month Values:**
+### Day and Month Values
+
 - `day: 0` - Every day of the month
 - `day: 1-31` - Specific day of the month
 - `month: 0` - Every month
 - `month: 1-12` - Specific month (1=January, 12=December)
 
-**Time Values:**
+### Time Values
+
 - `startHour/endHour`: 0-24 (24-hour format)
 - `startMinute/endMinute`: 0-60
 - `startSecond/endSecond`: 0-60
 - Start time must be before end time
 
-**Note:** 
+### Note
+
 - If `dayType: WEEK`, provide `enumWeekDayList` (at least one weekday).
 - If `dayType: CUSTOM`, provide `day` and `month`.
 - If `wholeDay: false`, provide all time fields (startHour, startMinute, startSecond, endHour, endMinute, endSecond).

@@ -14,7 +14,8 @@ PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpoi
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -99,16 +100,18 @@ Authorization: Bearer YOUR_TOKEN
 | wsaRelatesTo | string | No | null | RelatesTo message ID |
 | wsaRelationShipType | string | No | null | RelationshipType for RelatesTo |
 
-**EnumSoapWsaMustUnderstand (wsaMustUnderstand)**
+### EnumSoapWsaMustUnderstand (wsaMustUnderstand)
+
 - `NONE` - No mustUnderstand attribute (default)
 - `TRUE` - mustUnderstand="true"
 - `FALSE` - mustUnderstand="false"
 
-**EnumSoapWsaVersion (wsaVersion)**
+### EnumSoapWsaVersion (wsaVersion)
 - `V200408` - WS-Addressing 2004/08 (http://schemas.xmlsoap.org/ws/2004/08/addressing)
 - `V200508` - WS-Addressing 2005/08 (http://www.w3.org/2005/08/addressing) (default)
 
-**Notes:**
+### Notes
+
 - This endpoint is only available for SOAP API Proxies.
 - `wsaEnabled: true` enables WS-Addressing headers in SOAP messages.
 - `wsaAddDefaultAction: true` uses the SOAP action from the method definition.

@@ -300,12 +300,14 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | useExplicit | boolean | No | false | Use explicit SSL/TLS (for FTPS only) |
 | sslProtocol | string | No | null | SSL protocol version (e.g., "TLS", "SSL", "TLSv1.2") |
 
-**Enum: protocol (EnumFtpProtocol)**
+### EnumFtpProtocol
+
 - `FTP` - Standard FTP protocol (port 21)
 - `SFTP` - SSH File Transfer Protocol (port 22)
 - `FTPS` - FTP over SSL/TLS (port 21 for explicit, 990 for implicit)
 
-**Note:**
+### Note
+
 - `host`, `username`, and `password` are required.
 - `protocol` is required.
 - For FTPS, either `useImplicit: true` or `useExplicit: true` must be set.

@@ -547,13 +547,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | sigKeyIdType | string | No* | null | Signature key identifier type (required if SIGNATURE is in wsSecurityEntryOrderList). See [EnumWsSecurityKeyIdentifierType](#enumwssecuritykeyidentifiertype) |
 | sigSigAlgorithm | string | No | null | Signature algorithm. See [EnumWsSecuritySignatureAlgorithm](#enumwssecuritysignaturealgorithm) |
 | sigC14n | string | No | null | Signature canonicalization method. See [EnumWsSecuritySignatureCanonicalization](#enumwssecuritysignaturecanonicalization) |
-| sigDigAlgorithm | string | No | null | Signature digest algorithm. See [EnumWsSecuritySignatureDigestAlgorithm](#enumwssecuritysignaturedgestalgorithm) |
+| sigDigAlgorithm | string | No | null | Signature digest algorithm. See [Enum Ws Security Signature Digest Algorithm](#enum-ws-security-signature-digest-algorithm) |
 | sigUseSingleCert | boolean | No | false | Use single certificate for signature |
 | sigWsiBSPCompliant | boolean | No | false | WSI BSP compliance for signature |
 | sigKeyStoreName | string | No* | null | Signature keystore name (required if SIGNATURE is in wsSecurityEntryOrderList) |
 | wsSecurityEntryOrderList | array | Yes | - | WS-Security entry order list (at least one required). See [EnumWsSecurityEntryType](#enumwssecurityentrytype) |
 
-**Enum: wsSecurityEntryOrderList (EnumWsSecurityEntryType)**
+### EnumWsSecurityEntryType
+
 - `TIMESTAMP` - Add Timestamp element
 - `USERNAME_TOKEN` - Add UsernameToken element
 - `ENCRYPTION` - Add Encryption element
@@ -561,11 +562,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 **Note:** The order in the list determines the order of elements in the WS-Security header.
 
-**Enum: unPasswordType (EnumWsSecurityPasswordType)**
+### EnumWsSecurityPasswordType
+
 - `PasswordText` - Plain text password
 - `PasswordDigest` - Password digest (hashed password)
 
-**Enum: encKeyIdType / sigKeyIdType (EnumWsSecurityKeyIdentifierType)**
+### EnumWsSecurityKeyIdentifierType
+
 - `BINARY_SECURITY_TOKEN` - Binary Security Token
 - `ISSUER_NAME_AND_SERIAL_NUMBER` - Issuer Name and Serial Number
 - `X509_CERTIFICATE` - X509 Certificate (recommended)
@@ -575,16 +578,19 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `EMBED_SECURITY_TOKEN_REFERENCE` - Embed Security Token Reference
 - `CUSTOM_KEY_INFO` - Custom Key Info (requires sigCustomKeyIdentifier)
 
-**Enum: encSymEncAlgorithm (EnumWsSecuritySymmetricEncodingAlgorithm)**
+### EnumWsSecuritySymmetricEncodingAlgorithm
+
 - `AES_128_CBC` - AES-128-CBC (http://www.w3.org/2001/04/xmlenc#aes128-cbc)
 - `AES_192_CBC` - AES-192-CBC (http://www.w3.org/2001/04/xmlenc#aes192-cbc)
 - `AES_256_CBC` - AES-256-CBC (http://www.w3.org/2001/04/xmlenc#aes256-cbc)
 
-**Enum: encKeyEncAlgorithm (EnumWsSecurityKeyEncryptionAlgorithm)**
+### EnumWsSecurityKeyEncryptionAlgorithm
+
 - `RSA` - RSA v1.5 (http://www.w3.org/2001/04/xmlenc#rsa-1_5)
 - `OAEP` - RSA-OAEP (http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p)
 
-**Enum: sigSigAlgorithm (EnumWsSecuritySignatureAlgorithm)**
+### EnumWsSecuritySignatureAlgorithm
+
 - `RSA_SHA1` - RSA SHA-1 (http://www.w3.org/2000/09/xmldsig#rsa-sha1)
 - `RSA_SHA256` - RSA SHA-256 (http://www.w3.org/2001/04/xmldsig-more#rsa-sha256) (recommended)
 - `RSA_SHA384` - RSA SHA-384 (http://www.w3.org/2001/04/xmldsig-more#rsa-sha384)
@@ -600,7 +606,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `HMAC_SHA384` - HMAC SHA-384 (http://www.w3.org/2001/04/xmldsig-more#hmac-sha384)
 - `HMAC_SHA512` - HMAC SHA-512 (http://www.w3.org/2001/04/xmldsig-more#hmac-sha512)
 
-**Enum: sigC14n (EnumWsSecuritySignatureCanonicalization)**
+### EnumWsSecuritySignatureCanonicalization
+
 - `C14N_OMIT_COMMENTS` - C14N omit comments (http://www.w3.org/TR/2001/REC-xml-c14n-20010315)
 - `C14N_WITH_COMMENTS` - C14N with comments (http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments)
 - `C14N_EXCL_OMIT_COMMENTS` - Exclusive C14N omit comments (http://www.w3.org/2001/10/xml-exc-c14n#) (recommended)
@@ -608,7 +615,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `C14N_11_OMIT_COMMENTS` - C14N 1.1 omit comments (http://www.w3.org/2006/12/xml-c14n11)
 - `C14N_11_WITH_COMMENTS` - C14N 1.1 with comments (http://www.w3.org/2006/12/xml-c14n11#WithComments)
 
-**Enum: sigDigAlgorithm (EnumWsSecuritySignatureDigestAlgorithm)**
+### Enum Ws Security Signature Digest Algorithm
+
 - `SHA1` - SHA-1 (http://www.w3.org/2000/09/xmldsig#sha1)
 - `SHA256` - SHA-256 (http://www.w3.org/2001/04/xmlenc#sha256) (recommended)
 - `SHA384` - SHA-384 (http://www.w3.org/2001/04/xmldsig-more#sha384)
@@ -620,7 +628,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `HMAC_MD5` - HMAC MD5 (http://www.w3.org/2001/04/xmldsig-more#hmac-md5)
 - `MD5` - MD5 (http://www.w3.org/2001/04/xmldsig-more#md5)
 
-**Note:**
+### Note
+
 - `wsSecurityEntryOrderList` must contain at least one entry type.
 - If `TIMESTAMP` is in `wsSecurityEntryOrderList`, `tsTimeToLive` is required and must be >= 0.
 - If `USERNAME_TOKEN` is in `wsSecurityEntryOrderList`, `unUsername`, `unPassword`, and `unPasswordType` are required.
@@ -637,11 +646,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | namespace | string | Yes | - | Part namespace URI |
 | encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](#enumwssecurityencryptionpartencodetype) |
 
-**Enum: encodeType (EnumWsSecurityEncryptionPartEncodeType)**
+### EnumWsSecurityEncryptionPartEncodeType
+
 - `CONTENT` - Encrypt/sign content only
 - `ELEMENT` - Encrypt/sign entire element
 
-**Common Part Names and Namespaces:**
+### Common Part Names and Namespaces
+
 - Body: `name: "Body"`, `namespace: "http://schemas.xmlsoap.org/soap/envelope/"`
 - Timestamp: `name: "Timestamp"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"`
 - UsernameToken: `name: "UsernameToken"`, `namespace: "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"`

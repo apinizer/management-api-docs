@@ -170,12 +170,14 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | active | boolean | No | true | Whether policy is active |
 | minMessageSize | long | Yes | - | Minimum message size in bytes |
 
-**Size Examples:**
+### Size Examples
+
 - `100` - 100 bytes
 - `1024` - 1 KB
 - `1048576` - 1 MB (1024 * 1024)
 
-**Note:** 
+### Note
+
 - `minMessageSize` must be greater than 0.
 - Size is measured in bytes.
 - Messages smaller than this size are rejected with an error.

@@ -14,7 +14,8 @@ PUT /apiops/projects/{projectName}/rlcl/{rlclName}/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -37,9 +38,10 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create RLCL. See [Create RLCL](./create-rlcl.md#request-body-fields) for field descriptions.
+Same structure as Create RLCL. See [Create RLCL](./create-rlcl.md) for field descriptions.
 
-**Important Notes:**
+### Important Notes
+
 - `name` must match the RLCL name in path (cannot be changed)
 - All other fields can be updated
 - Credentials and endpoints are not updated by this endpoint

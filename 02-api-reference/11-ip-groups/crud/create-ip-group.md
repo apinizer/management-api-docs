@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/ipGroups/
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -60,7 +61,8 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | - | IP Group name (unique identifier within project) |
 | description | string | No | - | IP Group description |
 
-**Notes:**
+### Notes
+
 - `name` must be unique within the project
 - `name` must not be empty
 - IP Group is created empty (no IPs)
@@ -93,7 +95,8 @@ or
 }
 ```
 
-**Common Causes:**
+### Common Causes
+
 - Missing or empty `name` field
 - IP Group name already exists in project
 

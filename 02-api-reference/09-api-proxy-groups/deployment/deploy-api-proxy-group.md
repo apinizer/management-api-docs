@@ -14,7 +14,8 @@ POST /apiops/projects/{projectName}/apiProxyGroups/{apiProxyGroupName}/environme
 
 Requires a Personal API Access Token.
 
-**Header:**
+### Header
+
 ```
 Authorization: Bearer YOUR_TOKEN
 ```
@@ -67,7 +68,7 @@ None.
 | success | boolean | Indicates if the request was successful |
 | deploymentResult | object | Deployment result. See [Deployment Result Object](#deployment-result-object) |
 
-**Deployment Result Object:**
+### Deployment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -75,7 +76,7 @@ None.
 | message | string | Deployment message |
 | environmentResults | array[object] | Results per environment |
 
-**Environment Result Object:**
+### Environment Result Object
 
 | Field | Type | Description |
 |-------|------|-------------|
