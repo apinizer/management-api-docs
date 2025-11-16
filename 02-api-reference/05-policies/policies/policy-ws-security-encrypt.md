@@ -265,11 +265,11 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
 | mustUnderstand | boolean | No | true | WS-Security header mustUnderstand attribute |
-| encPartList | array | No | [] | Encryption parts list. See [WsSecurityToTargetPart](#wssecuritytotargetpart) |
+| encPartList | array | No | [] | Encryption parts list. See [WsSecurityToTargetPart](/#wssecuritytotargetpart) |
 | encEmbeddedKeyName | string | No | null | Embedded key name for encryption (used when encKeyIdType=EMBEDDED_KEY_INFO) |
-| encKeyIdType | string | No | null | Encryption key identifier type. See [EnumWsSecurityKeyIdentifierType](#enumwssecuritykeyidentifiertype) |
-| encSymEncAlgorithm | string | No | null | Symmetric encoding algorithm for encryption. See [EnumWsSecuritySymmetricEncodingAlgorithm](#enumwssecuritysymmetricencodingalgorithm) |
-| encKeyEncAlgorithm | string | No | null | Key encryption algorithm. See [EnumWsSecurityKeyEncryptionAlgorithm](#enumwssecuritykeyencryptionalgorithm) |
+| encKeyIdType | string | No | null | Encryption key identifier type. See [EnumWsSecurityKeyIdentifierType](/#enumwssecuritykeyidentifiertype) |
+| encSymEncAlgorithm | string | No | null | Symmetric encoding algorithm for encryption. See [EnumWsSecuritySymmetricEncodingAlgorithm](/#enumwssecuritysymmetricencodingalgorithm) |
+| encKeyEncAlgorithm | string | No | null | Key encryption algorithm. See [EnumWsSecurityKeyEncryptionAlgorithm](/#enumwssecuritykeyencryptionalgorithm) |
 | encKeyStoreName | string | Yes | - | Encryption keystore name |
 
 ### EnumWsSecurityKeyIdentifierType
@@ -305,7 +305,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | name | string | Yes | - | Part name (e.g., "Body", "UsernameToken") |
 | namespace | string | Yes | - | Part namespace URI |
-| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](#enumwssecurityencryptionpartencodetype) |
+| encodeType | string | Yes | - | Encode type. See [EnumWsSecurityEncryptionPartEncodeType](/#enumwssecurityencryptionpartencodetype) |
 
 ### EnumWsSecurityEncryptionPartEncodeType
 
@@ -497,8 +497,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
-- [WS Security Decrypt Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/policies/policy-ws-security-decrypt/) - Decrypt WS-Security content
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [WS Security Decrypt Policy](/02-api-reference/05-policies/policies/policy-ws-security-decrypt/) - Decrypt WS-Security content

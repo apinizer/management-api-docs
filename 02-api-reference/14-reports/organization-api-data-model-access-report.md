@@ -66,7 +66,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | success | boolean | Indicates if the request was successful |
-| result | object | Report result. See [Report Result Object](#report-result-object) |
+| result | object | Report result. See [Report Result Object](/#report-result-object) |
 
 ### Report Result Object (result)
 
@@ -81,7 +81,7 @@ None.
 | Field | Type | Description |
 |-------|------|-------------|
 | apiProxyName | string | API Proxy name |
-| sharingType | string | Sharing type. See [EnumSharingType](#enumsharingtype) |
+| sharingType | string | Sharing type. See [EnumSharingType](/#enumsharingtype) |
 | accessList | array[object] | List of access information |
 
 ### EnumSharingType (sharingType)
@@ -125,5 +125,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [API Report](/02-api-reference/14-reports/02-api-reference/14-reports/api-report/) - API Proxy report
-- [Update Metadata](/02-api-reference/14-reports/02-api-reference/04-api-proxies/settings/update-metadata/) - Update API Proxy sharing type
+- [API Report](/02-api-reference/14-reports/api-report/) - API Proxy report
+- [Update Metadata](/02-api-reference/04-api-proxies/settings/update-metadata/) - Update API Proxy sharing type

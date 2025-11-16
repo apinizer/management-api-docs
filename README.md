@@ -12,7 +12,7 @@ The Management API base URL is constructed by appending `/apiops` to your Apiniz
 
 - If Manager application runs at `https://demo.apinizer.com`, the API base URL is `https://demo.apinizer.com/apiops/`
 
-For more details, see [Base URL](01-getting-started/base-url/).
+For more details, see [Base URL](01-getting-started/base-url.md).
 
 ## OpenAPI Specification
 
@@ -24,42 +24,42 @@ For example:
 - `https://demo.apinizer.com/apiops/openapi`
 - `https://demo.apinizer.com/apiops/openapi.yaml`
 
-See [OpenAPI Spec](03-appendix/openapi-spec/) for more information.
+See [OpenAPI Spec](03-appendix/openapi-spec.md) for more information.
 
 ## 📚 Table of Contents
 
-- [Getting Started](01-getting-started/)
-  - [Overview](01-getting-started/overview/)
-  - [Authentication](01-getting-started/authentication/)
-  - [Base URL](01-getting-started/base-url/)
-  - [Error Handling](01-getting-started/error-handling/)
+- [Getting Started](01-getting-started.md)
+  - [Overview](01-getting-started/overview.md)
+  - [Authentication](01-getting-started/authentication.md)
+  - [Base URL](01-getting-started/base-url.md)
+  - [Error Handling](01-getting-started/error-handling.md)
 
-- [API Reference](02-api-reference/)
-  - [Authentication](02-api-reference/01-auth/)
-  - [Projects](02-api-reference/02-projects/)
-  - [Environments](02-api-reference/03-environments/)
-  - [API Proxies](02-api-reference/04-api-proxies/)
-  - [Policies](02-api-reference/05-policies/)
-  - [Connections](02-api-reference/06-connections/)
-  - [Credentials](02-api-reference/07-credentials/)
-  - [Certificates](02-api-reference/08-certificates/)
-  - [API Proxy Groups](02-api-reference/09-api-proxy-groups/)
-  - [Environment Variables](02-api-reference/10-environment-variables/)
-  - [IP Groups](02-api-reference/11-ip-groups/)
-  - [RLCL](02-api-reference/12-rlcl/)
-  - [GeoLocation](02-api-reference/13-geolocation/)
-  - [Reports](02-api-reference/14-reports/)
-  - [Test](02-api-reference/16-test/)
+- [API Reference](02-api-reference.md)
+  - [Authentication](02-api-reference/01-auth.md)
+  - [Projects](02-api-reference/02-projects.md)
+  - [Environments](02-api-reference/03-environments.md)
+  - [API Proxies](02-api-reference/04-api-proxies.md)
+  - [Policies](02-api-reference/05-policies.md)
+  - [Connections](02-api-reference/06-connections.md)
+  - [Credentials](02-api-reference/07-credentials.md)
+  - [Certificates](02-api-reference/08-certificates.md)
+  - [API Proxy Groups](02-api-reference/09-api-proxy-groups.md)
+  - [Environment Variables](02-api-reference/10-environment-variables.md)
+  - [IP Groups](02-api-reference/11-ip-groups.md)
+  - [RLCL](02-api-reference/12-rlcl.md)
+  - [GeoLocation](02-api-reference/13-geolocation.md)
+  - [Reports](02-api-reference/14-reports.md)
+  - [Test](02-api-reference/16-test.md)
 
-- [Appendix](03-appendix/)
-  - [Glossary](03-appendix/glossary/)
-  - [Variable Definition](03-appendix/variable-definition/)
-  - [Enum Reference](03-appendix/enum-reference/)
-  - [OpenAPI Spec](03-appendix/openapi-spec/)
+- [Appendix](03-appendix.md)
+  - [Glossary](03-appendix/glossary.md)
+  - [Variable Definition](03-appendix/variable-definition.md)
+  - [Enum Reference](03-appendix/enum-reference.md)
+  - [OpenAPI Spec](03-appendix/openapi-spec.md)
 
 ## 🚀 Quick Start
 
-1. **Get Your API Token**: See [Authentication](01-getting-started/authentication/) for details on obtaining a Personal API Access Token.
+1. **Get Your API Token**: See [Authentication](01-getting-started/authentication.md) for details on obtaining a Personal API Access Token.
 
 2. **Make Your First Request**: 
    ```bash
@@ -68,7 +68,7 @@ See [OpenAPI Spec](03-appendix/openapi-spec/) for more information.
      -H "Authorization: Bearer YOUR_TOKEN"
    ```
 
-3. **Explore the APIs**: Start with [Projects](02-api-reference/02-projects/) to list available projects.
+3. **Explore the APIs**: Start with [Projects](02-api-reference/02-projects.md) to list available projects.
 
 ## 📖 Documentation Structure
 
@@ -90,7 +90,7 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** Each endpoint may require different permissions based on the operation it performs.
 
-See [Authentication Guide](01-getting-started/authentication/) for details on obtaining and using API tokens.
+See [Authentication Guide](01-getting-started/authentication.md) for details on obtaining and using API tokens.
 
 ## 📄 License
 

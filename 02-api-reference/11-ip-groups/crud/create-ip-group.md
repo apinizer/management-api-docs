@@ -132,5 +132,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update IP Group](/02-api-reference/11-ip-groups/crud/02-api-reference/11-ip-groups/crud/update-ip-group/) - Update an IP Group
-- [Add IPs to Group](/02-api-reference/11-ip-groups/crud/02-api-reference/11-ip-groups/ips/add-ips-to-group/) - Add IP addresses to group
+- [Update IP Group](/02-api-reference/11-ip-groups/crud/update-ip-group/) - Update an IP Group
+- [Add IPs to Group](/02-api-reference/11-ip-groups/ips/add-ips-to-group/) - Add IP addresses to group

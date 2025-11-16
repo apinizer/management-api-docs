@@ -19,7 +19,7 @@ Variable is a structure used to extract data from API traffic messages for polic
 | projectId | string | No | Project ID (usually auto-set by API, optional in request) |
 | name | string | Yes | Unique name of the variable |
 | description | string | No | Description for the variable |
-| type | EnumVariableType | Yes | Variable type. See [Variable Types](#variable-types) |
+| type | EnumVariableType | Yes | Variable type. See [Variable Types](/#variable-types) |
 
 ### Note
 
@@ -66,7 +66,7 @@ Extract data from URL parameters (query, path, or form).
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `PARAMETER` |
-| paramType | string | Yes | Parameter type. See [EnumVariableParameterType](#enumvariableparametertype) |
+| paramType | string | Yes | Parameter type. See [EnumVariableParameterType](/#enumvariableparametertype) |
 | paramName | string | Yes | Name of the parameter in request message |
 | paramPath | string | Yes* | Template path to use for "path" parameter (required if paramType=PATH) |
 | formName | string | No | Form field name (optional, used if paramType=FORM and differs from paramName) |
@@ -125,7 +125,7 @@ Extract data from request/response body (XML, JSON, or raw body).
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `BODY` |
-| messageContentType | string | Yes | Content type. See [EnumMessageContentType](#enummessagecontenttype) |
+| messageContentType | string | Yes | Content type. See [EnumMessageContentType](/#enummessagecontenttype) |
 | xpathValue | string | Yes* | XPath expression for XML body data (required if messageContentType=XML) |
 | jsonPathValue | string | Yes* | JsonPath expression for JSON body data (required if messageContentType=JSON) |
 
@@ -174,7 +174,7 @@ Extract data from system context values.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `CONTEXT_VALUES` |
-| contextValue | string | Yes | Context value type. See [EnumVariableContextValue](#enumvariablecontextvalue) |
+| contextValue | string | Yes | Context value type. See [EnumVariableContextValue](/#enumvariablecontextvalue) |
 | zoneId | string | Yes* | Time zone ID (required for some context values, e.g., date/time values) |
 
 ### Example
@@ -197,7 +197,7 @@ Custom variable defined with script.
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `CUSTOM` |
 | initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
-| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](/03-appendix/02-api-reference/05-policies/policies/policy-script/) |
+| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](/02-api-reference/05-policies/policies/policy-script/) |
 | scriptBody | string | Yes* | - | Script body code (required if initWithScript=true) |
 
 ### Note
@@ -483,8 +483,8 @@ Variables are used in various policies:
 
 ## Related Documentation
 
-- [Enum Reference](enum-reference/) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
-- [Glossary](glossary/) - Terms and definitions
-- [API Based Throttling Policy](/03-appendix/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Uses variables for client identification
-- [RLCL API](/03-appendix/02-api-reference/12-rlcl/) - Uses variables for rate limit control
-- [Script Policy](/03-appendix/02-api-reference/05-policies/policies/policy-script/) - Script language types
+- [Enum Reference](/03-appendix/enum-reference/) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
+- [Glossary](/03-appendix/glossary/) - Terms and definitions
+- [API Based Throttling Policy](/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Uses variables for client identification
+- [RLCL API](/02-api-reference/12-rlcl/) - Uses variables for rate limit control
+- [Script Policy](/02-api-reference/05-policies/policies/policy-script/) - Script language types

@@ -92,7 +92,7 @@ None.
 |-------|------|-------------|
 | name | string | Certificate name |
 | description | string | Certificate description |
-| certificateEnvironmentList | array[object] | List of certificate environments. See [Certificate Environment Object](#certificate-environment-object) |
+| certificateEnvironmentList | array[object] | List of certificate environments. See [Certificate Environment Object](/#certificate-environment-object) |
 
 ### Certificate Environment Object
 
@@ -156,5 +156,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
-- [Create Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
+- [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate

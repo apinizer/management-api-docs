@@ -145,11 +145,11 @@ This endpoint does not require a request body.
 
 ## Notes and Warnings
 
-- **Admin Only**: This endpoint requires admin role. Regular users should use [Get Environments by Project](/02-api-reference/03-environments/02-api-reference/03-environments/get-environments-by-project/)
+- **Admin Only**: This endpoint requires admin role. Regular users should use [Get Environments by Project](/02-api-reference/03-environments/get-environments-by-project/)
 - **All Environments**: Returns all environments in the system regardless of project associations
 - **Null Fields**: Some fields (deployed, redeployRequired) may be null depending on context
 
 ## Related Documentation
 
-- [Get Environments by Project](/02-api-reference/03-environments/02-api-reference/03-environments/get-environments-by-project/) - Get environments for a specific project
+- [Get Environments by Project](/02-api-reference/03-environments/get-environments-by-project/) - Get environments for a specific project
 - [Authentication Guide](/02-api-reference/03-environments/01-getting-started/authentication/) - How to obtain and use API tokens

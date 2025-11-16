@@ -11,7 +11,7 @@ The Authentication API provides endpoints for obtaining Personal API Access Toke
 
 ## Endpoints
 
-- [Create Token](/02-api-reference/01-auth/02-api-reference/01-auth/create-token/) - Create a Personal API Access Token
+- [Create Token](/02-api-reference/01-auth/create-token/) - Create a Personal API Access Token
 
 ## Authentication
 

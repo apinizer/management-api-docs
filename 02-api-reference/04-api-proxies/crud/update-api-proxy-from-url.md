@@ -173,10 +173,10 @@ Authorization: Bearer YOUR_TOKEN
 |-------|------|----------|---------|-------------|
 | apiProxyName | string | Yes | - | API Proxy name (must exist for update) |
 | apiProxyDescription | string | No | - | API Proxy description (if empty, keeps existing description) |
-| apiProxyCreationType | string | Yes | - | API creation type. Must match existing API Proxy type. See [EnumApiProxySpecType](#enumapiproxyspectype) |
+| apiProxyCreationType | string | Yes | - | API creation type. Must match existing API Proxy type. See [EnumApiProxySpecType](/#enumapiproxyspectype) |
 | specUrl | string | Yes* | - | Specification URL (required if not reverse proxy) |
-| clientRoute | object | Yes | - | Client route configuration. See [ClientRoute](#clientroute) |
-| routingInfo | object | No | - | Routing configuration. See [RoutingInfo](#routinginfo) |
+| clientRoute | object | Yes | - | Client route configuration. See [ClientRoute](/#clientroute) |
+| routingInfo | object | No | - | Routing configuration. See [RoutingInfo](/#routinginfo) |
 | deploy | boolean | No | false | Whether to deploy after update |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | reParse | boolean | No | true | Whether to reparse API proxy (should be true for update) |
@@ -184,8 +184,8 @@ Authorization: Bearer YOUR_TOKEN
 | enableWSA | boolean | No | false | Enable WS-Addressing (SOAP only) |
 | enableWSRM | boolean | No | false | Enable WS-ReliableMessaging (SOAP only) |
 | backendApiVersion | string | No | - | Backend API version |
-| maintenanceModeSetting | object | No | - | Maintenance mode settings. See [MaintenanceModeSetting](#maintenancemodesetting) |
-| specAuthorizationValueList | array | No | [] | Authorization headers for accessing spec URL. See [SpecAuthorizationValue](#specauthorizationvalue) |
+| maintenanceModeSetting | object | No | - | Maintenance mode settings. See [MaintenanceModeSetting](/#maintenancemodesetting) |
+| specAuthorizationValueList | array | No | [] | Authorization headers for accessing spec URL. See [SpecAuthorizationValue](/#specauthorizationvalue) |
 
 ### EnumApiProxySpecType (apiProxyCreationType)
 
@@ -203,7 +203,7 @@ Authorization: Bearer YOUR_TOKEN
 ### RoutingInfo (routingInfo)
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| routingAddressList | array | No | List of routing addresses. See [RoutingAddress](#routingaddress) |
+| routingAddressList | array | No | List of routing addresses. See [RoutingAddress](/#routingaddress) |
 | routingEnabled | boolean | No | Whether routing is enabled |
 | mirrorEnabled | boolean | No | Whether mirroring is enabled |
 
@@ -312,6 +312,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create new API Proxy from URL
-- [Update API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API Proxy metadata
-- [Deploy API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments
+- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create new API Proxy from URL
+- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API Proxy metadata
+- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments

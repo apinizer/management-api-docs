@@ -44,7 +44,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-The request body uses the same `CacheSettings` structure as API Proxy-level cache settings. See [Update Cache Settings](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/settings/update-cache-settings/) for detailed field descriptions.
+The request body uses the same `CacheSettings` structure as API Proxy-level cache settings. See [Update Cache Settings](/02-api-reference/04-api-proxies/settings/update-cache-settings/) for detailed field descriptions.
 
 #### Full JSON Body Example - Basic Cache Configuration
 
@@ -103,14 +103,14 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 | description | string | No | - | Cache settings description |
 | cacheActive | boolean | No | false | Enable/disable cache for this endpoint |
 | cacheOnlyHttpGetRequests | boolean | No | true | Cache only GET requests (if false, caches all methods) |
-| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](#enumcachekeytype) |
-| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](#enumcachestoragetype) |
+| cacheKeyType | string | No | QUERY_PARAMS | Cache key type. See [EnumCacheKeyType](/#enumcachekeytype) |
+| cacheStorageType | string | No | DISTRIBUTED | Cache storage type. See [EnumCacheStorageType](/#enumcachestoragetype) |
 | capacity | integer | No | - | Maximum cache capacity (number of entries) |
 | ttl | integer | No | - | Time to live in seconds |
-| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](#enumcachehandlingaction) |
+| handlingAction | string | Yes | - | Cache handling action when cache hit occurs. See [EnumCacheHandlingAction](/#enumcachehandlingaction) |
 | invalidationRequiresAuthn | boolean | No | false | Require authentication for cache invalidation |
 | cacheNullValue | boolean | No | false | Cache null/empty responses |
-| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](#variable-object) |
+| variableList | array | No | [] | List of variables for custom cache key (if cacheKeyType=CUSTOM). See [Variable Object](/#variable-object) |
 
 ### EnumCacheKeyType (cacheKeyType)
 
@@ -300,7 +300,7 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Cache Settings](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/settings/update-cache-settings/) - Update API Proxy-level cache settings
-- [Get Endpoint](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
-- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
-- [Update Endpoint](/02-api-reference/04-api-proxies/endpoints/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration
+- [Update Cache Settings](/02-api-reference/04-api-proxies/settings/update-cache-settings/) - Update API Proxy-level cache settings
+- [Get Endpoint](/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
+- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Update Endpoint](/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration

@@ -364,7 +364,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### Database-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| dbType | string | Yes | - | Database type. See [EnumDatabaseType](#enumdatabasetype) |
+| dbType | string | Yes | - | Database type. See [EnumDatabaseType](/#enumdatabasetype) |
 | jdbcUrl | string | Yes | - | JDBC connection URL |
 | useCredentials | boolean | No | true | Whether to use username/password authentication |
 | username | string | No | - | Database username (required if useCredentials=true) |
@@ -601,8 +601,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

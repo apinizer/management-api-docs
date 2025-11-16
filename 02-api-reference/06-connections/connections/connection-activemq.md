@@ -286,13 +286,13 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### ActiveMQ-Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| activeMqConnectionProtocolType | string | Yes | - | Connection protocol type. See [EnumActiveMqConnectionProtocolType](#enumactivemqconnectionprotocoltype) |
+| activeMqConnectionProtocolType | string | Yes | - | Connection protocol type. See [EnumActiveMqConnectionProtocolType](/#enumactivemqconnectionprotocoltype) |
 | brokerURL | string | Yes | - | ActiveMQ broker URL (e.g., `tcp://host:port` or `amqp://host:port`) |
 | username | string | No | - | Username for broker authentication |
 | password | string | No | - | Password for broker authentication (secret field) |
-| destinationType | string | Yes | - | Destination type. See [EnumDestinationType](#enumdestinationtype) |
+| destinationType | string | Yes | - | Destination type. See [EnumDestinationType](/#enumdestinationtype) |
 | destinationName | string | Yes | - | Queue or topic name |
-| sessionAcknowledgement | string | No | AUTO_ACKNOWLEDGE | Session acknowledgment mode. See [EnumSessionAcknowledgmentType](#enumsessionacknowledgmenttype) |
+| sessionAcknowledgement | string | No | AUTO_ACKNOWLEDGE | Session acknowledgment mode. See [EnumSessionAcknowledgmentType](/#enumsessionacknowledgmenttype) |
 | sendTimeout | long | No | 60000 | Send timeout in milliseconds |
 | requestTimeout | long | No | 60000 | Request timeout in milliseconds |
 | closeTimeout | long | No | 60000 | Close timeout in milliseconds |
@@ -502,8 +502,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

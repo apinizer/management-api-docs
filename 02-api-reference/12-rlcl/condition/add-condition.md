@@ -106,19 +106,19 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
+| conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](/#conditionruledto) |
 
 ### ConditionRuleDTO (conditionRuleList item)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | conditionRuleList | array[object] | No | Nested condition rules (for complex conditions) |
-| conditionCriteria | string | Yes | Condition criteria. See [EnumConditionCriteria](#enumconditioncriteria) |
-| firstVariable | object | Yes | First variable for comparison. See [Variable Object](#variable-object) |
-| variableDataType | string | Yes | Variable data type. See [EnumConditionVariableDataType](#enumconditionvariabledatatype) |
+| conditionCriteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/#enumconditioncriteria) |
+| firstVariable | object | Yes | First variable for comparison. See [Variable Object](/#variable-object) |
+| variableDataType | string | Yes | Variable data type. See [EnumConditionVariableDataType](/#enumconditionvariabledatatype) |
 | dateFormat | string | No | Date format for date comparisons |
-| valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](#enumconditionvaluecomparisonoperator) |
-| secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](#enumconditionvaluesource) |
+| valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/#enumconditionvaluecomparisonoperator) |
+| secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](/#enumconditionvaluesource) |
 | secondValue | string | No | Static value for comparison (if secondValueSource is STATIC) |
 | secondVariable | object | No | Second variable for comparison (if secondValueSource is VARIABLE) |
 
@@ -236,6 +236,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Condition](/02-api-reference/12-rlcl/condition/02-api-reference/12-rlcl/condition/update-condition/) - Update condition in RLCL
-- [Delete Condition](/02-api-reference/12-rlcl/condition/02-api-reference/12-rlcl/condition/delete-condition/) - Remove condition from RLCL
-- [Policy Conditions](/02-api-reference/12-rlcl/condition/02-api-reference/05-policies/crud/add-policy/) - Detailed condition documentation
+- [Update Condition](/02-api-reference/12-rlcl/condition/update-condition/) - Update condition in RLCL
+- [Delete Condition](/02-api-reference/12-rlcl/condition/delete-condition/) - Remove condition from RLCL
+- [Policy Conditions](/02-api-reference/05-policies/crud/add-policy/) - Detailed condition documentation

@@ -106,5 +106,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Deploy API Proxy Group](/02-api-reference/09-api-proxy-groups/deployment/02-api-reference/09-api-proxy-groups/deployment/deploy-api-proxy-group/) - Deploy group to environment
-- [List Environments](/02-api-reference/09-api-proxy-groups/deployment/02-api-reference/09-api-proxy-groups/deployment/list-environments/) - List environments for group
+- [Deploy API Proxy Group](/02-api-reference/09-api-proxy-groups/deployment/deploy-api-proxy-group/) - Deploy group to environment
+- [List Environments](/02-api-reference/09-api-proxy-groups/deployment/list-environments/) - List environments for group

@@ -294,11 +294,11 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | serverAddress | string | Yes | - | LDAP server address (format: `ldap://host:port` or `ldaps://host:port`) |
-| requireCertificateType | string | No | NOT_REQUIRED | Certificate requirement type. See [EnumLdapRequireCertificateType](#enumldaprequirecertificatetype) |
+| requireCertificateType | string | No | NOT_REQUIRED | Certificate requirement type. See [EnumLdapRequireCertificateType](/#enumldaprequirecertificatetype) |
 | username | string | Yes | - | LDAP bind DN (Distinguished Name) for authentication |
 | password | string | Yes | - | LDAP password for bind DN (secret field) |
 | customFilter | string | No | - | Custom LDAP search filter (use `{0}` as placeholder for username) |
-| searchScope | string | No | SUBTREE | Search scope. See [EnumSearchScope](#enumsearchscope) |
+| searchScope | string | No | SUBTREE | Search scope. See [EnumSearchScope](/#enumsearchscope) |
 | baseDn | string | Yes | - | Base Distinguished Name for searches |
 | certificateId | string | No | null | Certificate ID for SSL/TLS (required if useSsl=true and certificate validation enabled) |
 | certificateName | string | No | null | Certificate name (for reference) |
@@ -518,8 +518,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

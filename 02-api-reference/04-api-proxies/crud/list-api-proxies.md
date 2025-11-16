@@ -84,7 +84,7 @@ None
 |-------|------|-------------|
 | name | string | API Proxy name |
 | description | string | API Proxy description |
-| type | string | API type. See [EnumApiType](#enumapitype) |
+| type | string | API type. See [EnumApiType](/#enumapitype) |
 | relativePath | string | Relative path (from clientRoute) |
 | soapToRest | boolean | Whether SOAP to REST transformation is enabled |
 
@@ -146,5 +146,5 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Get API Proxy](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get detailed API proxy information
-- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create a new API proxy
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get detailed API proxy information
+- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create a new API proxy

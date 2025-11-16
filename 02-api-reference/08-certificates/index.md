@@ -11,13 +11,13 @@ The Certificates API provides endpoints for managing SSL/TLS certificates in Api
 
 ## Endpoints
 
-- [List Certificates](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/list-certificates/) - Get all certificates for a project
-- [Get Certificate](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
-- [Create Certificate](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
-- [Update Certificate](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/update-certificate/) - Update an existing certificate
-- [Delete Certificate](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/delete-certificate/) - Delete a certificate
-- [Export Certificate](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/export-certificate/) - Export certificate as ZIP file
-- [Get Truststore Certificates](/02-api-reference/08-certificates/02-api-reference/08-certificates/crud/get-truststore-certificates/) - Get certificates from environment truststore
+- [List Certificates](/02-api-reference/08-certificates/crud/list-certificates/) - Get all certificates for a project
+- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
+- [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Update Certificate](/02-api-reference/08-certificates/crud/update-certificate/) - Update an existing certificate
+- [Delete Certificate](/02-api-reference/08-certificates/crud/delete-certificate/) - Delete a certificate
+- [Export Certificate](/02-api-reference/08-certificates/crud/export-certificate/) - Export certificate as ZIP file
+- [Get Truststore Certificates](/02-api-reference/08-certificates/crud/get-truststore-certificates/) - Get certificates from environment truststore
 
 ## Authentication
 

@@ -102,5 +102,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/get-certificate/) - Get certificate details
-- [Create Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate/) - Get certificate details
+- [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate

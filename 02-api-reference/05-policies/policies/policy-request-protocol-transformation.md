@@ -144,8 +144,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | Policy type. Must be `"policy-request-protocol-transformation"` |
 | description | string | No | Policy description |
 | active | boolean | No | Whether the policy is active. Default: `true` |
-| policyCondition | object | No | Policy condition configuration. See [Policy Condition](#policy-condition) |
-| errorMessageList | array | No | List of error messages. See [Error Messages](#error-messages) |
+| policyCondition | object | No | Policy condition configuration. See [Policy Condition](/#policy-condition) |
+| errorMessageList | array | No | List of error messages. See [Error Messages](/#error-messages) |
 
 **Note:** This policy currently only supports base policy fields. The actual REST-to-SOAP transformation configuration is managed through API Method settings in the API Proxy configuration.
 
@@ -224,7 +224,7 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body Fields
 
-Same as [Add Policy](#add-policy) request body fields.
+Same as [Add Policy](/#add-policy) request body fields.
 
 ### Response
 
@@ -305,10 +305,10 @@ curl -X DELETE \
 
 ## Policy Condition
 
-Policy condition allows you to specify when this policy should be applied. See [Policy Condition Documentation](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+Policy condition allows you to specify when this policy should be applied. See [Policy Condition Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ---
 
 ## Error Messages
 
-Error messages allow you to customize error responses when policy validation fails. See [Error Messages Documentation](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+Error messages allow you to customize error responses when policy validation fails. See [Error Messages Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.

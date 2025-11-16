@@ -481,12 +481,12 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | administrate | boolean | No | false | Whether to administrate Elasticsearch (create/delete indices, templates, policies) |
-| elasticHostList | array | Yes | - | List of Elasticsearch hosts. See [ElasticHost](#elastichost) |
+| elasticHostList | array | Yes | - | List of Elasticsearch hosts. See [ElasticHost](/#elastichost) |
 | authenticate | boolean | No | false | Enable authentication |
 | elasticUsername | string | No* | null | Elasticsearch username (required if authenticate=true) |
 | elasticPassword | string | No* | null | Elasticsearch password (required if authenticate=true, secret field) |
 | encryptCommunication | boolean | No | false | Enable encrypted communication (HTTPS) |
-| encryptCommunicationType | string | No* | null | Encryption communication type (required if encryptCommunication=true). See [EnumEncryptCommunicationType](#enumencryptcommunicationtype) |
+| encryptCommunicationType | string | No* | null | Encryption communication type (required if encryptCommunication=true). See [EnumEncryptCommunicationType](/#enumencryptcommunicationtype) |
 | caCertInPkcs12File | string | No* | null | CA certificate in PKCS12 format (base64-encoded, required if encryptCommunicationType=CA_CERTIFICATE_IN_PKCS_12) |
 | caCertInPkcs12FileContentType | string | No | application/x-pkcs12 | Content type for PKCS12 file |
 | caInPemFile | string | No* | null | CA certificate in PEM format (base64-encoded, required if encryptCommunicationType=CA_IN_PEM_FILE) |
@@ -499,7 +499,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | caKeystoreFilePass | string | No* | null | Keystore file password (required if caKeystoreFile is provided, secret field) |
 | disableHostnameVerification | boolean | No | false | Disable hostname verification (not recommended for production) |
 | indexLifecyclePolicyCreated | boolean | No | false | Whether to create index lifecycle policy |
-| indexLifecyclePolicy | object | No* | null | Index lifecycle policy configuration (required if indexLifecyclePolicyCreated=true). See [ElasticsearchIndexLifecyclePolicy](#elasticsearchindexlifecyclepolicy) |
+| indexLifecyclePolicy | object | No* | null | Index lifecycle policy configuration (required if indexLifecyclePolicyCreated=true). See [ElasticsearchIndexLifecyclePolicy](/#elasticsearchindexlifecyclepolicy) |
 | indexTemplateCreated | boolean | No | false | Whether to create index template |
 | indexTemplateName | string | No* | null | Index template name (required if indexTemplateCreated=true) |
 | indexName | string | No | null | Index name pattern |
@@ -512,7 +512,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 | ioThreads | integer | No | null | Number of IO threads |
 | maxConnectionPerHost | integer | No | null | Maximum connections per host |
 | maxConnectionTotal | integer | No | null | Maximum total connections |
-| type | string | No | READ_WRITE | Elasticsearch connection type. See [EnumElasticsearchType](#enumelasticsearchtype) |
+| type | string | No | READ_WRITE | Elasticsearch connection type. See [EnumElasticsearchType](/#enumelasticsearchtype) |
 
 ### EnumEncryptCommunicationType
 
@@ -739,8 +739,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

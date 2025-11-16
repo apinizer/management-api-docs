@@ -317,10 +317,10 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Must be `"policy-decryption"` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether the policy is active |
-| policyCondition | object | No | null | Policy condition. See [Policy Condition](#policy-condition) |
-| errorMessageList | array | No | [] | List of error messages. See [Error Messages](#error-messages) |
-| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](#policy-operation-metadata) |
-| policyDecryptionDefList | array | Yes | - | List of decryption definitions. See [Decryption Definition](#decryption-definition) |
+| policyCondition | object | No | null | Policy condition. See [Policy Condition](/#policy-condition) |
+| errorMessageList | array | No | [] | List of error messages. See [Error Messages](/#error-messages) |
+| operationMetadata | object | Yes | - | Operation metadata. See [Policy Operation Metadata](/#policy-operation-metadata) |
+| policyDecryptionDefList | array | Yes | - | List of decryption definitions. See [Decryption Definition](/#decryption-definition) |
 
 ### Decryption Definition (policyDecryptionDefList)
 
@@ -329,17 +329,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 |-------|------|----------|---------|-------------|
 | id | string | No | - | Definition ID |
 | description | string | No | - | Definition description |
-| sourceVar | object | Yes | - | Source variable containing encrypted data. See [Variable Object](#variable-object) |
-| targetVar | object | Yes | - | Target variable for decrypted data. See [Variable Object](#variable-object) |
-| cipherAlgorithm | string | No | null | Cipher algorithm (if static). See [EnumCipherAlgorithm](#enumcipheralgorithm) |
+| sourceVar | object | Yes | - | Source variable containing encrypted data. See [Variable Object](/#variable-object) |
+| targetVar | object | Yes | - | Target variable for decrypted data. See [Variable Object](/#variable-object) |
+| cipherAlgorithm | string | No | null | Cipher algorithm (if static). See [EnumCipherAlgorithm](/#enumcipheralgorithm) |
 | cipherAlgorithmVar | object | No | null | Variable containing cipher algorithm name (if dynamic) |
 | cryptoKeyInfoId | string | No | null | Crypto key info ID (for symmetric algorithms or asymmetric with KEY type) |
 | certificateId | string | No | null | Certificate ID (for asymmetric algorithms with CERTIFICATE type) |
-| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](#enumkeycertificatetype) |
+| enumKeyCertificateType | string | No | KEY | Key/certificate type. See [EnumKeyCertificateType](/#enumkeycertificatetype) |
 | ivExists | boolean | No | false | Whether initialization vector (IV) exists |
 | ivVar | object | No | null | Variable containing IV (if ivExists=true) |
-| ivEncodingType | string | No | null | IV encoding type (if ivExists=true). See [EnumEncodingType](#enumencodingtype) |
-| inputEncodingType | string | Yes | - | Input encoding type of encrypted data. See [EnumEncodingType](#enumencodingtype) |
+| ivEncodingType | string | No | null | IV encoding type (if ivExists=true). See [EnumEncodingType](/#enumencodingtype) |
+| inputEncodingType | string | Yes | - | Input encoding type of encrypted data. See [EnumEncodingType](/#enumencodingtype) |
 
 ### EnumCipherAlgorithm (cipherAlgorithm)
 
@@ -403,15 +403,15 @@ See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/var
 
 ### Policy Condition (policyCondition)
 
-See [Policy Condition Documentation](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Policy Condition Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Policy Operation Metadata (operationMetadata)
 
-See [Policy Operation Metadata Documentation](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Policy Operation Metadata Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Error Messages (errorMessageList)
 
-See [Error Messages Documentation](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Error Messages Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Response
 
@@ -629,8 +629,8 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - Add a policy
-- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - Update a policy
-- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
-- [Encryption Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/policies/policy-encryption/) - Encrypt data
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - Add a policy
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - Update a policy
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [Encryption Policy](/02-api-reference/05-policies/policies/policy-encryption/) - Encrypt data

@@ -132,14 +132,14 @@ The request body is an object containing an array of endpoint rate limit objects
 |-------|------|----------|---------|-------------|
 | apiProxyName | string | Yes | - | API Proxy name |
 | endpointName | string | Yes* | - | Endpoint path (e.g., "/users") or "ALL" for all endpoints. Required if endpointHTTPMethod is not "ALL" |
-| endpointHTTPMethod | string | Yes* | - | HTTP method. See [EnumHttpRequestMethod](#enumhttprequestmethod). Required if endpointName is not "ALL" |
+| endpointHTTPMethod | string | Yes* | - | HTTP method. See [EnumHttpRequestMethod](/#enumhttprequestmethod). Required if endpointName is not "ALL" |
 | permittedMessageCount | integer | Yes | - | Maximum number of messages allowed per time interval |
 | timeIntervalPeriodLength | integer | Yes | - | Length of time interval period |
-| timeInterval | string | Yes | - | Time interval unit. See [EnumRateLimitTimeInterval](#enumratelimittimeinterval) |
-| targetVariable | object\|null | No | null | Variable used to identify clients. See [Variable Object](#variable-object) |
+| timeInterval | string | Yes | - | Time interval unit. See [EnumRateLimitTimeInterval](/#enumratelimittimeinterval) |
+| targetVariable | object\|null | No | null | Variable used to identify clients. See [Variable Object](/#variable-object) |
 | cacheConnectionTimeoutInSeconds | integer | Yes | - | Cache connection timeout in seconds |
-| cacheErrorHandlingType | string | Yes | - | Cache error handling type. See [EnumCacheErrorHandlingType](#enumcacheerrorhandlingtype) |
-| timeIntervalWindowType | string | Yes | - | Time interval window type. See [EnumIntervalWindowType](#enumintervalwindowtype) |
+| cacheErrorHandlingType | string | Yes | - | Cache error handling type. See [EnumCacheErrorHandlingType](/#enumcacheerrorhandlingtype) |
+| timeIntervalWindowType | string | Yes | - | Time interval window type. See [EnumIntervalWindowType](/#enumintervalwindowtype) |
 | targetIdentityValue | string\|null | No | null | Target identity value (if not using targetVariable) |
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
 | enabled | boolean | No | true | Enable rate limiting for this endpoint |
@@ -293,5 +293,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Endpoints](/02-api-reference/12-rlcl/endpoints/02-api-reference/12-rlcl/endpoints/update-endpoints/) - Replace all endpoints
-- [Delete Endpoints](/02-api-reference/12-rlcl/endpoints/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove endpoints
+- [Update Endpoints](/02-api-reference/12-rlcl/endpoints/update-endpoints/) - Replace all endpoints
+- [Delete Endpoints](/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove endpoints

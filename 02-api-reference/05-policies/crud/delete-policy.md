@@ -125,7 +125,7 @@ If `deploy: true` is set in the request, the response includes deployment result
 | Field | Type | Description |
 |-------|------|-------------|
 | status | string | Response status: `SUCCESS` or `FAILURE` |
-| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](#deployment-result-object) |
+| deploymentResult | object | Deployment result (if deploy=true). See [Deployment Result Object](/#deployment-result-object) |
 
 ### Deployment Result Object (deploymentResult)
 
@@ -267,7 +267,7 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add Policy](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
-- [Update Policy](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
-- [List Policies](/02-api-reference/05-policies/crud/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Deploy API Proxy](/02-api-reference/05-policies/crud/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy after changes
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - Update an existing policy
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy after changes

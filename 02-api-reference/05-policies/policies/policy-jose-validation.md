@@ -397,13 +397,13 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Policy type: `policy-jose-validation` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| joseTarget | string | Yes | BODY | JOSE target location. See [EnumJoseTarget](#enumjosetarget) |
-| joseTargetVariable | object | No* | null | Variable for JOSE target (required if joseTarget=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
-| clientSourcePart | string | Yes | CLAIMS | Client source part. See [EnumJoseUserSourcePart](#enumjoseusersourcepart) |
-| clientSourceVariable | object | No* | null | Variable for client source (required if clientSourcePart=VARIABLE). See [VariableDTO](#variabledto) |
+| joseTarget | string | Yes | BODY | JOSE target location. See [EnumJoseTarget](/#enumjosetarget) |
+| joseTargetVariable | object | No* | null | Variable for JOSE target (required if joseTarget=CHOOSE_FROM_VARIABLE). See [VariableDTO](/#variabledto) |
+| clientSourcePart | string | Yes | CLAIMS | Client source part. See [EnumJoseUserSourcePart](/#enumjoseusersourcepart) |
+| clientSourceVariable | object | No* | null | Variable for client source (required if clientSourcePart=VARIABLE). See [VariableDTO](/#variabledto) |
 | clientFieldname | string | No | iss | Client field name for extraction (e.g., "iss" for issuer) |
 | acceptedAudienceList | array | No | [] | List of accepted audience values |
-| exactMatchClaimMap | object | No | {} | Map of exact match claims. See [MapValue](#mapvalue) |
+| exactMatchClaimMap | object | No | {} | Map of exact match claims. See [MapValue](/#mapvalue) |
 | requiredClaimList | array | No | [] | List of required claim names |
 | prohibitedClaimList | array | No | [] | List of prohibited claim names |
 | validateExpirationTime | boolean | No | true | Whether to validate expiration time |
@@ -414,10 +414,10 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | decrypt | boolean | No | true | Whether to decrypt JOSE |
 | decryptByIssuer | boolean | No | true | Decrypt by issuer (true) or by proxy's JWK (false) |
 | jwkIdForDecryptionAndEncryption | string | No* | null | JWK ID for decryption and encryption (required if decrypt=true and decryptByIssuer=false) |
-| stripAndDecode | string | Yes | NONE | Strip and decode mode. See [EnumJoseStripAndDecode](#enumjosestripanddecode) |
+| stripAndDecode | string | Yes | NONE | Strip and decode mode. See [EnumJoseStripAndDecode](/#enumjosestripanddecode) |
 | jwtClaimsToDecode | string | No* | null | JWT claims to decode (required if stripAndDecode=PARTIAL). Comma-separated claim names |
-| decodedClaimsTargetForDataManipulation | string | No | BODY | Target for decoded claims data manipulation. See [EnumJoseTarget](#enumjosetarget) |
-| decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for decoded claims target (required if decodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
+| decodedClaimsTargetForDataManipulation | string | No | BODY | Target for decoded claims data manipulation. See [EnumJoseTarget](/#enumjosetarget) |
+| decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for decoded claims target (required if decodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](/#variabledto) |
 
 ### EnumJoseTarget
 
@@ -538,7 +538,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | value | string | Yes | - | Claim value |
-| valueType | string | No | STRING | Value type. See [MapValueType](#mapvaluetype) |
+| valueType | string | No | STRING | Value type. See [MapValueType](/#mapvaluetype) |
 
 ### MapValueType
 
@@ -747,8 +747,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
-- [JOSE Implementation Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/policies/policy-jose-implementation/) - Generate JOSE tokens
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [JOSE Implementation Policy](/02-api-reference/05-policies/policies/policy-jose-implementation/) - Generate JOSE tokens

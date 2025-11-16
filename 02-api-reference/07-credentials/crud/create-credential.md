@@ -176,7 +176,7 @@ Authorization: Bearer YOUR_TOKEN
 | Field | Type | Description |
 |-------|------|-------------|
 | success | boolean | Indicates if the request was successful |
-| deploymentResult | object | Deployment result. See [Deployment Result Object](#deployment-result-object) |
+| deploymentResult | object | Deployment result. See [Deployment Result Object](/#deployment-result-object) |
 
 ### Deployment Result Object
 
@@ -375,7 +375,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Credentials](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
-- [Update Credential](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/crud/update-credential/) - Update a credential
-- [Change Credential Password](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/crud/change-credential-password/) - Change credential password
-- [Grant Access](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group
+- [List Credentials](/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
+- [Update Credential](/02-api-reference/07-credentials/crud/update-credential/) - Update a credential
+- [Change Credential Password](/02-api-reference/07-credentials/crud/change-credential-password/) - Change credential password
+- [Grant Access](/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group

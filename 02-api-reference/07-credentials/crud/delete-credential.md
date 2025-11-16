@@ -117,6 +117,6 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Credentials](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
-- [Create Credential](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
-- [Revoke Access](/02-api-reference/07-credentials/crud/02-api-reference/07-credentials/access/revoke-access/) - Revoke access from API Proxy or Group
+- [List Credentials](/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
+- [Create Credential](/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
+- [Revoke Access](/02-api-reference/07-credentials/access/revoke-access/) - Revoke access from API Proxy or Group

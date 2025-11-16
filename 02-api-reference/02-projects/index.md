@@ -11,7 +11,7 @@ The Projects API provides endpoints for managing projects in Apinizer. Projects 
 
 ## Endpoints
 
-- [List Projects](/02-api-reference/02-projects/02-api-reference/02-projects/list-projects/) - Get all projects accessible by the authenticated user
+- [List Projects](/02-api-reference/02-projects/list-projects/) - Get all projects accessible by the authenticated user
 
 ## Authentication
 

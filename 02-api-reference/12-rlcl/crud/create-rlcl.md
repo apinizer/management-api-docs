@@ -85,12 +85,12 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | - | RLCL name (unique identifier within project) |
 | description | string | No | - | RLCL description |
 | enabled | boolean | No | true | Whether the RLCL is enabled |
-| executionOrder | string | No | FIRST | Execution order. See [EnumExecutionOrder](#enumexecutionorder) |
+| executionOrder | string | No | FIRST | Execution order. See [EnumExecutionOrder](/#enumexecutionorder) |
 | cacheConnectionTimeoutInSeconds | integer | No | 3 | Cache connection timeout in seconds |
-| cacheErrorHandlingType | string | No | FAIL | Cache error handling type. See [EnumCacheErrorHandlingType](#enumcacheerrorhandlingtype) |
-| timeIntervalWindowType | string | No | FIXED | Time interval window type. See [EnumIntervalWindowType](#enumintervalwindowtype) |
+| cacheErrorHandlingType | string | No | FAIL | Cache error handling type. See [EnumCacheErrorHandlingType](/#enumcacheerrorhandlingtype) |
+| timeIntervalWindowType | string | No | FIXED | Time interval window type. See [EnumIntervalWindowType](/#enumintervalwindowtype) |
 | showRateLimitStatisticsInResponseHeader | boolean | No | false | Show rate limit statistics in response header |
-| targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](#variable-object) |
+| targetVariable | object\|null | No | null | Target variable for rate limiting. See [Variable Object](/#variable-object) |
 
 ### EnumExecutionOrder (executionOrder)
 
@@ -197,6 +197,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update RLCL](/02-api-reference/12-rlcl/crud/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an RLCL
-- [Add Credentials](/02-api-reference/12-rlcl/crud/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
-- [Add Endpoints](/02-api-reference/12-rlcl/crud/02-api-reference/12-rlcl/endpoints/add-endpoints/) - Add endpoints to RLCL
+- [Update RLCL](/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an RLCL
+- [Add Credentials](/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
+- [Add Endpoints](/02-api-reference/12-rlcl/endpoints/add-endpoints/) - Add endpoints to RLCL

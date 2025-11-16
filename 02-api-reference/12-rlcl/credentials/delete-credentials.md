@@ -27,7 +27,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) for field descriptions.
+Same structure as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/add-credentials/) for field descriptions.
 
 ### Important Notes
 
@@ -36,7 +36,7 @@ Same structure as Add Credentials. See [Add Credentials](/02-api-reference/12-rl
 
 ### Response
 
-Same as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) for response format.
+Same as Add Credentials. See [Add Credentials](/02-api-reference/12-rlcl/credentials/add-credentials/) for response format.
 
 ## cURL Example
 
@@ -62,5 +62,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
-- [Update Credentials](/02-api-reference/12-rlcl/credentials/02-api-reference/12-rlcl/credentials/update-credentials/) - Replace all credentials
+- [Add Credentials](/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
+- [Update Credentials](/02-api-reference/12-rlcl/credentials/update-credentials/) - Replace all credentials

@@ -304,20 +304,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | name | string | Yes | - | Policy name (must match path parameter) |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](#policyoperationmetadatadto) |
-| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](#policyconditiondto) |
+| operationMetadata | object | Yes | - | Policy operation metadata. See [PolicyOperationMetadataDTO](/#policyoperationmetadatadto) |
+| condition | object | Yes | - | Policy condition. See [PolicyConditionDTO](/#policyconditiondto) |
 
 ###### Client Ban Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](#variabledto) |
+| clientIdentityVariableList | array | Yes | [] | List of variables used to identify clients. See [VariableDTO](/#variabledto) |
 | thresholdWindowInSeconds | integer | Yes | 10 | Time window in seconds for threshold calculation |
 | thresholdCountPerWindow | integer | Yes | 1 | Threshold count or percentage per window |
-| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](#enumerrorthresholdtype) |
+| thresholdCalculationType | string | Yes | COUNT | Threshold calculation type. See [EnumErrorThresholdType](/#enumerrorthresholdtype) |
 | banTimeInSeconds | integer | Yes | 10 | Duration to ban client in seconds |
 | enableRetryAfterHeader | boolean | No | false | Enable Retry-After header in ban response |
 | ignoreWhenKeyIsEmpty | boolean | No | false | Ignore requests when identity key is empty |
-| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](#policyconditiondto) |
+| assertionCondition | object | Yes | - | Condition that triggers ban counting. See [PolicyConditionDTO](/#policyconditiondto) |
 
 ### EnumErrorThresholdType (thresholdCalculationType)
 
@@ -358,8 +358,8 @@ See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/var
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](#enumconditioncriteria) |
-| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](#conditionruledto) |
+| criteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/#enumconditioncriteria) |
+| rules | array | Yes | List of condition rules. See [ConditionRuleDTO](/#conditionruledto) |
 
 ### EnumConditionCriteria (assertionCondition.criteria)
 
@@ -373,9 +373,9 @@ See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/var
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | variable | object | Yes | Variable to check. See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
-| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](#enumconditionvaluecomparisonoperator) |
+| comparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/#enumconditionvaluecomparisonoperator) |
 | value | string | Yes | Value to compare against |
-| valueSource | string | No | Value source. See [EnumConditionValueSource](#enumconditionvaluesource) |
+| valueSource | string | No | Value source. See [EnumConditionValueSource](/#enumconditionvaluesource) |
 
 ### EnumConditionValueComparisonOperator (comparisonOperator)
 
@@ -405,10 +405,10 @@ See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/var
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](#enumpolicytargetscope) |
+| targetScope | string | Yes | Target scope. See [EnumPolicyTargetScope](/#enumpolicytargetscope) |
 | targetEndpoint | string | No | Target endpoint path (if targetScope is ENDPOINT) |
 | targetEndpointHTTPMethod | string | No | Target endpoint HTTP method (if targetScope is ENDPOINT) |
-| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](#enumpolicytargetpipeline) |
+| targetPipeline | string | Yes | Target pipeline. See [EnumPolicyTargetPipeline](/#enumpolicytargetpipeline) |
 | deploy | boolean | No | true | Whether to deploy immediately |
 | deployTargetEnvironmentNameList | array | No | [] | List of environment names to deploy to |
 | order | integer | No | - | Policy execution order |
@@ -625,9 +625,9 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
-- [Blocked IP List Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/policies/policy-black-ip/) - Static IP blocking policy
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [Blocked IP List Policy](/02-api-reference/05-policies/policies/policy-black-ip/) - Static IP blocking policy
 

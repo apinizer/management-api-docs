@@ -313,11 +313,11 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 |-------|------|----------|---------|-------------|
 | hostname | string | Yes | - | Graylog server hostname or IP address |
 | port | integer | No | 12201 | Graylog server port (default: 12201) |
-| transportType | string | No | TCP | Transport protocol. See [GelfTransports](#gelf-transports) |
+| transportType | string | No | TCP | Transport protocol. See [GelfTransports](/#gelf-transports) |
 | tlsEnabled | boolean | No | false | Enable TLS encryption |
 | tlsCertVerificationEnabled | boolean | No | false | Enable TLS certificate verification (requires `tlsTrustCertChainFile` if true) |
-| compressionType | string | No | NONE | Compression type. See [Compression](#compression) |
-| gelfMessageLevel | string | No | INFO | Default GELF message level. See [GelfMessageLevel](#gelf-message-level) |
+| compressionType | string | No | NONE | Compression type. See [Compression](/#compression) |
+| gelfMessageLevel | string | No | INFO | Default GELF message level. See [GelfMessageLevel](/#gelf-message-level) |
 | queueSize | integer | No | 512 | Message queue size |
 | reconnectDelay | integer | No | 2500 | Reconnection delay in milliseconds |
 | connectTimeout | integer | No | 10000 | Connection timeout in milliseconds |
@@ -516,8 +516,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

@@ -219,6 +219,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Certificates](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
-- [Get Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
-- [Update Certificate](/02-api-reference/08-certificates/crud/02-api-reference/08-certificates/crud/update-certificate/) - Update a certificate
+- [List Certificates](/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
+- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
+- [Update Certificate](/02-api-reference/08-certificates/crud/update-certificate/) - Update a certificate

@@ -232,5 +232,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update CORS Settings](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/settings/update-cors-settings/) - Update CORS settings
-- [Get API Proxy](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update CORS Settings](/02-api-reference/04-api-proxies/settings/update-cors-settings/) - Update CORS settings
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details

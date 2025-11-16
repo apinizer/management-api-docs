@@ -93,7 +93,7 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | No | - | API Proxy name. Must be unique within the project if provided |
 | description | string | No | - | API Proxy description |
 | categoryList | array[string] | No | - | List of category names for API Proxy organization |
-| sharingType | string | No | - | Sharing type for API Proxy. See [EnumSharingType](#enumsharingtype) |
+| sharingType | string | No | - | Sharing type for API Proxy. See [EnumSharingType](/#enumsharingtype) |
 
 ### EnumSharingType (sharingType)
 - `BOTH` - Share with both internal and external users
@@ -267,6 +267,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details (includes metadata)
-- [Update API Keys](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/settings/update-api-keys/) - Update API keys
-- [List API Proxies](/02-api-reference/04-api-proxies/settings/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API Proxies (filtered by metadata)
+- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details (includes metadata)
+- [Update API Keys](/02-api-reference/04-api-proxies/settings/update-api-keys/) - Update API keys
+- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API Proxies (filtered by metadata)

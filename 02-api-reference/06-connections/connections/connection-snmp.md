@@ -375,12 +375,12 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### SNMP Common Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| version | string | Yes | V1 | SNMP version. See [EnumSnmpVersion](#enumsnmpversion) |
+| version | string | Yes | V1 | SNMP version. See [EnumSnmpVersion](/#enumsnmpversion) |
 | connectionString | string | Yes | udp:192.168.1.2/162 | Connection string (format: `protocol:host/port`) |
 | securityOrCommunityName | string | Yes | - | Community name (v1/v2c) or security name (v3) |
 | retryCount | integer | No | - | Number of retry attempts |
 | timeout | integer | No | - | Timeout in milliseconds |
-| messageType | string | No | - | Message type. See [Enum Snmp Message Type](#enum-snmp-message-type) |
+| messageType | string | No | - | Message type. See [Enum Snmp Message Type](/#enum-snmp-message-type) |
 | pduOidForMessage | string | Yes | - | OID for message content |
 | pduOidForTime | string | No | - | OID for timestamp |
 | pduVariableMap | object | No | {} | Map of OID-value pairs for PDU variables |
@@ -388,13 +388,13 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ###### SNMP v3 Specific Fields
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| securityLevel | string | No | - | Security level (v3 only). See [EnumSnmpSecurityLevel](#enumsnmpsecuritylevel) |
-| privacyProtocolList | array | No | [] | List of supported privacy protocols (v3 only). See [EnumSnmpPrivacyProtocol](#enumsnmpprivacyprotocol) |
+| securityLevel | string | No | - | Security level (v3 only). See [EnumSnmpSecurityLevel](/#enumsnmpsecuritylevel) |
+| privacyProtocolList | array | No | [] | List of supported privacy protocols (v3 only). See [EnumSnmpPrivacyProtocol](/#enumsnmpprivacyprotocol) |
 | enableUserAuthentication | boolean | No | false | Enable user authentication (v3 only) |
 | securityName | string | No | - | Security name (v3 only, required if enableUserAuthentication=true) |
-| usmUserAuthenticationProtocol | string | No | - | Authentication protocol (v3 only, required if securityLevel=AUTH_NOPRIV or AUTH_PRIV). See [EnumSnmpAuthenticationProtocol](#enumsnmpauthenticationprotocol) |
+| usmUserAuthenticationProtocol | string | No | - | Authentication protocol (v3 only, required if securityLevel=AUTH_NOPRIV or AUTH_PRIV). See [EnumSnmpAuthenticationProtocol](/#enumsnmpauthenticationprotocol) |
 | authPassphrase | string | No | - | Authentication passphrase (v3 only, required if securityLevel=AUTH_NOPRIV or AUTH_PRIV, secret field) |
-| usmUserPrivacyProtocol | string | No | - | Privacy protocol (v3 only, required if securityLevel=AUTH_PRIV). See [EnumSnmpPrivacyProtocol](#enumsnmpprivacyprotocol) |
+| usmUserPrivacyProtocol | string | No | - | Privacy protocol (v3 only, required if securityLevel=AUTH_PRIV). See [EnumSnmpPrivacyProtocol](/#enumsnmpprivacyprotocol) |
 | privPassphrase | string | No | - | Privacy passphrase (v3 only, required if securityLevel=AUTH_PRIV, secret field) |
 
 ### EnumSnmpVersion (version)
@@ -613,8 +613,8 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
-- [Create Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
-- [Update Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
-- [Delete Connection](/02-api-reference/06-connections/connections/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide
+- [List Connections](/02-api-reference/06-connections/crud/list-connections/) - List all connections
+- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get a specific connection
+- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - General connection creation guide
+- [Update Connection](/02-api-reference/06-connections/crud/update-connection/) - General connection update guide
+- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - General connection deletion guide

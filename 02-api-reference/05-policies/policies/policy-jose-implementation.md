@@ -435,8 +435,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Policy type: `policy-jose-implementation` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| joseTarget | string | Yes | BODY | JOSE target location. See [EnumJoseImplementationSignedTarget](#enumjoseimplementationsignedtarget) |
-| joseTargetVariable | object | No* | null | Variable for JOSE target (required if joseTarget=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
+| joseTarget | string | Yes | BODY | JOSE target location. See [EnumJoseImplementationSignedTarget](/#enumjoseimplementationsignedtarget) |
+| joseTargetVariable | object | No* | null | Variable for JOSE target (required if joseTarget=CHOOSE_FROM_VARIABLE). See [VariableDTO](/#variabledto) |
 | jwtClaimsClaim | string | No | null | JWT claims claim name (for nested claims) |
 | escapeJsonString | boolean | No | false | Whether to escape JSON string values |
 | addIssueTime | boolean | No | true | Whether to add issue time (iat) to JWT |
@@ -451,17 +451,17 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | typeValue | string | No* | null | Type value (required if addTypeToHeader=true) |
 | addExpirationTime | boolean | No | true | Whether to add expiration time (exp) to JWT |
 | expirationTimeValue | integer | No* | null | Expiration time value (required if addExpirationTime=true, must be > 0) |
-| expirationTimeUnit | string | No* | null | Expiration time unit (required if addExpirationTime=true). See [EnumTimeUnit](#enumtimeunit) |
-| additionalClaimMap | object | No | {} | Map of additional claims. See [MapValue](#mapvalue) |
+| expirationTimeUnit | string | No* | null | Expiration time unit (required if addExpirationTime=true). See [EnumTimeUnit](/#enumtimeunit) |
+| additionalClaimMap | object | No | {} | Map of additional claims. See [MapValue](/#mapvalue) |
 | sign | boolean | No | true | Whether to sign JWT |
 | signByIssuer | boolean | No | true | Sign by issuer (true) or by proxy's JWK (false) |
 | jwkIdForValidationAndSign | string | No* | null | JWK ID for validation and signing (required if sign=true and signByIssuer=false) |
 | encrypt | boolean | No | true | Whether to encrypt JWT |
 | encryptByIssuer | boolean | No | true | Encrypt by issuer (true) or by proxy's JWK (false) |
 | jwkIdForDecryptionAndEncryption | string | No* | null | JWK ID for decryption and encryption (required if encrypt=true and encryptByIssuer=false) |
-| encryptionMethod | string | No* | null | Encryption method (required if encrypt=true). See [EnumJwkEncryptionMethod](#enumjwkencryptionmethod) |
-| encodedClaimsTargetForDataManipulation | string | No | BODY | Target for encoded claims data manipulation. See [EnumJoseTarget](#enumjosetarget) |
-| decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for encoded claims target (required if encodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](#variabledto) |
+| encryptionMethod | string | No* | null | Encryption method (required if encrypt=true). See [EnumJwkEncryptionMethod](/#enumjwkencryptionmethod) |
+| encodedClaimsTargetForDataManipulation | string | No | BODY | Target for encoded claims data manipulation. See [EnumJoseTarget](/#enumjosetarget) |
+| decodedClaimsTargetVariableForDataManipulation | object | No* | null | Variable for encoded claims target (required if encodedClaimsTargetForDataManipulation=CHOOSE_FROM_VARIABLE). See [VariableDTO](/#variabledto) |
 
 ### EnumJoseImplementationSignedTarget
 
@@ -598,7 +598,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
 | value | string | Yes | - | Claim value |
-| valueType | string | No | STRING | Value type. See [MapValueType](#mapvaluetype) |
+| valueType | string | No | STRING | Value type. See [MapValueType](/#mapvaluetype) |
 
 ### MapValueType
 
@@ -812,8 +812,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
-- [JOSE Validation Policy](/02-api-reference/05-policies/policies/02-api-reference/05-policies/policies/policy-jose-validation/) - Validate JOSE tokens
+- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
+- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
+- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
+- [JOSE Validation Policy](/02-api-reference/05-policies/policies/policy-jose-validation/) - Validate JOSE tokens

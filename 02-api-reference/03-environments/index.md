@@ -11,8 +11,8 @@ The Environments API provides endpoints for managing deployment environments in 
 
 ## Endpoints
 
-- [List Environments](/02-api-reference/03-environments/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
-- [Get Environments by Project](/02-api-reference/03-environments/02-api-reference/03-environments/get-environments-by-project/) - Get environments accessible from a project
+- [List Environments](/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
+- [Get Environments by Project](/02-api-reference/03-environments/get-environments-by-project/) - Get environments accessible from a project
 
 ## Authentication
 
