@@ -1,0 +1,334 @@
+site_name: Apinizer Management API Documentation
+site_description: Comprehensive documentation for Apinizer Management API
+site_author: Apinizer
+site_url: https://apinizer.github.io/management-api-docs/
+
+# Repository
+repo_name: apinizer/management-api-docs
+repo_url: https://github.com/apinizer/management-api-docs
+edit_uri: edit/main/
+
+# Theme
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+# Markdown extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - toc:
+      permalink: true
+      baselevel: 2
+  - attr_list
+  - md_in_html
+
+# Navigation
+nav:
+  - Home: README.md
+  - Getting Started:
+    - 01-getting-started/index.md
+    - Overview: 01-getting-started/overview.md
+    - Authentication: 01-getting-started/authentication.md
+    - Base URL: 01-getting-started/base-url.md
+    - Error Handling: 01-getting-started/error-handling.md
+  - API Reference:
+    - 02-api-reference/index.md
+    - Authentication:
+      - 02-api-reference/01-auth/index.md
+      - Create Token: 02-api-reference/01-auth/create-token.md
+    - Projects:
+      - 02-api-reference/02-projects/index.md
+      - List Projects: 02-api-reference/02-projects/list-projects.md
+    - Environments:
+      - 02-api-reference/03-environments/index.md
+      - List Environments: 02-api-reference/03-environments/list-environments.md
+      - Get Environments by Project: 02-api-reference/03-environments/get-environments-by-project.md
+    - API Proxies:
+      - 02-api-reference/04-api-proxies/index.md
+      - CRUD Operations:
+        - 02-api-reference/04-api-proxies/crud/index.md
+        - List API Proxies: 02-api-reference/04-api-proxies/crud/list-api-proxies.md
+        - Get API Proxy: 02-api-reference/04-api-proxies/crud/get-api-proxy.md
+        - Create from URL: 02-api-reference/04-api-proxies/crud/create-api-proxy-from-url.md
+        - Create from File: 02-api-reference/04-api-proxies/crud/create-api-proxy-from-file.md
+        - Update API Proxy: 02-api-reference/04-api-proxies/crud/update-api-proxy.md
+        - Update from URL: 02-api-reference/04-api-proxies/crud/update-api-proxy-from-url.md
+        - Update from File: 02-api-reference/04-api-proxies/crud/update-api-proxy-from-file.md
+        - Import API Proxy: 02-api-reference/04-api-proxies/crud/import-api-proxy.md
+        - Import and Override: 02-api-reference/04-api-proxies/crud/import-api-proxy-and-override.md
+        - Export API Proxy: 02-api-reference/04-api-proxies/crud/export-api-proxy.md
+        - Delete API Proxy: 02-api-reference/04-api-proxies/crud/delete-api-proxy.md
+      - Deployment:
+        - 02-api-reference/04-api-proxies/deployment/index.md
+        - Deploy: 02-api-reference/04-api-proxies/deployment/deploy.md
+        - Undeploy: 02-api-reference/04-api-proxies/deployment/undeploy.md
+      - Endpoints:
+        - 02-api-reference/04-api-proxies/endpoints/index.md
+        - List Endpoints: 02-api-reference/04-api-proxies/endpoints/list-endpoints.md
+        - Get Endpoint: 02-api-reference/04-api-proxies/endpoints/get-endpoint.md
+        - Create Endpoint: 02-api-reference/04-api-proxies/endpoints/create-endpoint.md
+        - Update Endpoint: 02-api-reference/04-api-proxies/endpoints/update-endpoint.md
+        - Delete Endpoint: 02-api-reference/04-api-proxies/endpoints/delete-endpoint.md
+        - Update Endpoint Status: 02-api-reference/04-api-proxies/endpoints/update-endpoint-status.md
+        - Update Endpoint WSA: 02-api-reference/04-api-proxies/endpoints/update-endpoint-wsa.md
+        - Update Endpoint Cache: 02-api-reference/04-api-proxies/endpoints/update-endpoint-cache.md
+        - List Endpoint Policies: 02-api-reference/04-api-proxies/endpoints/list-endpoint-policies.md
+      - Settings:
+        - 02-api-reference/04-api-proxies/settings/index.md
+        - Metadata: 02-api-reference/04-api-proxies/settings/update-metadata.md
+        - Client Route: 02-api-reference/04-api-proxies/settings/update-client-route.md
+        - CORS Settings: 02-api-reference/04-api-proxies/settings/update-cors-settings.md
+        - Cache Settings: 02-api-reference/04-api-proxies/settings/update-cache-settings.md
+        - Routing Addresses: 02-api-reference/04-api-proxies/settings/update-routing-addresses.md
+        - Routing Status: 02-api-reference/04-api-proxies/settings/update-routing-status.md
+        - Connection Settings: 02-api-reference/04-api-proxies/settings/update-connection-settings.md
+        - Circuit Breaker: 02-api-reference/04-api-proxies/settings/update-circuit-breaker-settings.md
+        - mTLS Settings: 02-api-reference/04-api-proxies/settings/update-mtls-settings.md
+        - NTLM Settings: 02-api-reference/04-api-proxies/settings/update-ntlm-settings.md
+        - Proxy Server Settings: 02-api-reference/04-api-proxies/settings/update-proxy-server-settings.md
+        - Traffic Log Settings: 02-api-reference/04-api-proxies/settings/update-traffic-log-settings.md
+        - JSON Error Template: 02-api-reference/04-api-proxies/settings/update-json-error-template.md
+        - XML Error Template: 02-api-reference/04-api-proxies/settings/update-xml-error-template.md
+        - Forwarded IP Header: 02-api-reference/04-api-proxies/settings/update-forwarded-ip-header.md
+        - Hide API Definition: 02-api-reference/04-api-proxies/settings/update-hide-spec-file.md
+        - API Keys: 02-api-reference/04-api-proxies/settings/update-api-keys.md
+    - Policies:
+      - 02-api-reference/05-policies/index.md
+      - CRUD Operations:
+        - 02-api-reference/05-policies/crud/index.md
+        - List Policies: 02-api-reference/05-policies/crud/list-policies.md
+        - Add Policy: 02-api-reference/05-policies/crud/add-policy.md
+        - Update Policy: 02-api-reference/05-policies/crud/update-policy.md
+        - Delete Policy: 02-api-reference/05-policies/crud/delete-policy.md
+      - Policy Types:
+        - 02-api-reference/05-policies/policies/index.md
+        - Authentication Policies:
+          - Basic Auth: 02-api-reference/05-policies/policies/policy-auth-basic.md
+          - Clear Text Auth: 02-api-reference/05-policies/policies/policy-auth-clear-text.md
+          - Digest Auth: 02-api-reference/05-policies/policies/policy-auth-digest.md
+          - JWT Auth: 02-api-reference/05-policies/policies/policy-auth-jwt.md
+          - OAuth2 Auth: 02-api-reference/05-policies/policies/policy-auth-oauth2.md
+          - OIDC Auth: 02-api-reference/05-policies/policies/policy-oidc.md
+          - mTLS Auth: 02-api-reference/05-policies/policies/policy-auth-mtls.md
+          - API Auth: 02-api-reference/05-policies/policies/policy-api-authentication.md
+          - SAML Validation: 02-api-reference/05-policies/policies/policy-saml-validation.md
+        - Security Policies:
+          - WS-Security Encrypt: 02-api-reference/05-policies/policies/policy-ws-security-encrypt.md
+          - WS-Security Decrypt: 02-api-reference/05-policies/policies/policy-ws-security-decrypt.md
+          - WS-Security Sign: 02-api-reference/05-policies/policies/policy-ws-security-sign.md
+          - WS-Security Sign Validation: 02-api-reference/05-policies/policies/policy-ws-security-sign-validation.md
+          - WS-Security Username Token: 02-api-reference/05-policies/policies/policy-ws-security-username.md
+          - WS-Security Timestamp: 02-api-reference/05-policies/policies/policy-ws-security-timestamp.md
+          - WS-Security From Target: 02-api-reference/05-policies/policies/policy-ws-security-from-target.md
+          - WS-Security To Target: 02-api-reference/05-policies/policies/policy-ws-security-to-target.md
+          - JOSE Validation: 02-api-reference/05-policies/policies/policy-jose-validation.md
+          - JOSE Implementation: 02-api-reference/05-policies/policies/policy-jose-implementation.md
+          - Digital Sign: 02-api-reference/05-policies/policies/policy-digital-sign.md
+          - Digital Sign Verification: 02-api-reference/05-policies/policies/policy-digital-sign-verification.md
+          - Encryption: 02-api-reference/05-policies/policies/policy-encryption.md
+          - Decryption: 02-api-reference/05-policies/policies/policy-decryption.md
+        - Rate Limiting & Quota:
+          - API Based Throttling: 02-api-reference/05-policies/policies/policy-api-based-throttling.md
+          - API Based Quota: 02-api-reference/05-policies/policies/policy-api-based-quota.md
+          - Client Ban: 02-api-reference/05-policies/policies/policy-client-ban.md
+        - IP Filtering:
+          - Blocked IP List: 02-api-reference/05-policies/policies/policy-black-ip.md
+          - Allowed IP List: 02-api-reference/05-policies/policies/policy-white-ip.md
+        - Transformation:
+          - JSON Transformation: 02-api-reference/05-policies/policies/policy-json-transformation.md
+          - XML Transformation: 02-api-reference/05-policies/policies/policy-xml-transformation.md
+          - Request Protocol Transformation: 02-api-reference/05-policies/policies/policy-request-protocol-transformation.md
+          - Response Protocol Transformation: 02-api-reference/05-policies/policies/policy-response-protocol-transformation.md
+        - Validation:
+          - JSON Schema Validation: 02-api-reference/05-policies/policies/policy-json-schema-validation.md
+          - XML Schema Validation: 02-api-reference/05-policies/policies/policy-xml-schema-validation.md
+          - Max Message Size: 02-api-reference/05-policies/policies/policy-max-message-size.md
+          - Min Message Size: 02-api-reference/05-policies/policies/policy-min-message-size.md
+        - Content:
+          - Content Filter: 02-api-reference/05-policies/policies/policy-content-filter.md
+          - Redaction: 02-api-reference/05-policies/policies/policy-redaction.md
+        - Scripting:
+          - Script: 02-api-reference/05-policies/policies/policy-script.md
+        - Integration:
+          - API Call: 02-api-reference/05-policies/policies/policy-api-call.md
+        - Advanced:
+          - Time Restriction: 02-api-reference/05-policies/policies/policy-time-restriction.md
+          - Business Rule: 02-api-reference/05-policies/policies/policy-business-rule.md
+          - Policy Group: 02-api-reference/05-policies/policies/policy-group.md
+    - Connections:
+      - 02-api-reference/06-connections/index.md
+      - Connection Types:
+        - 02-api-reference/06-connections/connections/index.md
+        - ActiveMQ: 02-api-reference/06-connections/connections/connection-activemq.md
+        - Database: 02-api-reference/06-connections/connections/connection-database.md
+        - Elasticsearch: 02-api-reference/06-connections/connections/connection-elasticsearch.md
+        - Email: 02-api-reference/06-connections/connections/connection-email.md
+        - FTP: 02-api-reference/06-connections/connections/connection-ftp.md
+        - Graylog: 02-api-reference/06-connections/connections/connection-graylog.md
+        - Kafka: 02-api-reference/06-connections/connections/connection-kafka.md
+        - LDAP: 02-api-reference/06-connections/connections/connection-ldap.md
+        - Linux Script: 02-api-reference/06-connections/connections/connection-linux-script.md
+        - Logback: 02-api-reference/06-connections/connections/connection-logback.md
+        - RabbitMQ: 02-api-reference/06-connections/connections/connection-rabbitmq.md
+        - SNMP: 02-api-reference/06-connections/connections/connection-snmp.md
+        - Syslog: 02-api-reference/06-connections/connections/connection-syslog.md
+        - Webhook: 02-api-reference/06-connections/connections/connection-webhook.md
+      - CRUD Operations:
+        - 02-api-reference/06-connections/crud/index.md
+        - List Connections: 02-api-reference/06-connections/crud/list-connections.md
+        - Get Connection: 02-api-reference/06-connections/crud/get-connection.md
+        - Create Connection: 02-api-reference/06-connections/crud/create-connection.md
+        - Update Connection: 02-api-reference/06-connections/crud/update-connection.md
+        - Delete Connection: 02-api-reference/06-connections/crud/delete-connection.md
+    - Credentials:
+      - 02-api-reference/07-credentials/index.md
+      - Access Management:
+        - 02-api-reference/07-credentials/access/index.md
+        - Get Granted Access: 02-api-reference/07-credentials/access/get-granted-access-list.md
+        - Grant Access: 02-api-reference/07-credentials/access/grant-access.md
+        - Revoke Access: 02-api-reference/07-credentials/access/revoke-access.md
+      - CRUD Operations:
+        - 02-api-reference/07-credentials/crud/index.md
+        - List Credentials: 02-api-reference/07-credentials/crud/list-credentials.md
+        - Get Credential: 02-api-reference/07-credentials/crud/get-credential.md
+        - Create Credential: 02-api-reference/07-credentials/crud/create-credential.md
+        - Update Credential: 02-api-reference/07-credentials/crud/update-credential.md
+        - Change Password: 02-api-reference/07-credentials/crud/change-credential-password.md
+        - Delete Credential: 02-api-reference/07-credentials/crud/delete-credential.md
+    - Certificates:
+      - 02-api-reference/08-certificates/index.md
+      - List Certificates: 02-api-reference/08-certificates/crud/list-certificates.md
+      - Get Certificate: 02-api-reference/08-certificates/crud/get-certificate.md
+      - Get Truststore Certificates: 02-api-reference/08-certificates/crud/get-truststore-certificates.md
+      - Create Certificate: 02-api-reference/08-certificates/crud/create-certificate.md
+      - Update Certificate: 02-api-reference/08-certificates/crud/update-certificate.md
+      - Export Certificate: 02-api-reference/08-certificates/crud/export-certificate.md
+      - Delete Certificate: 02-api-reference/08-certificates/crud/delete-certificate.md
+    - API Proxy Groups:
+      - 02-api-reference/09-api-proxy-groups/index.md
+      - CRUD Operations:
+        - 02-api-reference/09-api-proxy-groups/crud/index.md
+        - List Groups: 02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups.md
+        - Create Group: 02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group.md
+        - Update Group: 02-api-reference/09-api-proxy-groups/crud/update-api-proxy-group.md
+        - Delete Group: 02-api-reference/09-api-proxy-groups/crud/delete-api-proxy-group.md
+      - API Proxies:
+        - 02-api-reference/09-api-proxy-groups/api-proxies/index.md
+        - Add to Group: 02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group.md
+        - Remove from Group: 02-api-reference/09-api-proxy-groups/api-proxies/remove-api-proxy-from-group.md
+      - Deployment:
+        - 02-api-reference/09-api-proxy-groups/deployment/index.md
+        - Deploy Group: 02-api-reference/09-api-proxy-groups/deployment/deploy-api-proxy-group.md
+        - Undeploy Group: 02-api-reference/09-api-proxy-groups/deployment/undeploy-api-proxy-group.md
+        - List Environments: 02-api-reference/09-api-proxy-groups/deployment/list-environments.md
+    - Environment Variables:
+      - 02-api-reference/10-environment-variables/index.md
+      - List Variables: 02-api-reference/10-environment-variables/crud/list-environment-variables.md
+      - Get Variable: 02-api-reference/10-environment-variables/crud/get-environment-variable.md
+      - Create Variable: 02-api-reference/10-environment-variables/crud/create-environment-variable.md
+      - Update Variable: 02-api-reference/10-environment-variables/crud/update-environment-variable.md
+      - Delete Variable: 02-api-reference/10-environment-variables/crud/delete-environment-variable.md
+    - IP Groups:
+      - 02-api-reference/11-ip-groups/index.md
+      - CRUD Operations:
+        - 02-api-reference/11-ip-groups/crud/index.md
+        - Create IP Group: 02-api-reference/11-ip-groups/crud/create-ip-group.md
+        - Update IP Group: 02-api-reference/11-ip-groups/crud/update-ip-group.md
+        - Delete IP Group: 02-api-reference/11-ip-groups/crud/delete-ip-group.md
+      - IP Management:
+        - 02-api-reference/11-ip-groups/ips/index.md
+        - Add IPs: 02-api-reference/11-ip-groups/ips/add-ips-to-group.md
+        - Update IPs: 02-api-reference/11-ip-groups/ips/update-ips-in-group.md
+        - Delete IPs: 02-api-reference/11-ip-groups/ips/delete-ips-from-group.md
+    - RLCL:
+      - 02-api-reference/12-rlcl/index.md
+      - CRUD Operations:
+        - 02-api-reference/12-rlcl/crud/index.md
+        - Create RLCL: 02-api-reference/12-rlcl/crud/create-rlcl.md
+        - Update RLCL: 02-api-reference/12-rlcl/crud/update-rlcl.md
+        - Delete RLCL: 02-api-reference/12-rlcl/crud/delete-rlcl.md
+      - Condition Management:
+        - 02-api-reference/12-rlcl/condition/index.md
+        - Add Condition: 02-api-reference/12-rlcl/condition/add-condition.md
+        - Update Condition: 02-api-reference/12-rlcl/condition/update-condition.md
+        - Delete Condition: 02-api-reference/12-rlcl/condition/delete-condition.md
+      - Credentials Management:
+        - 02-api-reference/12-rlcl/credentials/index.md
+        - Add Credentials: 02-api-reference/12-rlcl/credentials/add-credentials.md
+        - Update Credentials: 02-api-reference/12-rlcl/credentials/update-credentials.md
+        - Delete Credentials: 02-api-reference/12-rlcl/credentials/delete-credentials.md
+      - Endpoints Management:
+        - 02-api-reference/12-rlcl/endpoints/index.md
+        - Add Endpoints: 02-api-reference/12-rlcl/endpoints/add-endpoints.md
+        - Update Endpoints: 02-api-reference/12-rlcl/endpoints/update-endpoints.md
+        - Delete Endpoints: 02-api-reference/12-rlcl/endpoints/delete-endpoints.md
+    - GeoLocation:
+      - 02-api-reference/13-geolocation/index.md
+      - Enable GeoLocation: 02-api-reference/13-geolocation/enable-geolocation.md
+      - Disable GeoLocation: 02-api-reference/13-geolocation/disable-geolocation.md
+      - Upload MMDB File: 02-api-reference/13-geolocation/upload-mmdb-file.md
+    - Reports:
+      - 02-api-reference/14-reports/index.md
+      - API Report: 02-api-reference/14-reports/api-report.md
+      - Organization API Data Model Access Report: 02-api-reference/14-reports/organization-api-data-model-access-report.md
+    - Test:
+      - 02-api-reference/16-test/index.md
+      - Health Check: 02-api-reference/16-test/healthcheck.md
+      - Secure Hello: 02-api-reference/16-test/secure-hello.md
+  - Appendix:
+    - 03-appendix/index.md
+    - Glossary: 03-appendix/glossary.md
+    - Variable Definition: 03-appendix/variable-definition.md
+    - Enum Reference: 03-appendix/enum-reference.md
+    - OpenAPI Spec: 03-appendix/openapi-spec.md
+
+# Copyright
+copyright: Copyright &copy; 2024 Apinizer
+

@@ -11,3 +11,7 @@ SESSION_SUMMARY.md
 *.swo
 *~
 
+# MkDocs
+site/
+.cache/
+
