@@ -79,7 +79,7 @@
         </aside>
         
         <main class="main-content">
-          <section>
+          <section id="main-content">
             {{ content }}
           </section>
           
@@ -87,6 +87,30 @@
             <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
           </footer>
         </main>
+        <script>
+          // Kök neden çözümü: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor
+          // Bu script sayfa render edildikten sonra tüm absolute path'leri baseurl ile birleştirir
+          (function() {
+            const baseurl = '{{ site.baseurl }}';
+            if (baseurl && baseurl !== '') {
+              const mainContent = document.getElementById('main-content');
+              if (mainContent) {
+                // Tüm absolute path'li linkleri bul ve baseurl ekle
+                const links = mainContent.querySelectorAll('a[href^="/"]');
+                links.forEach(function(link) {
+                  const href = link.getAttribute('href');
+                  // External link değilse (// veya http ile başlamıyorsa) baseurl ekle
+                  if (href && !href.startsWith('//') && !href.startsWith('http')) {
+                    // baseurl zaten yoksa ekle
+                    if (!href.startsWith(baseurl)) {
+                      link.setAttribute('href', baseurl + href);
+                    }
+                  }
+                });
+              }
+            }
+          })();
+        </script>
       </div>
     </div>
   </body>
