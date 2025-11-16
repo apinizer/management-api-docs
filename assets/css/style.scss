@@ -1,0 +1,55 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Custom styles
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    
+    li {
+      margin: 0;
+      
+      a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        
+        &:hover {
+          color: #0366d6;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+section {
+  min-height: 400px;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eaecef;
+  text-align: center;
+  color: #6a737d;
+}
+

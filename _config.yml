@@ -1,0 +1,57 @@
+# Site settings
+title: Apinizer Management API Documentation
+description: Comprehensive documentation for Apinizer Management API
+url: https://apinizer.github.io
+baseurl: /management-api-docs
+
+# Theme
+theme: jekyll-theme-minimal
+# veya başka bir tema kullanmak isterseniz:
+# remote_theme: pages-themes/minimal@v0.2.0
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Getting Started
+    url: /01-getting-started/
+  - title: API Reference
+    url: /02-api-reference/
+  - title: Appendix
+    url: /03-appendix/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - SESSION_SUMMARY.md
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Build settings
+sass:
+  style: compressed
+
+# SEO
+author: Apinizer
+twitter:
+  username: apinizer
+
+# GitHub Pages settings
+github: [metadata]
+
