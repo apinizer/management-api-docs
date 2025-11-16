@@ -5,11 +5,21 @@ url: https://apinizer.github.io
 baseurl: "/management-api-docs"  # GitHub Pages subdirectory path
 
 # Theme
-theme: jekyll-theme-minimal
-# veya başka bir tema kullanmak isterseniz:
-# remote_theme: pages-themes/minimal@v0.2.0
+theme: minima
+# Minima is Jekyll's default theme and includes:
+# - Responsive design
+# - Built-in sidebar navigation
+# - SEO optimization
+# - Syntax highlighting
+# - Social media links
 
-# Navigation
+# Minima theme configuration
+minima:
+  social_links:
+    github: apinizer
+    twitter: apinizer
+
+# Navigation (for custom sidebar)
 navigation:
   - title: Home
     url: /

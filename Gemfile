@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3"
-gem "jekyll-theme-minimal"
-gem "jekyll-feed", "~> 0.12"
-gem "jekyll-sitemap"
-gem "jekyll-seo-tag"
+gem "minima", "~> 2.5"
+gem "jekyll-feed", "~> 0.17"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-seo-tag", "~> 2.8"
 
