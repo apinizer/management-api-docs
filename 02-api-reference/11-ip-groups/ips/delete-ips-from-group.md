@@ -38,7 +38,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group.md) for field descriptions.
+Same structure as Add IPs. See [Add IPs to Group](./add-ips-to-group) for field descriptions.
 
 ### Important Notes
 
@@ -92,5 +92,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add IPs to Group](./add-ips-to-group.md) - Add IPs to group
-- [Update IPs in Group](./update-ips-in-group.md) - Replace all IPs in group
+- [Add IPs to Group](./add-ips-to-group) - Add IPs to group
+- [Update IPs in Group](./update-ips-in-group) - Replace all IPs in group

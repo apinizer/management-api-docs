@@ -151,5 +151,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Certificate](./get-certificate.md) - Get a specific certificate
-- [Create Certificate](./create-certificate.md) - Create a new certificate
+- [Get Certificate](./get-certificate) - Get a specific certificate
+- [Create Certificate](./create-certificate) - Create a new certificate

@@ -109,12 +109,12 @@ This endpoint does not require a request body.
 - **REST Only**: Endpoints can only be deleted from REST API proxies. SOAP endpoints are managed through WSDL reparsing
 - **Permanent Deletion**: Endpoint deletion is permanent and cannot be undone
 - **Policies**: All policies associated with the endpoint are also deleted
-- **Endpoint ID**: Use [List Endpoints](./list-endpoints.md) to get endpoint IDs
+- **Endpoint ID**: Use [List Endpoints](./list-endpoints) to get endpoint IDs
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](./list-endpoints.md) - List all endpoints
-- [Get Endpoint](./get-endpoint.md) - Get endpoint details
-- [Create Endpoint](./create-endpoint.md) - Create a new endpoint
-- [Update Endpoint](./update-endpoint.md) - Update an endpoint
+- [List Endpoints](./list-endpoints) - List all endpoints
+- [Get Endpoint](./get-endpoint) - Get endpoint details
+- [Create Endpoint](./create-endpoint) - Create a new endpoint
+- [Update Endpoint](./update-endpoint) - Update an endpoint

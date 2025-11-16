@@ -262,6 +262,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details (includes metadata)
-- [Update API Keys](./update-api-keys.md) - Update API keys
-- [List API Proxies](../crud/list-api-proxies.md) - List all API Proxies (filtered by metadata)
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details (includes metadata)
+- [Update API Keys](./update-api-keys) - Update API keys
+- [List API Proxies](../crud/list-api-proxies) - List all API Proxies (filtered by metadata)

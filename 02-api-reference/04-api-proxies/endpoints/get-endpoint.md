@@ -72,7 +72,7 @@ None
 
 - `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
-**Note:** Policy lists are not included. Use [List Endpoint Policies](./list-endpoint-policies.md) to retrieve policy details.
+**Note:** Policy lists are not included. Use [List Endpoint Policies](./list-endpoint-policies) to retrieve policy details.
 
 ### Error Response (400 Bad Request)
 
@@ -115,13 +115,13 @@ This endpoint does not require a request body.
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](./list-endpoints.md) to get endpoint IDs
-- **Policy Details**: Policy lists are not included. Use [List Endpoint Policies](./list-endpoint-policies.md) to retrieve policies
+- **Endpoint ID**: Use [List Endpoints](./list-endpoints) to get endpoint IDs
+- **Policy Details**: Policy lists are not included. Use [List Endpoint Policies](./list-endpoint-policies) to retrieve policies
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](./list-endpoints.md) - List all endpoints
-- [List Endpoint Policies](./list-endpoint-policies.md) - List endpoint policies
-- [Update Endpoint](./update-endpoint.md) - Update an endpoint
-- [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
+- [List Endpoints](./list-endpoints) - List all endpoints
+- [List Endpoint Policies](./list-endpoint-policies) - List endpoint policies
+- [Update Endpoint](./update-endpoint) - Update an endpoint
+- [Delete Endpoint](./delete-endpoint) - Delete an endpoint

@@ -246,7 +246,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List API Proxies](./list-api-proxies.md) - List all API proxies
-- [Get API Proxy](./get-api-proxy.md) - Get API proxy details
-- [Update API Proxy](./update-api-proxy.md) - Update API proxy
-- [Deploy API Proxy](../deployment/deploy.md) - Deploy API proxy
+- [List API Proxies](./list-api-proxies) - List all API proxies
+- [Get API Proxy](./get-api-proxy) - Get API proxy details
+- [Update API Proxy](./update-api-proxy) - Update API proxy
+- [Deploy API Proxy](../deployment/deploy) - Deploy API proxy

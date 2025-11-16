@@ -11,27 +11,27 @@ Welcome to the Apinizer Management API documentation. This section provides esse
 
 The Management API allows you to perform many operations without needing the web interface, enabling integration of Apinizer into your DevOps environment.
 
-See [Overview](./overview.md) for detailed information about the Management API.
+See [Overview](./overview) for detailed information about the Management API.
 
 ## Quick Start Guide
 
 1. **Understand the Base URL**: Learn how to construct the API base URL for your Apinizer instance.
-   - [Base URL](./base-url.md)
+   - [Base URL](./base-url)
 
 2. **Get Your API Token**: Obtain a Personal API Access Token to authenticate your requests.
-   - [Authentication](./authentication.md)
+   - [Authentication](./authentication)
 
 3. **Understand Error Handling**: Learn how the API handles errors and what to expect.
-   - [Error Handling](./error-handling.md)
+   - [Error Handling](./error-handling)
 
 4. **Start Using the API**: Explore the [API Reference](../02-api-reference/) to find endpoints for your use case.
 
 ## Documentation Sections
 
-- [Overview](./overview.md) - Introduction to the Management API
-- [Authentication](./authentication.md) - How to obtain and use API tokens
-- [Base URL](./base-url.md) - How to construct the API base URL
-- [Error Handling](./error-handling.md) - Understanding API error responses
+- [Overview](./overview) - Introduction to the Management API
+- [Authentication](./authentication) - How to obtain and use API tokens
+- [Base URL](./base-url) - How to construct the API base URL
+- [Error Handling](./error-handling) - Understanding API error responses
 
 ## Next Steps
 

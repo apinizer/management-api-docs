@@ -118,7 +118,7 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [List Connections](./list-connections.md) - List all connections
-- [Get Connection](./get-connection.md) - Get connection details
-- [Create Connection](./create-connection.md) - Create a new connection
-- [Update Connection](./update-connection.md) - Update a connection
+- [List Connections](./list-connections) - List all connections
+- [Get Connection](./get-connection) - Get connection details
+- [Create Connection](./create-connection) - Create a new connection
+- [Update Connection](./update-connection) - Update a connection

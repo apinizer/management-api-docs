@@ -171,12 +171,12 @@ The request body is an object containing an array of endpoint rate limit objects
 
 ### Variable Object (targetVariable)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -288,5 +288,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Endpoints](./update-endpoints.md) - Replace all endpoints
-- [Delete Endpoints](./delete-endpoints.md) - Remove endpoints
+- [Update Endpoints](./update-endpoints) - Replace all endpoints
+- [Delete Endpoints](./delete-endpoints) - Remove endpoints

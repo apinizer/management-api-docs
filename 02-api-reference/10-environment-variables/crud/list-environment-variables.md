@@ -163,5 +163,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Environment Variable](./get-environment-variable.md) - Get a specific environment variable
-- [Create Environment Variable](./create-environment-variable.md) - Create a new environment variable
+- [Get Environment Variable](./get-environment-variable) - Get a specific environment variable
+- [Create Environment Variable](./create-environment-variable) - Create a new environment variable

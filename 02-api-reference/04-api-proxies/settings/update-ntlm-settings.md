@@ -152,6 +152,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update mTLS Settings](./update-mtls-settings.md) - Update mTLS settings
-- [Update Connection Settings](./update-connection-settings.md) - Update connection settings
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Update mTLS Settings](./update-mtls-settings) - Update mTLS settings
+- [Update Connection Settings](./update-connection-settings) - Update connection settings
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details

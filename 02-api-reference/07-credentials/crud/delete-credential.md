@@ -112,6 +112,6 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Credentials](./list-credentials.md) - List all credentials
-- [Create Credential](./create-credential.md) - Create a new credential
-- [Revoke Access](../access/revoke-access.md) - Revoke access from API Proxy or Group
+- [List Credentials](./list-credentials) - List all credentials
+- [Create Credential](./create-credential) - Create a new credential
+- [Revoke Access](../access/revoke-access) - Revoke access from API Proxy or Group

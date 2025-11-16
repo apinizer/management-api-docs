@@ -88,5 +88,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Environment Variables](./list-environment-variables.md) - List all environment variables
-- [Create Environment Variable](./create-environment-variable.md) - Create a new environment variable
+- [List Environment Variables](./list-environment-variables) - List all environment variables
+- [Create Environment Variable](./create-environment-variable) - Create a new environment variable

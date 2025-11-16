@@ -62,7 +62,7 @@ Same structure as Create Credential. All fields are required for update.
 
 #### Request Body Fields
 
-Same as Create Credential. See [Create Credential](./create-credential.md) for field descriptions.
+Same as Create Credential. See [Create Credential](./create-credential) for field descriptions.
 
 ### Important Notes
 
@@ -73,7 +73,7 @@ Same as Create Credential. See [Create Credential](./create-credential.md) for f
 
 ### Response
 
-Same as Create Credential. See [Create Credential](./create-credential.md) for response format.
+Same as Create Credential. See [Create Credential](./create-credential) for response format.
 
 ## cURL Example
 
@@ -117,6 +117,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create Credential](./create-credential.md) - Create a new credential
-- [Change Credential Password](./change-credential-password.md) - Change only password
-- [Delete Credential](./delete-credential.md) - Delete a credential
+- [Create Credential](./create-credential) - Create a new credential
+- [Change Credential Password](./change-credential-password) - Change only password
+- [Delete Credential](./delete-credential) - Delete a credential

@@ -120,5 +120,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [API Report](./api-report.md) - API Proxy report
-- [Update Metadata](../04-api-proxies/settings/update-metadata.md) - Update API Proxy sharing type
+- [API Report](./api-report) - API Proxy report
+- [Update Metadata](../04-api-proxies/settings/update-metadata) - Update API Proxy sharing type

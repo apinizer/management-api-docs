@@ -167,6 +167,6 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Import API Proxy (Without Override)](./import-api-proxy.md) - Import API Proxy without overriding existing one
-- [Import API Proxy (With Override)](./import-api-proxy-and-override.md) - Import API Proxy with override option
-- [Get API Proxy](./get-api-proxy.md) - Get API Proxy details
+- [Import API Proxy (Without Override)](./import-api-proxy) - Import API Proxy without overriding existing one
+- [Import API Proxy (With Override)](./import-api-proxy-and-override) - Import API Proxy with override option
+- [Get API Proxy](./get-api-proxy) - Get API Proxy details

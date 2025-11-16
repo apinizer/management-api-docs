@@ -152,12 +152,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Variable Object (firstVariable/secondVariable)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "request.header.X-User-Type", "client.ip") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -165,7 +165,7 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 | messageContentType | string | No* | Message content type (required if type=BODY) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 
 ### Notes
@@ -231,6 +231,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Condition](./update-condition.md) - Update condition in RLCL
-- [Delete Condition](./delete-condition.md) - Remove condition from RLCL
-- [Policy Conditions](../../05-policies/crud/add-policy.md) - Detailed condition documentation
+- [Update Condition](./update-condition) - Update condition in RLCL
+- [Delete Condition](./delete-condition) - Remove condition from RLCL
+- [Policy Conditions](../../05-policies/crud/add-policy) - Detailed condition documentation

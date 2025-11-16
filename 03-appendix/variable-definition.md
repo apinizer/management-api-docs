@@ -192,7 +192,7 @@ Custom variable defined with script.
 |-------|------|----------|-------------|
 | type | string | Yes | Must be `CUSTOM` |
 | initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
-| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](../02-api-reference/05-policies/policies/policy-script.md) |
+| scriptLanguage | string | Yes* | - | Script language (required if initWithScript=true). See [EnumScriptType](../02-api-reference/05-policies/policies/policy-script) |
 | scriptBody | string | Yes* | - | Script body code (required if initWithScript=true) |
 
 ### Note
@@ -478,8 +478,8 @@ Variables are used in various policies:
 
 ## Related Documentation
 
-- [Enum Reference](./enum-reference.md) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
-- [Glossary](./glossary.md) - Terms and definitions
-- [API Based Throttling Policy](../02-api-reference/05-policies/policies/policy-api-based-throttling.md) - Uses variables for client identification
-- [RLCL API](../02-api-reference/12-rlcl/index.md) - Uses variables for rate limit control
-- [Script Policy](../02-api-reference/05-policies/policies/policy-script.md) - Script language types
+- [Enum Reference](./enum-reference) - Enumeration values used in variables (EnumVariableType, EnumVariableParameterType, etc.)
+- [Glossary](./glossary) - Terms and definitions
+- [API Based Throttling Policy](../02-api-reference/05-policies/policies/policy-api-based-throttling) - Uses variables for client identification
+- [RLCL API](../02-api-reference/12-rlcl/) - Uses variables for rate limit control
+- [Script Policy](../02-api-reference/05-policies/policies/policy-script) - Script language types

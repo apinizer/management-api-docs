@@ -78,5 +78,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Create IP Group](./create-ip-group.md) - Create a new IP Group
-- [Update IP Group](./update-ip-group.md) - Update an IP Group
+- [Create IP Group](./create-ip-group) - Create a new IP Group
+- [Update IP Group](./update-ip-group) - Update an IP Group

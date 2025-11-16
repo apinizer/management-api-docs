@@ -175,6 +175,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Export API Proxy](./export-api-proxy.md) - Export API Proxy to ZIP file
-- [Import API Proxy (With Override)](./import-api-proxy-and-override.md) - Import API Proxy with override option
-- [List API Proxies](./list-api-proxies.md) - List all API Proxies in project
+- [Export API Proxy](./export-api-proxy) - Export API Proxy to ZIP file
+- [Import API Proxy (With Override)](./import-api-proxy-and-override) - Import API Proxy with override option
+- [List API Proxies](./list-api-proxies) - List all API Proxies in project

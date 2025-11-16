@@ -313,20 +313,20 @@ Asymmetric Algorithms:
 
 ### Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar)
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -341,15 +341,15 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 
 ### Policy Condition (policyCondition)
 
-See [Policy Condition Documentation](../crud/add-policy.md) for detailed information.
+See [Policy Condition Documentation](../crud/add-policy) for detailed information.
 
 ### Policy Operation Metadata (operationMetadata)
 
-See [Policy Operation Metadata Documentation](../crud/add-policy.md) for detailed information.
+See [Policy Operation Metadata Documentation](../crud/add-policy) for detailed information.
 
 ### Error Messages (errorMessageList)
 
-See [Error Messages Documentation](../crud/add-policy.md) for detailed information.
+See [Error Messages Documentation](../crud/add-policy) for detailed information.
 
 ### Response
 
@@ -548,8 +548,8 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - Add a policy
-- [Update Policy](../crud/update-policy.md) - Update a policy
-- [Delete Policy](../crud/delete-policy.md) - Delete a policy
-- [Decryption Policy](./policy-decryption.md) - Decrypt encrypted data
+- [List Policies](../crud/list-policies) - List all policies
+- [Add Policy](../crud/add-policy) - Add a policy
+- [Update Policy](../crud/update-policy) - Update a policy
+- [Delete Policy](../crud/delete-policy) - Delete a policy
+- [Decryption Policy](./policy-decryption) - Decrypt encrypted data

@@ -135,4 +135,4 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Organization API Data Model Access Report](./organization-api-data-model-access-report.md) - Organization-level access report
+- [Organization API Data Model Access Report](./organization-api-data-model-access-report) - Organization-level access report

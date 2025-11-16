@@ -12,7 +12,7 @@ The Management API base URL is constructed by appending `/apiops` to your Apiniz
 
 - If Manager application runs at `https://demo.apinizer.com`, the API base URL is `https://demo.apinizer.com/apiops/`
 
-For more details, see [Base URL](./01-getting-started/base-url.md).
+For more details, see [Base URL](./01-getting-started/base-url).
 
 ## OpenAPI Specification
 
@@ -24,15 +24,15 @@ For example:
 - `https://demo.apinizer.com/apiops/openapi`
 - `https://demo.apinizer.com/apiops/openapi.yaml`
 
-See [OpenAPI Spec](./03-appendix/openapi-spec.md) for more information.
+See [OpenAPI Spec](./03-appendix/openapi-spec) for more information.
 
 ## 📚 Table of Contents
 
 - [Getting Started](./01-getting-started/)
-  - [Overview](./01-getting-started/overview.md)
-  - [Authentication](./01-getting-started/authentication.md)
-  - [Base URL](./01-getting-started/base-url.md)
-  - [Error Handling](./01-getting-started/error-handling.md)
+  - [Overview](./01-getting-started/overview)
+  - [Authentication](./01-getting-started/authentication)
+  - [Base URL](./01-getting-started/base-url)
+  - [Error Handling](./01-getting-started/error-handling)
 
 - [API Reference](./02-api-reference/)
   - [Authentication](./02-api-reference/01-auth/)
@@ -52,14 +52,14 @@ See [OpenAPI Spec](./03-appendix/openapi-spec.md) for more information.
   - [Test](./02-api-reference/16-test/)
 
 - [Appendix](./03-appendix/)
-  - [Glossary](./03-appendix/glossary.md)
-  - [Variable Definition](./03-appendix/variable-definition.md)
-  - [Enum Reference](./03-appendix/enum-reference.md)
-  - [OpenAPI Spec](./03-appendix/openapi-spec.md)
+  - [Glossary](./03-appendix/glossary)
+  - [Variable Definition](./03-appendix/variable-definition)
+  - [Enum Reference](./03-appendix/enum-reference)
+  - [OpenAPI Spec](./03-appendix/openapi-spec)
 
 ## 🚀 Quick Start
 
-1. **Get Your API Token**: See [Authentication](./01-getting-started/authentication.md) for details on obtaining a Personal API Access Token.
+1. **Get Your API Token**: See [Authentication](./01-getting-started/authentication) for details on obtaining a Personal API Access Token.
 
 2. **Make Your First Request**: 
    ```bash
@@ -90,7 +90,7 @@ Authorization: Bearer YOUR_TOKEN
 
 **Note:** Each endpoint may require different permissions based on the operation it performs.
 
-See [Authentication Guide](./01-getting-started/authentication.md) for details on obtaining and using API tokens.
+See [Authentication Guide](./01-getting-started/authentication) for details on obtaining and using API tokens.
 
 ## 📄 License
 

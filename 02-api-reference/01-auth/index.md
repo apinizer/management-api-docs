@@ -11,7 +11,7 @@ The Authentication API provides endpoints for obtaining Personal API Access Toke
 
 ## Endpoints
 
-- [Create Token](./create-token.md) - Create a Personal API Access Token
+- [Create Token](./create-token) - Create a Personal API Access Token
 
 ## Authentication
 
@@ -27,5 +27,5 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication.md) - Detailed authentication information
-- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+- [Authentication Guide](../../01-getting-started/authentication) - Detailed authentication information
+- [Error Handling](../../01-getting-started/error-handling) - Error response formats

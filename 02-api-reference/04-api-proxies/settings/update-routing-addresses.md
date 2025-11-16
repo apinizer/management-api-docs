@@ -188,6 +188,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Connection Settings](./update-connection-settings.md) - Update connection settings
-- [Update Routing Status](./update-routing-status.md) - Update routing status
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Update Connection Settings](./update-connection-settings) - Update connection settings
+- [Update Routing Status](./update-routing-status) - Update routing status
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details

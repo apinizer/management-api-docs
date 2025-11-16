@@ -96,5 +96,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Remove API Proxy from Group](./remove-api-proxy-from-group.md) - Remove an API Proxy from group
-- [List API Proxy Groups](../crud/list-api-proxy-groups.md) - List all API Proxy Groups
+- [Remove API Proxy from Group](./remove-api-proxy-from-group) - Remove an API Proxy from group
+- [List API Proxy Groups](../crud/list-api-proxy-groups) - List all API Proxy Groups

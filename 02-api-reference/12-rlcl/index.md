@@ -12,24 +12,24 @@ The RLCL (Rate Limit Control List) API provides endpoints for managing Rate Limi
 ## Endpoints
 
 ### CRUD Operations
-- [Create RLCL](./crud/create-rlcl.md) - Create a new RLCL
-- [Update RLCL](./crud/update-rlcl.md) - Update an existing RLCL
-- [Delete RLCL](./crud/delete-rlcl.md) - Delete an RLCL
+- [Create RLCL](./crud/create-rlcl) - Create a new RLCL
+- [Update RLCL](./crud/update-rlcl) - Update an existing RLCL
+- [Delete RLCL](./crud/delete-rlcl) - Delete an RLCL
 
 ### Credential Management
-- [Add Credentials](./credentials/add-credentials.md) - Add credentials to an RLCL
-- [Update Credentials](./credentials/update-credentials.md) - Replace all credentials in an RLCL
-- [Delete Credentials](./credentials/delete-credentials.md) - Remove credentials from an RLCL
+- [Add Credentials](./credentials/add-credentials) - Add credentials to an RLCL
+- [Update Credentials](./credentials/update-credentials) - Replace all credentials in an RLCL
+- [Delete Credentials](./credentials/delete-credentials) - Remove credentials from an RLCL
 
 ### Endpoint Management
-- [Add Endpoints](./endpoints/add-endpoints.md) - Add API endpoints to an RLCL
-- [Update Endpoints](./endpoints/update-endpoints.md) - Replace all endpoints in an RLCL
-- [Delete Endpoints](./endpoints/delete-endpoints.md) - Remove endpoints from an RLCL
+- [Add Endpoints](./endpoints/add-endpoints) - Add API endpoints to an RLCL
+- [Update Endpoints](./endpoints/update-endpoints) - Replace all endpoints in an RLCL
+- [Delete Endpoints](./endpoints/delete-endpoints) - Remove endpoints from an RLCL
 
 ### Condition Management
-- [Add Condition](./condition/add-condition.md) - Add condition to an RLCL
-- [Update Condition](./condition/update-condition.md) - Update condition in an RLCL
-- [Delete Condition](./condition/delete-condition.md) - Remove condition from an RLCL
+- [Add Condition](./condition/add-condition) - Add condition to an RLCL
+- [Update Condition](./condition/update-condition) - Update condition in an RLCL
+- [Delete Condition](./condition/delete-condition) - Remove condition from an RLCL
 
 ## Authentication
 
@@ -41,5 +41,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+- [Authentication Guide](../../01-getting-started/authentication) - How to obtain and use API tokens
+- [Error Handling](../../01-getting-started/error-handling) - Error response formats

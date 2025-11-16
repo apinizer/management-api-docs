@@ -169,5 +169,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update XML Error Template](./update-xml-error-template.md) - Update XML error template
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Update XML Error Template](./update-xml-error-template) - Update XML error template
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details

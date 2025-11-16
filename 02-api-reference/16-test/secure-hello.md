@@ -88,5 +88,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Healthcheck](./healthcheck.md) - Check API availability
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain tokens
+- [Healthcheck](./healthcheck) - Check API availability
+- [Authentication Guide](../../01-getting-started/authentication) - How to obtain tokens

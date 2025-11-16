@@ -182,7 +182,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Endpoints](./list-endpoints.md) - List all endpoints
-- [Get Endpoint](./get-endpoint.md) - Get endpoint details
-- [Update Endpoint](./update-endpoint.md) - Update an endpoint
-- [Delete Endpoint](./delete-endpoint.md) - Delete an endpoint
+- [List Endpoints](./list-endpoints) - List all endpoints
+- [Get Endpoint](./get-endpoint) - Get endpoint details
+- [Update Endpoint](./update-endpoint) - Update an endpoint
+- [Delete Endpoint](./delete-endpoint) - Delete an endpoint

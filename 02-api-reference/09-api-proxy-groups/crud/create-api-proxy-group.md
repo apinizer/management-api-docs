@@ -280,6 +280,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List API Proxy Groups](./list-api-proxy-groups.md) - List all API Proxy Groups
-- [Update API Proxy Group](./update-api-proxy-group.md) - Update an API Proxy Group
-- [Add API Proxy to Group](../api-proxies/add-api-proxy-to-group.md) - Add API Proxies to group
+- [List API Proxy Groups](./list-api-proxy-groups) - List all API Proxy Groups
+- [Update API Proxy Group](./update-api-proxy-group) - Update an API Proxy Group
+- [Add API Proxy to Group](../api-proxies/add-api-proxy-to-group) - Add API Proxies to group

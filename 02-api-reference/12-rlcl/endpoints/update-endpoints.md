@@ -22,7 +22,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for field descriptions.
+Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints) for field descriptions.
 
 ### Important Notes
 
@@ -31,7 +31,7 @@ Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for fie
 
 ### Response
 
-Same as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for response format.
+Same as Add Endpoints. See [Add Endpoints](./add-endpoints) for response format.
 
 ## cURL Example
 
@@ -69,5 +69,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Endpoints](./add-endpoints.md) - Add endpoints without removing existing ones
-- [Delete Endpoints](./delete-endpoints.md) - Remove specific endpoints
+- [Add Endpoints](./add-endpoints) - Add endpoints without removing existing ones
+- [Delete Endpoints](./delete-endpoints) - Remove specific endpoints

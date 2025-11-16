@@ -223,20 +223,20 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ###### targetVariableForIdentity
 
-See [Variable Definition](../../../03-appendix/variable-definition.md) for complete variable documentation.
+See [Variable Definition](../../../03-appendix/variable-definition) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-API-Key") |
-| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition.md) |
+| type | string | Yes | Variable type. See [Variable Types](../../../03-appendix/variable-definition) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition.md) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](../../../03-appendix/variable-definition) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition.md) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](../../../03-appendix/variable-definition) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition.md) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](../../../03-appendix/variable-definition) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -256,7 +256,7 @@ See [Variable Definition](../../../03-appendix/variable-definition.md) for compl
 - `REQUEST_HTTP_METHOD` - HTTP method
 - `REQUEST_USERNAME_KEY` - Username or key
 
-For complete list of context values, see [EnumVariableContextValue](../../../03-appendix/variable-definition.md).
+For complete list of context values, see [EnumVariableContextValue](../../../03-appendix/variable-definition).
 
 ###### detailList (Optional)
 | Field | Type | Required | Description |
@@ -532,7 +532,7 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [List Policies](../crud/list-policies) - List all policies
+- [Add Policy](../crud/add-policy) - General policy addition guide
+- [Update Policy](../crud/update-policy) - General policy update guide
+- [Delete Policy](../crud/delete-policy) - General policy deletion guide

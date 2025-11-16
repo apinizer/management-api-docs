@@ -75,5 +75,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Create RLCL](./create-rlcl.md) - Create a new RLCL
-- [Update RLCL](./update-rlcl.md) - Update an RLCL
+- [Create RLCL](./create-rlcl) - Create a new RLCL
+- [Update RLCL](./update-rlcl) - Update an RLCL

@@ -214,6 +214,6 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Certificates](./list-certificates.md) - List all certificates
-- [Get Certificate](./get-certificate.md) - Get a specific certificate
-- [Update Certificate](./update-certificate.md) - Update a certificate
+- [List Certificates](./list-certificates) - List all certificates
+- [Get Certificate](./get-certificate) - Get a specific certificate
+- [Update Certificate](./update-certificate) - Update a certificate

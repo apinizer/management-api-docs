@@ -88,5 +88,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Upload MMDB File](./upload-mmdb-file.md) - Upload MMDB file
-- [Disable Geolocation](./disable-geolocation.md) - Disable geolocation
+- [Upload MMDB File](./upload-mmdb-file) - Upload MMDB file
+- [Disable Geolocation](./disable-geolocation) - Disable geolocation

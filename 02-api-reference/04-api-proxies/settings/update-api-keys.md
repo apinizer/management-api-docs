@@ -198,6 +198,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details (includes current keys)
-- [Update Metadata](./update-metadata.md) - Update API proxy metadata
-- [Create API Proxy](../crud/create-api-proxy-from-url.md) - Create new API proxy
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details (includes current keys)
+- [Update Metadata](./update-metadata) - Update API proxy metadata
+- [Create API Proxy](../crud/create-api-proxy-from-url) - Create new API proxy

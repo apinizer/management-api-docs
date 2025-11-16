@@ -61,7 +61,7 @@ Authorization: Bearer YOUR_TOKEN
 
 #### Request Body Fields
 
-The request body structure is identical to [Create Connection](./create-connection.md). See that documentation for complete field descriptions.
+The request body structure is identical to [Create Connection](./create-connection). See that documentation for complete field descriptions.
 
 **Important:** Connection name in path parameter must match the existing connection name.
 
@@ -219,7 +219,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Get Connection](./get-connection.md) - Get connection details
-- [Create Connection](./create-connection.md) - Create a new connection
-- [Delete Connection](./delete-connection.md) - Delete a connection
-- [Email Connection](../connections/connection-email.md) - Email connection details
+- [Get Connection](./get-connection) - Get connection details
+- [Create Connection](./create-connection) - Create a new connection
+- [Delete Connection](./delete-connection) - Delete a connection
+- [Email Connection](../connections/connection-email) - Email connection details

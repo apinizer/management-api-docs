@@ -93,10 +93,10 @@ Authorization: Bearer YOUR_TOKEN
 - `logback` - Logback connection
 
 **Note:** Connection-specific fields vary by connection type. See individual connection type documentation for complete field descriptions:
-- [Email Connection](../connections/connection-email.md)
-- [Kafka Connection](../connections/connection-kafka.md)
-- [Database Connection](../connections/connection-database.md)
-- ... (see [Connections Index](../index.md) for complete list)
+- [Email Connection](../connections/connection-email)
+- [Kafka Connection](../connections/connection-kafka)
+- [Database Connection](../connections/connection-database)
+- ... (see [Connections Index](../) for complete list)
 
 ## Response
 
@@ -234,10 +234,10 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Connections](./list-connections.md) - List all connections
-- [Get Connection](./get-connection.md) - Get connection details
-- [Update Connection](./update-connection.md) - Update a connection
-- [Delete Connection](./delete-connection.md) - Delete a connection
-- [Email Connection](../connections/connection-email.md) - Email connection details
-- [Database Connection](../connections/connection-database.md) - Database connection details
-- [Kafka Connection](../connections/connection-kafka.md) - Kafka connection details
+- [List Connections](./list-connections) - List all connections
+- [Get Connection](./get-connection) - Get connection details
+- [Update Connection](./update-connection) - Update a connection
+- [Delete Connection](./delete-connection) - Delete a connection
+- [Email Connection](../connections/connection-email) - Email connection details
+- [Database Connection](../connections/connection-database) - Database connection details
+- [Kafka Connection](../connections/connection-kafka) - Kafka connection details

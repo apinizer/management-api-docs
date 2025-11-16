@@ -68,7 +68,7 @@ None.
 
 #### Response Fields
 
-Same as List Certificates. See [List Certificates](./list-certificates.md) for field descriptions.
+Same as List Certificates. See [List Certificates](./list-certificates) for field descriptions.
 
 ### Notes
 
@@ -95,5 +95,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Certificates](./list-certificates.md) - List all certificates
-- [Create Certificate](./create-certificate.md) - Create a new certificate
+- [List Certificates](./list-certificates) - List all certificates
+- [Create Certificate](./create-certificate) - Create a new certificate

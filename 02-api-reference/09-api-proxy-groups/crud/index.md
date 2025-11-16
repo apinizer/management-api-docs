@@ -9,14 +9,14 @@ This section contains endpoints for creating, reading, updating, and deleting AP
 
 ## Endpoints
 
-- [List API Proxy Groups](./list-api-proxy-groups.md) - Get all API proxy groups for a project
-- [Create API Proxy Group](./create-api-proxy-group.md) - Create a new API proxy group
-- [Update API Proxy Group](./update-api-proxy-group.md) - Update an existing API proxy group
-- [Delete API Proxy Group](./delete-api-proxy-group.md) - Delete an API proxy group
+- [List API Proxy Groups](./list-api-proxy-groups) - Get all API proxy groups for a project
+- [Create API Proxy Group](./create-api-proxy-group) - Create a new API proxy group
+- [Update API Proxy Group](./update-api-proxy-group) - Update an existing API proxy group
+- [Delete API Proxy Group](./delete-api-proxy-group) - Delete an API proxy group
 
 ## Related Documentation
 
-- [API Proxy Groups Overview](../index.md) - Complete API Proxy Group management documentation
-- [API Proxies Management](../api-proxies/index.md) - Add/remove API proxies to/from groups
-- [Deployment](../deployment/index.md) - Deploy and undeploy groups
+- [API Proxy Groups Overview](../) - Complete API Proxy Group management documentation
+- [API Proxies Management](../api-proxies/) - Add/remove API proxies to/from groups
+- [Deployment](../deployment/) - Deploy and undeploy groups
 

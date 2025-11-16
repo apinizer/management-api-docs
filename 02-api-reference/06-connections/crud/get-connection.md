@@ -133,15 +133,15 @@ This endpoint does not require a request body.
 - **Secret Fields**: Unlike list operations, secret fields (password, apiKey, etc.) are returned in full when getting a single connection
 - **Security**: Never log or expose connection responses containing secrets
 - **Connection Types**: Each connection type has different fields. See individual connection type documentation for details:
-  - [Email Connection](../connections/connection-email.md)
-  - [Kafka Connection](../connections/connection-kafka.md)
-  - [Database Connection](../connections/connection-database.md)
-  - ... (see [Connections Index](../index.md) for complete list)
+  - [Email Connection](../connections/connection-email)
+  - [Kafka Connection](../connections/connection-kafka)
+  - [Database Connection](../connections/connection-database)
+  - ... (see [Connections Index](../) for complete list)
 
 ## Related Documentation
 
-- [List Connections](./list-connections.md) - List all connections (secrets masked)
-- [Create Connection](./create-connection.md) - Create a new connection
-- [Update Connection](./update-connection.md) - Update a connection
-- [Delete Connection](./delete-connection.md) - Delete a connection
-- [Email Connection](../connections/connection-email.md) - Email connection details
+- [List Connections](./list-connections) - List all connections (secrets masked)
+- [Create Connection](./create-connection) - Create a new connection
+- [Update Connection](./update-connection) - Update a connection
+- [Delete Connection](./delete-connection) - Delete a connection
+- [Email Connection](../connections/connection-email) - Email connection details

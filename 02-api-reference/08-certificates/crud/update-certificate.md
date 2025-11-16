@@ -38,7 +38,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Form Data
 
-Same as Create Certificate. See [Create Certificate](./create-certificate.md) for field descriptions.
+Same as Create Certificate. See [Create Certificate](./create-certificate) for field descriptions.
 
 ### Notes
 
@@ -49,7 +49,7 @@ Same as Create Certificate. See [Create Certificate](./create-certificate.md) fo
 
 ### Response
 
-Same as Create Certificate. See [Create Certificate](./create-certificate.md) for response format.
+Same as Create Certificate. See [Create Certificate](./create-certificate) for response format.
 
 ## cURL Example
 
@@ -77,5 +77,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create Certificate](./create-certificate.md) - Create a new certificate
-- [Get Certificate](./get-certificate.md) - Get certificate details
+- [Create Certificate](./create-certificate) - Create a new certificate
+- [Get Certificate](./get-certificate) - Get certificate details

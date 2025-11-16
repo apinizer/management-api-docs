@@ -111,5 +111,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create IP Group](./create-ip-group.md) - Create a new IP Group
-- [Delete IP Group](./delete-ip-group.md) - Delete an IP Group
+- [Create IP Group](./create-ip-group) - Create a new IP Group
+- [Delete IP Group](./delete-ip-group) - Delete an IP Group

@@ -22,7 +22,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Condition. See [Add Condition](./add-condition.md) for field descriptions.
+Same structure as Add Condition. See [Add Condition](./add-condition) for field descriptions.
 
 ### Important Notes
 
@@ -31,7 +31,7 @@ Same structure as Add Condition. See [Add Condition](./add-condition.md) for fie
 
 ### Response
 
-Same as Add Condition. See [Add Condition](./add-condition.md) for response format.
+Same as Add Condition. See [Add Condition](./add-condition) for response format.
 
 ## cURL Example
 
@@ -60,5 +60,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Condition](./add-condition.md) - Add condition to RLCL
-- [Delete Condition](./delete-condition.md) - Remove condition from RLCL
+- [Add Condition](./add-condition) - Add condition to RLCL
+- [Delete Condition](./delete-condition) - Remove condition from RLCL

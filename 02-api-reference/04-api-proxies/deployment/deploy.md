@@ -133,5 +133,5 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Undeploy API Proxy](./undeploy.md) - Undeploy API proxy from environment
-- [List API Proxies](../crud/list-api-proxies.md) - List all API proxies
+- [Undeploy API Proxy](./undeploy) - Undeploy API proxy from environment
+- [List API Proxies](../crud/list-api-proxies) - List all API proxies

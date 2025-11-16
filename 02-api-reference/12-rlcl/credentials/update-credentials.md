@@ -22,7 +22,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Credentials. See [Add Credentials](./add-credentials.md) for field descriptions.
+Same structure as Add Credentials. See [Add Credentials](./add-credentials) for field descriptions.
 
 ### Important Notes
 
@@ -31,7 +31,7 @@ Same structure as Add Credentials. See [Add Credentials](./add-credentials.md) f
 
 ### Response
 
-Same as Add Credentials. See [Add Credentials](./add-credentials.md) for response format.
+Same as Add Credentials. See [Add Credentials](./add-credentials) for response format.
 
 ## cURL Example
 
@@ -58,5 +58,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Credentials](./add-credentials.md) - Add credentials without removing existing ones
-- [Delete Credentials](./delete-credentials.md) - Remove specific credentials
+- [Add Credentials](./add-credentials) - Add credentials without removing existing ones
+- [Delete Credentials](./delete-credentials) - Remove specific credentials

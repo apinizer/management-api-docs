@@ -237,6 +237,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Get Granted Access List](./get-granted-access-list.md) - Get list of granted accesses
-- [Revoke Access](./revoke-access.md) - Revoke access from API Proxy or Group
-- [List Credentials](../crud/list-credentials.md) - List all credentials
+- [Get Granted Access List](./get-granted-access-list) - Get list of granted accesses
+- [Revoke Access](./revoke-access) - Revoke access from API Proxy or Group
+- [List Credentials](../crud/list-credentials) - List all credentials

@@ -11,7 +11,7 @@ The Projects API provides endpoints for managing projects in Apinizer. Projects 
 
 ## Endpoints
 
-- [List Projects](./list-projects.md) - Get all projects accessible by the authenticated user
+- [List Projects](./list-projects) - Get all projects accessible by the authenticated user
 
 ## Authentication
 
@@ -23,5 +23,5 @@ Users can only access projects where they are members. The API automatically fil
 
 ## Related Documentation
 
-- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
-- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats
+- [Authentication Guide](../../01-getting-started/authentication) - How to obtain and use API tokens
+- [Error Handling](../../01-getting-started/error-handling) - Error response formats

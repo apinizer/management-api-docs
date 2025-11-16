@@ -9,18 +9,18 @@ This section contains endpoints for creating, reading, updating, and deleting co
 
 ## Endpoints
 
-- [List Connections](./list-connections.md) - Get all connections for a project
-- [Get Connection](./get-connection.md) - Get detailed information about a specific connection
-- [Create Connection](./create-connection.md) - Create a new connection
-- [Update Connection](./update-connection.md) - Update an existing connection
-- [Delete Connection](./delete-connection.md) - Delete a connection
+- [List Connections](./list-connections) - Get all connections for a project
+- [Get Connection](./get-connection) - Get detailed information about a specific connection
+- [Create Connection](./create-connection) - Create a new connection
+- [Update Connection](./update-connection) - Update an existing connection
+- [Delete Connection](./delete-connection) - Delete a connection
 
 ## Connection Types
 
-For detailed documentation on specific connection types, see [Connection Types](../connections/index.md).
+For detailed documentation on specific connection types, see [Connection Types](../connections/).
 
 ## Related Documentation
 
-- [Connections Overview](../index.md) - Complete connection management documentation
-- [Connection Types](../connections/index.md) - Detailed documentation for each connection type
+- [Connections Overview](../) - Complete connection management documentation
+- [Connection Types](../connections/) - Detailed documentation for each connection type
 

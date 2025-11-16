@@ -149,6 +149,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update Routing Addresses](./update-routing-addresses.md) - Update routing addresses
-- [Update Connection Settings](./update-connection-settings.md) - Update connection settings
-- [Get API Proxy](../crud/get-api-proxy.md) - Get API proxy details
+- [Update Routing Addresses](./update-routing-addresses) - Update routing addresses
+- [Update Connection Settings](./update-connection-settings) - Update connection settings
+- [Get API Proxy](../crud/get-api-proxy) - Get API proxy details

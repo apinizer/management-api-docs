@@ -393,8 +393,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](../crud/list-policies.md) - List all policies
-- [Add Policy](../crud/add-policy.md) - General policy addition guide
-- [Update Policy](../crud/update-policy.md) - General policy update guide
-- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
-- [XML Transformation Policy](./policy-xml-transformation.md) - Transform XML messages
+- [List Policies](../crud/list-policies) - List all policies
+- [Add Policy](../crud/add-policy) - General policy addition guide
+- [Update Policy](../crud/update-policy) - General policy update guide
+- [Delete Policy](../crud/delete-policy) - General policy deletion guide
+- [XML Transformation Policy](./policy-xml-transformation) - Transform XML messages

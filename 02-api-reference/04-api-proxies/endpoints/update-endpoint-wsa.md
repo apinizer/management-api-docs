@@ -172,6 +172,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [List Endpoints](./list-endpoints.md) - List all endpoints
-- [Get Endpoint](./get-endpoint.md) - Get endpoint details
-- [Update Endpoint](./update-endpoint.md) - Update endpoint configuration
+- [List Endpoints](./list-endpoints) - List all endpoints
+- [Get Endpoint](./get-endpoint) - Get endpoint details
+- [Update Endpoint](./update-endpoint) - Update endpoint configuration

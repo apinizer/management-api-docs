@@ -538,8 +538,8 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Connections](../crud/list-connections.md) - List all connections
-- [Get Connection](../crud/get-connection.md) - Get connection details
-- [Create Connection](../crud/create-connection.md) - General connection creation guide
-- [Update Connection](../crud/update-connection.md) - General connection update guide
-- [Delete Connection](../crud/delete-connection.md) - General connection deletion guide
+- [List Connections](../crud/list-connections) - List all connections
+- [Get Connection](../crud/get-connection) - Get connection details
+- [Create Connection](../crud/create-connection) - General connection creation guide
+- [Update Connection](../crud/update-connection) - General connection update guide
+- [Delete Connection](../crud/delete-connection) - General connection deletion guide

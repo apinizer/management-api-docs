@@ -75,7 +75,7 @@ None.
 
 #### Response Fields
 
-Same as List Environment Variables. See [List Environment Variables](./list-environment-variables.md) for field descriptions.
+Same as List Environment Variables. See [List Environment Variables](./list-environment-variables) for field descriptions.
 
 ### Notes
 
@@ -101,5 +101,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Environment Variables](./list-environment-variables.md) - List all environment variables
-- [Create Environment Variable](./create-environment-variable.md) - Create a new environment variable
+- [List Environment Variables](./list-environment-variables) - List all environment variables
+- [Create Environment Variable](./create-environment-variable) - Create a new environment variable

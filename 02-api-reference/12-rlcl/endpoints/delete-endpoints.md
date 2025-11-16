@@ -22,7 +22,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for field descriptions.
+Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints) for field descriptions.
 
 ### Important Notes
 
@@ -33,7 +33,7 @@ Same structure as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for fie
 
 ### Response
 
-Same as Add Endpoints. See [Add Endpoints](./add-endpoints.md) for response format.
+Same as Add Endpoints. See [Add Endpoints](./add-endpoints) for response format.
 
 ## cURL Example
 
@@ -64,5 +64,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add Endpoints](./add-endpoints.md) - Add endpoints to RLCL
-- [Update Endpoints](./update-endpoints.md) - Replace all endpoints
+- [Add Endpoints](./add-endpoints) - Add endpoints to RLCL
+- [Update Endpoints](./update-endpoints) - Replace all endpoints

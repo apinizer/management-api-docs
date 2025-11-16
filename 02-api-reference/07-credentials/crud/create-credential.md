@@ -370,7 +370,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Credentials](./list-credentials.md) - List all credentials
-- [Update Credential](./update-credential.md) - Update a credential
-- [Change Credential Password](./change-credential-password.md) - Change credential password
-- [Grant Access](../access/grant-access.md) - Grant access to API Proxy or Group
+- [List Credentials](./list-credentials) - List all credentials
+- [Update Credential](./update-credential) - Update a credential
+- [Change Credential Password](./change-credential-password) - Change credential password
+- [Grant Access](../access/grant-access) - Grant access to API Proxy or Group
