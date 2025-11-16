@@ -9,14 +9,14 @@ This section contains endpoints for managing conditions in RLCL (Rate Limit, Con
 
 ## Endpoints
 
-- [Add Condition](/02-api-reference/12-rlcl/condition/add-condition/) - Add a condition to RLCL
-- [Update Condition](/02-api-reference/12-rlcl/condition/update-condition/) - Update a condition in RLCL
-- [Delete Condition](/02-api-reference/12-rlcl/condition/delete-condition/) - Delete a condition from RLCL
+- [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) - Add a condition to RLCL
+- [Update Condition](/management-api-docs/02-api-reference/12-rlcl/condition/update-condition/) - Update a condition in RLCL
+- [Delete Condition](/management-api-docs/02-api-reference/12-rlcl/condition/delete-condition/) - Delete a condition from RLCL
 
 ## Related Documentation
 
-- [RLCL Overview](/02-api-reference/12-rlcl/) - Complete RLCL management documentation
-- [CRUD Operations](/02-api-reference/12-rlcl/crud/) - Create, read, update, and delete RLCL
-- [Credentials Management](/02-api-reference/12-rlcl/credentials/) - Manage credentials in RLCL
-- [Endpoints Management](/02-api-reference/12-rlcl/endpoints/) - Manage endpoints in RLCL
+- [RLCL Overview](/management-api-docs/02-api-reference/12-rlcl/) - Complete RLCL management documentation
+- [CRUD Operations](/management-api-docs/02-api-reference/12-rlcl/crud/) - Create, read, update, and delete RLCL
+- [Credentials Management](/management-api-docs/02-api-reference/12-rlcl/credentials/) - Manage credentials in RLCL
+- [Endpoints Management](/management-api-docs/02-api-reference/12-rlcl/endpoints/) - Manage endpoints in RLCL
 

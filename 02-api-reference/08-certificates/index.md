@@ -11,13 +11,13 @@ The Certificates API provides endpoints for managing SSL/TLS certificates in Api
 
 ## Endpoints
 
-- [List Certificates](/02-api-reference/08-certificates/crud/list-certificates/) - Get all certificates for a project
-- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
-- [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
-- [Update Certificate](/02-api-reference/08-certificates/crud/update-certificate/) - Update an existing certificate
-- [Delete Certificate](/02-api-reference/08-certificates/crud/delete-certificate/) - Delete a certificate
-- [Export Certificate](/02-api-reference/08-certificates/crud/export-certificate/) - Export certificate as ZIP file
-- [Get Truststore Certificates](/02-api-reference/08-certificates/crud/get-truststore-certificates/) - Get certificates from environment truststore
+- [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) - Get all certificates for a project
+- [Get Certificate](/management-api-docs/02-api-reference/08-certificates/crud/get-certificate/) - Get a specific certificate
+- [Create Certificate](/management-api-docs/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Update Certificate](/management-api-docs/02-api-reference/08-certificates/crud/update-certificate/) - Update an existing certificate
+- [Delete Certificate](/management-api-docs/02-api-reference/08-certificates/crud/delete-certificate/) - Delete a certificate
+- [Export Certificate](/management-api-docs/02-api-reference/08-certificates/crud/export-certificate/) - Export certificate as ZIP file
+- [Get Truststore Certificates](/management-api-docs/02-api-reference/08-certificates/crud/get-truststore-certificates/) - Get certificates from environment truststore
 
 ## Authentication
 
@@ -30,5 +30,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats

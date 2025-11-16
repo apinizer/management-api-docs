@@ -27,7 +27,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Condition. See [Add Condition](/02-api-reference/12-rlcl/condition/add-condition/) for field descriptions.
+Same structure as Add Condition. See [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) for field descriptions.
 
 ### Important Notes
 
@@ -36,7 +36,7 @@ Same structure as Add Condition. See [Add Condition](/02-api-reference/12-rlcl/c
 
 ### Response
 
-Same as Add Condition. See [Add Condition](/02-api-reference/12-rlcl/condition/add-condition/) for response format.
+Same as Add Condition. See [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) for response format.
 
 ## cURL Example
 
@@ -65,5 +65,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Condition](/02-api-reference/12-rlcl/condition/add-condition/) - Add condition to RLCL
-- [Delete Condition](/02-api-reference/12-rlcl/condition/delete-condition/) - Remove condition from RLCL
+- [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) - Add condition to RLCL
+- [Delete Condition](/management-api-docs/02-api-reference/12-rlcl/condition/delete-condition/) - Remove condition from RLCL

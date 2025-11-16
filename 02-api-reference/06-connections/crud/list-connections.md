@@ -155,13 +155,13 @@ This endpoint does not require a request body.
 ## Notes and Warnings
 
 - **Secret Fields**: Secret fields (password, apiKey, etc.) are masked and returned as `null` in list operations
-- **Get Single Connection**: Use [Get Connection](/02-api-reference/06-connections/crud/get-connection/) to retrieve full connection details including secrets
+- **Get Single Connection**: Use [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) to retrieve full connection details including secrets
 - **Connection Types**: Each connection type has different fields. See individual connection type documentation for details
 - **Type Parameter Required**: The `type` query parameter is required. Since connections are stored in separate collections by type, you must specify the connection type to query
 - **Valid Type Values**: `email`, `kafka`, `elasticsearch`, `rabbitMq`, `ftp`, `graylog`, `syslog`, `webhook`, `logback`, `activeMq`, `snmp`, `linux-script`, `database`, `ldap`
 
 ## Related Documentation
 
-- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get detailed connection information
-- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
-- [Email Connection](/02-api-reference/06-connections/connections/connection-email/) - Email connection details
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get detailed connection information
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/) - Email connection details

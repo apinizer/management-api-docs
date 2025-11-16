@@ -375,7 +375,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Credentials](/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
-- [Update Credential](/02-api-reference/07-credentials/crud/update-credential/) - Update a credential
-- [Change Credential Password](/02-api-reference/07-credentials/crud/change-credential-password/) - Change credential password
-- [Grant Access](/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group
+- [List Credentials](/management-api-docs/02-api-reference/07-credentials/crud/list-credentials/) - List all credentials
+- [Update Credential](/management-api-docs/02-api-reference/07-credentials/crud/update-credential/) - Update a credential
+- [Change Credential Password](/management-api-docs/02-api-reference/07-credentials/crud/change-credential-password/) - Change credential password
+- [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or Group

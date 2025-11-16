@@ -176,12 +176,12 @@ The request body is an object containing an array of endpoint rate limit objects
 
 ### Variable Object (targetVariable)
 
-See [Variable Definition](/02-api-reference/12-rlcl/endpoints/03-appendix/variable-definition/) for complete variable documentation.
+See [Variable Definition](/management-api-docs/02-api-reference/12-rlcl/endpoints/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
-| type | string | Yes | Variable type. See [Variable Types](/02-api-reference/12-rlcl/endpoints/03-appendix/variable-definition/) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/02-api-reference/12-rlcl/endpoints/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
 | paramType | string | No* | Parameter type (required if type=PARAMETER) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
@@ -293,5 +293,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Update Endpoints](/02-api-reference/12-rlcl/endpoints/update-endpoints/) - Replace all endpoints
-- [Delete Endpoints](/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove endpoints
+- [Update Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/update-endpoints/) - Replace all endpoints
+- [Delete Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove endpoints

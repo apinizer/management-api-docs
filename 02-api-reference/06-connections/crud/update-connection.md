@@ -66,7 +66,7 @@ Authorization: Bearer YOUR_TOKEN
 
 #### Request Body Fields
 
-The request body structure is identical to [Create Connection](/02-api-reference/06-connections/crud/create-connection/). See that documentation for complete field descriptions.
+The request body structure is identical to [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/). See that documentation for complete field descriptions.
 
 **Important:** Connection name in path parameter must match the existing connection name.
 
@@ -224,7 +224,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Get Connection](/02-api-reference/06-connections/crud/get-connection/) - Get connection details
-- [Create Connection](/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
-- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
-- [Email Connection](/02-api-reference/06-connections/connections/connection-email/) - Email connection details
+- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get connection details
+- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
+- [Delete Connection](/management-api-docs/02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
+- [Email Connection](/management-api-docs/02-api-reference/06-connections/connections/connection-email/) - Email connection details

@@ -330,6 +330,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
-- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy configuration
-- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
+- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy configuration
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy

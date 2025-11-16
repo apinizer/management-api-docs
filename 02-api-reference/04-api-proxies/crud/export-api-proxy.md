@@ -172,6 +172,6 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Import API Proxy (Without Override)](/02-api-reference/04-api-proxies/crud/import-api-proxy/) - Import API Proxy without overriding existing one
-- [Import API Proxy (With Override)](/02-api-reference/04-api-proxies/crud/import-api-proxy-and-override/) - Import API Proxy with override option
-- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API Proxy details
+- [Import API Proxy (Without Override)](/management-api-docs/02-api-reference/04-api-proxies/crud/import-api-proxy/) - Import API Proxy without overriding existing one
+- [Import API Proxy (With Override)](/management-api-docs/02-api-reference/04-api-proxies/crud/import-api-proxy-and-override/) - Import API Proxy with override option
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API Proxy details

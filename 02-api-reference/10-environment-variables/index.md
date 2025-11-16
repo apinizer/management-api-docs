@@ -11,11 +11,11 @@ The Environment Variables API provides endpoints for managing environment variab
 
 ## Endpoints
 
-- [List Environment Variables](/02-api-reference/10-environment-variables/crud/list-environment-variables/) - Get all environment variables for a project
-- [Get Environment Variable](/02-api-reference/10-environment-variables/crud/get-environment-variable/) - Get a specific environment variable
-- [Create Environment Variable](/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
-- [Update Environment Variable](/02-api-reference/10-environment-variables/crud/update-environment-variable/) - Update an existing environment variable
-- [Delete Environment Variable](/02-api-reference/10-environment-variables/crud/delete-environment-variable/) - Delete an environment variable
+- [List Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/crud/list-environment-variables/) - Get all environment variables for a project
+- [Get Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/get-environment-variable/) - Get a specific environment variable
+- [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
+- [Update Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/update-environment-variable/) - Update an existing environment variable
+- [Delete Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/delete-environment-variable/) - Delete an environment variable
 
 ## Authentication
 
@@ -28,5 +28,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats

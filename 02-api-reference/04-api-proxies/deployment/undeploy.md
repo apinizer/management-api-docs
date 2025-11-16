@@ -139,5 +139,5 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy to environment
-- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy to environment
+- [List API Proxies](/management-api-docs/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies

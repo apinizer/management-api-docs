@@ -43,7 +43,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create Environment Variable. See [Create Environment Variable](/02-api-reference/10-environment-variables/crud/create-environment-variable/) for field descriptions.
+Same structure as Create Environment Variable. See [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) for field descriptions.
 
 ### Important Notes
 
@@ -54,7 +54,7 @@ Same structure as Create Environment Variable. See [Create Environment Variable]
 
 ### Response
 
-Same as Create Environment Variable. See [Create Environment Variable](/02-api-reference/10-environment-variables/crud/create-environment-variable/) for response format.
+Same as Create Environment Variable. See [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) for response format.
 
 ## cURL Example
 
@@ -89,5 +89,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create Environment Variable](/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
-- [Delete Environment Variable](/02-api-reference/10-environment-variables/crud/delete-environment-variable/) - Delete an environment variable
+- [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
+- [Delete Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/delete-environment-variable/) - Delete an environment variable

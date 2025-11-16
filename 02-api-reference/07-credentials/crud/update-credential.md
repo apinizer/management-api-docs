@@ -67,7 +67,7 @@ Same structure as Create Credential. All fields are required for update.
 
 #### Request Body Fields
 
-Same as Create Credential. See [Create Credential](/02-api-reference/07-credentials/crud/create-credential/) for field descriptions.
+Same as Create Credential. See [Create Credential](/management-api-docs/02-api-reference/07-credentials/crud/create-credential/) for field descriptions.
 
 ### Important Notes
 
@@ -78,7 +78,7 @@ Same as Create Credential. See [Create Credential](/02-api-reference/07-credenti
 
 ### Response
 
-Same as Create Credential. See [Create Credential](/02-api-reference/07-credentials/crud/create-credential/) for response format.
+Same as Create Credential. See [Create Credential](/management-api-docs/02-api-reference/07-credentials/crud/create-credential/) for response format.
 
 ## cURL Example
 
@@ -122,6 +122,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create Credential](/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
-- [Change Credential Password](/02-api-reference/07-credentials/crud/change-credential-password/) - Change only password
-- [Delete Credential](/02-api-reference/07-credentials/crud/delete-credential/) - Delete a credential
+- [Create Credential](/management-api-docs/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
+- [Change Credential Password](/management-api-docs/02-api-reference/07-credentials/crud/change-credential-password/) - Change only password
+- [Delete Credential](/management-api-docs/02-api-reference/07-credentials/crud/delete-credential/) - Delete a credential

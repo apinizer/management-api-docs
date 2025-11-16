@@ -11,8 +11,8 @@ The Environments API provides endpoints for managing deployment environments in 
 
 ## Endpoints
 
-- [List Environments](/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
-- [Get Environments by Project](/02-api-reference/03-environments/get-environments-by-project/) - Get environments accessible from a project
+- [List Environments](/management-api-docs/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
+- [Get Environments by Project](/management-api-docs/02-api-reference/03-environments/get-environments-by-project/) - Get environments accessible from a project
 
 ## Authentication
 
@@ -25,5 +25,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats

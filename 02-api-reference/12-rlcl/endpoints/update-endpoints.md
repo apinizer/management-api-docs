@@ -27,7 +27,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Endpoints. See [Add Endpoints](/02-api-reference/12-rlcl/endpoints/add-endpoints/) for field descriptions.
+Same structure as Add Endpoints. See [Add Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/add-endpoints/) for field descriptions.
 
 ### Important Notes
 
@@ -36,7 +36,7 @@ Same structure as Add Endpoints. See [Add Endpoints](/02-api-reference/12-rlcl/e
 
 ### Response
 
-Same as Add Endpoints. See [Add Endpoints](/02-api-reference/12-rlcl/endpoints/add-endpoints/) for response format.
+Same as Add Endpoints. See [Add Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/add-endpoints/) for response format.
 
 ## cURL Example
 
@@ -74,5 +74,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Endpoints](/02-api-reference/12-rlcl/endpoints/add-endpoints/) - Add endpoints without removing existing ones
-- [Delete Endpoints](/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove specific endpoints
+- [Add Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/add-endpoints/) - Add endpoints without removing existing ones
+- [Delete Endpoints](/management-api-docs/02-api-reference/12-rlcl/endpoints/delete-endpoints/) - Remove specific endpoints

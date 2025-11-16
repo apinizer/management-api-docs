@@ -134,14 +134,14 @@ curl -X PATCH \
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
 - **Disabled Endpoints**: Disabled endpoints return 404 Not Found when accessed
 - **Policies**: Policies remain associated with the endpoint even when disabled
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
-- [Get Endpoint](/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
-- [Update Endpoint](/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration
-- [Delete Endpoint](/02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint
+- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
+- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration
+- [Delete Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint

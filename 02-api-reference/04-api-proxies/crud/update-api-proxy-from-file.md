@@ -285,6 +285,6 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from File](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/) - Create new API Proxy from file
-- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API Proxy metadata
-- [Deploy API Proxy](/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments
+- [Create API Proxy from File](/management-api-docs/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/) - Create new API Proxy from file
+- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API Proxy metadata
+- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments

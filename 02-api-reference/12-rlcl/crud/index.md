@@ -9,14 +9,14 @@ This section contains endpoints for creating, reading, updating, and deleting RL
 
 ## Endpoints
 
-- [Create RLCL](/02-api-reference/12-rlcl/crud/create-rlcl/) - Create a new RLCL configuration
-- [Update RLCL](/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an existing RLCL configuration
-- [Delete RLCL](/02-api-reference/12-rlcl/crud/delete-rlcl/) - Delete an RLCL configuration
+- [Create RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/create-rlcl/) - Create a new RLCL configuration
+- [Update RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an existing RLCL configuration
+- [Delete RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/delete-rlcl/) - Delete an RLCL configuration
 
 ## Related Documentation
 
-- [RLCL Overview](/02-api-reference/12-rlcl/) - Complete RLCL management documentation
-- [Condition Management](/02-api-reference/12-rlcl/condition/) - Manage conditions in RLCL
-- [Credentials Management](/02-api-reference/12-rlcl/credentials/) - Manage credentials in RLCL
-- [Endpoints Management](/02-api-reference/12-rlcl/endpoints/) - Manage endpoints in RLCL
+- [RLCL Overview](/management-api-docs/02-api-reference/12-rlcl/) - Complete RLCL management documentation
+- [Condition Management](/management-api-docs/02-api-reference/12-rlcl/condition/) - Manage conditions in RLCL
+- [Credentials Management](/management-api-docs/02-api-reference/12-rlcl/credentials/) - Manage credentials in RLCL
+- [Endpoints Management](/management-api-docs/02-api-reference/12-rlcl/endpoints/) - Manage endpoints in RLCL
 

@@ -146,5 +146,5 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get detailed API proxy information
-- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create a new API proxy
+- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get detailed API proxy information
+- [Create API Proxy from URL](/management-api-docs/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create a new API proxy

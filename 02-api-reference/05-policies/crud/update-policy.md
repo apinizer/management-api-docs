@@ -100,7 +100,7 @@ Authorization: Bearer YOUR_TOKEN
 
 #### Request Body Fields
 
-The request body structure is identical to [Add Policy](/02-api-reference/05-policies/crud/add-policy/). See that documentation for complete field descriptions.
+The request body structure is identical to [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/). See that documentation for complete field descriptions.
 
 ##### operationMetadata
 
@@ -374,7 +374,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
-- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
-- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Policy API Based Throttling](/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Example policy documentation
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a new policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Policy API Based Throttling](/management-api-docs/02-api-reference/05-policies/policies/policy-api-based-throttling/) - Example policy documentation

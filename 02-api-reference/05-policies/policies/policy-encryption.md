@@ -318,20 +318,20 @@ Asymmetric Algorithms:
 
 ### Variable Object (sourceVar, targetVar, ivVar, cipherAlgorithmVar)
 
-See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) for complete variable documentation.
+See [Variable Definition](/management-api-docs/02-api-reference/05-policies/policies/03-appendix/variable-definition/) for complete variable documentation.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | name | string | Yes | Variable name |
-| type | string | Yes | Variable type. See [Variable Types](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/02-api-reference/05-policies/policies/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
 | scriptLanguage | string | No* | Script language (required if type=CUSTOM) |
 | scriptBody | string | No* | Script body (required if type=CUSTOM) |
@@ -346,15 +346,15 @@ See [Variable Definition](/02-api-reference/05-policies/policies/03-appendix/var
 
 ### Policy Condition (policyCondition)
 
-See [Policy Condition Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Policy Condition Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Policy Operation Metadata (operationMetadata)
 
-See [Policy Operation Metadata Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Policy Operation Metadata Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Error Messages (errorMessageList)
 
-See [Error Messages Documentation](/02-api-reference/05-policies/crud/add-policy/) for detailed information.
+See [Error Messages Documentation](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) for detailed information.
 
 ### Response
 
@@ -553,8 +553,8 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Policies](/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/02-api-reference/05-policies/crud/add-policy/) - Add a policy
-- [Update Policy](/02-api-reference/05-policies/crud/update-policy/) - Update a policy
-- [Delete Policy](/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
-- [Decryption Policy](/02-api-reference/05-policies/policies/policy-decryption/) - Decrypt encrypted data
+- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
+- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - Add a policy
+- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - Update a policy
+- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - Delete a policy
+- [Decryption Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-decryption/) - Decrypt encrypted data
