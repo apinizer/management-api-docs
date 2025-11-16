@@ -270,5 +270,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/crud/list-environment-variables/) - List all environment variables
-- [Update Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/update-environment-variable/) - Update an environment variable
+- [List Environment Variables](list-environment-variables.md) - List all environment variables
+- [Update Environment Variable](update-environment-variable.md) - Update an environment variable

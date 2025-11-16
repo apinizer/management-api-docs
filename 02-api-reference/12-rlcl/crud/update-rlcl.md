@@ -43,7 +43,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create RLCL. See [Create RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/create-rlcl/) for field descriptions.
+Same structure as Create RLCL. See [Create RLCL](create-rlcl.md) for field descriptions.
 
 ### Important Notes
 
@@ -99,5 +99,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/create-rlcl/) - Create a new RLCL
-- [Delete RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/delete-rlcl/) - Delete an RLCL
+- [Create RLCL](create-rlcl.md) - Create a new RLCL
+- [Delete RLCL](delete-rlcl.md) - Delete an RLCL

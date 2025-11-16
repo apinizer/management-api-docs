@@ -9,12 +9,12 @@ This section contains endpoints for creating, reading, updating, and deleting IP
 
 ## Endpoints
 
-- [Create IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/create-ip-group/) - Create a new IP group
-- [Update IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/update-ip-group/) - Update an existing IP group
-- [Delete IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/delete-ip-group/) - Delete an IP group
+- [Create IP Group](create-ip-group.md) - Create a new IP group
+- [Update IP Group](update-ip-group.md) - Update an existing IP group
+- [Delete IP Group](delete-ip-group.md) - Delete an IP group
 
 ## Related Documentation
 
-- [IP Groups Overview](/management-api-docs/02-api-reference/11-ip-groups/) - Complete IP group management documentation
-- [IP Management](/management-api-docs/02-api-reference/11-ip-groups/ips/) - Manage IP addresses in groups
+- [IP Groups Overview](..) - Complete IP group management documentation
+- [IP Management](../ips) - Manage IP addresses in groups
 

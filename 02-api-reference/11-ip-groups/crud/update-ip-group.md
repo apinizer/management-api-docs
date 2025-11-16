@@ -116,5 +116,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/create-ip-group/) - Create a new IP Group
-- [Delete IP Group](/management-api-docs/02-api-reference/11-ip-groups/crud/delete-ip-group/) - Delete an IP Group
+- [Create IP Group](create-ip-group.md) - Create a new IP Group
+- [Delete IP Group](delete-ip-group.md) - Delete an IP Group

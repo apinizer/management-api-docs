@@ -356,7 +356,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Export API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/export-api-proxy/) - Export API Proxy to ZIP file
-- [Import API Proxy (Without Override)](/management-api-docs/02-api-reference/04-api-proxies/crud/import-api-proxy/) - Import API Proxy without override
-- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API Proxy to environments
-- [Update Routing Addresses](/management-api-docs/02-api-reference/04-api-proxies/settings/update-routing-addresses/) - Update routing configuration
+- [Export API Proxy](export-api-proxy.md) - Export API Proxy to ZIP file
+- [Import API Proxy (Without Override)](import-api-proxy.md) - Import API Proxy without override
+- [Deploy API Proxy](../deployment/deploy.md) - Deploy API Proxy to environments
+- [Update Routing Addresses](../settings/update-routing-addresses.md) - Update routing configuration

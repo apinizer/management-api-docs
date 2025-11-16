@@ -344,8 +344,8 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from URL](/management-api-docs/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create from URL instead of file
-- [List API Proxies](/management-api-docs/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
-- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
-- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy
-- [Delete API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/delete-api-proxy/) - Delete API proxy
+- [Create API Proxy from URL](create-api-proxy-from-url.md) - Create from URL instead of file
+- [List API Proxies](list-api-proxies.md) - List all API proxies
+- [Get API Proxy](get-api-proxy.md) - Get API proxy details
+- [Update API Proxy](update-api-proxy.md) - Update API proxy
+- [Delete API Proxy](delete-api-proxy.md) - Delete API proxy

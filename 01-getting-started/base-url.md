@@ -127,6 +127,6 @@ Different environments may have different base URLs:
 
 ## Next Steps
 
-- [Learn about authentication](/management-api-docs/01-getting-started/authentication/)
-- [Understand error handling](/management-api-docs/01-getting-started/error-handling/)
-- [Explore the API reference](/management-api-docs/02-api-reference/)
+- [Learn about authentication](authentication.md)
+- [Understand error handling](error-handling.md)
+- [Explore the API reference](../02-api-reference)

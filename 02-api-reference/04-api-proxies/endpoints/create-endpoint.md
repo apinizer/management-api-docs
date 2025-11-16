@@ -187,7 +187,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
-- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
-- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update an endpoint
-- [Delete Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint
+- [List Endpoints](list-endpoints.md) - List all endpoints
+- [Get Endpoint](get-endpoint.md) - Get endpoint details
+- [Update Endpoint](update-endpoint.md) - Update an endpoint
+- [Delete Endpoint](delete-endpoint.md) - Delete an endpoint

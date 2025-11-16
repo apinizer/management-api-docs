@@ -30,7 +30,7 @@ All endpoints (except the test endpoint) require authentication using a **Person
 Authorization: Bearer YOUR_TOKEN
 ```
 
-See [Authentication](/management-api-docs/01-getting-started/authentication/) for details on obtaining a token.
+See [Authentication](authentication.md) for details on obtaining a token.
 
 ## API Versioning
 
@@ -61,7 +61,7 @@ Error responses follow this format:
 }
 ```
 
-See [Error Handling](/management-api-docs/01-getting-started/error-handling/) for details on error codes and handling.
+See [Error Handling](error-handling.md) for details on error codes and handling.
 
 ## HTTP Methods
 
@@ -113,7 +113,7 @@ Query parameters are optional and used for filtering, pagination, etc.:
 
 ## Next Steps
 
-1. [Get your API token](/management-api-docs/01-getting-started/authentication/)
-2. [Learn about base URLs](/management-api-docs/01-getting-started/base-url/)
-3. [Understand error handling](/management-api-docs/01-getting-started/error-handling/)
-4. [Explore the API reference](/management-api-docs/02-api-reference/)
+1. [Get your API token](authentication.md)
+2. [Learn about base URLs](base-url.md)
+3. [Understand error handling](error-handling.md)
+4. [Explore the API reference](../02-api-reference)

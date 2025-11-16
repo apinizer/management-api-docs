@@ -177,6 +177,6 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
-- [Get Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
-- [Update Endpoint](/management-api-docs/02-api-reference/04-api-proxies/endpoints/update-endpoint/) - Update endpoint configuration
+- [List Endpoints](list-endpoints.md) - List all endpoints
+- [Get Endpoint](get-endpoint.md) - Get endpoint details
+- [Update Endpoint](update-endpoint.md) - Update endpoint configuration

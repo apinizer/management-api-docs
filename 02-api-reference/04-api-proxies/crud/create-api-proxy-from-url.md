@@ -251,7 +251,7 @@ curl -X POST \
 
 ## Related Documentation
 
-- [List API Proxies](/management-api-docs/02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
-- [Get API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details
-- [Update API Proxy](/management-api-docs/02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy
-- [Deploy API Proxy](/management-api-docs/02-api-reference/04-api-proxies/deployment/deploy/) - Deploy API proxy
+- [List API Proxies](list-api-proxies.md) - List all API proxies
+- [Get API Proxy](get-api-proxy.md) - Get API proxy details
+- [Update API Proxy](update-api-proxy.md) - Update API proxy
+- [Deploy API Proxy](../deployment/deploy.md) - Deploy API proxy

@@ -9,14 +9,14 @@ This section contains endpoints for managing credentials in RLCL (Rate Limit, Co
 
 ## Endpoints
 
-- [Add Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/add-credentials/) - Add credentials to RLCL
-- [Update Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/update-credentials/) - Update credentials in RLCL
-- [Delete Credentials](/management-api-docs/02-api-reference/12-rlcl/credentials/delete-credentials/) - Delete credentials from RLCL
+- [Add Credentials](add-credentials.md) - Add credentials to RLCL
+- [Update Credentials](update-credentials.md) - Update credentials in RLCL
+- [Delete Credentials](delete-credentials.md) - Delete credentials from RLCL
 
 ## Related Documentation
 
-- [RLCL Overview](/management-api-docs/02-api-reference/12-rlcl/) - Complete RLCL management documentation
-- [CRUD Operations](/management-api-docs/02-api-reference/12-rlcl/crud/) - Create, read, update, and delete RLCL
-- [Condition Management](/management-api-docs/02-api-reference/12-rlcl/condition/) - Manage conditions in RLCL
-- [Endpoints Management](/management-api-docs/02-api-reference/12-rlcl/endpoints/) - Manage endpoints in RLCL
+- [RLCL Overview](..) - Complete RLCL management documentation
+- [CRUD Operations](../crud) - Create, read, update, and delete RLCL
+- [Condition Management](../condition) - Manage conditions in RLCL
+- [Endpoints Management](../endpoints) - Manage endpoints in RLCL
 

@@ -11,14 +11,14 @@ The Credentials API provides endpoints for managing credentials in Apinizer. Cre
 
 ## Endpoints
 
-- [List Credentials](/management-api-docs/02-api-reference/07-credentials/crud/list-credentials/) - Get all credentials for a project
-- [Create Credential](/management-api-docs/02-api-reference/07-credentials/crud/create-credential/) - Create a new credential
-- [Update Credential](/management-api-docs/02-api-reference/07-credentials/crud/update-credential/) - Update an existing credential
-- [Change Credential Password](/management-api-docs/02-api-reference/07-credentials/crud/change-credential-password/) - Change credential password
-- [Delete Credential](/management-api-docs/02-api-reference/07-credentials/crud/delete-credential/) - Delete a credential
-- [Get Granted Access List](/management-api-docs/02-api-reference/07-credentials/access/get-granted-access-list/) - Get list of API Proxies/Groups granted to credential
-- [Grant Access](/management-api-docs/02-api-reference/07-credentials/access/grant-access/) - Grant access to API Proxy or API Proxy Group
-- [Revoke Access](/management-api-docs/02-api-reference/07-credentials/access/revoke-access/) - Revoke access from API Proxy or API Proxy Group
+- [List Credentials](crud/list-credentials.md) - Get all credentials for a project
+- [Create Credential](crud/create-credential.md) - Create a new credential
+- [Update Credential](crud/update-credential.md) - Update an existing credential
+- [Change Credential Password](crud/change-credential-password.md) - Change credential password
+- [Delete Credential](crud/delete-credential.md) - Delete a credential
+- [Get Granted Access List](access/get-granted-access-list.md) - Get list of API Proxies/Groups granted to credential
+- [Grant Access](access/grant-access.md) - Grant access to API Proxy or API Proxy Group
+- [Revoke Access](access/revoke-access.md) - Revoke access from API Proxy or API Proxy Group
 
 ## Authentication
 
@@ -31,5 +31,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/management-api-docs/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/management-api-docs/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](../../01-getting-started/authentication.md) - How to obtain and use API tokens
+- [Error Handling](../../01-getting-started/error-handling.md) - Error response formats

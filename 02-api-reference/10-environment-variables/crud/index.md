@@ -9,13 +9,13 @@ This section contains endpoints for creating, reading, updating, and deleting en
 
 ## Endpoints
 
-- [List Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/crud/list-environment-variables/) - Get all environment variables for a project
-- [Get Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/get-environment-variable/) - Get detailed information about a specific environment variable
-- [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
-- [Update Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/update-environment-variable/) - Update an existing environment variable
-- [Delete Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/delete-environment-variable/) - Delete an environment variable
+- [List Environment Variables](list-environment-variables.md) - Get all environment variables for a project
+- [Get Environment Variable](get-environment-variable.md) - Get detailed information about a specific environment variable
+- [Create Environment Variable](create-environment-variable.md) - Create a new environment variable
+- [Update Environment Variable](update-environment-variable.md) - Update an existing environment variable
+- [Delete Environment Variable](delete-environment-variable.md) - Delete an environment variable
 
 ## Related Documentation
 
-- [Environment Variables Overview](/management-api-docs/02-api-reference/10-environment-variables/) - Complete environment variable management documentation
+- [Environment Variables Overview](..) - Complete environment variable management documentation
 

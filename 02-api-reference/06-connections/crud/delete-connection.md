@@ -123,7 +123,7 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [List Connections](/management-api-docs/02-api-reference/06-connections/crud/list-connections/) - List all connections
-- [Get Connection](/management-api-docs/02-api-reference/06-connections/crud/get-connection/) - Get connection details
-- [Create Connection](/management-api-docs/02-api-reference/06-connections/crud/create-connection/) - Create a new connection
-- [Update Connection](/management-api-docs/02-api-reference/06-connections/crud/update-connection/) - Update a connection
+- [List Connections](list-connections.md) - List all connections
+- [Get Connection](get-connection.md) - Get connection details
+- [Create Connection](create-connection.md) - Create a new connection
+- [Update Connection](update-connection.md) - Update a connection

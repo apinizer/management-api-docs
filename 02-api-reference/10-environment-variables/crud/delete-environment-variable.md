@@ -93,5 +93,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/crud/list-environment-variables/) - List all environment variables
-- [Create Environment Variable](/management-api-docs/02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable
+- [List Environment Variables](list-environment-variables.md) - List all environment variables
+- [Create Environment Variable](create-environment-variable.md) - Create a new environment variable

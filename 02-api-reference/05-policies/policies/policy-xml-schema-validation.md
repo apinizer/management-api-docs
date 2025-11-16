@@ -435,8 +435,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 
 ## Related Documentation
 
-- [List Policies](/management-api-docs/02-api-reference/05-policies/crud/list-policies/) - List all policies
-- [Add Policy](/management-api-docs/02-api-reference/05-policies/crud/add-policy/) - General policy addition guide
-- [Update Policy](/management-api-docs/02-api-reference/05-policies/crud/update-policy/) - General policy update guide
-- [Delete Policy](/management-api-docs/02-api-reference/05-policies/crud/delete-policy/) - General policy deletion guide
-- [JSON Schema Validation Policy](/management-api-docs/02-api-reference/05-policies/policies/policy-json-schema-validation/) - Validate JSON messages
+- [List Policies](../crud/list-policies.md) - List all policies
+- [Add Policy](../crud/add-policy.md) - General policy addition guide
+- [Update Policy](../crud/update-policy.md) - General policy update guide
+- [Delete Policy](../crud/delete-policy.md) - General policy deletion guide
+- [JSON Schema Validation Policy](policy-json-schema-validation.md) - Validate JSON messages

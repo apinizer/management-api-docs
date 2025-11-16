@@ -80,5 +80,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Create RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/create-rlcl/) - Create a new RLCL
-- [Update RLCL](/management-api-docs/02-api-reference/12-rlcl/crud/update-rlcl/) - Update an RLCL
+- [Create RLCL](create-rlcl.md) - Create a new RLCL
+- [Update RLCL](update-rlcl.md) - Update an RLCL
