@@ -79,7 +79,20 @@
         </aside>
         
         <main class="main-content">
-          <section id="main-content">
+          <section>
+            {% comment %}
+              Kök neden: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor.
+              Çözüm: Liquid filter kullanarak markdown içeriğindeki linkleri işle.
+              Ancak markdown zaten HTML'e render edilmiş durumda geldiği için,
+              içeriği string replacement ile işliyoruz.
+            {% endcomment %}
+            {% assign processed_content = content %}
+            {% if site.baseurl and site.baseurl != '' %}
+              {% assign baseurl_prefix = site.baseurl | append: '/' %}
+              {% comment %}Absolute path'leri baseurl ile birleştir{% endcomment %}
+              {% assign processed_content = processed_content | replace: 'href="/', 'href="' | append: site.baseurl | append: '/' %}
+              {% comment %}Yukarıdaki yaklaşım çalışmıyor, bu yüzden JavaScript kullanıyoruz{% endcomment %}
+            {% endif %}
             {{ content }}
           </section>
           
@@ -88,23 +101,19 @@
           </footer>
         </main>
         <script>
-          // Kök neden çözümü: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor
-          // Bu script sayfa render edildikten sonra tüm absolute path'leri baseurl ile birleştirir
+          // Kök neden: Jekyll markdown içindeki absolute path'leri baseurl ile birleştirmiyor
+          // Liquid filter'lar markdown içeriğinde çalışmıyor çünkü içerik zaten HTML'e render edilmiş
+          // Bu yüzden post-render script kullanıyoruz
           (function() {
             const baseurl = '{{ site.baseurl }}';
             if (baseurl && baseurl !== '') {
-              const mainContent = document.getElementById('main-content');
+              const mainContent = document.querySelector('main.main-content section');
               if (mainContent) {
-                // Tüm absolute path'li linkleri bul ve baseurl ekle
                 const links = mainContent.querySelectorAll('a[href^="/"]');
                 links.forEach(function(link) {
                   const href = link.getAttribute('href');
-                  // External link değilse (// veya http ile başlamıyorsa) baseurl ekle
-                  if (href && !href.startsWith('//') && !href.startsWith('http')) {
-                    // baseurl zaten yoksa ekle
-                    if (!href.startsWith(baseurl)) {
-                      link.setAttribute('href', baseurl + href);
-                    }
+                  if (href && !href.startsWith('//') && !href.startsWith('http') && !href.startsWith(baseurl)) {
+                    link.setAttribute('href', baseurl + href);
                   }
                 });
               }
