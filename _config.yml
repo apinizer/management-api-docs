@@ -2,7 +2,7 @@
 title: Apinizer Management API Documentation
 description: Comprehensive documentation for Apinizer Management API
 url: https://apinizer.github.io
-baseurl: /management-api-docs
+baseurl: ""  # Empty for root domain or "/management-api-docs" for subdirectory
 
 # Theme
 theme: jekyll-theme-minimal
