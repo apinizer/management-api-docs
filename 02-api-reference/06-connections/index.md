@@ -53,5 +53,5 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/06-connections/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/02-api-reference/06-connections/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling/) - Error response formats

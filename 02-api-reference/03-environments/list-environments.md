@@ -152,4 +152,4 @@ This endpoint does not require a request body.
 ## Related Documentation
 
 - [Get Environments by Project](/02-api-reference/03-environments/get-environments-by-project/) - Get environments for a specific project
-- [Authentication Guide](/02-api-reference/03-environments/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens

@@ -31,7 +31,7 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/11-ip-groups/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/02-api-reference/11-ip-groups/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling/) - Error response formats
 - [Black IP Policy](/02-api-reference/05-policies/policies/policy-black-ip/) - Use IP Groups in Black IP policy
 - [White IP Policy](/02-api-reference/05-policies/policies/policy-white-ip/) - Use IP Groups in White IP policy

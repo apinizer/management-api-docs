@@ -133,5 +133,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/01-auth/01-getting-started/authentication/) - Detailed authentication information
-- [Using Tokens](/02-api-reference/01-auth/01-getting-started/authentication/) - How to use tokens in API requests
+- [Authentication Guide](/01-getting-started/authentication/) - Detailed authentication information
+- [Using Tokens](/01-getting-started/authentication/) - How to use tokens in API requests

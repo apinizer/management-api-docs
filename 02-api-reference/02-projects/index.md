@@ -23,5 +23,5 @@ Users can only access projects where they are members. The API automatically fil
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/02-projects/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/02-api-reference/02-projects/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling/) - Error response formats

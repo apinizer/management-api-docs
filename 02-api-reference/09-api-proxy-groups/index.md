@@ -38,6 +38,6 @@ All endpoints require authentication using a Personal API Access Token.
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/09-api-proxy-groups/01-getting-started/authentication/) - How to obtain and use API tokens
-- [Error Handling](/02-api-reference/09-api-proxy-groups/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Error Handling](/01-getting-started/error-handling/) - Error response formats
 - [API Proxies API](/02-api-reference/04-api-proxies/) - API Proxy management

@@ -157,5 +157,5 @@ This endpoint does not require a request body.
 ## Related Documentation
 
 - [List Environments](/02-api-reference/03-environments/list-environments/) - Get all environments (admin only)
-- [Authentication Guide](/02-api-reference/03-environments/01-getting-started/authentication/) - How to obtain and use API tokens
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain and use API tokens
 - [Projects API](/02-api-reference/02-projects/) - Project management

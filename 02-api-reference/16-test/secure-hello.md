@@ -94,4 +94,4 @@ curl -X GET \
 ## Related Documentation
 
 - [Healthcheck](/02-api-reference/16-test/healthcheck/) - Check API availability
-- [Authentication Guide](/02-api-reference/16-test/01-getting-started/authentication/) - How to obtain tokens
+- [Authentication Guide](/01-getting-started/authentication/) - How to obtain tokens

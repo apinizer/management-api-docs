@@ -27,5 +27,5 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Related Documentation
 
-- [Authentication Guide](/02-api-reference/01-auth/01-getting-started/authentication/) - Detailed authentication information
-- [Error Handling](/02-api-reference/01-auth/01-getting-started/error-handling/) - Error response formats
+- [Authentication Guide](/01-getting-started/authentication/) - Detailed authentication information
+- [Error Handling](/01-getting-started/error-handling/) - Error response formats
