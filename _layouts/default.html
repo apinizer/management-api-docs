@@ -193,7 +193,21 @@
                       <li><strong>CRUD Operations</strong></li>
                       <li><a href="{{ '/02-api-reference/06-connections/crud/' | relative_url }}" {% if page.url contains '/06-connections/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
                       <li><strong>Connection Types</strong></li>
-                      <li><a href="{{ '/02-api-reference/06-connections/connections/' | relative_url }}" {% if page.url contains '/06-connections/connections/' %}class="active"{% endif %}>Connection Types Index</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/' | relative_url }}" {% if page.url == '/02-api-reference/06-connections/connections/' %}class="active"{% endif %}>Connection Types Index</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-email/' | relative_url }}" {% if page.url contains '/connection-email' %}class="active"{% endif %}>Email Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-kafka/' | relative_url }}" {% if page.url contains '/connection-kafka' %}class="active"{% endif %}>Kafka Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-elasticsearch/' | relative_url }}" {% if page.url contains '/connection-elasticsearch' %}class="active"{% endif %}>Elasticsearch Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-rabbitmq/' | relative_url }}" {% if page.url contains '/connection-rabbitmq' %}class="active"{% endif %}>RabbitMQ Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-ftp/' | relative_url }}" {% if page.url contains '/connection-ftp' %}class="active"{% endif %}>FTP Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-graylog/' | relative_url }}" {% if page.url contains '/connection-graylog' %}class="active"{% endif %}>Graylog Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-syslog/' | relative_url }}" {% if page.url contains '/connection-syslog' %}class="active"{% endif %}>Syslog Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-webhook/' | relative_url }}" {% if page.url contains '/connection-webhook' %}class="active"{% endif %}>Webhook Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-logback/' | relative_url }}" {% if page.url contains '/connection-logback' %}class="active"{% endif %}>Logback Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-activemq/' | relative_url }}" {% if page.url contains '/connection-activemq' %}class="active"{% endif %}>Apache ActiveMQ Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-snmp/' | relative_url }}" {% if page.url contains '/connection-snmp' %}class="active"{% endif %}>SNMP Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-linux-script/' | relative_url }}" {% if page.url contains '/connection-linux-script' %}class="active"{% endif %}>Linux Script Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-database/' | relative_url }}" {% if page.url contains '/connection-database' %}class="active"{% endif %}>Database Connection</a></li>
+                      <li><a href="{{ '/02-api-reference/06-connections/connections/connection-ldap/' | relative_url }}" {% if page.url contains '/connection-ldap' %}class="active"{% endif %}>LDAP Connection</a></li>
                     </ul>
                     {% endif %}
                   </li>
