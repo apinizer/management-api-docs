@@ -159,6 +159,49 @@ header {
                 scroll-margin-top: 20px;
               }
             }
+            
+            // Alt bölümler için (nested submenu)
+            &.nav-subsection {
+              > a {
+                font-weight: 500;
+              }
+              
+              .submenu {
+                list-style: none;
+                padding: 0;
+                margin: 5px 0 5px 0;
+                display: block;
+                
+                > li {
+                  margin: 0;
+                  
+                  > a {
+                    padding: 6px 20px 6px 50px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    
+                    &.active {
+                      padding-left: 47px;
+                    }
+                  }
+                  
+                  > strong {
+                    display: block;
+                    padding: 8px 20px 4px 50px;
+                    font-size: 11px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    color: #999;
+                    letter-spacing: 0.5px;
+                    margin-top: 8px;
+                    
+                    &:first-child {
+                      margin-top: 0;
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

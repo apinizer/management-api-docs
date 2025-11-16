@@ -78,8 +78,38 @@
                   <li><a href="{{ '/02-api-reference/01-auth/' | relative_url }}" {% if page.url contains '/01-auth/' or page.url contains '/01-auth/create-token' %}class="active"{% endif %}>Authentication</a></li>
                   <li><a href="{{ '/02-api-reference/02-projects/' | relative_url }}" {% if page.url contains '/02-projects/' or page.url contains '/02-projects/list-projects' %}class="active"{% endif %}>Projects</a></li>
                   <li><a href="{{ '/02-api-reference/03-environments/' | relative_url }}" {% if page.url contains '/03-environments/' %}class="active"{% endif %}>Environments</a></li>
-                  <li><a href="{{ '/02-api-reference/04-api-proxies/' | relative_url }}" {% if page.url contains '/04-api-proxies/' %}class="active"{% endif %}>API Proxies</a></li>
-                  <li><a href="{{ '/02-api-reference/05-policies/' | relative_url }}" {% if page.url contains '/05-policies/' %}class="active"{% endif %}>Policies</a></li>
+                  <li class="nav-subsection {% if page.url contains '/04-api-proxies/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/04-api-proxies/' | relative_url }}" {% if page.url contains '/04-api-proxies/' %}class="active"{% endif %}>API Proxies</a>
+                    {% if page.url contains '/04-api-proxies/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/04-api-proxies/' | relative_url }}" {% if page.url == '/02-api-reference/04-api-proxies/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/04-api-proxies/crud/' | relative_url }}" {% if page.url contains '/04-api-proxies/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>Deployment</strong></li>
+                      <li><a href="{{ '/02-api-reference/04-api-proxies/deployment/' | relative_url }}" {% if page.url contains '/04-api-proxies/deployment/' %}class="active"{% endif %}>Deployment Index</a></li>
+                      <li><strong>Endpoints</strong></li>
+                      <li><a href="{{ '/02-api-reference/04-api-proxies/endpoints/' | relative_url }}" {% if page.url contains '/04-api-proxies/endpoints/' %}class="active"{% endif %}>Endpoints Index</a></li>
+                      <li><strong>Settings</strong></li>
+                      <li><a href="{{ '/02-api-reference/04-api-proxies/settings/' | relative_url }}" {% if page.url contains '/04-api-proxies/settings/' %}class="active"{% endif %}>Settings Index</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
+                  <li class="nav-subsection {% if page.url contains '/05-policies/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/05-policies/' | relative_url }}" {% if page.url contains '/05-policies/' %}class="active"{% endif %}>Policies</a>
+                    {% if page.url contains '/05-policies/' %}
+                    <ul class="submenu">
+                      <li><a href="{{ '/02-api-reference/05-policies/' | relative_url }}" {% if page.url == '/02-api-reference/05-policies/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><strong>CRUD Operations</strong></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/crud/' | relative_url }}" {% if page.url contains '/05-policies/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/crud/list-policies/' | relative_url }}" {% if page.url contains '/05-policies/crud/list-policies' %}class="active"{% endif %}>List Policies</a></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/crud/add-policy/' | relative_url }}" {% if page.url contains '/05-policies/crud/add-policy' %}class="active"{% endif %}>Add Policy</a></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/crud/update-policy/' | relative_url }}" {% if page.url contains '/05-policies/crud/update-policy' %}class="active"{% endif %}>Update Policy</a></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/crud/delete-policy/' | relative_url }}" {% if page.url contains '/05-policies/crud/delete-policy' %}class="active"{% endif %}>Delete Policy</a></li>
+                      <li><strong>Policy Types</strong></li>
+                      <li><a href="{{ '/02-api-reference/05-policies/policies/' | relative_url }}" {% if page.url contains '/05-policies/policies/' and page.url != '/02-api-reference/05-policies/policies/' %}class="active"{% endif %}>All Policies</a></li>
+                    </ul>
+                    {% endif %}
+                  </li>
                   <li><a href="{{ '/02-api-reference/06-connections/' | relative_url }}" {% if page.url contains '/06-connections/' %}class="active"{% endif %}>Connections</a></li>
                   <li><a href="{{ '/02-api-reference/07-credentials/' | relative_url }}" {% if page.url contains '/07-credentials/' %}class="active"{% endif %}>Credentials</a></li>
                   <li><a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url contains '/08-certificates/' %}class="active"{% endif %}>Certificates</a></li>
