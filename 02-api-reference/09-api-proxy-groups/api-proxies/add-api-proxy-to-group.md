@@ -101,5 +101,5 @@ curl -X POST \
 
 ## Related Documentation
 
-- [Remove API Proxy from Group](/02-api-reference/09-api-proxy-groups/api-proxies/remove-api-proxy-from-group) - Remove an API Proxy from group
-- [List API Proxy Groups](/02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups) - List all API Proxy Groups
+- [Remove API Proxy from Group](../../../../02-api-reference/09-api-proxy-groups/api-proxies/remove-api-proxy-from-group/) - Remove an API Proxy from group
+- [List API Proxy Groups](../../../../02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups

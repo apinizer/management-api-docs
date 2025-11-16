@@ -80,7 +80,7 @@ None.
 
 #### Response Fields
 
-Same as List Environment Variables. See [List Environment Variables](/02-api-reference/10-environment-variables/crud/list-environment-variables) for field descriptions.
+Same as List Environment Variables. See [List Environment Variables](../../../../02-api-reference/10-environment-variables/crud/list-environment-variables/) for field descriptions.
 
 ### Notes
 
@@ -106,5 +106,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Environment Variables](/02-api-reference/10-environment-variables/crud/list-environment-variables) - List all environment variables
-- [Create Environment Variable](/02-api-reference/10-environment-variables/crud/create-environment-variable) - Create a new environment variable
+- [List Environment Variables](../../../../02-api-reference/10-environment-variables/crud/list-environment-variables/) - List all environment variables
+- [Create Environment Variable](../../../../02-api-reference/10-environment-variables/crud/create-environment-variable/) - Create a new environment variable

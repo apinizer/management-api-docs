@@ -81,5 +81,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List API Proxy Groups](/02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups) - List all API Proxy Groups
-- [Create API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group) - Create a new API Proxy Group
+- [List API Proxy Groups](../../../../02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups
+- [Create API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group/) - Create a new API Proxy Group

@@ -174,5 +174,5 @@ curl -X PATCH \
 
 ## Related Documentation
 
-- [Update XML Error Template](/02-api-reference/04-api-proxies/settings/update-xml-error-template) - Update XML error template
-- [Get API Proxy](/02-api-reference/04-api-proxies/crud/get-api-proxy) - Get API proxy details
+- [Update XML Error Template](../../../../02-api-reference/04-api-proxies/settings/update-xml-error-template/) - Update XML error template
+- [Get API Proxy](../../../../02-api-reference/04-api-proxies/crud/get-api-proxy/) - Get API proxy details

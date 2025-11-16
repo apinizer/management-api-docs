@@ -125,5 +125,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Create API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group) - Create a new API Proxy Group
-- [Get Environments](/02-api-reference/09-api-proxy-groups/deployment/list-environments) - Get environments for a group
+- [Create API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group/) - Create a new API Proxy Group
+- [Get Environments](../../../../02-api-reference/09-api-proxy-groups/deployment/list-environments/) - Get environments for a group

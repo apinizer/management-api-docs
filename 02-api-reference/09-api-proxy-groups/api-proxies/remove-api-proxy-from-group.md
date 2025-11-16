@@ -100,5 +100,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [Add API Proxy to Group](/02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group) - Add an API Proxy to group
-- [List API Proxy Groups](/02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups) - List all API Proxy Groups
+- [Add API Proxy to Group](../../../../02-api-reference/09-api-proxy-groups/api-proxies/add-api-proxy-to-group/) - Add an API Proxy to group
+- [List API Proxy Groups](../../../../02-api-reference/09-api-proxy-groups/crud/list-api-proxy-groups/) - List all API Proxy Groups

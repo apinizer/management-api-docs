@@ -43,7 +43,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Form Data
 
-Same as Create Certificate. See [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate) for field descriptions.
+Same as Create Certificate. See [Create Certificate](../../../../02-api-reference/08-certificates/crud/create-certificate/) for field descriptions.
 
 ### Notes
 
@@ -54,7 +54,7 @@ Same as Create Certificate. See [Create Certificate](/02-api-reference/08-certif
 
 ### Response
 
-Same as Create Certificate. See [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate) for response format.
+Same as Create Certificate. See [Create Certificate](../../../../02-api-reference/08-certificates/crud/create-certificate/) for response format.
 
 ## cURL Example
 
@@ -82,5 +82,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create Certificate](/02-api-reference/08-certificates/crud/create-certificate) - Create a new certificate
-- [Get Certificate](/02-api-reference/08-certificates/crud/get-certificate) - Get certificate details
+- [Create Certificate](../../../../02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Get Certificate](../../../../02-api-reference/08-certificates/crud/get-certificate/) - Get certificate details

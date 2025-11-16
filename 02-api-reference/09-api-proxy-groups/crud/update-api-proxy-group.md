@@ -42,7 +42,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-Same structure as Create API Proxy Group. See [Create API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group) for field descriptions.
+Same structure as Create API Proxy Group. See [Create API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group/) for field descriptions.
 
 ### Important Notes
 
@@ -101,5 +101,5 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group) - Create a new API Proxy Group
-- [Delete API Proxy Group](/02-api-reference/09-api-proxy-groups/crud/delete-api-proxy-group) - Delete an API Proxy Group
+- [Create API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/create-api-proxy-group/) - Create a new API Proxy Group
+- [Delete API Proxy Group](../../../../02-api-reference/09-api-proxy-groups/crud/delete-api-proxy-group/) - Delete an API Proxy Group

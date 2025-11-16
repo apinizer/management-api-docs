@@ -138,15 +138,15 @@ This endpoint does not require a request body.
 - **Secret Fields**: Unlike list operations, secret fields (password, apiKey, etc.) are returned in full when getting a single connection
 - **Security**: Never log or expose connection responses containing secrets
 - **Connection Types**: Each connection type has different fields. See individual connection type documentation for details:
-  - [Email Connection](/02-api-reference/06-connections/connections/connection-email)
-  - [Kafka Connection](/02-api-reference/06-connections/connections/connection-kafka)
-  - [Database Connection](/02-api-reference/06-connections/connections/connection-database)
-  - ... (see [Connections Index](/02-api-reference/06-connections) for complete list)
+  - [Email Connection](../../../../02-api-reference/06-connections/connections/connection-email/)
+  - [Kafka Connection](../../../../02-api-reference/06-connections/connections/connection-kafka/)
+  - [Database Connection](../../../../02-api-reference/06-connections/connections/connection-database/)
+  - ... (see [Connections Index](../../../../02-api-reference/06-connections/) for complete list)
 
 ## Related Documentation
 
-- [List Connections](/02-api-reference/06-connections/crud/list-connections) - List all connections (secrets masked)
-- [Create Connection](/02-api-reference/06-connections/crud/create-connection) - Create a new connection
-- [Update Connection](/02-api-reference/06-connections/crud/update-connection) - Update a connection
-- [Delete Connection](/02-api-reference/06-connections/crud/delete-connection) - Delete a connection
-- [Email Connection](/02-api-reference/06-connections/connections/connection-email) - Email connection details
+- [List Connections](../../../../02-api-reference/06-connections/crud/list-connections/) - List all connections (secrets masked)
+- [Create Connection](../../../../02-api-reference/06-connections/crud/create-connection/) - Create a new connection
+- [Update Connection](../../../../02-api-reference/06-connections/crud/update-connection/) - Update a connection
+- [Delete Connection](../../../../02-api-reference/06-connections/crud/delete-connection/) - Delete a connection
+- [Email Connection](../../../../02-api-reference/06-connections/connections/connection-email/) - Email connection details

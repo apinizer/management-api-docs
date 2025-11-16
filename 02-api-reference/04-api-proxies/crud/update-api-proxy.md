@@ -48,7 +48,7 @@ Authorization: Bearer YOUR_TOKEN
 
 ### Request Body
 
-The request body structure is identical to [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url) or [Create API Proxy from File](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file), with the following differences:
+The request body structure is identical to [Create API Proxy from URL](../../../../02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) or [Create API Proxy from File](../../../../02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/), with the following differences:
 
 #### Key Differences for Update
 
@@ -231,7 +231,7 @@ curl -X PUT \
 
 ## Related Documentation
 
-- [Create API Proxy from URL](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-url) - Create new API proxy from URL
-- [Create API Proxy from File](/02-api-reference/04-api-proxies/crud/create-api-proxy-from-file) - Create new API proxy from file
-- [Delete API Proxy](/02-api-reference/04-api-proxies/crud/delete-api-proxy) - Delete API proxy
-- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies) - List all API proxies
+- [Create API Proxy from URL](../../../../02-api-reference/04-api-proxies/crud/create-api-proxy-from-url/) - Create new API proxy from URL
+- [Create API Proxy from File](../../../../02-api-reference/04-api-proxies/crud/create-api-proxy-from-file/) - Create new API proxy from file
+- [Delete API Proxy](../../../../02-api-reference/04-api-proxies/crud/delete-api-proxy/) - Delete API proxy
+- [List API Proxies](../../../../02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies

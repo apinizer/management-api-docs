@@ -165,13 +165,13 @@ curl -X PATCH \
 
 - **Partial Updates**: Only provided fields are updated. Omitted fields remain unchanged
 - **Unique Combination**: If updating `name` or `httpMethod`, ensure the new combination doesn't conflict with existing endpoints
-- **Endpoint ID**: Use [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints) to get endpoint IDs
+- **Endpoint ID**: Use [List Endpoints](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation
 
-- [List Endpoints](/02-api-reference/04-api-proxies/endpoints/list-endpoints) - List all endpoints
-- [Get Endpoint](/02-api-reference/04-api-proxies/endpoints/get-endpoint) - Get endpoint details
-- [Create Endpoint](/02-api-reference/04-api-proxies/endpoints/create-endpoint) - Create a new endpoint
-- [Delete Endpoint](/02-api-reference/04-api-proxies/endpoints/delete-endpoint) - Delete an endpoint
-- [Update Endpoint Status](/02-api-reference/04-api-proxies/endpoints/update-endpoint-status) - Enable/disable endpoint
+- [List Endpoints](../../../../02-api-reference/04-api-proxies/endpoints/list-endpoints/) - List all endpoints
+- [Get Endpoint](../../../../02-api-reference/04-api-proxies/endpoints/get-endpoint/) - Get endpoint details
+- [Create Endpoint](../../../../02-api-reference/04-api-proxies/endpoints/create-endpoint/) - Create a new endpoint
+- [Delete Endpoint](../../../../02-api-reference/04-api-proxies/endpoints/delete-endpoint/) - Delete an endpoint
+- [Update Endpoint Status](../../../../02-api-reference/04-api-proxies/endpoints/update-endpoint-status/) - Enable/disable endpoint

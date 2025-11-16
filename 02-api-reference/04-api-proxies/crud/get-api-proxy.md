@@ -142,6 +142,6 @@ This endpoint does not require a request body.
 
 ## Related Documentation
 
-- [List API Proxies](/02-api-reference/04-api-proxies/crud/list-api-proxies) - List all API proxies
-- [Update API Proxy](/02-api-reference/04-api-proxies/crud/update-api-proxy) - Update API proxy
-- [Delete API Proxy](/02-api-reference/04-api-proxies/crud/delete-api-proxy) - Delete API proxy
+- [List API Proxies](../../../../02-api-reference/04-api-proxies/crud/list-api-proxies/) - List all API proxies
+- [Update API Proxy](../../../../02-api-reference/04-api-proxies/crud/update-api-proxy/) - Update API proxy
+- [Delete API Proxy](../../../../02-api-reference/04-api-proxies/crud/delete-api-proxy/) - Delete API proxy
