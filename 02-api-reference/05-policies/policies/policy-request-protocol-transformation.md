@@ -18,6 +18,8 @@ policy-request-protocol-transformation
 ### Description
 Request Protocol Transformation policy transforms REST requests to SOAP requests. This policy is used when you need to convert JSON/XML REST requests to SOAP format before forwarding to the backend service.
 
+**Important:** This policy cannot be added manually. It is automatically added to the API Proxy when SOAP/REST transformation is enabled during API Proxy creation. Once added, this policy cannot be deleted but can be viewed and updated (update functionality is currently not implemented via API).
+
 ### Endpoints
 
 #### List Policies
@@ -25,20 +27,7 @@ Request Protocol Transformation policy transforms REST requests to SOAP requests
 GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 ```
 
-#### Add Policy
-```
-POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-#### Update Policy
-```
-PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-#### Delete Policy
-```
-DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
+**Note:** Add Policy and Delete Policy endpoints are not supported for this policy type. Update Policy endpoint exists but functionality is not currently implemented.
 
 ---
 
@@ -80,9 +69,7 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
             "name": "rest-to-soap-transformation",
             "description": "Transform REST requests to SOAP",
             "active": true,
-            "policyCondition": {
-              "conditionRuleList": []
-            },
+            "policyCondition": null,
             "errorMessageList": []
           }
         ],
@@ -106,208 +93,28 @@ curl -X GET \
 
 ## Add Policy
 
-### Endpoint
-```
-POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
+**Not Supported:** This policy cannot be added manually using the Add Policy endpoint. It is automatically created and added to the API Proxy when SOAP/REST transformation is enabled during API Proxy creation.
 
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-| Content-Type | application/json |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-#### Request Body
-```json
-{
-  "type": "policy-request-protocol-transformation",
-  "description": "Transform REST requests to SOAP",
-  "active": true,
-  "policyCondition": {
-    "conditionRuleList": []
-  },
-  "errorMessageList": []
-}
-```
-
-#### Request Body Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| type | string | Yes | Policy type. Must be `"policy-request-protocol-transformation"` |
-| description | string | No | Policy description |
-| active | boolean | No | Whether the policy is active. Default: `true` |
-| policyCondition | object | No | Policy condition configuration. See [Policy Condition](/management-api-docs/#policy-condition) |
-| errorMessageList | array | No | List of error messages. See [Error Messages](/management-api-docs/#error-messages) |
-
-**Note:** This policy currently only supports base policy fields. The actual REST-to-SOAP transformation configuration is managed through API Method settings in the API Proxy configuration.
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "result": {
-    "type": "policy-request-protocol-transformation",
-    "name": "rest-to-soap-transformation",
-    "description": "Transform REST requests to SOAP",
-    "active": true,
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }
-}
-```
-
-### cURL Example
-```bash
-curl -X POST \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/rest-to-soap-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "type": "policy-request-protocol-transformation",
-    "description": "Transform REST requests to SOAP",
-    "active": true,
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }'
-```
+To enable this policy, configure SOAP/REST transformation settings when creating a new API Proxy.
 
 ---
 
 ## Update Policy
+
+**Currently Not Implemented:** Update functionality for this policy is not yet implemented. While the policy can be viewed in the API Proxy, modifications cannot be made through the API at this time.
 
 ### Endpoint
 ```
 PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
 ```
 
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-| Content-Type | application/json |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-#### Request Body
-```json
-{
-  "type": "policy-request-protocol-transformation",
-  "description": "Updated description for REST to SOAP transformation",
-  "active": true,
-  "policyCondition": {
-    "conditionRuleList": []
-  },
-  "errorMessageList": []
-}
-```
-
-#### Request Body Fields
-
-Same as [Add Policy](/management-api-docs/#add-policy) request body fields.
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "result": {
-    "type": "policy-request-protocol-transformation",
-    "name": "rest-to-soap-transformation",
-    "description": "Updated description for REST to SOAP transformation",
-    "active": true,
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }
-}
-```
-
-### cURL Example
-```bash
-curl -X PUT \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/rest-to-soap-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "type": "policy-request-protocol-transformation",
-    "description": "Updated description for REST to SOAP transformation",
-    "active": true,
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }'
-```
+**Note:** This endpoint exists but update functionality is not currently implemented. Future versions may support updating this policy.
 
 ---
 
 ## Delete Policy
 
-### Endpoint
-```
-DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true
-}
-```
-
-### cURL Example
-```bash
-curl -X DELETE \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/rest-to-soap-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
-```
+**Not Supported:** This policy cannot be deleted. It is automatically managed by the system and is tied to the SOAP/REST transformation configuration of the API Proxy. To remove this policy, you would need to disable SOAP/REST transformation in the API Proxy configuration.
 
 ---
 

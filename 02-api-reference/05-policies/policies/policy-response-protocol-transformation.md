@@ -18,6 +18,8 @@ policy-response-protocol-transformation
 ### Description
 Response Protocol Transformation policy transforms SOAP responses to REST responses. This policy is used when you need to convert SOAP responses from the backend service to JSON/XML REST format.
 
+**Important:** This policy cannot be added manually. It is automatically added to the API Proxy when SOAP/REST transformation is enabled during API Proxy creation. Once added, this policy cannot be deleted but can be viewed and updated (update functionality is currently not implemented via API).
+
 ### Endpoints
 
 #### List Policies
@@ -25,20 +27,7 @@ Response Protocol Transformation policy transforms SOAP responses to REST respon
 GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 ```
 
-#### Add Policy
-```
-POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-#### Update Policy
-```
-PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-#### Delete Policy
-```
-DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
+**Note:** Add Policy and Delete Policy endpoints are not supported for this policy type. Update Policy endpoint exists but functionality is not currently implemented.
 
 ---
 
@@ -92,9 +81,7 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
                 "backendHttpMethod": "POST"
               }
             ],
-            "policyCondition": {
-              "conditionRuleList": []
-            },
+            "policyCondition": null,
             "errorMessageList": []
           }
         ],
@@ -117,324 +104,28 @@ curl -X GET \
 
 ## Add Policy
 
-### Endpoint
-```
-POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
+**Not Supported:** This policy cannot be added manually using the Add Policy endpoint. It is automatically created and added to the API Proxy when SOAP/REST transformation is enabled during API Proxy creation.
 
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-| Content-Type | application/json |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-#### Request Body
-```json
-{
-  "type": "policy-response-protocol-transformation",
-  "description": "Transform SOAP responses to REST",
-  "active": true,
-  "apiMethodList": [
-    {
-      "id": "method-1",
-      "name": "getUser",
-      "description": "Get user information",
-      "active": true,
-      "httpMethod": "GET",
-      "backendResourceUrl": "/soap/UserService",
-      "backendHttpMethod": "POST"
-    }
-  ],
-  "policyCondition": {
-    "conditionRuleList": []
-  },
-  "errorMessageList": []
-}
-```
-
-#### Request Body Fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| type | string | Yes | Policy type. Must be `"policy-response-protocol-transformation"` |
-| description | string | No | Policy description |
-| active | boolean | No | Whether the policy is active. Default: `true` |
-| apiMethodList | array | Yes | List of API methods for transformation. At least one API method must be provided. See [API Method](/management-api-docs/#api-method) |
-| policyCondition | object | No | Policy condition configuration. See [Policy Condition](/management-api-docs/#policy-condition) |
-| errorMessageList | array | No | List of error messages. See [Error Messages](/management-api-docs/#error-messages) |
-
-### API Method
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| id | string | Yes | API Method ID (unique identifier) |
-| name | string | Yes | API Method name |
-| description | string | No | API Method description |
-| active | boolean | No | Whether the API method is active. Default: `true` |
-| httpMethod | string | Yes | HTTP method for the REST endpoint. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod) |
-| backendResourceUrl | string | Yes | Backend SOAP service resource URL |
-| backendHttpMethod | string | Yes | HTTP method for the backend SOAP service. See [EnumHttpRequestMethod](/management-api-docs/#enumhttprequestmethod) |
-
-### EnumHttpRequestMethod
-
-| Value | Description |
-|-------|-------------|
-| GET | HTTP GET method |
-| POST | HTTP POST method |
-| PUT | HTTP PUT method |
-| DELETE | HTTP DELETE method |
-| PATCH | HTTP PATCH method |
-| HEAD | HTTP HEAD method |
-| OPTIONS | HTTP OPTIONS method |
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "result": {
-    "type": "policy-response-protocol-transformation",
-    "name": "soap-to-rest-transformation",
-    "description": "Transform SOAP responses to REST",
-    "active": true,
-    "apiMethodList": [
-      {
-        "id": "method-1",
-        "name": "getUser",
-        "description": "Get user information",
-        "active": true,
-        "httpMethod": "GET",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      }
-    ],
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }
-}
-```
-
-### cURL Example
-```bash
-curl -X POST \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/soap-to-rest-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "type": "policy-response-protocol-transformation",
-    "description": "Transform SOAP responses to REST",
-    "active": true,
-    "apiMethodList": [
-      {
-        "id": "method-1",
-        "name": "getUser",
-        "description": "Get user information",
-        "active": true,
-        "httpMethod": "GET",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      }
-    ],
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }'
-```
+To enable this policy, configure SOAP/REST transformation settings when creating a new API Proxy.
 
 ---
 
 ## Update Policy
+
+**Currently Not Implemented:** Update functionality for this policy is not yet implemented. While the policy can be viewed in the API Proxy, modifications cannot be made through the API at this time.
 
 ### Endpoint
 ```
 PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
 ```
 
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-| Content-Type | application/json |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-#### Request Body
-```json
-{
-  "type": "policy-response-protocol-transformation",
-  "description": "Updated description for SOAP to REST transformation",
-  "active": true,
-  "apiMethodList": [
-    {
-      "id": "method-1",
-      "name": "getUser",
-      "description": "Get user information",
-      "active": true,
-      "httpMethod": "GET",
-      "backendResourceUrl": "/soap/UserService",
-      "backendHttpMethod": "POST"
-    },
-    {
-      "id": "method-2",
-      "name": "createUser",
-      "description": "Create a new user",
-      "active": true,
-      "httpMethod": "POST",
-      "backendResourceUrl": "/soap/UserService",
-      "backendHttpMethod": "POST"
-    }
-  ],
-  "policyCondition": {
-    "conditionRuleList": []
-  },
-  "errorMessageList": []
-}
-```
-
-#### Request Body Fields
-
-Same as [Add Policy](/management-api-docs/#add-policy) request body fields.
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "result": {
-    "type": "policy-response-protocol-transformation",
-    "name": "soap-to-rest-transformation",
-    "description": "Updated description for SOAP to REST transformation",
-    "active": true,
-    "apiMethodList": [
-      {
-        "id": "method-1",
-        "name": "getUser",
-        "description": "Get user information",
-        "active": true,
-        "httpMethod": "GET",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      },
-      {
-        "id": "method-2",
-        "name": "createUser",
-        "description": "Create a new user",
-        "active": true,
-        "httpMethod": "POST",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      }
-    ],
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }
-}
-```
-
-### cURL Example
-```bash
-curl -X PUT \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/soap-to-rest-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "type": "policy-response-protocol-transformation",
-    "description": "Updated description for SOAP to REST transformation",
-    "active": true,
-    "apiMethodList": [
-      {
-        "id": "method-1",
-        "name": "getUser",
-        "description": "Get user information",
-        "active": true,
-        "httpMethod": "GET",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      },
-      {
-        "id": "method-2",
-        "name": "createUser",
-        "description": "Create a new user",
-        "active": true,
-        "httpMethod": "POST",
-        "backendResourceUrl": "/soap/UserService",
-        "backendHttpMethod": "POST"
-      }
-    ],
-    "policyCondition": {
-      "conditionRuleList": []
-    },
-    "errorMessageList": []
-  }'
-```
+**Note:** This endpoint exists but update functionality is not currently implemented. Future versions may support updating this policy.
 
 ---
 
 ## Delete Policy
 
-### Endpoint
-```
-DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyName}/
-```
-
-### Request
-
-#### Headers
-
-| Header | Value |
-|--------|-------|
-| Authorization | Bearer {token} |
-
-#### Path Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| projectName | string | Yes | Project name |
-| apiProxyName | string | Yes | API Proxy name |
-| policyName | string | Yes | Policy name (unique identifier) |
-
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true
-}
-```
-
-### cURL Example
-```bash
-curl -X DELETE \
-  'https://api.apinizer.com/apiops/projects/my-project/apiProxies/my-api/policies/soap-to-rest-transformation/' \
-  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
-```
+**Not Supported:** This policy cannot be deleted. It is automatically managed by the system and is tied to the SOAP/REST transformation configuration of the API Proxy. To remove this policy, you would need to disable SOAP/REST transformation in the API Proxy configuration.
 
 ---
 

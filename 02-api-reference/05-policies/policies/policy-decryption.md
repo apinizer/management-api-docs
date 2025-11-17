@@ -177,21 +177,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
   "type": "policy-decryption",
   "description": "Decrypt with dynamic algorithm",
   "active": true,
-  "policyCondition": {
-    "criteria": "ALL",
-    "conditionRuleList": [
-      {
-        "variable": {
-          "name": "contentType",
-          "type": "HEADER",
-          "dataType": "STRING"
-        },
-        "valueComparisonOperator": "EQ",
-        "valueSource": "STATIC",
-        "value": "application/json"
-      }
-    ]
-  },
+  "policyCondition": null,
   "errorMessageList": [],
   "operationMetadata": {
     "targetScope": "ENDPOINT",

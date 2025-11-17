@@ -27,18 +27,191 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Request
 
-Same structure as Add Condition. See [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) for field descriptions.
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+| rlclName | string | Yes | RLCL name |
+
+### Request Body
+
+#### Full JSON Body Example - Simple Condition
+
+```json
+{
+  "conditionRuleList": [
+    {
+      "conditionCriteria": "VALUE",
+      "firstVariable": {
+        "name": "userTypeHeader",
+        "type": "HEADER",
+        "headerName": "X-User-Type"
+      },
+      "variableDataType": "STRING",
+      "valueComparisonOperator": "EQ",
+      "secondValueSource": "VALUE",
+      "secondValue": "PREMIUM"
+    }
+  ]
+}
+```
+
+#### Full JSON Body Example - Complex Condition with Multiple Rules
+
+```json
+{
+  "conditionRuleList": [
+    {
+      "conditionCriteria": "OR",
+      "conditionRuleList": [
+        {
+          "conditionCriteria": "VALUE",
+          "firstVariable": {
+            "name": "userTypeHeader",
+            "type": "HEADER",
+            "headerName": "X-User-Type"
+          },
+          "variableDataType": "STRING",
+          "valueComparisonOperator": "EQ",
+          "secondValueSource": "VALUE",
+          "secondValue": "PREMIUM"
+        },
+        {
+          "conditionCriteria": "VALUE",
+          "firstVariable": {
+            "name": "apiVersionHeader",
+            "type": "HEADER",
+            "headerName": "X-API-Version"
+          },
+          "variableDataType": "STRING",
+          "valueComparisonOperator": "EQ",
+          "secondValueSource": "VALUE",
+          "secondValue": "v2"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| conditionRuleList | array[object] | Yes | - | List of condition rules. See [ConditionRuleDTO](/management-api-docs/#conditionruledto) |
+
+### ConditionRuleDTO (conditionRuleList item)
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| conditionRuleList | array[object] | No | Nested condition rules (for complex conditions) |
+| conditionCriteria | string | Yes | Condition criteria. See [EnumConditionCriteria](/management-api-docs/#enumconditioncriteria) |
+| firstVariable | object | Yes | First variable for comparison. See [Variable Object](/management-api-docs/#variable-object) |
+| variableDataType | string | Yes | Variable data type. See [EnumConditionVariableDataType](/management-api-docs/#enumconditionvariabledatatype) |
+| dateFormat | string | No | Date format for date comparisons |
+| valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/management-api-docs/#enumconditionvaluecomparisonoperator) |
+| secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](/management-api-docs/#enumconditionvaluesource) |
+| secondValue | string | No* | Static value for comparison (required if secondValueSource is VALUE) |
+| secondVariable | object | No* | Second variable for comparison (required if secondValueSource is VARIABLE) |
+
+### EnumConditionCriteria (conditionCriteria)
+
+- `VALUE` - Value comparison (used for actual comparison operations)
+- `NOT` - Negation (negates the condition)
+- `AND` - Logical AND (all nested conditions must match)
+- `OR` - Logical OR (any nested condition must match)
+
+**Note:** For actual value comparisons, use `VALUE`. Use `AND`/`OR`/`NOT` for combining multiple conditions.
+
+### EnumConditionVariableDataType (variableDataType)
+
+- `STRING` - String data type
+- `NUMERIC` - Numeric data type
+- `DATE` - Date data type
+
+**Note:** `BOOLEAN` is not supported. Use `STRING` with `EQ`/`NE` operators for boolean-like comparisons.
+
+### EnumConditionValueComparisonOperator (valueComparisonOperator)
+
+- `LT` - Less than
+- `LE` - Less than or equal to
+- `GT` - Greater than
+- `GE` - Greater than or equal to
+- `EQ` - Equal to
+- `NE` - Not equal to
+- `STARTS_WITH` - Starts with (string only)
+- `ENDS_WITH` - Ends with (string only)
+- `CONTAINS` - Contains (string only)
+- `NOT_CONTAINS` - Does not contain (string only)
+- `IS_EMPTY` - Value exists and is empty
+- `IS_NOT_EMPTY` - Value exists and is not empty
+- `IS_EXISTS` - Value exists
+- `IS_NOT_EXISTS` - Value does not exist
+- `IN` - Value is in list
+- `NOT_IN` - Value is not in list
+
+### EnumConditionValueSource (secondValueSource)
+
+- `VALUE` - Static value (use `secondValue` field)
+- `VARIABLE` - Variable value (use `secondVariable` field)
+
+### Variable Object (firstVariable/secondVariable)
+
+See [Variable Definition](/management-api-docs/03-appendix/variable-definition/) for complete variable documentation.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Variable name (unique identifier) |
+| description | string | No | Variable description |
+| type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
+| headerName | string | No* | Header name (required if type=HEADER) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
+| paramName | string | No* | Parameter name (required if type=PARAMETER) |
+| paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
+| formName | string | No | Form field name (optional, used if paramType=FORM) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
+| xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
+| jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
+| zoneId | string | No* | Time zone ID (required for date/time context values) |
+| initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
+| scriptLanguage | string | No* | Script language (required if type=CUSTOM or initWithScript=true). See [EnumScriptType](/management-api-docs/03-appendix/variable-definition/) |
+| scriptBody | string | No* | Script body (required if type=CUSTOM or initWithScript=true) |
 
 ### Important Notes
 
 - **Complete Replacement**: The existing condition is completely replaced with the new condition provided in the request body
 - All existing condition rules are removed and replaced with the new condition rules
-- Same structure as Add Condition
 - If the new condition is empty or invalid, it will be reset to the default condition (AND rule)
+- Conditions are evaluated before applying rate limiting
+- If condition evaluates to false, RLCL is not applied
+- Nested conditions are supported for complex logic
 
 ### Response
 
-Same as Add Condition. See [Add Condition](/management-api-docs/02-api-reference/12-rlcl/condition/add-condition/) for response format.
+#### Success Response (200 OK)
+```json
+{
+  "success": true
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "condition value can not be empty!"
+}
+```
 
 ## cURL Example
 
@@ -59,11 +232,23 @@ curl -X PUT \
         "variableDataType": "STRING",
         "valueComparisonOperator": "EQ",
         "secondValueSource": "VALUE",
-        "secondValue": "VIP"
+        "secondValue": "PREMIUM"
       }
     ]
   }'
 ```
+
+## Notes and Warnings
+
+- **Complete Replacement**: 
+  - The existing condition is completely replaced with the new condition
+  - All existing condition rules are removed and replaced
+- **Condition Evaluation**: 
+  - Condition is evaluated before applying rate limiting
+  - If condition is false, RLCL is not applied
+- **Nested Conditions**: 
+  - Complex conditions can be created using nested rules
+  - Use conditionRuleList for nested logic
 
 ## Related Documentation
 

@@ -82,15 +82,16 @@ Authorization: Bearer YOUR_TOKEN
     "policyCondition": {
       "conditionRuleList": [
         {
-          "conditionCriteria": "AND",
+          "conditionCriteria": "VALUE",
           "firstVariable": {
+            "name": "userTypeHeader",
             "type": "HEADER",
             "headerName": "X-User-Type"
           },
           "variableDataType": "STRING",
           "valueComparisonOperator": "EQ",
           "secondValueSource": "VALUE",
-          "secondValue": "VIP"
+          "secondValue": "PREMIUM"
         }
       ]
     }
