@@ -18,7 +18,7 @@ policy-decryption
 ### Description
 Decryption policy decrypts encrypted data using cryptographic keys. It reads encrypted data from source variables, decrypts them using specified cipher algorithms, and stores the decrypted data in target variables. This policy provides data confidentiality capabilities by reversing encryption operations.
 
-**Note:** This policy is currently not fully implemented in Management API. The DTO structure exists but `convertToPolicy` returns null. This documentation is based on the underlying policy structure (`PolicyDecryption` and `PolicyDecryptionDef`) and will be updated when full API support is added.
+**⚠️ Implementation Status:** This policy is **currently not implemented** in Management API. This policy cannot be created or managed through the Management API at this time. This documentation is provided for reference purposes and will be updated when full API support is added in a future release.
 
 ### Endpoints
 
@@ -591,10 +591,11 @@ curl -X DELETE \
 
 ## Notes and Warnings
 
-- **Implementation Status**: 
-  - This policy is currently not fully implemented in Management API
-  - The DTO structure exists but `convertToPolicy` returns null
-  - This documentation is based on the underlying policy structure
+- **⚠️ Implementation Status**: 
+  - **This policy is currently NOT IMPLEMENTED in Management API**
+  - **Attempting to create or update this policy via Management API will fail**
+  - This documentation is provided for reference purposes only
+  - Full API support will be added in a future release
 - **Cipher Algorithm**: 
   - Can be specified statically via `cipherAlgorithm` or dynamically via `cipherAlgorithmVar`
   - If both are null, decryption will be skipped (data returned as-is)

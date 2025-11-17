@@ -18,7 +18,7 @@ policy-encryption
 ### Description
 Encryption policy encrypts data using cryptographic keys or certificates. It reads data from source variables, encrypts them using specified cipher algorithms, and stores the encrypted data in target variables. This policy provides data confidentiality capabilities.
 
-**Note:** This policy is currently not fully implemented in Management API. The DTO structure exists but `convertToPolicy` returns null. This documentation is based on the underlying policy structure (`PolicyEncryption` and `PolicyEncryptionDef`) and will be updated when full API support is added.
+**⚠️ Implementation Status:** This policy is **currently not implemented** in Management API. This policy cannot be created or managed through the Management API at this time. This documentation is provided for reference purposes and will be updated when full API support is added in a future release.
 
 ### Endpoints
 
@@ -524,10 +524,11 @@ curl -X DELETE \
 
 ## Notes and Warnings
 
-- **Implementation Status**: 
-  - This policy is currently not fully implemented in Management API
-  - The DTO structure exists but `convertToPolicy` returns null
-  - This documentation is based on the underlying policy structure
+- **⚠️ Implementation Status**: 
+  - **This policy is currently NOT IMPLEMENTED in Management API**
+  - **Attempting to create or update this policy via Management API will fail**
+  - This documentation is provided for reference purposes only
+  - Full API support will be added in a future release
 - **Cipher Algorithms**: 
   - Symmetric algorithms (AES, DES, DESede) require `cryptoKeyInfoId`
   - Asymmetric algorithms (RSA) can use either `cryptoKeyInfoId` (KEY) or `certificateId` (CERTIFICATE)

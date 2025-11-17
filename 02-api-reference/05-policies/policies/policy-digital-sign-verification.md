@@ -18,7 +18,7 @@ policy-digital-sign-verification
 ### Description
 Digital Sign Verification policy verifies digital signatures using cryptographic keys or certificates. It validates signatures against source data and ensures data integrity and authenticity. This policy provides signature verification capabilities for incoming requests or responses.
 
-**Note:** This policy is currently not fully implemented in Management API. The DTO structure exists but `convertToPolicy` returns null. This documentation is based on the underlying policy structure (`PolicyDigitalSignVerification` and `PolicyDigitalSignVerificationDef`) and will be updated when full API support is added.
+**⚠️ Implementation Status:** This policy is **currently not implemented** in Management API. This policy cannot be created or managed through the Management API at this time. This documentation is provided for reference purposes and will be updated when full API support is added in a future release.
 
 ### Endpoints
 
@@ -534,7 +534,11 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
   - `RESPONSE` pipeline verifies response signatures before sending to client
 - **Error Handling**: Invalid signature, missing data, or algorithm mismatch causes verification to fail
 - **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
-- **API Status**: This policy is currently not fully implemented in Management API. Full support will be added in future releases.
+- **⚠️ API Status**: 
+  - **This policy is currently NOT IMPLEMENTED in Management API**
+  - **Attempting to create or update this policy via Management API will fail**
+  - This documentation is provided for reference purposes only
+  - Full API support will be added in a future release
 
 ## Related Documentation
 

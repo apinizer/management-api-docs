@@ -18,7 +18,7 @@ policy-digital-sign
 ### Description
 Digital Sign policy digitally signs data using cryptographic keys or certificates. It generates digital signatures for specified source variables and stores them in target signature variables. This policy provides data integrity and non-repudiation capabilities.
 
-**Note:** This policy is currently not fully implemented in Management API. The DTO structure exists but `convertToPolicy` returns null. This documentation is based on the underlying policy structure (`PolicyDigitalSign` and `PolicyDigitalSignDef`) and will be updated when full API support is added.
+**⚠️ Implementation Status:** This policy is **currently not implemented** in Management API. This policy cannot be created or managed through the Management API at this time. This documentation is provided for reference purposes and will be updated when full API support is added in a future release.
 
 ### Endpoints
 
@@ -483,7 +483,11 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
   - `RESPONSE` pipeline signs response data before sending to client
 - **Error Handling**: Invalid key/certificate or algorithm mismatch causes signing to fail
 - **Deployment**: Policy changes require deployment to take effect. Set `deploy: true` or deploy manually.
-- **API Status**: This policy is currently not fully implemented in Management API. Full support will be added in future releases.
+- **⚠️ API Status**: 
+  - **This policy is currently NOT IMPLEMENTED in Management API**
+  - **Attempting to create or update this policy via Management API will fail**
+  - This documentation is provided for reference purposes only
+  - Full API support will be added in a future release
 
 ## Related Documentation
 

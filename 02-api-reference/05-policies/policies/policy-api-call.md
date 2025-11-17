@@ -249,7 +249,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | httpMethod | string | Yes | - | HTTP method for API call |
 | url | string | Yes | - | Target API URL |
 | timeout | integer | No | - | Request timeout in milliseconds |
-| certificateId | string | No | - | Certificate ID for mTLS (required if certificateEnabled=true) |
+| certificateName | string | No | - | Certificate name for mTLS (required if certificateEnabled=true) |
 | certificateEnabled | boolean | No | false | Enable mTLS certificate |
 | clearBodyBeforeCall | boolean | No | false | Clear request body before API call |
 | useMessageTemplateBeforeCall | boolean | No | true | Use message template for request body |
@@ -333,7 +333,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 - `url` and `httpMethod` are required.
 - `callType` is required.
 - If `enableCache: true`, `capacity` and `ttl` are required, and `callType` must be `SYNCHRONOUS`.
-- If `certificateEnabled: true`, `certificateId` is required.
+- If `certificateEnabled: true`, `certificateName` is required.
 
 ###### headersToBeAddedBeforeCallList / headersToBeAddedAfterCallList
 Each header is an object with the following fields:
@@ -600,8 +600,10 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
   - Requires `capacity` and `ttl` when enabled
   - Cache key can be based on variable (e.g., Authorization header)
 - **mTLS**: 
-  - Requires `certificateId` when `certificateEnabled: true`
-  - Certificate must be configured in KeyStore
+  - Requires `certificateName` when `certificateEnabled: true`
+  - Certificate name is resolved to certificate ID automatically
+  - Certificate must be configured in Certificate Store (project or global)
+  - Certificate is searched first in project, then in global certificates
 - **Request Transformation**: 
   - Use `bodyContentBeforeCall` with variable placeholders (e.g., `${userId}`)
   - Variables are replaced at runtime
