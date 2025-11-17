@@ -291,7 +291,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 }
 ```
 
-##### Full JSON Body Example - Using authApiId
+##### Full JSON Body Example - Using authApiName
 ```json
 {
   "operationMetadata": {
@@ -303,13 +303,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
   },
   "policy": {
     "type": "policy-api-authentication",
-    "description": "Authentication using API ID",
+    "description": "Authentication using API name",
     "active": true,
-    "authApiId": "auth-api-id-123",
+    "authApiName": "auth-api-name",
     "messageContentType": "XML"
   }
 }
 ```
+
+**Note:** `authApiName` is currently used directly as API ID. Name to ID conversion will be implemented in a future release.
 
 ##### Request Body Fields
 
@@ -357,8 +359,8 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | passwordInjectionPath | string | No* | - | Password injection path (required for BODY_INJECTION send type) |
 | createdInjectionPath | string | No | - | Created timestamp injection path (for DIGEST with BODY_INJECTION) |
 | nonceInjectionPath | string | No | - | Nonce injection path (for DIGEST with BODY_INJECTION) |
-| authApiId | string | No* | - | Authentication API ID (alternative to conditional expressions) |
-| apiAuthCondExpressionList | array | No* | [] | List of conditional authentication expressions (required if authApiId not provided) |
+| authApiName | string | No* | - | Authentication API name (alternative to conditional expressions) |
+| apiAuthCondExpressionList | array | No* | [] | List of conditional authentication expressions (required if authApiName not provided) |
 
 ### EnumPolicyApiAuthenticationAuthType
 
@@ -382,9 +384,10 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 
 ### Note
 
-- Either `authApiId` or `apiAuthCondExpressionList` must be provided.
+- Either `authApiName` or `apiAuthCondExpressionList` must be provided.
 - If using `apiAuthCondExpressionList`, `authType` and `sendType` are required.
 - Field name requirements vary by `authType` and `sendType` combination.
+- **Note:** `authApiName` is currently used directly as API ID. Name to ID conversion will be implemented in a future release.
 
 ###### apiAuthCondExpressionList
 Each conditional expression is an object with the following fields:
@@ -569,7 +572,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
   - `PARAM` - Via query/path parameters
   - `BODY_MESSAGE` - Via body message template
   - `BODY_INJECTION` - Inject into existing body
-- **Configuration**: Either `authApiId` or `apiAuthCondExpressionList` must be provided
+- **Configuration**: Either `authApiName` or `apiAuthCondExpressionList` must be provided
+- **API Name**: `authApiName` is currently used directly as API ID. Name to ID conversion will be implemented in a future release.
 - **Field Names**: Required field names vary by `authType` and `sendType` combination
 - **DIGEST Authentication**: Requires `createdFieldName` and `nonceFieldName` for HEADER/PARAM
 - **BODY_MESSAGE**: Requires `bodyMessage` template and `bodyMessageInjectionPath`

@@ -80,7 +80,7 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
             "name": "saml-validation-policy",
             "description": "Validate SAML assertions",
             "active": true,
-            "keyStoreId": "saml-keystore-id",
+            "keyStoreName": "saml-keystore",
             "allowUnknownSigner": false,
             "clearSaml": false,
             "clearSamlPath": null
@@ -144,7 +144,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
     "type": "policy-saml-validation",
     "description": "Validate SAML assertions with signature verification",
     "active": true,
-    "keyStoreId": "saml-keystore-id",
+    "keyStoreName": "saml-keystore",
     "allowUnknownSigner": false,
     "clearSaml": false,
     "clearSamlPath": null
@@ -166,7 +166,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
     "type": "policy-saml-validation",
     "description": "Validate and clear SAML assertions",
     "active": true,
-    "keyStoreId": "saml-keystore-id",
+    "keyStoreName": "saml-keystore",
     "allowUnknownSigner": false,
     "clearSaml": true,
     "clearSamlPath": "/soap:Envelope/soap:Header/wsse:Security/saml:Assertion"
@@ -207,14 +207,15 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
 | type | string | Yes | - | Policy type: `policy-saml-validation` |
 | description | string | No | - | Policy description |
 | active | boolean | No | true | Whether policy is active |
-| keyStoreId | string | Yes | - | Keystore ID for SAML signature validation |
+| keyStoreName | string | Yes | - | Keystore name for SAML signature validation |
 | allowUnknownSigner | boolean | No | false | Allow unknown signer for SAML validation |
 | clearSaml | boolean | No | false | Clear SAML assertion after validation |
 | clearSamlPath | string | No* | null | XPath to SAML assertion to clear (required if clearSaml=true) |
 
 ### Note
 
-- `keyStoreId` is required and must reference a valid KeyStore containing SAML signing certificates.
+- `keyStoreName` is required and must reference a valid KeyStore containing SAML signing certificates.
+- KeyStore name is automatically resolved to KeyStore ID (searches in project KeyStores first, then global KeyStores).
 - If `clearSaml: true`, `clearSamlPath` is required (XPath expression to locate SAML assertion).
 
 ### XPath Examples
@@ -260,7 +261,7 @@ curl -X POST \
       "type": "policy-saml-validation",
       "description": "Validate SAML assertions",
       "active": true,
-      "keyStoreId": "saml-keystore-id",
+      "keyStoreName": "saml-keystore",
       "allowUnknownSigner": false,
       "clearSaml": false
     }
@@ -373,7 +374,8 @@ DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policy
 ## Notes and Warnings
 
 - **KeyStore**: 
-  - `keyStoreId` must reference a valid KeyStore containing SAML signing certificates
+  - `keyStoreName` must reference a valid KeyStore containing SAML signing certificates
+  - KeyStore name is automatically resolved to KeyStore ID (searches in project KeyStores first, then global KeyStores)
   - KeyStore must contain public keys or certificates for signature validation
   - Certificates must match the signer's certificate used in SAML assertion
 - **Signature Validation**: 
