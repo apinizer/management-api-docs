@@ -41,6 +41,22 @@ Authorization: Bearer YOUR_TOKEN
 | apiProxyName | string | Yes | API Proxy name |
 | hideSpecFile | boolean | Yes | Hide spec file (`true` or `false`) |
 
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "hideSpecFile": true
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| hideSpecFile | boolean | No | Enable/disable hiding of specification file. When set to true, the OpenAPI/Swagger specification file will be hidden from public access. When set to false, the spec file will be publicly accessible |
+
 ### Query Parameters
 
 None
