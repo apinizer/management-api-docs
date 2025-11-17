@@ -99,7 +99,7 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
                   "variable": {
                     "type": "HTTP_STATUS_CODE"
                   },
-                  "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+                  "comparisonOperator": "GE",
                   "value": "400",
                   "valueSource": "STATIC"
                 }
@@ -177,7 +177,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
         "variable": {
           "type": "HTTP_STATUS_CODE"
         },
-        "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+        "comparisonOperator": "GE",
         "value": "400",
         "valueSource": "STATIC"
       }
@@ -222,7 +222,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
         "variable": {
           "type": "HTTP_STATUS_CODE"
         },
-        "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+        "comparisonOperator": "GE",
         "value": "500",
         "valueSource": "STATIC"
       }
@@ -271,7 +271,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
         "variable": {
           "type": "HTTP_STATUS_CODE"
         },
-        "comparisonOperator": "EQUALS",
+        "comparisonOperator": "EQ",
         "value": "401",
         "valueSource": "STATIC"
       },
@@ -491,7 +491,7 @@ curl -X POST \
           "variable": {
             "type": "HTTP_STATUS_CODE"
           },
-          "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+          "comparisonOperator": "GE",
           "value": "400",
           "valueSource": "STATIC"
         }

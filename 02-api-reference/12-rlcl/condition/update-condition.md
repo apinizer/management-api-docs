@@ -48,15 +48,15 @@ curl -X PUT \
   -d '{
     "conditionRuleList": [
       {
-        "conditionCriteria": "AND",
+        "conditionCriteria": "VALUE",
         "firstVariable": {
-          "name": "request.header.X-User-Type",
+          "name": "userTypeHeader",
           "type": "HEADER",
-          "dataType": "STRING"
+          "headerName": "X-User-Type"
         },
         "variableDataType": "STRING",
-        "valueComparisonOperator": "EQUALS",
-        "secondValueSource": "STATIC",
+        "valueComparisonOperator": "EQ",
+        "secondValueSource": "VALUE",
         "secondValue": "VIP"
       }
     ]

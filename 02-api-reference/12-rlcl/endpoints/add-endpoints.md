@@ -180,17 +180,22 @@ See [Variable Definition](/management-api-docs/03-appendix/variable-definition/)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| name | string | Yes | Variable name (e.g., "client.ip", "request.header.X-User-ID") |
+| name | string | Yes | Variable name (unique identifier) |
+| description | string | No | Variable description |
 | type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY) |
+| formName | string | No | Form field name (optional, used if paramType=FORM) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
-| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES) |
+| contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
+| initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
+| scriptLanguage | string | No* | Script language (required if type=CUSTOM or initWithScript=true). See [EnumScriptType](/management-api-docs/03-appendix/variable-definition/) |
+| scriptBody | string | No* | Script body (required if type=CUSTOM or initWithScript=true) |
 
 ### Request Body Object
 

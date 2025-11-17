@@ -49,15 +49,15 @@ Authorization: Bearer YOUR_TOKEN
 {
   "conditionRuleList": [
     {
-      "conditionCriteria": "AND",
+      "conditionCriteria": "VALUE",
       "firstVariable": {
-        "name": "request.header.X-User-Type",
+        "name": "userTypeHeader",
         "type": "HEADER",
-        "dataType": "STRING"
+        "headerName": "X-User-Type"
       },
       "variableDataType": "STRING",
-      "valueComparisonOperator": "EQUALS",
-      "secondValueSource": "STATIC",
+      "valueComparisonOperator": "EQ",
+      "secondValueSource": "VALUE",
       "secondValue": "PREMIUM"
     }
   ]
@@ -73,27 +73,27 @@ Authorization: Bearer YOUR_TOKEN
       "conditionCriteria": "OR",
       "conditionRuleList": [
         {
-          "conditionCriteria": "AND",
+          "conditionCriteria": "VALUE",
           "firstVariable": {
-            "name": "request.header.X-User-Type",
+            "name": "userTypeHeader",
             "type": "HEADER",
-            "dataType": "STRING"
+            "headerName": "X-User-Type"
           },
           "variableDataType": "STRING",
-          "valueComparisonOperator": "EQUALS",
-          "secondValueSource": "STATIC",
+          "valueComparisonOperator": "EQ",
+          "secondValueSource": "VALUE",
           "secondValue": "PREMIUM"
         },
         {
-          "conditionCriteria": "AND",
+          "conditionCriteria": "VALUE",
           "firstVariable": {
-            "name": "request.header.X-API-Version",
+            "name": "apiVersionHeader",
             "type": "HEADER",
-            "dataType": "STRING"
+            "headerName": "X-API-Version"
           },
           "variableDataType": "STRING",
-          "valueComparisonOperator": "EQUALS",
-          "secondValueSource": "STATIC",
+          "valueComparisonOperator": "EQ",
+          "secondValueSource": "VALUE",
           "secondValue": "v2"
         }
       ]
@@ -119,41 +119,49 @@ Authorization: Bearer YOUR_TOKEN
 | dateFormat | string | No | Date format for date comparisons |
 | valueComparisonOperator | string | Yes | Comparison operator. See [EnumConditionValueComparisonOperator](/management-api-docs/#enumconditionvaluecomparisonoperator) |
 | secondValueSource | string | Yes | Second value source. See [EnumConditionValueSource](/management-api-docs/#enumconditionvaluesource) |
-| secondValue | string | No | Static value for comparison (if secondValueSource is STATIC) |
-| secondVariable | object | No | Second variable for comparison (if secondValueSource is VARIABLE) |
+| secondValue | string | No* | Static value for comparison (required if secondValueSource is VALUE) |
+| secondVariable | object | No* | Second variable for comparison (required if secondValueSource is VARIABLE) |
 
 ### EnumConditionCriteria (conditionCriteria)
 
-- `AND` - All conditions must match
-- `OR` - Any condition must match
-- `NOT` - Condition must not match
+- `VALUE` - Value comparison (used for actual comparison operations)
+- `NOT` - Negation (negates the condition)
+- `AND` - Logical AND (all nested conditions must match)
+- `OR` - Logical OR (any nested condition must match)
+
+**Note:** For actual value comparisons, use `VALUE`. Use `AND`/`OR`/`NOT` for combining multiple conditions.
 
 ### EnumConditionVariableDataType (variableDataType)
 
 - `STRING` - String data type
-- `NUMBER` - Number data type
-- `BOOLEAN` - Boolean data type
+- `NUMERIC` - Numeric data type
 - `DATE` - Date data type
+
+**Note:** `BOOLEAN` is not supported. Use `STRING` with `EQ`/`NE` operators for boolean-like comparisons.
 
 ### EnumConditionValueComparisonOperator (valueComparisonOperator)
 
-- `EQUALS` - Equal to
-- `NOT_EQUALS` - Not equal to
-- `CONTAINS` - Contains
-- `NOT_CONTAINS` - Does not contain
-- `STARTS_WITH` - Starts with
-- `ENDS_WITH` - Ends with
-- `GREATER_THAN` - Greater than
-- `GREATER_THAN_OR_EQUAL` - Greater than or equal
-- `LESS_THAN` - Less than
-- `LESS_THAN_OR_EQUAL` - Less than or equal
-- `REGEX_MATCH` - Regular expression match
-- `REGEX_NOT_MATCH` - Regular expression does not match
+- `LT` - Less than
+- `LE` - Less than or equal to
+- `GT` - Greater than
+- `GE` - Greater than or equal to
+- `EQ` - Equal to
+- `NE` - Not equal to
+- `STARTS_WITH` - Starts with (string only)
+- `ENDS_WITH` - Ends with (string only)
+- `CONTAINS` - Contains (string only)
+- `NOT_CONTAINS` - Does not contain (string only)
+- `IS_EMPTY` - Value exists and is empty
+- `IS_NOT_EMPTY` - Value exists and is not empty
+- `IS_EXISTS` - Value exists
+- `IS_NOT_EXISTS` - Value does not exist
+- `IN` - Value is in list
+- `NOT_IN` - Value is not in list
 
 ### EnumConditionValueSource (secondValueSource)
 
-- `STATIC` - Static value (use `secondValue`)
-- `VARIABLE` - Variable value (use `secondVariable`)
+- `VALUE` - Static value (use `secondValue` field)
+- `VARIABLE` - Variable value (use `secondVariable` field)
 
 ### Variable Object (firstVariable/secondVariable)
 
@@ -161,17 +169,22 @@ See [Variable Definition](/management-api-docs/03-appendix/variable-definition/)
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| name | string | Yes | Variable name (e.g., "request.header.X-User-Type", "client.ip") |
+| name | string | Yes | Variable name (unique identifier) |
+| description | string | No | Variable description |
 | type | string | Yes | Variable type. See [Variable Types](/management-api-docs/03-appendix/variable-definition/) |
 | headerName | string | No* | Header name (required if type=HEADER) |
-| paramType | string | No* | Parameter type (required if type=PARAMETER) |
+| paramType | string | No* | Parameter type (required if type=PARAMETER). See [EnumVariableParameterType](/management-api-docs/03-appendix/variable-definition/) |
 | paramName | string | No* | Parameter name (required if type=PARAMETER) |
 | paramPath | string | No* | Parameter path template (required if type=PARAMETER and paramType=PATH) |
-| messageContentType | string | No* | Message content type (required if type=BODY) |
+| formName | string | No | Form field name (optional, used if paramType=FORM) |
+| messageContentType | string | No* | Message content type (required if type=BODY). See [EnumMessageContentType](/management-api-docs/03-appendix/variable-definition/) |
 | xpathValue | string | No* | XPath expression (required if type=BODY and messageContentType=XML) |
 | jsonPathValue | string | No* | JsonPath expression (required if type=BODY and messageContentType=JSON) |
 | contextValue | string | No* | Context value (required if type=CONTEXT_VALUES). See [EnumVariableContextValue](/management-api-docs/03-appendix/variable-definition/) |
 | zoneId | string | No* | Time zone ID (required for date/time context values) |
+| initWithScript | boolean | No | false | Whether to initialize with script (default: false) |
+| scriptLanguage | string | No* | Script language (required if type=CUSTOM or initWithScript=true). See [EnumScriptType](/management-api-docs/03-appendix/variable-definition/) |
+| scriptBody | string | No* | Script body (required if type=CUSTOM or initWithScript=true) |
 
 ### Notes
 
@@ -208,15 +221,15 @@ curl -X POST \
   -d '{
     "conditionRuleList": [
       {
-        "conditionCriteria": "AND",
+        "conditionCriteria": "VALUE",
         "firstVariable": {
-          "name": "request.header.X-User-Type",
+          "name": "userTypeHeader",
           "type": "HEADER",
-          "dataType": "STRING"
+          "headerName": "X-User-Type"
         },
         "variableDataType": "STRING",
-        "valueComparisonOperator": "EQUALS",
-        "secondValueSource": "STATIC",
+        "valueComparisonOperator": "EQ",
+        "secondValueSource": "VALUE",
         "secondValue": "PREMIUM"
       }
     ]

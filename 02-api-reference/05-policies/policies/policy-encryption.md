@@ -186,7 +186,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
           "type": "HEADER",
           "dataType": "STRING"
         },
-        "valueComparisonOperator": "EQUALS",
+        "valueComparisonOperator": "EQ",
         "valueSource": "STATIC",
         "value": "application/json"
       }

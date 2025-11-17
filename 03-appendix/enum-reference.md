@@ -203,6 +203,42 @@ Type of API specification used to create an API Proxy.
 
 Used when importing or creating API Proxies from specification files.
 
+## Condition Value Comparison Operators
+
+### EnumConditionValueComparisonOperator
+
+Comparison operators used in policy conditions and RLCL conditions for value comparisons.
+
+| Value | Description |
+|-------|-------------|
+| `LT` | Less than |
+| `LE` | Less than or equal to |
+| `GT` | Greater than |
+| `GE` | Greater than or equal to |
+| `EQ` | Equal to |
+| `NE` | Not equal to |
+| `STARTS_WITH` | Starts with (string only) |
+| `ENDS_WITH` | Ends with (string only) |
+| `CONTAINS` | Contains (string only) |
+| `NOT_CONTAINS` | Does not contain (string only) |
+| `IS_EMPTY` | Value exists and is empty |
+| `IS_NOT_EMPTY` | Value exists and is not empty |
+| `IS_EXISTS` | Value exists |
+| `IS_NOT_EXISTS` | Value does not exist |
+| `IN` | Value is in list |
+| `NOT_IN` | Value is not in list |
+
+### Usage
+
+Used in `ConditionRuleDTO.valueComparisonOperator` for policy conditions and RLCL conditions to specify how values should be compared.
+
+**Note:**
+
+- Numeric operators (`LT`, `LE`, `GT`, `GE`, `EQ`, `NE`) work with numeric data types.
+- String operators (`STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `NOT_CONTAINS`) work with string data types only.
+- Existence operators (`IS_EMPTY`, `IS_NOT_EMPTY`, `IS_EXISTS`, `IS_NOT_EXISTS`) check for value existence and emptiness.
+- List operators (`IN`, `NOT_IN`) check if a value is present in a list.
+
 ## Related Documentation
 
 - [Variable Definition](/management-api-docs/03-appendix/variable-definition/) - Complete variable documentation
