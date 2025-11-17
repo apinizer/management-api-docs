@@ -12,7 +12,7 @@ Retrieves detailed information about a specific endpoint (API method). Policy de
 ## Endpoint
 
 ```
-GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/details/
 ```
 
 ## Authentication
@@ -32,6 +32,7 @@ Authorization: Bearer YOUR_TOKEN
 | Header | Value | Required |
 |--------|-------|----------|
 | Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
 
 ### Path Parameters
 
@@ -39,7 +40,24 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name |
-| endpointId | string | Yes | Endpoint ID |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "name": "/api/users",
+  "httpMethod": "GET"
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Endpoint path/name |
+| httpMethod | string | Yes | HTTP method for the endpoint. See [EnumHttpRequestMethod](#enumhttprequestmethod) |
 
 ### Query Parameters
 
@@ -84,7 +102,16 @@ None
 ```json
 {
   "error": "bad_request",
-  "error_description": "Endpoint with ID (endpoint-id) was not found!"
+  "error_description": "Endpoint identifier (name and httpMethod) must be provided in request body!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Endpoint with name (/api/users) and HTTP method (GET) is not found!"
 }
 ```
 
@@ -109,18 +136,28 @@ None
 ## cURL Example
 
 ```bash
-curl -X GET \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/details/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "/api/users",
+    "httpMethod": "GET"
+  }'
 ```
 
 ## Full JSON Body Example
 
-This endpoint does not require a request body.
+```json
+{
+  "name": "/api/users",
+  "httpMethod": "GET"
+}
+```
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Endpoint Identifier**: Endpoint is identified by `name` and `httpMethod` combination (not by ID)
 - **Policy Details**: Policy lists are not included. Use [List Endpoint Policies](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoint-policies/) to retrieve policies
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 

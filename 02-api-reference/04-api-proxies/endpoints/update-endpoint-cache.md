@@ -12,7 +12,7 @@ Updates cache settings for a specific endpoint/method. Endpoint-level cache sett
 ## Endpoint
 
 ```
-PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/cache/
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/cache/
 ```
 
 ## Authentication
@@ -40,28 +40,31 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name |
-| endpointId | string | Yes | Endpoint ID (method ID) |
 
 ### Request Body
 
-The request body uses the same `CacheSettings` structure as API Proxy-level cache settings. See [Update Cache Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cache-settings/) for detailed field descriptions.
+The request body includes endpoint identifier and `CacheSettings` structure. See [Update Cache Settings](/management-api-docs/02-api-reference/04-api-proxies/settings/update-cache-settings/) for detailed cache settings field descriptions.
 
 #### Full JSON Body Example - Basic Cache Configuration
 
 ```json
 {
-  "name": "Endpoint Cache Settings",
-  "description": "Cache configuration for this endpoint",
-  "cacheActive": true,
-  "cacheOnlyHttpGetRequests": false,
-  "cacheKeyType": "QUERY_PARAMS",
-  "cacheStorageType": "LOCAL",
-  "capacity": 1000,
-  "ttl": 3600,
-  "handlingAction": "STOP",
-  "invalidationRequiresAuthn": false,
-  "cacheNullValue": false,
-  "variableList": []
+  "identifierName": "/api/users",
+  "identifierHttpMethod": "GET",
+  "cacheSettings": {
+    "name": "Endpoint Cache Settings",
+    "description": "Cache configuration for this endpoint",
+    "cacheActive": true,
+    "cacheOnlyHttpGetRequests": false,
+    "cacheKeyType": "QUERY_PARAMS",
+    "cacheStorageType": "LOCAL",
+    "capacity": 1000,
+    "ttl": 3600,
+    "handlingAction": "STOP",
+    "invalidationRequiresAuthn": false,
+    "cacheNullValue": false,
+    "variableList": []
+  }
 }
 ```
 
@@ -69,33 +72,45 @@ The request body uses the same `CacheSettings` structure as API Proxy-level cach
 
 ```json
 {
-  "name": "Endpoint Cache with Custom Key",
-  "description": "Cache using custom variables",
-  "cacheActive": true,
-  "cacheOnlyHttpGetRequests": false,
-  "cacheKeyType": "CUSTOM",
-  "cacheStorageType": "DISTRIBUTED",
-  "capacity": 5000,
-  "ttl": 7200,
-  "handlingAction": "CONTINUE",
-  "invalidationRequiresAuthn": true,
-  "cacheNullValue": true,
-  "variableList": [
-    {
-      "name": "userId",
-      "type": "HEADER",
-      "dataType": "STRING"
-    },
-    {
-      "name": "apiVersion",
-      "type": "PARAMETER",
-      "dataType": "STRING"
-    }
-  ]
+  "identifierName": "/api/users",
+  "identifierHttpMethod": "GET",
+  "cacheSettings": {
+    "name": "Endpoint Cache with Custom Key",
+    "description": "Cache using custom variables",
+    "cacheActive": true,
+    "cacheOnlyHttpGetRequests": false,
+    "cacheKeyType": "CUSTOM",
+    "cacheStorageType": "DISTRIBUTED",
+    "capacity": 5000,
+    "ttl": 7200,
+    "handlingAction": "CONTINUE",
+    "invalidationRequiresAuthn": true,
+    "cacheNullValue": true,
+    "variableList": [
+      {
+        "name": "userId",
+        "type": "HEADER",
+        "dataType": "STRING"
+      },
+      {
+        "name": "apiVersion",
+        "type": "PARAMETER",
+        "dataType": "STRING"
+      }
+    ]
+  }
 }
 ```
 
 #### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| identifierName | string | Yes | - | Endpoint path/name (used to identify the endpoint) |
+| identifierHttpMethod | string | Yes | - | HTTP method for the endpoint (used to identify the endpoint). See [EnumHttpRequestMethod](#enumhttprequestmethod) |
+| cacheSettings | object | Yes | - | Cache settings object (see fields below) |
+
+#### Cache Settings Object Fields
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -208,7 +223,7 @@ or
 ```json
 {
   "error": "not_found",
-  "error_description": "Endpoint (id: endpoint-id) was not found!"
+  "error_description": "Endpoint with name (/api/users) and HTTP method (GET) is not found!"
 }
 ```
 
@@ -218,19 +233,23 @@ or
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/cache/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/cache/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Endpoint Cache Settings",
-    "cacheActive": true,
-    "cacheOnlyHttpGetRequests": false,
-    "cacheKeyType": "QUERY_PARAMS",
-    "cacheStorageType": "LOCAL",
-    "capacity": 1000,
-    "ttl": 3600,
-    "handlingAction": "STOP",
-    "cacheNullValue": false
+    "identifierName": "/api/users",
+    "identifierHttpMethod": "GET",
+    "cacheSettings": {
+      "name": "Endpoint Cache Settings",
+      "cacheActive": true,
+      "cacheOnlyHttpGetRequests": false,
+      "cacheKeyType": "QUERY_PARAMS",
+      "cacheStorageType": "LOCAL",
+      "capacity": 1000,
+      "ttl": 3600,
+      "handlingAction": "STOP",
+      "cacheNullValue": false
+    }
   }'
 ```
 
@@ -238,30 +257,34 @@ curl -X PATCH \
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/cache/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/cache/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Endpoint Cache with Custom Key",
-    "cacheActive": true,
-    "cacheKeyType": "CUSTOM",
-    "cacheStorageType": "DISTRIBUTED",
-    "capacity": 5000,
-    "ttl": 7200,
-    "handlingAction": "CONTINUE",
-    "invalidationRequiresAuthn": true,
-    "variableList": [
-      {
-        "name": "userId",
-        "type": "HEADER",
-        "dataType": "STRING"
-      },
-      {
-        "name": "apiVersion",
-        "type": "PARAMETER",
-        "dataType": "STRING"
-      }
-    ]
+    "identifierName": "/api/users",
+    "identifierHttpMethod": "GET",
+    "cacheSettings": {
+      "name": "Endpoint Cache with Custom Key",
+      "cacheActive": true,
+      "cacheKeyType": "CUSTOM",
+      "cacheStorageType": "DISTRIBUTED",
+      "capacity": 5000,
+      "ttl": 7200,
+      "handlingAction": "CONTINUE",
+      "invalidationRequiresAuthn": true,
+      "variableList": [
+        {
+          "name": "userId",
+          "type": "HEADER",
+          "dataType": "STRING"
+        },
+        {
+          "name": "apiVersion",
+          "type": "PARAMETER",
+          "dataType": "STRING"
+        }
+      ]
+    }
   }'
 ```
 
@@ -296,7 +319,7 @@ curl -X PATCH \
   - Requires `ROLE_MANAGE_PROXIES` permission
 - **Endpoint Validation**: 
   - Endpoint must exist in the API Proxy
-  - Endpoint ID must be valid
+  - Endpoint is identified by `identifierName` and `identifierHttpMethod` combination (not by ID)
 
 ## Related Documentation
 

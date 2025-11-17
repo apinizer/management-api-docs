@@ -77,7 +77,6 @@ curl -X PUT \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "PremiumUserRLCL",
     "description": "Updated rate limit for premium users",
     "enabled": true,
     "executionOrder": "FIRST",

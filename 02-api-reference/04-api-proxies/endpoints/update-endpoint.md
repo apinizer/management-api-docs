@@ -12,7 +12,7 @@ Updates an existing endpoint (API method) in an API proxy. Only provided fields 
 ## Endpoint
 
 ```
-PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/
 ```
 
 ## Authentication
@@ -40,7 +40,6 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name |
-| endpointId | string | Yes | Endpoint ID |
 
 ### Request Body
 
@@ -48,9 +47,9 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "name": "/api/users/updated",
-  "description": "Updated endpoint description",
+  "name": "/api/users",
   "httpMethod": "GET",
+  "description": "Updated endpoint description",
   "backendResourceUrl": "/users/v2",
   "backendHttpMethod": "GET"
 }
@@ -60,13 +59,13 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
-| name | string | No | - | Endpoint path/name (if provided, must be unique with httpMethod) |
+| name | string | Yes | - | Endpoint path/name (used as identifier to find the endpoint) |
+| httpMethod | string | Yes | - | HTTP method for the endpoint (used as identifier to find the endpoint) |
 | description | string | No | - | Endpoint description |
-| httpMethod | string | No | - | HTTP method for the endpoint |
 | backendResourceUrl | string | No | - | Backend resource URL |
 | backendHttpMethod | string | No | - | HTTP method for backend call |
 
-**Note:** All fields are optional. Only provided fields are updated.
+**Note:** `name` and `httpMethod` are required and used to identify the endpoint. Other fields are optional and only provided fields are updated.
 
 ### EnumHttpRequestMethod
 
@@ -93,13 +92,23 @@ Authorization: Bearer YOUR_TOKEN
 ```json
 {
   "error": "bad_request",
-  "error_description": "Endpoint with ID (endpoint-id) was not found!"
+  "error_description": "Endpoint identifier (name and httpMethod) must be provided in request body!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Endpoint with name (/api/users) and HTTP method (GET) is not found!"
 }
 ```
 
 ### Common Causes
 
-- Endpoint ID does not exist
+- Missing `name` or `httpMethod` fields
+- Endpoint with specified name and httpMethod does not exist
 - Invalid field values
 
 ### Error Response (401 Unauthorized)
@@ -126,10 +135,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
+    "name": "/api/users",
+    "httpMethod": "GET",
     "description": "Updated endpoint description"
   }'
 ```
@@ -138,10 +149,12 @@ curl -X PATCH \
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
+    "name": "/api/users",
+    "httpMethod": "GET",
     "backendResourceUrl": "/users/v2",
     "backendHttpMethod": "GET"
   }'
@@ -151,11 +164,12 @@ curl -X PATCH \
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "/api/users/updated",
+    "name": "/api/users",
+    "httpMethod": "GET",
     "description": "Updated endpoint",
     "backendResourceUrl": "/users/v2"
   }'
@@ -163,9 +177,9 @@ curl -X PATCH \
 
 ## Notes and Warnings
 
-- **Partial Updates**: Only provided fields are updated. Omitted fields remain unchanged
+- **Endpoint Identifier**: `name` and `httpMethod` are required and used to identify the endpoint to update
+- **Partial Updates**: Only provided fields (except `name` and `httpMethod`) are updated. Omitted fields remain unchanged
 - **Unique Combination**: If updating `name` or `httpMethod`, ensure the new combination doesn't conflict with existing endpoints
-- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation

@@ -12,7 +12,7 @@ Enables or disables an endpoint (API method) in an API proxy. When disabled, the
 ## Endpoint
 
 ```
-PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/status/
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/status/
 ```
 
 ## Authentication
@@ -40,7 +40,6 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name |
-| endpointId | string | Yes | Endpoint ID |
 
 ### Request Body
 
@@ -48,6 +47,8 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
+  "identifierName": "/api/users",
+  "identifierHttpMethod": "GET",
   "active": false
 }
 ```
@@ -56,7 +57,13 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
+| identifierName | string | Yes | - | Endpoint path/name (used to identify the endpoint) |
+| identifierHttpMethod | string | Yes | - | HTTP method for the endpoint (used to identify the endpoint). See [EnumHttpRequestMethod](#enumhttprequestmethod) |
 | active | boolean | Yes | - | Whether endpoint is active/enabled (`true` = enabled, `false` = disabled) |
+
+### EnumHttpRequestMethod
+
+- `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `HEAD`, `TRACE`, `ALL`
 
 ## Response
 
@@ -79,14 +86,24 @@ Authorization: Bearer YOUR_TOKEN
 ```json
 {
   "error": "bad_request",
-  "error_description": "Endpoint with ID (endpoint-id) was not found!"
+  "error_description": "Endpoint identifier (name and httpMethod) must be provided in request body!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Endpoint with name (/api/users) and HTTP method (GET) is not found!"
 }
 ```
 
 ### Common Causes
 
-- Endpoint ID does not exist
+- Missing `identifierName` or `identifierHttpMethod` fields
 - Missing `active` field
+- Endpoint with specified name and httpMethod does not exist
 
 ### Error Response (401 Unauthorized)
 
@@ -112,10 +129,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/status/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/status/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
+    "identifierName": "/api/users",
+    "identifierHttpMethod": "GET",
     "active": false
   }'
 ```
@@ -124,17 +143,19 @@ curl -X PATCH \
 
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/status/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/status/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
+    "identifierName": "/api/users",
+    "identifierHttpMethod": "GET",
     "active": true
   }'
 ```
 
 ## Notes and Warnings
 
-- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Endpoint Identifier**: Endpoint is identified by `identifierName` and `identifierHttpMethod` combination (not by ID)
 - **Disabled Endpoints**: Disabled endpoints return 404 Not Found when accessed
 - **Policies**: Policies remain associated with the endpoint even when disabled
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission

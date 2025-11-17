@@ -7,7 +7,7 @@ permalink: /02-api-reference/12-rlcl/condition/delete-condition/
 
 ## Overview
 
-Removes the condition from an RLCL. After deletion, the RLCL will be applied unconditionally (always).
+Removes all conditions from an RLCL and resets it to the default condition. The default condition is an AND rule with an empty condition rule list, which means the RLCL will be applied unconditionally (always).
 
 ## Endpoint
 
@@ -63,9 +63,12 @@ curl -X DELETE \
 
 ## Notes and Warnings
 
-- **Unconditional Application**: 
-  - After deletion, RLCL is applied unconditionally (always)
+- **Default Condition Reset**: 
+  - All existing conditions are removed
+  - The RLCL is reset to the default condition (AND rule with empty conditionRuleList)
+  - After reset, RLCL is applied unconditionally (always)
   - No condition evaluation is performed
+  - The default condition cannot be deleted; it is automatically restored
 
 ## Related Documentation
 

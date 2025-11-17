@@ -7,7 +7,7 @@ permalink: /02-api-reference/12-rlcl/condition/update-condition/
 
 ## Overview
 
-Updates the condition in an RLCL. Replaces the existing condition with the new one.
+Updates the condition in an RLCL. Completely replaces the existing condition with the new one provided in the request body. All existing condition rules are removed and replaced with the new condition rules.
 
 ## Endpoint
 
@@ -31,8 +31,10 @@ Same structure as Add Condition. See [Add Condition](/management-api-docs/02-api
 
 ### Important Notes
 
-- Replaces the existing condition completely
+- **Complete Replacement**: The existing condition is completely replaced with the new condition provided in the request body
+- All existing condition rules are removed and replaced with the new condition rules
 - Same structure as Add Condition
+- If the new condition is empty or invalid, it will be reset to the default condition (AND rule)
 
 ### Response
 

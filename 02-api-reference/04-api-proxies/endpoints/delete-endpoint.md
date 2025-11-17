@@ -12,7 +12,7 @@ Deletes an endpoint (API method) from an API proxy. This operation is only avail
 ## Endpoint
 
 ```
-DELETE /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/
+POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/delete/
 ```
 
 ## Authentication
@@ -32,6 +32,7 @@ Authorization: Bearer YOUR_TOKEN
 | Header | Value | Required |
 |--------|-------|----------|
 | Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
 
 ### Path Parameters
 
@@ -39,15 +40,28 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name (must be REST type) |
-| endpointId | string | Yes | Endpoint ID |
+
+### Request Body
+
+#### Full JSON Body Example
+
+```json
+{
+  "name": "/api/users",
+  "httpMethod": "GET"
+}
+```
+
+#### Request Body Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | Endpoint path/name (used to identify the endpoint) |
+| httpMethod | string | Yes | HTTP method for the endpoint (used to identify the endpoint). See [EnumHttpRequestMethod](#enumhttprequestmethod) |
 
 ### Query Parameters
 
 None
-
-### Request Body
-
-This endpoint does not require a request body.
 
 ## Response
 
@@ -77,7 +91,8 @@ This endpoint does not require a request body.
 ### Common Causes
 
 - API Proxy is not REST type (SOAP endpoints cannot be deleted manually)
-- Endpoint ID does not exist
+- Missing `name` or `httpMethod` fields
+- Endpoint with specified name and httpMethod does not exist
 
 ### Error Response (401 Unauthorized)
 
@@ -100,21 +115,31 @@ This endpoint does not require a request body.
 ## cURL Example
 
 ```bash
-curl -X DELETE \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/" \
-  -H "Authorization: Bearer YOUR_TOKEN"
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/delete/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "/api/users",
+    "httpMethod": "GET"
+  }'
 ```
 
 ## Full JSON Body Example
 
-This endpoint does not require a request body.
+```json
+{
+  "name": "/api/users",
+  "httpMethod": "GET"
+}
+```
 
 ## Notes and Warnings
 
 - **REST Only**: Endpoints can only be deleted from REST API proxies. SOAP endpoints are managed through WSDL reparsing
 - **Permanent Deletion**: Endpoint deletion is permanent and cannot be undone
 - **Policies**: All policies associated with the endpoint are also deleted
-- **Endpoint ID**: Use [List Endpoints](/management-api-docs/02-api-reference/04-api-proxies/endpoints/list-endpoints/) to get endpoint IDs
+- **Endpoint Identifier**: Endpoint is identified by `name` and `httpMethod` combination (not by ID)
 - **Permissions**: Requires `ROLE_MANAGE_PROXIES` permission
 
 ## Related Documentation

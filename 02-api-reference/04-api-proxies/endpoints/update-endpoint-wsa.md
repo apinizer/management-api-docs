@@ -12,7 +12,7 @@ Updates WS-Addressing (WSA) settings for a specific SOAP endpoint. WS-Addressing
 ## Endpoint
 
 ```
-PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/{endpointId}/wsa/
+PATCH /apiops/projects/{projectName}/apiProxies/{apiProxyName}/endpoints/wsa/
 ```
 
 ## Authentication
@@ -40,7 +40,6 @@ Authorization: Bearer YOUR_TOKEN
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 | apiProxyName | string | Yes | API Proxy name |
-| endpointId | string | Yes | Endpoint ID (method ID) |
 
 ### Request Body
 
@@ -48,20 +47,24 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "wsaEnabled": true,
-  "wsaMustUnderstand": "NONE",
-  "wsaVersion": "V200508",
-  "wsaAddDefaultAction": true,
-  "wsaAction": null,
-  "wsaAddDefaultTo": true,
-  "wsaTo": null,
-  "wsaReplyTo": null,
-  "wsaGenerateMessageId": true,
-  "wsaMessageId": null,
-  "wsaFrom": null,
-  "wsaFaultTo": null,
-  "wsaRelatesTo": null,
-  "wsaRelationShipType": null
+  "identifierName": "getUser",
+  "identifierHttpMethod": "POST",
+  "wsaSettings": {
+    "wsaEnabled": true,
+    "wsaMustUnderstand": "NONE",
+    "wsaVersion": "V200508",
+    "wsaAddDefaultAction": true,
+    "wsaAction": null,
+    "wsaAddDefaultTo": true,
+    "wsaTo": null,
+    "wsaReplyTo": null,
+    "wsaGenerateMessageId": true,
+    "wsaMessageId": null,
+    "wsaFrom": null,
+    "wsaFaultTo": null,
+    "wsaRelatesTo": null,
+    "wsaRelationShipType": null
+  }
 }
 ```
 
@@ -69,24 +72,36 @@ Authorization: Bearer YOUR_TOKEN
 
 ```json
 {
-  "wsaEnabled": true,
-  "wsaMustUnderstand": "TRUE",
-  "wsaVersion": "V200508",
-  "wsaAddDefaultAction": false,
-  "wsaAction": "http://example.com/soap/action",
-  "wsaAddDefaultTo": false,
-  "wsaTo": "http://example.com/soap/service",
-  "wsaReplyTo": "http://example.com/soap/reply",
-  "wsaGenerateMessageId": false,
-  "wsaMessageId": "urn:uuid:12345678-1234-1234-1234-123456789012",
-  "wsaFrom": "http://example.com/soap/from",
-  "wsaFaultTo": "http://example.com/soap/fault",
-  "wsaRelatesTo": "urn:uuid:87654321-4321-4321-4321-210987654321",
-  "wsaRelationShipType": "Reply"
+  "identifierName": "getUser",
+  "identifierHttpMethod": "POST",
+  "wsaSettings": {
+    "wsaEnabled": true,
+    "wsaMustUnderstand": "TRUE",
+    "wsaVersion": "V200508",
+    "wsaAddDefaultAction": false,
+    "wsaAction": "http://example.com/soap/action",
+    "wsaAddDefaultTo": false,
+    "wsaTo": "http://example.com/soap/service",
+    "wsaReplyTo": "http://example.com/soap/reply",
+    "wsaGenerateMessageId": false,
+    "wsaMessageId": "urn:uuid:12345678-1234-1234-1234-123456789012",
+    "wsaFrom": "http://example.com/soap/from",
+    "wsaFaultTo": "http://example.com/soap/fault",
+    "wsaRelatesTo": "urn:uuid:87654321-4321-4321-4321-210987654321",
+    "wsaRelationShipType": "Reply"
+  }
 }
 ```
 
 #### Request Body Fields
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| identifierName | string | Yes | - | Endpoint name (used to identify the endpoint) |
+| identifierHttpMethod | string | Yes | - | HTTP method for the endpoint (used to identify the endpoint). See [EnumHttpRequestMethod](#enumhttprequestmethod) |
+| wsaSettings | object | Yes | - | WSA settings object (see fields below) |
+
+#### WSA Settings Object Fields
 
 | Field | Type | Required | Default | Description |
 |-------|------|----------|---------|-------------|
@@ -137,16 +152,20 @@ Authorization: Bearer YOUR_TOKEN
 ### cURL Example
 ```bash
 curl -X PATCH \
-  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/endpoint-id/wsa/" \
+  "https://demo.apinizer.com/apiops/projects/MyProject/apiProxies/MyAPI/endpoints/wsa/" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "wsaEnabled": true,
-    "wsaMustUnderstand": "NONE",
-    "wsaVersion": "V200508",
-    "wsaAddDefaultAction": true,
-    "wsaAddDefaultTo": true,
-    "wsaGenerateMessageId": true
+    "identifierName": "getUser",
+    "identifierHttpMethod": "POST",
+    "wsaSettings": {
+      "wsaEnabled": true,
+      "wsaMustUnderstand": "NONE",
+      "wsaVersion": "V200508",
+      "wsaAddDefaultAction": true,
+      "wsaAddDefaultTo": true,
+      "wsaGenerateMessageId": true
+    }
   }'
 ```
 
