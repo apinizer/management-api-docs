@@ -355,6 +355,46 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-content-filter",
+    "description": "Updated: Enhanced security filters for SQL injection and XSS",
+    "active": true,
+    "policyContentFilterDefList": [
+      {
+        "name": "SQL Injection Filter",
+        "ruleValue": "(?i)(union|select|insert|delete|drop|exec|script|alter|create|truncate)",
+        "headerActive": true,
+        "bodyActive": true,
+        "paramActive": true,
+        "action": "BLOCK",
+        "contentType": "ALL_BODY",
+        "content": null
+      },
+      {
+        "name": "XSS Filter",
+        "ruleValue": "(?i)(<script|javascript:|onerror|onload|eval\\()",
+        "headerActive": true,
+        "bodyActive": true,
+        "paramActive": true,
+        "action": "BLOCK",
+        "contentType": "ALL_BODY",
+        "content": null
+      }
+    ]
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
