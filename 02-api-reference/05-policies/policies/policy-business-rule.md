@@ -447,6 +447,55 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-business-rule",
+    "description": "Updated: Add timestamp and request ID headers",
+    "active": true,
+    "actionList": [
+      {
+        "actionType": "ADD",
+        "sourceVar": {
+          "type": "HEADER",
+          "headerName": "X-Source"
+        },
+        "targetVar": {
+          "type": "HEADER",
+          "headerName": "X-Timestamp"
+        },
+        "targetValSource": "VALUE",
+        "targetValue": "${now}",
+        "sourceDataType": "STRING"
+      },
+      {
+        "actionType": "ADD",
+        "sourceVar": {
+          "type": "HEADER",
+          "headerName": "User-Agent"
+        },
+        "targetVar": {
+          "type": "HEADER",
+          "headerName": "X-Request-ID"
+        },
+        "targetValSource": "VALUE",
+        "targetValue": "${uuid}",
+        "sourceDataType": "STRING"
+      }
+    ]
+  }
+}
+```
+
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
