@@ -331,6 +331,30 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-username",
+    "description": "Add UsernameToken with plain text password",
+    "active": true,
+    "mustUnderstand": true,
+    "username": "myuser",
+    "password": "mypassword",
+    "passwordType": "PasswordText",
+    "nonce": true,
+    "created": true
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
