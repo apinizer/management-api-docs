@@ -405,6 +405,42 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-encrypt",
+    "description": "Updated: Enhanced SOAP encryption with stronger algorithms",
+    "active": true,
+    "mustUnderstand": true,
+    "encPartList": [
+      {
+        "name": "Body",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "CONTENT"
+      },
+      {
+        "name": "Header",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "ELEMENT"
+      }
+    ],
+    "encEmbeddedKeyName": null,
+    "encKeyIdType": "X509_CERTIFICATE",
+    "encSymEncAlgorithm": "AES_256_CBC",
+    "encKeyEncAlgorithm": "RSA",
+    "encKeyStoreName": "test-keystores"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
