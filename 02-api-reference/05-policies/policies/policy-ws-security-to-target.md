@@ -766,6 +766,66 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-to-target",
+    "description": "Add WS-Security headers with Timestamp, UsernameToken, Encryption, and Signature",
+    "active": true,
+    "mustUnderstand": true,
+    "tsTimeToLive": 300,
+    "unUsername": "myuser",
+    "unPassword": "mypassword",
+    "unPasswordDecrypted": false,
+    "unNonce": true,
+    "unCreated": true,
+    "unPasswordType": "PasswordText",
+    "encPartList": [
+      {
+        "name": "Body",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "CONTENT"
+      }
+    ],
+    "encEmbeddedKeyName": null,
+    "encKeyIdType": "X509_CERTIFICATE",
+    "encSymEncAlgorithm": "AES_128_CBC",
+    "encKeyEncAlgorithm": "RSA",
+    "encKeyStoreName": "test-keystores",
+    "sigPartList": [
+      {
+        "name": "Body",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "ELEMENT"
+      },
+      {
+        "name": "Timestamp",
+        "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd",
+        "encodeType": "ELEMENT"
+      }
+    ],
+    "sigCustomKeyIdentifier": null,
+    "sigCustomKeyIdentifierValueType": null,
+    "sigKeyIdType": "X509_CERTIFICATE",
+    "sigSigAlgorithm": "RSA_SHA256",
+    "sigC14n": "C14N_EXCL_OMIT_COMMENTS",
+    "sigDigAlgorithm": "SHA256",
+    "sigUseSingleCert": false,
+    "sigWsiBSPCompliant": false,
+    "sigKeyStoreName": "test-keystores",
+    "wsSecurityEntryOrderList": ["TIMESTAMP", "USERNAME_TOKEN", "ENCRYPTION", "SIGNATURE"]
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
