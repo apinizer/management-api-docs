@@ -703,6 +703,64 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "RESPONSE",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-jose-implementation",
+    "description": "Updated: Generate signed JWT tokens with encryption",
+    "active": true,
+    "joseTarget": "BODY",
+    "joseTargetVariable": null,
+    "jwtClaimsClaim": null,
+    "escapeJsonString": false,
+    "addIssueTime": true,
+    "addJWTID": true,
+    "addIssuer": true,
+    "issuer": "https://myapi.com",
+    "addAudience": true,
+    "audienceList": ["api://myapi", "api://partners"],
+    "addSubject": true,
+    "subject": "user123",
+    "addTypeToHeader": true,
+    "typeValue": "JWT",
+    "addExpirationTime": true,
+    "expirationTimeValue": 7200,
+    "expirationTimeUnit": "SECONDS",
+    "additionalClaimMap": {
+      "role": {
+        "value": "admin",
+        "valueType": "STRING"
+      },
+      "permissions": {
+        "value": "read,write,delete",
+        "valueType": "STRING_LIST"
+      },
+      "department": {
+        "value": "engineering",
+        "valueType": "STRING"
+      }
+    },
+    "sign": true,
+    "signByIssuer": true,
+    "jwkIdForValidationAndSign": null,
+    "encrypt": true,
+    "encryptByIssuer": true,
+    "jwkIdForDecryptionAndEncryption": null,
+    "encryptionMethod": "A256GCM",
+    "encodedClaimsTargetForDataManipulation": "BODY",
+    "decodedClaimsTargetVariableForDataManipulation": null
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
