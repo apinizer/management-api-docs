@@ -405,6 +405,90 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-oidc",
+    "description": "Updated: OIDC authentication with enhanced security",
+    "active": true,
+    "issuer": "https://accounts.google.com",
+    "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "tokenEndpoint": "https://oauth2.googleapis.com/token",
+    "userInfoEndpoint": "https://openidconnect.googleapis.com/v1/userinfo",
+    "jwksEndpoint": "https://www.googleapis.com/oauth2/v3/certs",
+    "clientId": "your-client-id.apps.googleusercontent.com",
+    "clientSecret": "your-updated-client-secret",
+    "redirectUri": "https://api.example.com/oidc/callback",
+    "flowType": "AUTHORIZATION_CODE",
+    "enablePKCE": true,
+    "scopes": ["openid", "profile", "email", "groups"],
+    "additionalAuthParams": {
+      "prompt": "consent",
+      "access_type": "offline"
+    },
+    "authenticationMode": "EXTERNAL_ONLY",
+    "requireBothInHybrid": false,
+    "validateIdToken": true,
+    "validateAccessToken": true,
+    "validateJwtLocally": true,
+    "validateJwtSignature": true,
+    "expectedJwtAuthSigningAlgs": ["RS256", "RS384", "RS512", "ES256"],
+    "callUserInfoEndpoint": true,
+    "tokenCacheTimeoutSeconds": 7200,
+    "jwkCacheTimeoutSeconds": 7200,
+    "usernameClaimPath": "sub",
+    "emailClaimPath": "email",
+    "displayNameClaimPath": "name",
+    "roleMappings": [
+      {
+        "claimPath": "groups",
+        "claimValue": "admins",
+        "role": "admin"
+      },
+      {
+        "claimPath": "groups",
+        "claimValue": "users",
+        "role": "user"
+      }
+    ],
+    "sessionCookieName": "OIDC_SESSION",
+    "sessionTimeoutMinutes": 120,
+    "enableStateValidation": true,
+    "enableNonceValidation": true,
+    "validateIssuer": true,
+    "expectedIssuer": "https://accounts.google.com",
+    "validateAudience": true,
+    "expectedAudience": ["your-client-id.apps.googleusercontent.com"],
+    "sessionCookieSecure": true,
+    "allowInsecureConnections": false,
+    "connectionTimeoutSeconds": 60,
+    "readTimeoutSeconds": 60,
+    "maxClockSkewSeconds": 180,
+    "errorRedirectUrl": "https://api.example.com/error",
+    "errorMessageTemplate": "Authentication failed: {error}",
+    "includeErrorDetails": true,
+    "customHeaders": {
+      "X-Custom-Header": "custom-value"
+    },
+    "userAgent": "Apinizer-OIDC-Client/2.0",
+    "enableDebugLogging": true,
+    "customClaimMappings": {
+      "department": "user.department",
+      "employee_id": "user.employeeId"
+    },
+    "disableUserinfoHeader": false,
+    "userinfoHeaderName": "X-UserInfo"
+  }
+}
+```
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
