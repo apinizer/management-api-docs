@@ -317,23 +317,21 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
     "targetScope": "ALL",
     "targetPipeline": "REQUEST",
     "deploy": true,
-    "deployTargetEnvironmentNameList": ["production"],
+    "deployTargetEnvironmentNameList": ["tester"],
     "order": 1
   },
   "policy": {
     "type": "policy-black-ip",
-    "description": "Updated black IP list",
+    "description": "Block malicious IP addresses from X-Forwarded-For",
     "active": true,
     "targetVariableForIP": {
-      "type": "CONTEXT",
-      "contextValue": "CLIENT_IP"
+      "type": "HEADER",
+      "headerName": "X-Forwarded-For"
     },
     "ipList": [
       "192.168.1.100",
-      "192.168.1.101",
       "10.0.0.0/8",
-      "203.0.113.0/24",
-      "2001:db8::/32"
+      "203.0.113.0/24"
     ]
   }
 }
