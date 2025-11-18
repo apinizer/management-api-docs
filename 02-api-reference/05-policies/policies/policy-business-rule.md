@@ -160,16 +160,16 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
       {
         "actionType": "ADD",
         "sourceVar": {
-          "type": "CONTEXT_VALUES",
-          "contextValue": "NOW"
+          "type": "HEADER",
+          "headerName": "X-Source"
         },
-        "sourceDataType": "STRING",
-        "targetValSource": "VALUE",
-        "targetVal": "${NOW}",
         "targetVar": {
           "type": "HEADER",
           "headerName": "X-Timestamp"
-        }
+        },
+        "targetValSource": "VALUE",
+        "targetValue": "${now}",
+        "sourceDataType": "STRING"
       }
     ]
   }
