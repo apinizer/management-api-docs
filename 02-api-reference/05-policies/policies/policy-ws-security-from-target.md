@@ -343,6 +343,28 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "RESPONSE",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-from-target",
+    "description": "Updated: Enhanced WS-Security processing with production keystores",
+    "active": true,
+    "decExists": true,
+    "verExists": true,
+    "decKeyStoreName": "test-keystores",
+    "verKeyStoreName": "test-keystores",
+    "allowCaseInsensitiveId": true
+  }
+}
+```
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
