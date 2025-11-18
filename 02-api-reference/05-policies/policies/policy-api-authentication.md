@@ -145,7 +145,6 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
   },
   "policy": {
     "type": "policy-api-authentication",
-    "name": "api-authentication-policy",
     "description": "Basic authentication via header",
     "active": true,
     "authType": "BASIC",
