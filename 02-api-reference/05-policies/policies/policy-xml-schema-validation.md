@@ -359,51 +359,20 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
     "order": 1
   },
   "policy": {
-    "type": "policy-ws-security-to-target",
-    "description": "Add WS-Security headers with Timestamp, UsernameToken, Encryption, and Signature",
+    "type": "policy-xml-schema-validation",
+    "description": "Validate XML request body against custom schema",
     "active": true,
-    "mustUnderstand": true,
-    "tsTimeToLive": 300,
-    "unUsername": "myuser",
-    "unPassword": "mypassword",
-    "unPasswordDecrypted": false,
-    "unNonce": true,
-    "unCreated": true,
-    "unPasswordType": "PasswordText",
-    "encPartList": [
+    "pathForBody": "/",
+    "validateAgainstSpec": false,
+    "schemaDefinitionList": [
       {
-        "name": "Body",
-        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
-        "encodeType": "CONTENT"
+        "schemaNo": 0,
+        "schemaBody": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" targetNamespace=\"http://example.com/user\" elementFormDefault=\"qualified\">\n  <xs:element name=\"user\">\n    <xs:complexType>\n      <xs:sequence>\n        <xs:element name=\"id\" type=\"xs:integer\"/>\n        <xs:element name=\"name\" type=\"xs:string\" minOccurs=\"1\" maxOccurs=\"1\"/>\n        <xs:element name=\"email\" type=\"xs:string\" minOccurs=\"0\" maxOccurs=\"1\"/>\n        <xs:element name=\"age\" type=\"xs:integer\" minOccurs=\"0\" maxOccurs=\"1\"/>\n      </xs:sequence>\n    </xs:complexType>\n  </xs:element>\n</xs:schema>",
+        "systemId": "user-schema.xsd",
+        "targetNamespace": "http://example.com/user",
+        "rootSchema": true
       }
-    ],
-    "encEmbeddedKeyName": null,
-    "encKeyIdType": "X509_CERTIFICATE",
-    "encSymEncAlgorithm": "AES_128_CBC",
-    "encKeyEncAlgorithm": "RSA",
-    "encKeyStoreName": "test-keystores",
-    "sigPartList": [
-      {
-        "name": "Body",
-        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
-        "encodeType": "ELEMENT"
-      },
-      {
-        "name": "Timestamp",
-        "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd",
-        "encodeType": "ELEMENT"
-      }
-    ],
-    "sigCustomKeyIdentifier": null,
-    "sigCustomKeyIdentifierValueType": null,
-    "sigKeyIdType": "X509_CERTIFICATE",
-    "sigSigAlgorithm": "RSA_SHA256",
-    "sigC14n": "C14N_EXCL_OMIT_COMMENTS",
-    "sigDigAlgorithm": "SHA256",
-    "sigUseSingleCert": false,
-    "sigWsiBSPCompliant": false,
-    "sigKeyStoreName": "test-keystores",
-    "wsSecurityEntryOrderList": ["TIMESTAMP", "USERNAME_TOKEN", "ENCRYPTION", "SIGNATURE"]
+    ]
   }
 }
 ```
