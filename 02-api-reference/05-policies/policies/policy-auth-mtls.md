@@ -281,6 +281,26 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production", "staging"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-auth-mtls",
+    "description": "Updated: mTLS authentication with enhanced certificate validation",
+    "active": true,
+    "validateCertificate": true,
+    "validateACLForIssuer": true
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
