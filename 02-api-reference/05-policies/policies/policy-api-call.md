@@ -515,6 +515,107 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-api-call",
+    "description": "Updated: Call external validation API with enhanced caching",
+    "active": true,
+    "callType": "SYNCHRONOUS",
+    "httpMethod": "POST",
+    "url": "https://api.example.com/v2/validate",
+    "timeout": 8000,
+    "certificateEnabled": false,
+    "clearBodyBeforeCall": false,
+    "useMessageTemplateBeforeCall": true,
+    "enumTestConsoleRequestBodyType": "JSON",
+    "bodyContentBeforeCall": "{\n  \"userId\": \"${userId}\",\n  \"action\": \"validate\",\n  \"timestamp\": \"${timestamp}\"\n}",
+    "urlEncodedList": [],
+    "dataManipulationListBeforeCall": [],
+    "removeAllHeadersBeforeCall": true,
+    "headersToBeDeletedBeforeCallList": [],
+    "headersToBeAddedBeforeCallList": [
+      {
+        "name": "Content-Type",
+        "valueSource": "VALUE",
+        "value": "application/json",
+        "prefix": null
+      },
+      {
+        "name": "Authorization",
+        "valueSource": "VARIABLE",
+        "variable": {
+          "type": "HEADER",
+          "headerName": "Authorization"
+        },
+        "prefix": "BEARER"
+      },
+      {
+        "name": "X-Request-ID",
+        "valueSource": "VARIABLE",
+        "variable": {
+          "type": "HEADER",
+          "headerName": "X-Request-ID"
+        },
+        "prefix": null
+      }
+    ],
+    "removeAllParametersBeforeCall": true,
+    "parametersToBeDeletedBeforeCallList": [],
+    "parametersToBeAddedBeforeCallList": [
+      {
+        "name": "apiKey",
+        "valueSource": "VALUE",
+        "value": "updated-api-key-2024"
+      },
+      {
+        "name": "version",
+        "valueSource": "VALUE",
+        "value": "v2"
+      }
+    ],
+    "enableCache": true,
+    "cacheBy": {
+      "type": "HEADER",
+      "headerName": "Authorization"
+    },
+    "capacity": 5000,
+    "ttl": 7200,
+    "cacheNullResponses": false,
+    "cacheStorageType": "DISTRIBUTED",
+    "afterCallBodyOperationType": "REPLACE_BODY",
+    "useMessageTemplateAfterCall": false,
+    "messageTemplateContentTypeAfterCall": "JSON",
+    "bodyContentAfterCall": null,
+    "dataManipulationListAfterCall": [],
+    "removeAllHeadersAfterCall": false,
+    "headersToBeDeletedAfterCallList": [],
+    "headersToBeAddedAfterCallList": [
+      {
+        "name": "X-Validated",
+        "valueSource": "VALUE",
+        "value": "true",
+        "prefix": null
+      }
+    ],
+    "removeAllParametersAfterCall": false,
+    "parametersToBeDeletedAfterCallList": [],
+    "parametersToBeAddedAfterCallList": [],
+    "prepareMessage": false,
+    "modifyMessage": false,
+    "newBodyContentSourceType": null
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
