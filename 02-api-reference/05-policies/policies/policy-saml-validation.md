@@ -296,6 +296,28 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-saml-validation",
+    "description": "Updated: SAML validation with enhanced security settings",
+    "active": true,
+    "keyStoreName": "test-keystores",
+    "allowUnknownSigner": false,
+    "clearSaml": true,
+    "clearSamlPath": "$.assertion"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
