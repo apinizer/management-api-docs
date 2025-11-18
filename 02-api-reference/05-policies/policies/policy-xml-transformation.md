@@ -318,6 +318,26 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-xml-transformation",
+    "description": "Transform XML request body using XSLT",
+    "active": true,
+    "transformationType": "XML2XML",
+    "xsltValue": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <transformed>\n      <xsl:apply-templates select=\"//user\"/>\n    </transformed>\n  </xsl:template>\n  <xsl:template match=\"user\">\n    <user>\n      <id><xsl:value-of select=\"@id\"/></id>\n      <name><xsl:value-of select=\"name\"/></name>\n    </user>\n  </xsl:template>\n</xsl:stylesheet>"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
