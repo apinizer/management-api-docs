@@ -310,6 +310,26 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-json-transformation",
+    "description": "Updated: Enhanced JSON transformation with additional fields",
+    "active": true,
+    "transformationType": "JSON2JSON",
+    "joltValue": "[\n  {\n    \"operation\": \"shift\",\n    \"spec\": {\n      \"userId\": \"user.id\",\n      \"userName\": \"user.name\",\n      \"email\": \"user.email\",\n      \"phone\": \"user.contact.phone\",\n      \"address\": \"user.contact.address\"\n    }\n  },\n  {\n    \"operation\": \"default\",\n    \"spec\": {\n      \"user\": {\n        \"status\": \"active\"\n      }\n    }\n  }\n]"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
