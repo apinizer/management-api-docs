@@ -474,6 +474,74 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["tester"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-redaction",
+    "description": "Updated: Remove multiple sensitive headers",
+    "active": true,
+    "redactionDefList": [
+      {
+        "redactionType": "KEY_EXISTENCE",
+        "keyValueVar": {
+          "type": "HEADER",
+          "headerName": "X-Credit-Card"
+        },
+        "keyValueListStr": null,
+        "redactionDefDetailList": [
+          {
+            "orderNum": 1,
+            "action": {
+              "actionType": "DELETE",
+              "sourceVar": {
+                "type": "HEADER",
+                "headerName": "X-Credit-Card"
+              },
+              "sourceDataType": "STRING"
+            }
+          }
+        ]
+      },
+      {
+        "redactionType": "KEY_EXISTENCE",
+        "keyValueVar": {
+          "type": "HEADER",
+          "headerName": "Authorization"
+        },
+        "keyValueListStr": null,
+        "redactionDefDetailList": [
+          {
+            "orderNum": 1,
+            "action": {
+              "actionType": "MODIFY",
+              "sourceVar": {
+                "type": "HEADER",
+                "headerName": "Authorization"
+              },
+              "targetVar": {
+                "type": "HEADER",
+                "headerName": "Authorization"
+              },
+              "sourceDataType": "STRING",
+              "targetValSource": "VALUE",
+              "targetValue": "[REDACTED]"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
