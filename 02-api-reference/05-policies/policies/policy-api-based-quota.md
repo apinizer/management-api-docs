@@ -150,6 +150,7 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
   },
   "policy": {
     "type": "policy-api-based-quota",
+    "name": "policy-api-based-quota",
     "description": "API quota policy - 10000 requests per day",
     "active": true,
     "targetVariableForIdentity": {
