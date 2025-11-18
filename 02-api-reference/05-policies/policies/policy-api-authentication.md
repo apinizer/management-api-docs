@@ -140,11 +140,12 @@ POST /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNa
     "targetScope": "ALL",
     "targetPipeline": "REQUEST",
     "deploy": true,
-    "deployTargetEnvironmentNameList": ["production"],
+    "deployTargetEnvironmentNameList": ["tester"],
     "order": 1
   },
   "policy": {
     "type": "policy-api-authentication",
+    "name": "api-authentication-policy",
     "description": "Basic authentication via header",
     "active": true,
     "authType": "BASIC",
