@@ -489,6 +489,46 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-ws-security-sign",
+    "description": "Updated: Sign SOAP body and header with stronger algorithms",
+    "active": true,
+    "mustUnderstand": true,
+    "sigPartList": [
+      {
+        "name": "Body",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "ELEMENT"
+      },
+      {
+        "name": "Header",
+        "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+        "encodeType": "ELEMENT"
+      }
+    ],
+    "sigCustomKeyIdentifier": null,
+    "sigCustomKeyIdentifierValueType": null,
+    "sigKeyIdType": "X509_CERTIFICATE",
+    "sigSigAlgorithm": "RSA_SHA512",
+    "sigC14n": "C14N_EXCL_OMIT_COMMENTS",
+    "sigDigAlgorithm": "SHA512",
+    "sigUseSingleCert": true,
+    "sigWsiBSPCompliant": true,
+    "sigKeyStoreName": "test-keystores"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
