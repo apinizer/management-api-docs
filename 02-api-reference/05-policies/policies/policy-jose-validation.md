@@ -643,6 +643,54 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "operationMetadata": {
+    "targetScope": "ALL",
+    "targetPipeline": "REQUEST",
+    "deploy": true,
+    "deployTargetEnvironmentNameList": ["production"],
+    "order": 1
+  },
+  "policy": {
+    "type": "policy-jose-validation",
+    "description": "Updated: Enhanced JOSE token validation with additional claims",
+    "active": true,
+    "joseTarget": "BODY",
+    "joseTargetVariable": null,
+    "clientSourcePart": "CLAIMS",
+    "clientSourceVariable": null,
+    "clientFieldname": "iss",
+    "acceptedAudienceList": ["api://myapi", "api://partners"],
+    "exactMatchClaimMap": {
+      "role": {
+        "value": "admin",
+        "valueType": "STRING"
+      },
+      "department": {
+        "value": "engineering",
+        "valueType": "STRING"
+      }
+    },
+    "requiredClaimList": ["sub", "exp", "iat", "jti"],
+    "prohibitedClaimList": ["debug_mode"],
+    "validateExpirationTime": true,
+    "validateSign": true,
+    "validateByIssuer": true,
+    "validateACLforIssuer": true,
+    "jwkIdForValidationAndSign": null,
+    "decrypt": true,
+    "decryptByIssuer": true,
+    "jwkIdForDecryptionAndEncryption": null,
+    "stripAndDecode": "NONE",
+    "jwtClaimsToDecode": null,
+    "decodedClaimsTargetForDataManipulation": "BODY",
+    "decodedClaimsTargetVariableForDataManipulation": null
+  }
+}
+```
+
 **Note:** Request body structure is the same as Add Policy. All fields should be provided for update.
 
 ### Response
