@@ -325,8 +325,8 @@ PUT /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/{policyNam
     "description": "Updated white IP list",
     "active": true,
     "targetVariableForIP": {
-      "type": "CONTEXT",
-      "contextValue": "CLIENT_IP"
+      "type": "HEADER",
+      "headerName": "X-Forwarded-For"
     },
     "ipList": [
       "192.168.1.0/24",
