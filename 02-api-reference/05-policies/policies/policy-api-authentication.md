@@ -69,29 +69,30 @@ GET /apiops/projects/{projectName}/apiProxies/{apiProxyName}/policies/
 #### Success Response (200 OK)
 ```json
 {
-  "policy": {
-    "type": "policy-api-authentication",
-    "name": "api-auth-policy",
-    "active": true,
-    "description": "Test policy-api-authentication policy",
-    "authType": "BASIC",
-    "sendType": "HEADER",
-    "messageContentType": "XML",
-    "usernameFieldName": "username",
-    "passwordFieldName": "password",
-    "apiAuthCondExpressionList": [
-      {
-        "username": "testuser",
-        "password": "testpass"
+  "success": true,
+  "resultList": [
+    {
+      "apiProxy": {
+        "name": "MyAPI",
+        "requestPolicyList": [
+          {
+            "type": "policy-api-authentication",
+            "name": "api-auth-policy",
+            "description": "Authenticate with backend API",
+            "active": true,
+            "authType": "BASIC",
+            "sendType": "HEADER",
+            "usernameFieldName": "X-Username",
+            "passwordFieldName": "X-Password",
+            "messageContentType": "XML"
+          }
+        ],
+        "responsePolicyList": [],
+        "errorPolicyList": []
       }
-    ]
-  },
-  "operationMetadata": {
-    "targetPipeline": "REQUEST",
-    "targetScope": "ALL",
-    "order": 1,
-    "deploy": false
-  }
+    }
+  ],
+  "resultCount": 1
 }
 ```
 
