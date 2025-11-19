@@ -9,7 +9,7 @@ permalink: /02-api-reference/06-connections/connections/connection-linux-script/
 
 ### Connection Type
 ```
-linuxscript
+linux-script
 ```
 
 ### UI Documentation
@@ -76,7 +76,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "type": "linuxscript",
+      "type": "linux-script",
       "name": "my-linux-script-connection",
       "description": "Linux script connection via SSH",
       "deployToWorker": true,
@@ -132,7 +132,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "type": "linuxscript",
+      "type": "linux-script",
       "name": "my-linux-script-connection",
       "description": "Linux script connection via SSH",
       "deployToWorker": true,
@@ -186,7 +186,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Basic SSH Connection
 ```json
 {
-  "type": "linuxscript",
+  "type": "linux-script",
   "name": "my-linux-script-connection",
   "description": "Linux script connection via SSH",
   "deployToWorker": true,
@@ -201,7 +201,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Custom SSH Port
 ```json
 {
-  "type": "linuxscript",
+  "type": "linux-script",
   "name": "my-linux-script-custom-port",
   "description": "Linux script connection with custom SSH port",
   "deployToWorker": true,
@@ -267,7 +267,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "type": "linuxscript",
+    "type": "linux-script",
     "name": "my-linux-script-connection",
     "description": "Linux script connection via SSH",
     "deployToWorker": true,
