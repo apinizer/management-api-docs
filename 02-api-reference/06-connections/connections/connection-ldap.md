@@ -418,6 +418,28 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "ldap",
+  "name": "my-ldap-connection",
+  "description": "Updated LDAP connection for authentication",
+  "deployToWorker": true,
+  "enabled": true,
+  "serverAddress": "ldaps://ldap-new.example.com:636",
+  "requireCertificateType": "REQUIRED_CN",
+  "username": "cn=admin,dc=newdomain,dc=com",
+  "password": "newadminpassword",
+  "customFilter": "(mail={0})",
+  "searchScope": "ONE_LEVEL",
+  "baseDn": "ou=users,dc=newdomain,dc=com",
+  "certificateId": "certificate-id-123",
+  "certificateName": "ldap-server-cert.crt",
+  "useSsl": true,
+  "selectedEnvironmentId": null
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
