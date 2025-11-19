@@ -22,7 +22,7 @@ Email connection for sending emails via SMTP. Used by policies and other compone
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=email
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=email
 ```
 
 ### Request
@@ -68,36 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "email",
-      "name": "my-email-connection",
-      "description": "Email connection for notifications",
-      "deployToWorker": true,
-      "enabled": true,
-      "host": "smtp.example.com",
-      "port": 587,
-      "username": "user@example.com",
-      "password": null,
-      "enableStartTls": true,
-      "auth": true,
-      "defaultEncoding": "UTF-8",
-      "addressToTest": "test@example.com",
-      "from": "noreply@example.com",
-      "additionalProperties": []
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
