@@ -22,7 +22,7 @@ Database connection for connecting to relational and NoSQL databases using JDBC.
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=database
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=database
 ```
 
 ### Request
@@ -68,44 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "database",
-      "name": "my-database-connection",
-      "description": "Database connection for data storage",
-      "deployToWorker": true,
-      "enabled": true,
-      "dbType": "POSTGRES",
-      "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
-      "useCredentials": true,
-      "username": "dbuser",
-      "databaseName": "mydb",
-      "password": null,
-      "initialPoolSize": 1,
-      "minPoolSize": 1,
-      "maxPoolSize": 5,
-      "incrementCount": 1,
-      "maxStatements": 100,
-      "idleConnectionTestPeriod": 30000,
-      "connectionTimeout": 30000,
-      "testConnectionOnCheckout": true,
-      "testConnectionOnCheckin": false,
-      "maxConnectionAge": 180000,
-      "maxIdleTime": 120000,
-      "selectedEnvironmentId": null
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
