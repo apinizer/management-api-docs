@@ -22,7 +22,7 @@ Kafka connection for sending messages to Kafka topics. Used by policies and othe
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=kafka
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=kafka
 ```
 
 ### Request
@@ -68,43 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "kafka",
-      "name": "my-kafka-connection",
-      "description": "Kafka connection for event streaming",
-      "deployToWorker": true,
-      "enabled": true,
-      "topicName": "events",
-      "propertiesMap": {
-        "bootstrap.servers": {
-          "value": "localhost:9092",
-          "valueType": "STRING"
-        },
-        "key.serializer": {
-          "value": "org.apache.kafka.common.serialization.StringSerializer",
-          "valueType": "STRING"
-        },
-        "value.serializer": {
-          "value": "org.apache.kafka.common.serialization.StringSerializer",
-          "valueType": "STRING"
-        }
-      },
-      "enableSecure": false,
-      "protocolTypes": [],
-      "keyStoreId": null,
-      "trustStoreId": null
-    }
-  ],
-  "resultCount": 1
-}
-```
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
