@@ -306,6 +306,21 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "linux-script",
+  "name": "my-linux-script-connection",
+  "description": "Updated Linux script connection via SSH",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostName": "new-linux.example.com",
+  "sshPort": 2222,
+  "username": "newuser",
+  "password": "newpassword456"
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
