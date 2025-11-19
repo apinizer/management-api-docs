@@ -651,6 +651,56 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "elasticsearch",
+  "name": "my-elasticsearch-connection",
+  "description": "Elasticsearch connection for logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "administrate": true,
+  "elasticHostList": [
+    {
+      "scheme": "http",
+      "host": "localhost",
+      "port": 9200
+    }
+  ],
+  "authenticate": false,
+  "elasticUsername": null,
+  "elasticPassword": null,
+  "encryptCommunication": false,
+  "encryptCommunicationType": null,
+  "caCertInPkcs12File": null,
+  "caCertInPkcs12FileContentType": null,
+  "caInPemFile": null,
+  "caInPemFileContentType": null,
+  "caTruststoreFile": null,
+  "caTruststoreFileContentType": null,
+  "caTruststoreFilePass": null,
+  "caKeystoreFile": null,
+  "caKeystoreFileContentType": null,
+  "caKeystoreFilePass": null,
+  "disableHostnameVerification": false,
+  "indexLifecyclePolicyCreated": false,
+  "indexLifecyclePolicy": null,
+  "indexTemplateCreated": false,
+  "indexTemplateName": null,
+  "indexName": null,
+  "indexTemplateNumberOfShards": null,
+  "indexTemplateNumberOfReplicas": null,
+  "indexTemplateRefreshInterval": null,
+  "connectionTimeoutInMs": null,
+  "socketReuseAddress": null,
+  "socketKeepAlive": null,
+  "ioThreads": null,
+  "maxConnectionPerHost": null,
+  "maxConnectionTotal": null,
+  "type": "READ_WRITE"
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
