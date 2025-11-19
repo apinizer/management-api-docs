@@ -412,6 +412,31 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "activeMq",
+  "name": "my-activemq-connection",
+  "description": "Updated ActiveMQ connection for messaging",
+  "deployToWorker": true,
+  "enabled": true,
+  "activeMqConnectionProtocolType": "TCP",
+  "brokerURL": "tcp://activemq.example.com:61616",
+  "username": "admin",
+  "password": "admin123",
+  "destinationType": "QUEUE",
+  "destinationName": "apinizer.queue",
+  "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
+  "sendTimeout": 60000,
+  "requestTimeout": 60000,
+  "closeTimeout": 60000,
+  "connectTimeout": 60000,
+  "contentType": "application/json",
+  "clientID": "apinizer-client-1",
+  "contentEncoding": "UTF-8"
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
