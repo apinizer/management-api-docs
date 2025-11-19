@@ -22,7 +22,7 @@ LDAP (Lightweight Directory Access Protocol) connection for authenticating users
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=ldap
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=ldap
 ```
 
 ### Request
@@ -68,37 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "ldap",
-      "name": "my-ldap-connection",
-      "description": "LDAP connection for authentication",
-      "deployToWorker": true,
-      "enabled": true,
-      "serverAddress": "ldap://ldap.example.com:389",
-      "requireCertificateType": "NOT_REQUIRED",
-      "username": "cn=admin,dc=example,dc=com",
-      "password": null,
-      "customFilter": "(uid={0})",
-      "searchScope": "SUBTREE",
-      "baseDn": "dc=example,dc=com",
-      "certificateId": null,
-      "certificateName": null,
-      "useSsl": false,
-      "selectedEnvironmentId": null
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
