@@ -22,7 +22,7 @@ Apache ActiveMQ connection for sending and receiving messages via JMS (Java Mess
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=activeMq
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=activeMq
 ```
 
 ### Request
@@ -68,40 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "activeMq",
-      "name": "my-activemq-connection",
-      "description": "ActiveMQ connection for messaging",
-      "deployToWorker": true,
-      "enabled": true,
-      "activeMqConnectionProtocolType": "TCP",
-      "brokerURL": "tcp://activemq.example.com:61616",
-      "username": "admin",
-      "password": null,
-      "destinationType": "QUEUE",
-      "destinationName": "apinizer.queue",
-      "sessionAcknowledgement": "AUTO_ACKNOWLEDGE",
-      "sendTimeout": 60000,
-      "requestTimeout": 60000,
-      "closeTimeout": 60000,
-      "connectTimeout": 60000,
-      "contentType": "application/json",
-      "clientID": "apinizer-client-1",
-      "contentEncoding": "UTF-8"
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
