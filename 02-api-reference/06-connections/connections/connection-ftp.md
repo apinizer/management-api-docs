@@ -396,6 +396,28 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "ftp",
+  "name": "my-ftp-connection",
+  "description": "Updated FTP connection for file transfer",
+  "deployToWorker": true,
+  "enabled": true,
+  "host": "ftp.newserver.com",
+  "port": 21,
+  "username": "newftp",
+  "password": "newpassword123",
+  "workingDir": "/new-uploads",
+  "protocol": "FTPS",
+  "timeout": 60000,
+  "retryCount": 5,
+  "useImplicit": false,
+  "useExplicit": true,
+  "sslProtocol": "TLSv1.2"
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
