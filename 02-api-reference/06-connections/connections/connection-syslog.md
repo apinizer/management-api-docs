@@ -22,7 +22,7 @@ Syslog connection for sending log messages to Syslog servers using standard Sysl
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=syslog
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=syslog
 ```
 
 ### Request
@@ -68,34 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "syslog",
-      "name": "my-syslog-connection",
-      "description": "Syslog connection for logging",
-      "deployToWorker": true,
-      "enabled": true,
-      "syslogProtocolType": "TCP",
-      "syslogMessageHostname": "apinizer.example.com",
-      "syslogServerHostname": "syslog.example.com",
-      "syslogPort": 514,
-      "syslogTimeout": 500,
-      "syslogMessageFormat": "RFC_3164",
-      "syslogAppName": "Apinizer",
-      "syslogFacility": "AUDIT",
-      "syslogSeverity": "INFORMATIONAL",
-      "syslogSslEnabled": false
-    }
-  ],
-  "resultCount": 1
-}
-```
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
