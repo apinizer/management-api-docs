@@ -437,6 +437,36 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "graylog",
+  "name": "my-graylog-connection",
+  "description": "Updated Graylog connection for logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostname": "graylog-new.example.com",
+  "port": 12201,
+  "transportType": "TCP",
+  "tlsEnabled": false,
+  "tlsCertVerificationEnabled": false,
+  "compressionType": "NONE",
+  "gelfMessageLevel": "WARNING",
+  "queueSize": 1024,
+  "reconnectDelay": 5000,
+  "connectTimeout": 15000,
+  "tcpNoDelay": true,
+  "tcpKeepAlive": true,
+  "sendBufferSize": 8192,
+  "maxInflightSends": 1024,
+  "threads": 4,
+  "tlsTrustCertChainFile": null,
+  "tlsTrustCertChainFileName": null,
+  "appendToAttributes": true,
+  "appendToMessage": true
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
