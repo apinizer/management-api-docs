@@ -22,7 +22,7 @@ Logback connection for writing log messages to local files using Logback logging
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=logback
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=logback
 ```
 
 ### Request
@@ -68,32 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "logback",
-      "name": "my-logback-connection",
-      "description": "Logback connection for file logging",
-      "deployToWorker": true,
-      "enabled": true,
-      "logPath": "/var/log/apinizer/",
-      "logFileName": "ApinizerApiProxyTraffic",
-      "logPodName": "worker-1",
-      "logFilenamePattern": "%d{yyyy-MM-dd}.%i.log",
-      "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS}[%m]%n",
-      "maxFileSize": 25,
-      "maxHistory": 30,
-      "totalSizeCap": 10
-    }
-  ],
-  "resultCount": 1
-}
-```
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
