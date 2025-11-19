@@ -22,7 +22,7 @@ FTP connection for file transfer operations. Supports FTP, SFTP, and FTPS protoc
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=ftp
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=ftp
 ```
 
 ### Request
@@ -68,37 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "ftp",
-      "name": "my-ftp-connection",
-      "description": "FTP connection for file transfer",
-      "deployToWorker": true,
-      "enabled": true,
-      "host": "ftp.example.com",
-      "port": 21,
-      "username": "ftpuser",
-      "password": null,
-      "workingDir": "/",
-      "protocol": "FTP",
-      "timeout": 30000,
-      "retryCount": 3,
-      "useImplicit": false,
-      "useExplicit": false,
-      "sslProtocol": null
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
