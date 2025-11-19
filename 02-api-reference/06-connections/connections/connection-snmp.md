@@ -527,6 +527,37 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "snmp",
+  "name": "my-snmp-connection",
+  "description": "Updated SNMP connection for traps",
+  "deployToWorker": true,
+  "enabled": true,
+  "version": "V3",
+  "connectionString": "udp:192.168.1.10/162",
+  "securityOrCommunityName": "private",
+  "retryCount": 5,
+  "timeout": 10000,
+  "messageType": "INFORM",
+  "securityLevel": "AUTH_PRIV",
+  "privacyProtocolList": ["PrivDES", "PrivAES128"],
+  "enabledUserAuthentication": true,
+  "securityName": "snmp_user",
+  "usmUserAuthenticationProtocol": "AuthSHA",
+  "authPassphrase": "auth_password",
+  "usmUserPrivacyProtocol": "PrivAES128",
+  "privPassphrase": "priv_password",
+  "pduUdpForMessage": "1.3.6.1.4.1.12345.2.1",
+  "pduUdpForTime": "1.3.6.1.4.1.12345.2.2",
+  "pduVariableMap": {
+    "1.3.6.1.4.1.12345.2.3": "value1",
+    "1.3.6.1.4.1.12345.2.4": "value2"
+  }
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
