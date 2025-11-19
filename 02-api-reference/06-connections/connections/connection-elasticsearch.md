@@ -22,7 +22,7 @@ Elasticsearch connection for indexing and querying data in Elasticsearch cluster
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=elasticsearch
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=elasticsearch
 ```
 
 ### Request
@@ -68,65 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "elasticsearch",
-      "name": "my-elasticsearch-connection",
-      "description": "Elasticsearch connection for logging",
-      "deployToWorker": true,
-      "enabled": true,
-      "administrate": true,
-      "elasticHostList": [
-        {
-          "scheme": "http",
-          "host": "localhost",
-          "port": 9200
-        }
-      ],
-      "authenticate": false,
-      "elasticUsername": null,
-      "elasticPassword": null,
-      "encryptCommunication": false,
-      "encryptCommunicationType": null,
-      "caCertInPkcs12File": null,
-      "caCertInPkcs12FileContentType": null,
-      "caInPemFile": null,
-      "caInPemFileContentType": null,
-      "caTruststoreFile": null,
-      "caTruststoreFileContentType": null,
-      "caTruststoreFilePass": null,
-      "caKeystoreFile": null,
-      "caKeystoreFileContentType": null,
-      "caKeystoreFilePass": null,
-      "disableHostnameVerification": false,
-      "indexLifecyclePolicyCreated": false,
-      "indexLifecyclePolicy": null,
-      "indexTemplateCreated": false,
-      "indexTemplateName": null,
-      "indexName": null,
-      "indexTemplateNumberOfShards": null,
-      "indexTemplateNumberOfReplicas": null,
-      "indexTemplateRefreshInterval": null,
-      "connectionTimeoutInMs": null,
-      "socketReuseAddress": null,
-      "socketKeepAlive": null,
-      "ioThreads": null,
-      "maxConnectionPerHost": null,
-      "maxConnectionTotal": null,
-      "type": "READ_WRITE"
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `elasticPassword`, `caCertInPkcs12File`, `caInPemFile`, `caTruststoreFile`, `caTruststoreFilePass`, `caKeystoreFile`, and `caKeystoreFilePass` are returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
