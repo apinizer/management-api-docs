@@ -218,7 +218,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 {
   "type": "snmp",
   "name": "my-snmp-connection",
-  "description": "SNMP v1 trap connection",
+  "description": "SNMP connection for traps",
   "deployToWorker": true,
   "enabled": true,
   "version": "V1",
@@ -229,17 +229,16 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
   "messageType": "TRAP",
   "securityLevel": null,
   "privacyProtocolList": [],
-  "enableUserAuthentication": false,
+  "enabledUserAuthentication": false,
   "securityName": null,
   "usmUserAuthenticationProtocol": null,
   "authPassphrase": null,
   "usmUserPrivacyProtocol": null,
   "privPassphrase": null,
-  "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
-  "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
+  "pduUdpForMessage": "1.3.6.1.4.1.12345.1.1",
+  "pduUdpForTime": "1.3.6.1.4.1.12345.1.2",
   "pduVariableMap": {
-    "1.3.6.1.4.1.12345.1.3": "value1",
-    "1.3.6.1.4.1.12345.1.4": "value2"
+    "1.3.6.1.4.1.12345.1.3": "value1"
   }
 }
 ```
