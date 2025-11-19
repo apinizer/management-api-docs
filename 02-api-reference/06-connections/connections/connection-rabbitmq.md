@@ -533,6 +533,52 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "rabbitMq",
+  "name": "my-rabbitmq-connection",
+  "description": "Updated RabbitMQ connection for messaging",
+  "deployToWorker": true,
+  "enabled": true,
+  "hostPortList": [
+    {
+      "host": "rabbitmq.example.com",
+      "port": 5672
+    },
+    {
+      "host": "rabbitmq-backup.example.com",
+      "port": 5672
+    }
+  ],
+  "connectionFactoryVirtualHost": "/production",
+  "authenticationEnabled": true,
+  "connectionFactoryUsername": "apinizer_user",
+  "connectionFactoryPassword": "secure_password",
+  "connectionFactoryConnectionTimeout": 30000,
+  "connectionFactoryClientProperties": {
+    "application": "Apinizer",
+    "version": "1.0"
+  },
+  "connectionFactoryRequestedChannelMax": 2047,
+  "connectionFactoryRequestedFrameMax": 131072,
+  "connectionFactoryRequestedHeartbeat": 60,
+  "connectionFactoryUseSslProtocol": true,
+  "connectionFactorySslProtocol": "TLSv1.3",
+  "channelExchange": "apinizer.exchange",
+  "channelRoutingKey": "apinizer.queue",
+  "basicPropertiesAppId": "apinizer-prod",
+  "basicPropertiesContentType": "application/json",
+  "basicPropertiesContentEncoding": "UTF-8",
+  "basicPropertiesDeliveryMode": 2,
+  "basicPropertiesPriority": 5,
+  "basicPropertiesReplyTo": "apinizer.reply.queue",
+  "basicPropertiesExpiration": "60000",
+  "basicPropertiesType": "request",
+  "basicPropertiesUserId": "apinizer_user",
+  "basicPropertiesClusterId": null
+}
+```
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
