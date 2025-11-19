@@ -22,7 +22,7 @@ RabbitMQ connection for sending messages to RabbitMQ brokers. Used by policies a
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=rabbitMq
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=rabbitMq
 ```
 
 ### Request
@@ -68,55 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "rabbitMq",
-      "name": "my-rabbitmq-connection",
-      "description": "RabbitMQ connection for messaging",
-      "deployToWorker": true,
-      "enabled": true,
-      "hostPortList": [
-        {
-          "host": "localhost",
-          "port": 5672
-        }
-      ],
-      "connectionFactoryVirtualHost": "/",
-      "authenticationEnabled": false,
-      "connectionFactoryUsername": null,
-      "connectionFactoryPassword": null,
-      "connectionFactoryConnectionTimeout": 60000,
-      "connectionFactoryClientProperties": null,
-      "connectionFactoryRequestedChannelMax": 2047,
-      "connectionFactoryRequestedFrameMax": 0,
-      "connectionFactoryRequestedHeartbeat": 60,
-      "connectionFactoryUseSslProtocol": false,
-      "connectionFactorySslProtocol": "TLSv1.2",
-      "channelExchange": "",
-      "channelRoutingKey": "<queue-name>",
-      "basicPropertiesAppId": "apinizer",
-      "basicPropertiesContentType": "application/json",
-      "basicPropertiesContentEncoding": null,
-      "basicPropertiesDeliveryMode": null,
-      "basicPropertiesPriority": null,
-      "basicPropertiesReplyTo": null,
-      "basicPropertiesExpiration": null,
-      "basicPropertiesType": null,
-      "basicPropertiesUserId": null,
-      "basicPropertiesClusterId": null
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `connectionFactoryPassword` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
