@@ -22,7 +22,7 @@ Webhook connection for sending HTTP/HTTPS requests to external webhook endpoints
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=webhook
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=webhook
 ```
 
 ### Request
@@ -68,39 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "webhook",
-      "name": "my-webhook-connection",
-      "description": "Webhook connection for notifications",
-      "deployToWorker": true,
-      "enabled": true,
-      "httpMethod": "POST",
-      "fullUrl": "https://webhook.example.com/api/notify",
-      "headerList": [
-        {
-          "name": "Content-Type",
-          "value": "application/json"
-        },
-        {
-          "name": "Authorization",
-          "value": "Bearer token123"
-        }
-      ],
-      "timeout": 5,
-      "connectionPoolMaxConnectionPerHost": 24,
-      "connectionPoolMaxConnectionTotal": 48
-    }
-  ],
-  "resultCount": 1
-}
-```
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
