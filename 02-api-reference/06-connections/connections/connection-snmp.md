@@ -22,7 +22,7 @@ SNMP (Simple Network Management Protocol) connection for sending SNMP traps and 
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=snmp
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=snmp
 ```
 
 ### Request
@@ -68,45 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "snmp",
-      "name": "my-snmp-connection",
-      "description": "SNMP connection for traps",
-      "deployToWorker": true,
-      "enabled": true,
-      "version": "V1",
-      "connectionString": "udp:192.168.1.2/162",
-      "securityOrCommunityName": "public",
-      "retryCount": 3,
-      "timeout": 5000,
-      "messageType": "TRAP",
-      "securityLevel": null,
-      "privacyProtocolList": [],
-      "enableUserAuthentication": false,
-      "securityName": null,
-      "usmUserAuthenticationProtocol": null,
-      "authPassphrase": null,
-      "usmUserPrivacyProtocol": null,
-      "privPassphrase": null,
-      "pduOidForMessage": "1.3.6.1.4.1.12345.1.1",
-      "pduOidForTime": "1.3.6.1.4.1.12345.1.2",
-      "pduVariableMap": {
-        "1.3.6.1.4.1.12345.1.3": "value1"
-      }
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `authPassphrase` and `privPassphrase` are returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
