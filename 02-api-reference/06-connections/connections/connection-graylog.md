@@ -22,7 +22,7 @@ Graylog connection for sending log messages to Graylog servers using the GELF (G
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=graylog
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=graylog
 ```
 
 ### Request
@@ -68,45 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "graylog",
-      "name": "my-graylog-connection",
-      "description": "Graylog connection for logging",
-      "deployToWorker": true,
-      "enabled": true,
-      "hostname": "graylog.example.com",
-      "port": 12201,
-      "transportType": "TCP",
-      "tlsEnabled": false,
-      "tlsCertVerificationEnabled": false,
-      "compressionType": "NONE",
-      "gelfMessageLevel": "INFO",
-      "queueSize": 512,
-      "reconnectDelay": 2500,
-      "connectTimeout": 10000,
-      "tcpNoDelay": true,
-      "tcpKeepAlive": false,
-      "sendBufferSize": -1,
-      "maxInflightSends": 512,
-      "threads": 0,
-      "tlsTrustCertChainFile": null,
-      "tlsTrustCertChainFileName": null,
-      "appendToAttributes": true,
-      "appendToMessage": true
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `tlsTrustCertChainFile` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
