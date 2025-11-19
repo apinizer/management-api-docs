@@ -408,6 +408,27 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "syslog",
+  "name": "my-syslog-connection",
+  "description": "Updated Syslog connection for logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "syslogProtocolType": "TCP",
+  "syslogMessageHostname": "apinizer-prod.example.com",
+  "syslogServerHostname": "syslog-prod.example.com",
+  "syslogPort": 6514,
+  "syslogTimeout": 1000,
+  "syslogMessageFormat": "RFC_5424",
+  "syslogAppName": "Apinizer-Production",
+  "syslogFacility": "LOCAL0",
+  "syslogSeverity": "WARNING",
+  "syslogSslEnabled": true
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
