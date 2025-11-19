@@ -22,7 +22,7 @@ Linux Script connection for executing scripts on remote Linux servers via SSH. U
 
 #### List Connections
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=linux-script
 ```
 
 #### Get Connection
@@ -51,7 +51,7 @@ DELETE /apiops/projects/{projectName}/connections/{connectionName}/
 
 ### Endpoint
 ```
-GET /apiops/projects/{projectName}/connections/
+GET /apiops/projects/{projectName}/connections/?type=linux-script
 ```
 
 ### Request
@@ -68,30 +68,7 @@ GET /apiops/projects/{projectName}/connections/
 |-----------|------|----------|-------------|
 | projectName | string | Yes | Project name |
 
-### Response
-
-#### Success Response (200 OK)
-```json
-{
-  "success": true,
-  "resultList": [
-    {
-      "type": "linux-script",
-      "name": "my-linux-script-connection",
-      "description": "Linux script connection via SSH",
-      "deployToWorker": true,
-      "enabled": true,
-      "hostName": "linux.example.com",
-      "sshPort": 22,
-      "username": "apinizer",
-      "password": null
-    }
-  ],
-  "resultCount": 1
-}
-```
-
-**Note:** In list operations, `password` is returned as `null` for security.
+**Note:** The `type` query parameter is required to filter connections by type.
 
 ### cURL Example
 ```bash
