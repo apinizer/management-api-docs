@@ -508,6 +508,35 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "database",
+  "name": "my-database-connection",
+  "description": "Updated PostgreSQL database connection",
+  "deployToWorker": true,
+  "enabled": true,
+  "dbType": "POSTGRES",
+  "jdbcUrl": "jdbc:postgresql://localhost:5432/mydb",
+  "useCredentials": true,
+  "username": "dbuser",
+  "databaseName": "mydb",
+  "password": "newpassword123",
+  "initialPoolSize": 2,
+  "minPoolSize": 2,
+  "maxPoolSize": 10,
+  "incrementCount": 2,
+  "maxStatements": 200,
+  "idleConnectionTestPeriod": 30000,
+  "connectionTimeout": 30000,
+  "testConnectionOnCheckout": true,
+  "testConnectionOnCheckin": false,
+  "maxConnectionAge": 180000,
+  "maxIdleTime": 120000,
+  "selectedEnvironmentId": null
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
