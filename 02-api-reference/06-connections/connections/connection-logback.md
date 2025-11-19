@@ -368,6 +368,25 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "logback",
+  "name": "my-logback-connection",
+  "description": "Updated Logback connection for file logging",
+  "deployToWorker": true,
+  "enabled": true,
+  "logPath": "/var/log/apinizer/prod/",
+  "logFileName": "ApinizerApiProxyTrafficProd",
+  "logPodName": "worker-1",
+  "logFilenamePattern": "%d{yyyy-MM-dd-HH}.%i.log",
+  "logPattern": "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n",
+  "maxFileSize": 50,
+  "maxHistory": 90,
+  "totalSizeCap": 20
+}
+```
+
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
