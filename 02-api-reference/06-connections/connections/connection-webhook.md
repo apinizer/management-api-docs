@@ -425,6 +425,35 @@ PUT /apiops/projects/{projectName}/connections/{connectionName}/
 
 #### Request Body
 
+##### Full JSON Body Example
+```json
+{
+  "type": "webhook",
+  "name": "my-webhook-connection",
+  "description": "Updated Webhook connection for notifications",
+  "deployToWorker": true,
+  "enabled": true,
+  "httpMethod": "POST",
+  "fullUrl": "https://webhook-new.example.com/api/v2/notify",
+  "headerList": [
+    {
+      "name": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "name": "Authorization",
+      "value": "Bearer your-token-here"
+    },
+    {
+      "name": "X-API-Key",
+      "value": "your-api-key"
+    }
+  ],
+  "timeout": 10,
+  "connectionPoolMaxConnectionPerHost": 50,
+  "connectionPoolMaxConnectionTotal": 100
+}
+```
 **Note:** Request body structure is the same as Create Connection. All fields should be provided for update.
 
 ### Response
