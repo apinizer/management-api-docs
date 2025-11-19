@@ -9,7 +9,7 @@ permalink: /02-api-reference/06-connections/connections/connection-activemq/
 
 ### Connection Type
 ```
-activemq
+activeMq
 ```
 
 ### UI Documentation
@@ -76,7 +76,7 @@ GET /apiops/projects/{projectName}/connections/
   "success": true,
   "resultList": [
     {
-      "type": "activemq",
+      "type": "activeMq",
       "name": "my-activemq-connection",
       "description": "ActiveMQ connection for messaging",
       "deployToWorker": true,
@@ -142,7 +142,7 @@ GET /apiops/projects/{projectName}/connections/{connectionName}/
   "success": true,
   "resultList": [
     {
-      "type": "activemq",
+      "type": "activeMq",
       "name": "my-activemq-connection",
       "description": "ActiveMQ connection for messaging",
       "deployToWorker": true,
@@ -206,7 +206,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Queue Connection (TCP)
 ```json
 {
-  "type": "activemq",
+  "type": "activeMq",
   "name": "my-activemq-connection",
   "description": "ActiveMQ connection for messaging",
   "deployToWorker": true,
@@ -231,7 +231,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Topic Connection (AMQP)
 ```json
 {
-  "type": "activemq",
+  "type": "activeMq",
   "name": "my-activemq-topic",
   "description": "ActiveMQ topic connection",
   "deployToWorker": true,
@@ -256,7 +256,7 @@ POST /apiops/projects/{projectName}/connections/{connectionName}/
 ##### Full JSON Body Example - Transactional Session
 ```json
 {
-  "type": "activemq",
+  "type": "activeMq",
   "name": "my-activemq-transactional",
   "description": "ActiveMQ with transactional session",
   "deployToWorker": true,
@@ -363,7 +363,7 @@ curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "type": "activemq",
+    "type": "activeMq",
     "name": "my-activemq-connection",
     "description": "ActiveMQ connection for messaging",
     "deployToWorker": true,
