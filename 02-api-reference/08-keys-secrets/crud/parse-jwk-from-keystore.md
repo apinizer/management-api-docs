@@ -47,7 +47,7 @@ Authorization: Bearer YOUR_TOKEN
   "name": "my-jwk",
   "description": "JWK from keystore",
   "keyStoreName": "my-keystore",
-  "environmentId": "env-id-123",
+  "environmentName": "production",
   "aliasName": "my-alias",
   "useType": "SIGN",
   "keystoreAlgorithm": "RSA"
@@ -61,7 +61,7 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | JWK name (unique identifier) |
 | description | string | No | JWK description |
 | keyStoreName | string | Yes | Keystore name |
-| environmentId | string | Yes | Environment ID |
+| environmentName | string | Yes | Environment name |
 | aliasName | string | Yes | Alias name in keystore |
 | useType | string | Yes | Use type: `SIGN`, `ENCRYPT` |
 | keystoreAlgorithm | string | Yes | Keystore algorithm (e.g., `RSA`) |
@@ -81,7 +81,7 @@ curl -X POST \
     "name": "my-jwk",
     "description": "JWK from keystore",
     "keyStoreName": "my-keystore",
-    "environmentId": "env-id-123",
+    "environmentName": "production",
     "aliasName": "my-alias",
     "useType": "SIGN",
     "keystoreAlgorithm": "RSA"

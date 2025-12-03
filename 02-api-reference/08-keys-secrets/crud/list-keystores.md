@@ -57,7 +57,6 @@ None.
       "projectId": "project-id",
       "keyStoreEnvironmentList": [
         {
-          "environmentId": "env-id-123",
           "environmentName": "production",
           "type": "JKS",
           "file": "base64-encoded-keystore-content"
@@ -88,7 +87,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| environmentId | string | Environment ID |
 | environmentName | string | Environment name |
 | type | string | Keystore type (e.g., `JKS`, `PKCS12`) |
 | file | string | Base64-encoded keystore file content |

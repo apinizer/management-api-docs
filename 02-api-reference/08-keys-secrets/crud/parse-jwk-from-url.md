@@ -49,9 +49,12 @@ Authorization: Bearer YOUR_TOKEN
   "url": "https://example.com/.well-known/jwks.json",
   "urlOptionConnectTimeout": 5000,
   "urlOptionReadTimeout": 10000,
-  "urlOptionSizeLimit": 1048576
+  "urlOptionSizeLimit": 1048576,
+  "kid": "key-id-1"
 }
 ```
+
+**Note:** If the URL returns a JWK Set (array of keys), use `kid` to specify which key to use from the array.
 
 ### Request Body Fields
 
@@ -63,6 +66,7 @@ Authorization: Bearer YOUR_TOKEN
 | urlOptionConnectTimeout | integer | No | Connection timeout in milliseconds (default: 5000) |
 | urlOptionReadTimeout | integer | No | Read timeout in milliseconds (default: 10000) |
 | urlOptionSizeLimit | integer | No | Maximum response size in bytes (default: 1048576) |
+| kid | string | Conditional | Key ID (kid) - Required when the URL returns a JWK Set (array of keys) to specify which key to use |
 
 ## Response
 

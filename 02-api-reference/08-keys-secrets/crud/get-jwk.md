@@ -87,7 +87,7 @@ Authorization: Bearer YOUR_TOKEN
 | sourceId | string | ID of the source (certificate, key, or keystore) if applicable |
 | sourceUrl | string | URL of the source if sourceType is URL |
 | type | string | JWK type: `RSA`, `EC`, `OCT`, `OKP` |
-| kid | string | Key ID (kid) of the JWK |
+| kid | string | Key ID (kid) of the JWK. For URL and COPY_PASTE source types, this specifies which key to use when the source contains multiple keys (JWK Set) |
 | rsa | object | RSA key material (if type is RSA) |
 | ec | object | Elliptic Curve key material (if type is EC) |
 | oct | object | Octet sequence key material (if type is OCT) |

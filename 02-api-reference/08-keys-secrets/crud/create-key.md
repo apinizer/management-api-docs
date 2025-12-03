@@ -93,7 +93,7 @@ curl -X POST \
     "keyType": "RSA",
     "cryptoKeyInfoEnvironmentList": [
       {
-        "environmentId": "env-id-123",
+        "environmentName": "production",
         "publicKey": "base64-encoded-public-key",
         "privateKey": "base64-encoded-private-key"
       }

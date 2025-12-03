@@ -46,9 +46,12 @@ Authorization: Bearer YOUR_TOKEN
 {
   "name": "my-jwk",
   "description": "JWK from JSON string",
-  "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}"
+  "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}",
+  "kid": "key-id-1"
 }
 ```
+
+**Note:** If `jwkStr` contains a JWK Set (array of keys), use `kid` to specify which key to use from the array.
 
 ### Request Body Fields
 
@@ -57,6 +60,7 @@ Authorization: Bearer YOUR_TOKEN
 | name | string | Yes | JWK name (unique identifier) |
 | description | string | No | JWK description |
 | jwkStr | string | Yes | JWK JSON string |
+| kid | string | Conditional | Key ID (kid) - Required when `jwkStr` contains a JWK Set (array of keys) to specify which key to use |
 
 ## Response
 

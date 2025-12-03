@@ -92,7 +92,7 @@ curl -X POST \
     "description": "Keystore for API security",
     "keyStoreEnvironmentList": [
       {
-        "environmentId": "env-id-123",
+        "environmentName": "production",
         "type": "JKS",
         "file": "base64-encoded-keystore-content"
       }

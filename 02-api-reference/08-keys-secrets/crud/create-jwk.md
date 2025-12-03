@@ -62,9 +62,12 @@ The request body varies based on the `sourceType`. All source types require:
   "url": "https://example.com/.well-known/jwks.json",
   "urlOptionConnectTimeout": 5000,
   "urlOptionReadTimeout": 10000,
-  "urlOptionSizeLimit": 1048576
+  "urlOptionSizeLimit": 1048576,
+  "kid": "key-id-1"
 }
 ```
+
+**Note:** If the URL returns a JWK Set (array of keys), use `kid` to specify which key to use from the array.
 
 #### Source Type: COPY_PASTE
 
@@ -73,9 +76,12 @@ The request body varies based on the `sourceType`. All source types require:
   "name": "my-jwk",
   "description": "JWK from JSON string",
   "sourceType": "COPY_PASTE",
-  "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}"
+  "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}",
+  "kid": "key-id-1"
 }
 ```
+
+**Note:** If `jwkStr` contains a JWK Set (array of keys), use `kid` to specify which key to use from the array.
 
 #### Source Type: CERTIFICATE
 
@@ -85,7 +91,7 @@ The request body varies based on the `sourceType`. All source types require:
   "description": "JWK from certificate",
   "sourceType": "CERTIFICATE",
   "certificateName": "my-certificate",
-  "environmentId": "env-id-123",
+  "environmentName": "production",
   "useType": "SIGN",
   "keystoreAlgorithm": "RSA"
 }
@@ -99,7 +105,7 @@ The request body varies based on the `sourceType`. All source types require:
   "description": "JWK from key",
   "sourceType": "PUBLIC_KEY",
   "keyName": "my-key",
-  "environmentId": "env-id-123",
+  "environmentName": "production",
   "useType": "SIGN",
   "keystoreAlgorithm": "RSA"
 }
@@ -113,7 +119,7 @@ The request body varies based on the `sourceType`. All source types require:
   "description": "JWK from keystore",
   "sourceType": "KEYSTORE",
   "keyStoreName": "my-keystore",
-  "environmentId": "env-id-123",
+  "environmentName": "production",
   "aliasName": "my-alias",
   "useType": "SIGN",
   "keystoreAlgorithm": "RSA"
@@ -135,7 +141,8 @@ The request body varies based on the `sourceType`. All source types require:
 | certificateName | string | Conditional | Certificate name (required if sourceType is CERTIFICATE) |
 | keyName | string | Conditional | Key name (required if sourceType is PUBLIC_KEY or PRIVATE_KEY) |
 | keyStoreName | string | Conditional | Keystore name (required if sourceType is KEYSTORE) |
-| environmentId | string | Conditional | Environment ID (required for CERTIFICATE, KEY, KEYSTORE source types) |
+| kid | string | Conditional | Key ID (kid) - Required for URL and COPY_PASTE source types when the source contains multiple keys (JWK Set) |
+| environmentName | string | Conditional | Environment name (required for CERTIFICATE, KEY, KEYSTORE source types) |
 | aliasName | string | Conditional | Alias name in keystore (required if sourceType is KEYSTORE) |
 | useType | string | Conditional | Use type: `SIGN`, `ENCRYPT` (required for CERTIFICATE, KEY, KEYSTORE source types) |
 | keystoreAlgorithm | string | Conditional | Keystore algorithm (required for CERTIFICATE, KEY, KEYSTORE source types) |
@@ -262,7 +269,7 @@ curl -X POST \
     "description": "JWK from certificate",
     "sourceType": "CERTIFICATE",
     "certificateName": "my-certificate",
-    "environmentId": "env-id-123",
+    "environmentName": "production",
     "useType": "SIGN",
     "keystoreAlgorithm": "RSA"
   }'
