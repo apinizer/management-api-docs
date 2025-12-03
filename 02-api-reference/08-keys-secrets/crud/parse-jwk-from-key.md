@@ -49,7 +49,7 @@ Authorization: Bearer YOUR_TOKEN
   "keyName": "my-key",
   "environmentName": "production",
   "useType": "SIGNATURE",
-  "keystoreAlgorithm": "RSA"
+  "keystoreAlgorithm": "RS256"
 }
 ```
 
@@ -62,7 +62,7 @@ Authorization: Bearer YOUR_TOKEN
 | keyName | string | Yes | Key name |
 | environmentName | string | Yes | Environment name |
 | useType | string | Yes | Use type: `SIGNATURE`, `ENCRYPTION` |
-| keystoreAlgorithm | string | Yes | Keystore algorithm (e.g., `RSA`) |
+| keystoreAlgorithm | string | Yes | Algorithm to use with the key. See Notes section for valid algorithm values based on key type and useType. |
 
 ## Response
 
@@ -81,9 +81,22 @@ curl -X POST \
     "keyName": "my-key",
     "environmentName": "production",
     "useType": "SIGNATURE",
-    "keystoreAlgorithm": "RSA"
+    "keystoreAlgorithm": "RS256"
   }'
 ```
+
+## Notes
+
+- **keystoreAlgorithm**: This field specifies the cryptographic algorithm to use with the key. The value must match the key type and useType:
+  - **RSA with SIGNATURE**: `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, `PS512`
+  - **RSA with ENCRYPTION**: `RSA1_5` (deprecated), `RSA-OAEP` (deprecated), `RSA-OAEP-256`, `RSA-OAEP-384`, `RSA-OAEP-512`
+  - **EC with SIGNATURE**: `ES256`, `ES384`, `ES512`, `ES256K`
+  - **EC with ENCRYPTION**: `ECDH-ES`, `ECDH-ES+A128KW`, `ECDH-ES+A192KW`, `ECDH-ES+A256KW`, `ECDH-1PU`, `ECDH-1PU+A128KW`, `ECDH-1PU+A192KW`, `ECDH-1PU+A256KW`
+  - **OCT with SIGNATURE**: `HS256`, `HS384`, `HS512`
+  - **OCT with ENCRYPTION**: `A128KW`, `A192KW`, `A256KW`, `A128GCMKW`, `A192GCMKW`, `A256GCMKW`, `DIR`, `PBES2-HS256+A128KW`, `PBES2-HS384+A192KW`, `PBES2-HS512+A256KW`
+  - **OKP with SIGNATURE**: `EdDSA`
+  - **OKP with ENCRYPTION**: `ECDH-ES`, `ECDH-ES+A128KW`, `ECDH-ES+A192KW`, `ECDH-ES+A256KW`, `ECDH-1PU`, `ECDH-1PU+A128KW`, `ECDH-1PU+A192KW`, `ECDH-1PU+A256KW`
+- **Important**: `keystoreAlgorithm` must be a valid algorithm name, not a key type (e.g., use `RS256` not `RSA`)
 
 ## Related Documentation
 

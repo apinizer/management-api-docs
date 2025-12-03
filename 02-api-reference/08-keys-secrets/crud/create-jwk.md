@@ -93,7 +93,7 @@ The request body varies based on the `sourceType`. All source types require:
   "certificateName": "my-certificate",
   "environmentName": "production",
   "useType": "SIGNATURE",
-  "keystoreAlgorithm": "RSA"
+  "keystoreAlgorithm": "RS256"
 }
 ```
 
@@ -107,7 +107,7 @@ The request body varies based on the `sourceType`. All source types require:
   "keyName": "my-key",
   "environmentName": "production",
   "useType": "SIGNATURE",
-  "keystoreAlgorithm": "RSA"
+  "keystoreAlgorithm": "RS256"
 }
 ```
 
@@ -122,7 +122,7 @@ The request body varies based on the `sourceType`. All source types require:
   "environmentName": "production",
   "aliasName": "my-alias",
   "useType": "SIGNATURE",
-  "keystoreAlgorithm": "RSA"
+  "keystoreAlgorithm": "RS256"
 }
 ```
 
@@ -145,7 +145,7 @@ The request body varies based on the `sourceType`. All source types require:
 | environmentName | string | Conditional | Environment name (required for CERTIFICATE, KEY, KEYSTORE source types) |
 | aliasName | string | Conditional | Alias name in keystore (required if sourceType is KEYSTORE) |
 | useType | string | Conditional | Use type: `SIGNATURE`, `ENCRYPTION` (required for CERTIFICATE, KEY, KEYSTORE source types) |
-| keystoreAlgorithm | string | Conditional | Keystore algorithm (required for CERTIFICATE, KEY, KEYSTORE source types) |
+| keystoreAlgorithm | string | Conditional | Algorithm to use with the key (required for CERTIFICATE, KEY, KEYSTORE source types). See Notes section for valid algorithm values based on key type and useType. |
 
 ### Notes
 
@@ -153,6 +153,16 @@ The request body varies based on the `sourceType`. All source types require:
 - For `GENERATE` source type, use the [Generate JWK](/management-api-docs/02-api-reference/08-keys-secrets/crud/generate-jwk/) endpoint
 - Certificate, Key, and Keystore must exist and be accessible in the specified environment
 - JWK is automatically deployed to all environments after creation
+- **keystoreAlgorithm**: This field specifies the cryptographic algorithm to use with the key. The value must match the key type and useType:
+  - **RSA with SIGNATURE**: `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, `PS512`
+  - **RSA with ENCRYPTION**: `RSA1_5` (deprecated), `RSA-OAEP` (deprecated), `RSA-OAEP-256`, `RSA-OAEP-384`, `RSA-OAEP-512`
+  - **EC with SIGNATURE**: `ES256`, `ES384`, `ES512`, `ES256K`
+  - **EC with ENCRYPTION**: `ECDH-ES`, `ECDH-ES+A128KW`, `ECDH-ES+A192KW`, `ECDH-ES+A256KW`, `ECDH-1PU`, `ECDH-1PU+A128KW`, `ECDH-1PU+A192KW`, `ECDH-1PU+A256KW`
+  - **OCT with SIGNATURE**: `HS256`, `HS384`, `HS512`
+  - **OCT with ENCRYPTION**: `A128KW`, `A192KW`, `A256KW`, `A128GCMKW`, `A192GCMKW`, `A256GCMKW`, `DIR`, `PBES2-HS256+A128KW`, `PBES2-HS384+A192KW`, `PBES2-HS512+A256KW`
+  - **OKP with SIGNATURE**: `EdDSA`
+  - **OKP with ENCRYPTION**: `ECDH-ES`, `ECDH-ES+A128KW`, `ECDH-ES+A192KW`, `ECDH-ES+A256KW`, `ECDH-1PU`, `ECDH-1PU+A128KW`, `ECDH-1PU+A192KW`, `ECDH-1PU+A256KW`
+- **Important**: `keystoreAlgorithm` must be a valid algorithm name, not a key type (e.g., use `RS256` not `RSA`)
 
 ## Response
 
@@ -271,7 +281,7 @@ curl -X POST \
     "certificateName": "my-certificate",
     "environmentName": "production",
     "useType": "SIGNATURE",
-    "keystoreAlgorithm": "RSA"
+    "keystoreAlgorithm": "RS256"
   }'
 ```
 
