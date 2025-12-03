@@ -42,7 +42,7 @@ See [OpenAPI Spec](/management-api-docs/03-appendix/openapi-spec/) for more info
   - [Policies](/management-api-docs/02-api-reference/05-policies/)
   - [Connections](/management-api-docs/02-api-reference/06-connections/)
   - [Credentials](/management-api-docs/02-api-reference/07-credentials/)
-  - [Certificates](/management-api-docs/02-api-reference/08-certificates/)
+  - [Keys & Secrets](/management-api-docs/02-api-reference/08-keys-secrets/)
   - [API Proxy Groups](/management-api-docs/02-api-reference/09-api-proxy-groups/)
   - [Environment Variables](/management-api-docs/02-api-reference/10-environment-variables/)
   - [IP Groups](/management-api-docs/02-api-reference/11-ip-groups/)

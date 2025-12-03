@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /02-api-reference/08-certificates/crud/delete-certificate/
+permalink: /02-api-reference/08-keys-secrets/crud/delete-certificate/
 ---
 
 # Delete Certificate
@@ -93,5 +93,5 @@ curl -X DELETE \
 
 ## Related Documentation
 
-- [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
-- [Create Certificate](/management-api-docs/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [List Certificates](/management-api-docs/02-api-reference/08-keys-secrets/crud/list-certificates/) - List all certificates
+- [Create Certificate](/management-api-docs/02-api-reference/08-keys-secrets/crud/create-certificate/) - Create a new certificate

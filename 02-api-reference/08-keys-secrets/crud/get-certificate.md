@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /02-api-reference/08-certificates/crud/get-certificate/
+permalink: /02-api-reference/08-keys-secrets/crud/get-certificate/
 ---
 
 # Get Certificate
@@ -73,7 +73,7 @@ None.
 
 #### Response Fields
 
-Same as List Certificates. See [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) for field descriptions.
+Same as List Certificates. See [List Certificates](/management-api-docs/02-api-reference/08-keys-secrets/crud/list-certificates/) for field descriptions.
 
 ### Notes
 
@@ -100,5 +100,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [List Certificates](/management-api-docs/02-api-reference/08-certificates/crud/list-certificates/) - List all certificates
-- [Create Certificate](/management-api-docs/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [List Certificates](/management-api-docs/02-api-reference/08-keys-secrets/crud/list-certificates/) - List all certificates
+- [Create Certificate](/management-api-docs/02-api-reference/08-keys-secrets/crud/create-certificate/) - Create a new certificate

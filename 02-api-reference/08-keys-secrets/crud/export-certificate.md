@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /02-api-reference/08-certificates/crud/export-certificate/
+permalink: /02-api-reference/08-keys-secrets/crud/export-certificate/
 ---
 
 # Export Certificate
@@ -102,5 +102,5 @@ curl -X GET \
 
 ## Related Documentation
 
-- [Get Certificate](/management-api-docs/02-api-reference/08-certificates/crud/get-certificate/) - Get certificate details
-- [Create Certificate](/management-api-docs/02-api-reference/08-certificates/crud/create-certificate/) - Create a new certificate
+- [Get Certificate](/management-api-docs/02-api-reference/08-keys-secrets/crud/get-certificate/) - Get certificate details
+- [Create Certificate](/management-api-docs/02-api-reference/08-keys-secrets/crud/create-certificate/) - Create a new certificate

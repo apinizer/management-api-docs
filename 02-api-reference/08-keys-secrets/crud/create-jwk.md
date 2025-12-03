@@ -1,0 +1,297 @@
+---
+layout: default
+permalink: /02-api-reference/08-keys-secrets/crud/create-jwk/
+---
+
+# Create JWK
+
+## Overview
+
+Creates a new JWK (JSON Web Key) and deploys it to environments. JWKs can be created from various sources including URLs, JSON strings, certificates, keys, keystores, or generated programmatically.
+
+## Endpoint
+
+```
+POST /apiops/projects/{projectName}/jwks/
+```
+
+## Authentication
+
+Requires a Personal API Access Token.
+
+### Header
+
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+## Request
+
+### Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Authorization | Bearer {token} | Yes |
+| Content-Type | application/json | Yes |
+
+### Path Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| projectName | string | Yes | Project name |
+
+### Request Body
+
+The request body varies based on the `sourceType`. All source types require:
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK for API authentication",
+  "sourceType": "URL"
+}
+```
+
+#### Source Type: URL
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK from URL",
+  "sourceType": "URL",
+  "url": "https://example.com/.well-known/jwks.json",
+  "urlOptionConnectTimeout": 5000,
+  "urlOptionReadTimeout": 10000,
+  "urlOptionSizeLimit": 1048576
+}
+```
+
+#### Source Type: COPY_PASTE
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK from JSON string",
+  "sourceType": "COPY_PASTE",
+  "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}"
+}
+```
+
+#### Source Type: CERTIFICATE
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK from certificate",
+  "sourceType": "CERTIFICATE",
+  "certificateName": "my-certificate",
+  "environmentId": "env-id-123",
+  "useType": "SIGN",
+  "keystoreAlgorithm": "RSA"
+}
+```
+
+#### Source Type: PUBLIC_KEY or PRIVATE_KEY
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK from key",
+  "sourceType": "PUBLIC_KEY",
+  "keyName": "my-key",
+  "environmentId": "env-id-123",
+  "useType": "SIGN",
+  "keystoreAlgorithm": "RSA"
+}
+```
+
+#### Source Type: KEYSTORE
+
+```json
+{
+  "name": "my-jwk",
+  "description": "JWK from keystore",
+  "sourceType": "KEYSTORE",
+  "keyStoreName": "my-keystore",
+  "environmentId": "env-id-123",
+  "aliasName": "my-alias",
+  "useType": "SIGN",
+  "keystoreAlgorithm": "RSA"
+}
+```
+
+### Request Body Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| name | string | Yes | JWK name (unique identifier) |
+| description | string | No | JWK description |
+| sourceType | string | Yes | Source type: `URL`, `COPY_PASTE`, `CERTIFICATE`, `PUBLIC_KEY`, `PRIVATE_KEY`, `KEYSTORE` |
+| url | string | Conditional | URL to fetch JWK from (required if sourceType is URL) |
+| urlOptionConnectTimeout | integer | No | Connection timeout in milliseconds (default: 5000) |
+| urlOptionReadTimeout | integer | No | Read timeout in milliseconds (default: 10000) |
+| urlOptionSizeLimit | integer | No | Maximum response size in bytes (default: 1048576) |
+| jwkStr | string | Conditional | JWK JSON string (required if sourceType is COPY_PASTE) |
+| certificateName | string | Conditional | Certificate name (required if sourceType is CERTIFICATE) |
+| keyName | string | Conditional | Key name (required if sourceType is PUBLIC_KEY or PRIVATE_KEY) |
+| keyStoreName | string | Conditional | Keystore name (required if sourceType is KEYSTORE) |
+| environmentId | string | Conditional | Environment ID (required for CERTIFICATE, KEY, KEYSTORE source types) |
+| aliasName | string | Conditional | Alias name in keystore (required if sourceType is KEYSTORE) |
+| useType | string | Conditional | Use type: `SIGN`, `ENCRYPT` (required for CERTIFICATE, KEY, KEYSTORE source types) |
+| keystoreAlgorithm | string | Conditional | Keystore algorithm (required for CERTIFICATE, KEY, KEYSTORE source types) |
+
+### Notes
+
+- `name` must be unique within the project
+- For `GENERATE` source type, use the [Generate JWK](/management-api-docs/02-api-reference/08-keys-secrets/crud/generate-jwk/) endpoint
+- Certificate, Key, and Keystore must exist and be accessible in the specified environment
+- JWK is automatically deployed to all environments after creation
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true,
+  "deploymentResult": {
+    "success": true,
+    "message": "Deployment completed successfully",
+    "environmentResults": [
+      {
+        "environmentName": "production",
+        "success": true,
+        "message": "Deployed successfully"
+      },
+      {
+        "environmentName": "staging",
+        "success": true,
+        "message": "Deployed successfully"
+      }
+    ]
+  }
+}
+```
+
+### Error Response (400 Bad Request)
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "JWK name can not be empty!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "JWK (name: my-jwk) is already exist! Try update operation if want to change its value."
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Source type is required!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "URL is required for URL source type!"
+}
+```
+
+or
+
+```json
+{
+  "error": "bad_request",
+  "error_description": "Certificate (name: my-certificate) is not found!"
+}
+```
+
+## cURL Example
+
+### Example 1: Create JWK from URL
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/jwks/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-jwk",
+    "description": "JWK from URL",
+    "sourceType": "URL",
+    "url": "https://example.com/.well-known/jwks.json"
+  }'
+```
+
+### Example 2: Create JWK from JSON String
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/jwks/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-jwk",
+    "description": "JWK from clipboard",
+    "sourceType": "COPY_PASTE",
+    "jwkStr": "{\"kty\":\"RSA\",\"n\":\"...\",\"e\":\"AQAB\"}"
+  }'
+```
+
+### Example 3: Create JWK from Certificate
+
+```bash
+curl -X POST \
+  "https://demo.apinizer.com/apiops/projects/MyProject/jwks/" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-jwk",
+    "description": "JWK from certificate",
+    "sourceType": "CERTIFICATE",
+    "certificateName": "my-certificate",
+    "environmentId": "env-id-123",
+    "useType": "SIGN",
+    "keystoreAlgorithm": "RSA"
+  }'
+```
+
+## Notes and Warnings
+
+- **JWK Name**: 
+  - Must be unique within the project
+  - Cannot be changed after creation
+- **Source Types**: 
+  - `URL`: Fetches JWK from a remote URL
+  - `COPY_PASTE`: Creates JWK from JSON string
+  - `CERTIFICATE`: Extracts JWK from existing certificate
+  - `PUBLIC_KEY`/`PRIVATE_KEY`: Extracts JWK from existing key
+  - `KEYSTORE`: Extracts JWK from keystore alias
+  - `GENERATE`: Use Generate JWK endpoint instead
+- **Automatic Deployment**: 
+  - JWK is automatically deployed after creation
+  - Deployment results are returned in the response
+- **Permissions**: 
+  - Requires `ROLE_API_SECURITY` permission
+  - Requires `ROLE_DEPLOY_UNDEPLOY_PROXIES` permission for deployment
+  - User must have access to the project and referenced resources
+
+## Related Documentation
+
+- [List JWKs](/management-api-docs/02-api-reference/08-keys-secrets/crud/list-jwks/) - List all JWKs
+- [Get JWK](/management-api-docs/02-api-reference/08-keys-secrets/crud/get-jwk/) - Get a specific JWK
+- [Generate JWK](/management-api-docs/02-api-reference/08-keys-secrets/crud/generate-jwk/) - Generate a new JWK
+- [Update JWK](/management-api-docs/02-api-reference/08-keys-secrets/crud/update-jwk/) - Update a JWK
+

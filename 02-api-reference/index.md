@@ -49,9 +49,12 @@ The Management API provides endpoints for managing all aspects of your Apinizer 
 - Create, update, delete credentials
 - Manage credential access and passwords
 
-### Certificates
-- [Certificates Overview](/management-api-docs/08-certificates/) - Complete certificate management documentation
-- Create, update, delete certificates
+### Keys & Secrets
+- [Keys & Secrets Overview](/management-api-docs/02-api-reference/08-keys-secrets/) - Complete keys and secrets management documentation
+- Manage JWKs (JSON Web Keys)
+- Manage Keystores
+- Manage Keys (Crypto Keys)
+- Manage Certificates
 - Export certificates and manage truststore
 
 ### API Proxy Groups

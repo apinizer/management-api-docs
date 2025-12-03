@@ -216,13 +216,13 @@
                     </ul>
                     {% endif %}
                   </li>
-                  <li class="nav-subsection {% if page.url contains '/08-certificates/' %}active-subsection{% endif %}">
-                    <a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url contains '/08-certificates/' %}class="active"{% endif %}>Certificates</a>
-                    {% if page.url contains '/08-certificates/' %}
+                  <li class="nav-subsection {% if page.url contains '/08-keys-secrets/' %}active-subsection{% endif %}">
+                    <a href="{{ '/02-api-reference/08-keys-secrets/' | relative_url }}" {% if page.url contains '/08-keys-secrets/' %}class="active"{% endif %}>Keys & Secrets</a>
+                    {% if page.url contains '/08-keys-secrets/' %}
                     <ul class="submenu">
-                      <li><a href="{{ '/02-api-reference/08-certificates/' | relative_url }}" {% if page.url == '/02-api-reference/08-certificates/' %}class="active"{% endif %}>Overview</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/' | relative_url }}" {% if page.url == '/02-api-reference/08-keys-secrets/' %}class="active"{% endif %}>Overview</a></li>
                       <li><strong>CRUD Operations</strong></li>
-                      <li><a href="{{ '/02-api-reference/08-certificates/crud/' | relative_url }}" {% if page.url contains '/08-certificates/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/' | relative_url }}" {% if page.url contains '/08-keys-secrets/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
                     </ul>
                     {% endif %}
                   </li>
