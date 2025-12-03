@@ -52,7 +52,6 @@ None.
   "success": true,
   "resultList": [
     {
-      "id": "key-id-123",
       "name": "my-key",
       "description": "Key for API encryption",
       "projectId": "project-id",
@@ -81,7 +80,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | string | Key unique identifier |
 | name | string | Key name |
 | description | string | Key description |
 | projectId | string | Project ID where key belongs |

@@ -52,7 +52,6 @@ None.
   "success": true,
   "resultList": [
     {
-      "id": "jwk-id-123",
       "name": "my-jwk",
       "description": "JWK for API authentication",
       "projectId": "project-id",
@@ -63,7 +62,6 @@ None.
       "kid": "key-id-1"
     },
     {
-      "id": "jwk-id-456",
       "name": "generated-jwk",
       "description": "Auto-generated JWK",
       "projectId": "project-id",
@@ -88,7 +86,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | string | JWK unique identifier |
 | name | string | JWK name |
 | description | string | JWK description |
 | projectId | string | Project ID where JWK belongs |

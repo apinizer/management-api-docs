@@ -49,7 +49,6 @@ Authorization: Bearer YOUR_TOKEN
   "success": true,
   "resultList": [
     {
-      "id": "jwk-id-123",
       "name": "my-jwk",
       "description": "JWK for API authentication",
       "projectId": "project-id",
@@ -81,7 +80,6 @@ Authorization: Bearer YOUR_TOKEN
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | string | JWK unique identifier |
 | name | string | JWK name |
 | description | string | JWK description |
 | projectId | string | Project ID where JWK belongs |

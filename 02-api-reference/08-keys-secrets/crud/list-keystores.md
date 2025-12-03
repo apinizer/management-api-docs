@@ -52,7 +52,6 @@ None.
   "success": true,
   "resultList": [
     {
-      "id": "keystore-id-123",
       "name": "my-keystore",
       "description": "Keystore for API security",
       "projectId": "project-id",
@@ -80,7 +79,6 @@ None.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| id | string | Keystore unique identifier |
 | name | string | Keystore name |
 | description | string | Keystore description |
 | projectId | string | Project ID where keystore belongs |
