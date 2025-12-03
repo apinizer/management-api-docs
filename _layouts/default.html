@@ -221,8 +221,38 @@
                     {% if page.url contains '/08-keys-secrets/' %}
                     <ul class="submenu">
                       <li><a href="{{ '/02-api-reference/08-keys-secrets/' | relative_url }}" {% if page.url == '/02-api-reference/08-keys-secrets/' %}class="active"{% endif %}>Overview</a></li>
-                      <li><strong>CRUD Operations</strong></li>
-                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/' | relative_url }}" {% if page.url contains '/08-keys-secrets/crud/' %}class="active"{% endif %}>CRUD Index</a></li>
+                      <li><strong>JWKs (JSON Web Keys)</strong></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/list-jwks/' | relative_url }}" {% if page.url contains 'list-jwks' %}class="active"{% endif %}>List JWKs</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/get-jwk/' | relative_url }}" {% if page.url contains 'get-jwk' %}class="active"{% endif %}>Get JWK</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/create-jwk/' | relative_url }}" {% if page.url contains 'create-jwk' %}class="active"{% endif %}>Create JWK</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/update-jwk/' | relative_url }}" {% if page.url contains 'update-jwk' %}class="active"{% endif %}>Update JWK</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/delete-jwk/' | relative_url }}" {% if page.url contains 'delete-jwk' %}class="active"{% endif %}>Delete JWK</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/generate-jwk/' | relative_url }}" {% if page.url contains 'generate-jwk' %}class="active"{% endif %}>Generate JWK</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/parse-jwk-from-url/' | relative_url }}" {% if page.url contains 'parse-jwk-from-url' %}class="active"{% endif %}>Parse JWK from URL</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/parse-jwk-from-clipboard/' | relative_url }}" {% if page.url contains 'parse-jwk-from-clipboard' %}class="active"{% endif %}>Parse JWK from Clipboard</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/parse-jwk-from-certificate/' | relative_url }}" {% if page.url contains 'parse-jwk-from-certificate' %}class="active"{% endif %}>Parse JWK from Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/parse-jwk-from-key/' | relative_url }}" {% if page.url contains 'parse-jwk-from-key' %}class="active"{% endif %}>Parse JWK from Key</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/parse-jwk-from-keystore/' | relative_url }}" {% if page.url contains 'parse-jwk-from-keystore' %}class="active"{% endif %}>Parse JWK from Keystore</a></li>
+                      <li><strong>Keystores</strong></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/list-keystores/' | relative_url }}" {% if page.url contains 'list-keystores' %}class="active"{% endif %}>List Keystores</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/get-keystore/' | relative_url }}" {% if page.url contains 'get-keystore' %}class="active"{% endif %}>Get Keystore</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/create-keystore/' | relative_url }}" {% if page.url contains 'create-keystore' %}class="active"{% endif %}>Create Keystore</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/update-keystore/' | relative_url }}" {% if page.url contains 'update-keystore' %}class="active"{% endif %}>Update Keystore</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/delete-keystore/' | relative_url }}" {% if page.url contains 'delete-keystore' %}class="active"{% endif %}>Delete Keystore</a></li>
+                      <li><strong>Keys (Crypto Keys)</strong></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/list-keys/' | relative_url }}" {% if page.url contains 'list-keys' %}class="active"{% endif %}>List Keys</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/get-key/' | relative_url }}" {% if page.url contains 'get-key' %}class="active"{% endif %}>Get Key</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/create-key/' | relative_url }}" {% if page.url contains 'create-key' %}class="active"{% endif %}>Create Key</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/update-key/' | relative_url }}" {% if page.url contains 'update-key' %}class="active"{% endif %}>Update Key</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/delete-key/' | relative_url }}" {% if page.url contains 'delete-key' %}class="active"{% endif %}>Delete Key</a></li>
+                      <li><strong>Certificates</strong></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/list-certificates/' | relative_url }}" {% if page.url contains 'list-certificates' %}class="active"{% endif %}>List Certificates</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/get-certificate/' | relative_url }}" {% if page.url contains 'get-certificate' %}class="active"{% endif %}>Get Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/create-certificate/' | relative_url }}" {% if page.url contains 'create-certificate' %}class="active"{% endif %}>Create Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/update-certificate/' | relative_url }}" {% if page.url contains 'update-certificate' %}class="active"{% endif %}>Update Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/delete-certificate/' | relative_url }}" {% if page.url contains 'delete-certificate' %}class="active"{% endif %}>Delete Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/export-certificate/' | relative_url }}" {% if page.url contains 'export-certificate' %}class="active"{% endif %}>Export Certificate</a></li>
+                      <li><a href="{{ '/02-api-reference/08-keys-secrets/crud/get-truststore-certificates/' | relative_url }}" {% if page.url contains 'get-truststore-certificates' %}class="active"{% endif %}>Get Truststore Certificates</a></li>
                     </ul>
                     {% endif %}
                   </li>
