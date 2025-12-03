@@ -53,7 +53,12 @@ The request body structure varies based on the JWK `type`. All types require `na
   "type": "RSA",
   "kid": "rsa-key-1",
   "rsa": {
-    "keySize": 2048
+    "keySize": 2048,
+    "keyUseType": "SIGNATURE",
+    "algorithm": "RSA256",
+    "keyIdType": "TIMESTAMP",
+    "notBeforeTime": "2024-01-01T00:00:00Z",
+    "expirationTime": "2025-01-01T00:00:00Z"
   }
 }
 ```
@@ -63,6 +68,15 @@ The request body structure varies based on the JWK `type`. All types require `na
   - `2048`: Standard size, good balance of security and performance
   - `3072`: Higher security, recommended for long-term use
   - `4096`: Maximum security, slower operations
+- `keyUseType` (string, optional): Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`
+  - `SIGNATURE`: Key is used for signing (default)
+  - `ENCRYPTION`: Key is used for encryption
+- `algorithm` (string, optional): Algorithm to use with this key. Valid values:
+  - For SIGNATURE: `RSA256`, `RSA384`, `RSA512`, `PS256`, `PS384`, `PS512`
+  - For ENCRYPTION: `RSA1_5` (deprecated), `RSA_OAEP` (deprecated), `RSA_OAEP_256`, `RSA_OAEP_384`, `RSA_OAEP_512`
+- `keyIdType` (string, optional): Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE`
+- `notBeforeTime` (string, optional): ISO 8601 date/time when the key becomes valid. If not provided, current time is used
+- `expirationTime` (string, optional): ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used
 
 #### Type: EC (Elliptic Curve)
 
@@ -73,16 +87,31 @@ The request body structure varies based on the JWK `type`. All types require `na
   "type": "EC",
   "kid": "ec-key-1",
   "ec": {
-    "crv": "P-256"
+    "curveType": "P256",
+    "keyUseType": "SIGNATURE",
+    "algorithm": "ES256",
+    "keyIdType": "TIMESTAMP",
+    "notBeforeTime": "2024-01-01T00:00:00Z",
+    "expirationTime": "2025-01-01T00:00:00Z"
   }
 }
 ```
 
 **EC Parameters:**
-- `crv` (string): Curve name. Valid values:
-  - `P-256`: 256-bit curve (NIST P-256, secp256r1)
-  - `P-384`: 384-bit curve (NIST P-384, secp384r1)
-  - `P-521`: 521-bit curve (NIST P-521, secp521r1)
+- `curveType` (string): Curve name. Valid values: `P256`, `P384`, `P521`, `SECP256K1`
+  - `P256`: 256-bit curve (NIST P-256, secp256r1)
+  - `P384`: 384-bit curve (NIST P-384, secp384r1)
+  - `P521`: 521-bit curve (NIST P-521, secp521r1)
+  - `SECP256K1`: secp256k1 curve (used in Bitcoin)
+- `keyUseType` (string, optional): Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`
+  - `SIGNATURE`: Key is used for signing (default)
+  - `ENCRYPTION`: Key is used for encryption
+- `algorithm` (string, optional): Algorithm to use with this key. Valid values:
+  - For SIGNATURE: `ES256`, `ES384`, `ES512`, `ES256K`
+  - For ENCRYPTION: `ECDH_ES`, `ECDH_ES_A128KW`, `ECDH_ES_A192KW`, `ECDH_ES_A256KW`, `ECDH_1PU`, `ECDH_1PU_A128KW`, `ECDH_1PU_A192KW`, `ECDH_1PU_A256KW`
+- `keyIdType` (string, optional): Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE`
+- `notBeforeTime` (string, optional): ISO 8601 date/time when the key becomes valid. If not provided, current time is used
+- `expirationTime` (string, optional): ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used
 
 #### Type: OCT (Octet Sequence - Symmetric Key)
 
@@ -93,7 +122,14 @@ The request body structure varies based on the JWK `type`. All types require `na
   "type": "OCT",
   "kid": "oct-key-1",
   "oct": {
-    "keySize": 256
+    "keySize": 256,
+    "keyUseType": "SIGNATURE",
+    "algorithm": "HS256",
+    "keyIdType": "TIMESTAMP",
+    "passwordSaltLength": 8,
+    "passwordIterationCount": 1000,
+    "notBeforeTime": "2024-01-01T00:00:00Z",
+    "expirationTime": "2025-01-01T00:00:00Z"
   }
 }
 ```
@@ -103,6 +139,17 @@ The request body structure varies based on the JWK `type`. All types require `na
   - `128`: 128-bit key (16 bytes)
   - `192`: 192-bit key (24 bytes)
   - `256`: 256-bit key (32 bytes) - Recommended
+- `keyUseType` (string, optional): Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`
+  - `SIGNATURE`: Key is used for signing (default)
+  - `ENCRYPTION`: Key is used for encryption
+- `algorithm` (string, optional): Algorithm to use with this key. Valid values:
+  - For SIGNATURE: `HS256`, `HS384`, `HS512`
+  - For ENCRYPTION: `A128KW`, `A192KW`, `A256KW`, `A128GCMKW`, `A192GCMKW`, `A256GCMKW`, `DIR`, `PBES2_HS256_A128KW`, `PBES2_HS384_A192KW`, `PBES2_HS512_A256KW`
+- `keyIdType` (string, optional): Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE`
+- `passwordSaltLength` (integer, optional): Salt length for password-based encryption. Default: `8`
+- `passwordIterationCount` (integer, optional): Iteration count for password-based encryption. Default: `1000`
+- `notBeforeTime` (string, optional): ISO 8601 date/time when the key becomes valid. If not provided, current time is used
+- `expirationTime` (string, optional): ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used
 
 #### Type: OKP (Octet Key Pair)
 
@@ -113,17 +160,30 @@ The request body structure varies based on the JWK `type`. All types require `na
   "type": "OKP",
   "kid": "okp-key-1",
   "okp": {
-    "crv": "Ed25519"
+    "curveType": "ED25519",
+    "keyUseType": "SIGNATURE",
+    "algorithm": "EdDSA",
+    "keyIdType": "TIMESTAMP",
+    "notBeforeTime": "2024-01-01T00:00:00Z",
+    "expirationTime": "2025-01-01T00:00:00Z"
   }
 }
 ```
 
 **OKP Parameters:**
-- `crv` (string): Curve name. Valid values:
-  - `Ed25519`: Edwards Curve for signing (Ed25519)
-  - `Ed448`: Edwards Curve for signing (Ed448)
+- `curveType` (string): Curve name. Valid values: `ED25519`, `X25519`
+  - `ED25519`: Edwards Curve for signing (Ed25519)
   - `X25519`: Montgomery Curve for key exchange (X25519)
-  - `X448`: Montgomery Curve for key exchange (X448)
+  - Note: `Ed448` and `X448` are currently unsupported
+- `keyUseType` (string, optional): Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`
+  - `SIGNATURE`: Key is used for signing (default)
+  - `ENCRYPTION`: Key is used for encryption
+- `algorithm` (string, optional): Algorithm to use with this key. Valid values:
+  - For SIGNATURE: `EdDSA`
+  - For ENCRYPTION: `ECDH_ES`, `ECDH_ES_A128KW`, `ECDH_ES_A192KW`, `ECDH_ES_A256KW`, `ECDH_1PU`, `ECDH_1PU_A128KW`, `ECDH_1PU_A192KW`, `ECDH_1PU_A256KW`
+- `keyIdType` (string, optional): Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE`
+- `notBeforeTime` (string, optional): ISO 8601 date/time when the key becomes valid. If not provided, current time is used
+- `expirationTime` (string, optional): ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used
 
 ### Request Body Fields
 
@@ -143,24 +203,46 @@ The request body structure varies based on the JWK `type`. All types require `na
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | keySize | integer | Yes | Key size in bits. Valid values: `2048`, `3072`, `4096` |
+| keyUseType | string | No | Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`. Default: `SIGNATURE` |
+| algorithm | string | No | Algorithm to use with this key. For SIGNATURE: `RSA256`, `RSA384`, `RSA512`, `PS256`, `PS384`, `PS512`. For ENCRYPTION: `RSA1_5` (deprecated), `RSA_OAEP` (deprecated), `RSA_OAEP_256`, `RSA_OAEP_384`, `RSA_OAEP_512` |
+| keyIdType | string | No | Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE` |
+| notBeforeTime | string | No | ISO 8601 date/time when the key becomes valid. If not provided, current time is used |
+| expirationTime | string | No | ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used |
 
 ### EC Object Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| crv | string | Yes | Curve name. Valid values: `P-256`, `P-384`, `P-521` |
+| curveType | string | Yes | Curve name. Valid values: `P256`, `P384`, `P521`, `SECP256K1` |
+| keyUseType | string | No | Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`. Default: `SIGNATURE` |
+| algorithm | string | No | Algorithm to use with this key. For SIGNATURE: `ES256`, `ES384`, `ES512`, `ES256K`. For ENCRYPTION: `ECDH_ES`, `ECDH_ES_A128KW`, `ECDH_ES_A192KW`, `ECDH_ES_A256KW`, `ECDH_1PU`, `ECDH_1PU_A128KW`, `ECDH_1PU_A192KW`, `ECDH_1PU_A256KW` |
+| keyIdType | string | No | Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE` |
+| notBeforeTime | string | No | ISO 8601 date/time when the key becomes valid. If not provided, current time is used |
+| expirationTime | string | No | ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used |
 
 ### OCT Object Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | keySize | integer | Yes | Key size in bits. Valid values: `128`, `192`, `256` |
+| keyUseType | string | No | Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`. Default: `SIGNATURE` |
+| algorithm | string | No | Algorithm to use with this key. For SIGNATURE: `HS256`, `HS384`, `HS512`. For ENCRYPTION: `A128KW`, `A192KW`, `A256KW`, `A128GCMKW`, `A192GCMKW`, `A256GCMKW`, `DIR`, `PBES2_HS256_A128KW`, `PBES2_HS384_A192KW`, `PBES2_HS512_A256KW` |
+| keyIdType | string | No | Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE` |
+| passwordSaltLength | integer | No | Salt length for password-based encryption. Default: `8` |
+| passwordIterationCount | integer | No | Iteration count for password-based encryption. Default: `1000` |
+| notBeforeTime | string | No | ISO 8601 date/time when the key becomes valid. If not provided, current time is used |
+| expirationTime | string | No | ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used |
 
 ### OKP Object Fields
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| crv | string | Yes | Curve name. Valid values: `Ed25519`, `Ed448`, `X25519`, `X448` |
+| curveType | string | Yes | Curve name. Valid values: `ED25519`, `X25519` (Note: `Ed448` and `X448` are currently unsupported) |
+| keyUseType | string | No | Key usage type. Valid values: `SIGNATURE`, `ENCRYPTION`. Default: `SIGNATURE` |
+| algorithm | string | No | Algorithm to use with this key. For SIGNATURE: `EdDSA`. For ENCRYPTION: `ECDH_ES`, `ECDH_ES_A128KW`, `ECDH_ES_A192KW`, `ECDH_ES_A256KW`, `ECDH_1PU`, `ECDH_1PU_A128KW`, `ECDH_1PU_A192KW`, `ECDH_1PU_A256KW` |
+| keyIdType | string | No | Method to generate the key ID (kid). Valid values: `TIMESTAMP` (default), `SHA256`, `SHA1`, `ISO_DATE`, `NONE` |
+| notBeforeTime | string | No | ISO 8601 date/time when the key becomes valid. If not provided, current time is used |
+| expirationTime | string | No | ISO 8601 date/time when the key expires. If not provided, one year from `notBeforeTime` is used |
 
 ### Notes
 
@@ -269,7 +351,7 @@ curl -X POST \
     "type": "EC",
     "kid": "ec-p256-key-1",
     "ec": {
-      "crv": "P-256"
+      "curveType": "P256"
     }
   }'
 ```
@@ -287,7 +369,7 @@ curl -X POST \
     "type": "EC",
     "kid": "ec-p384-key-1",
     "ec": {
-      "crv": "P-384"
+      "curveType": "P384"
     }
   }'
 ```
@@ -323,7 +405,7 @@ curl -X POST \
     "type": "OKP",
     "kid": "okp-ed25519-key-1",
     "okp": {
-      "crv": "Ed25519"
+      "curveType": "ED25519"
     }
   }'
 ```
@@ -341,7 +423,7 @@ curl -X POST \
     "type": "OKP",
     "kid": "okp-x25519-key-1",
     "okp": {
-      "crv": "X25519"
+      "curveType": "X25519"
     }
   }'
 ```
