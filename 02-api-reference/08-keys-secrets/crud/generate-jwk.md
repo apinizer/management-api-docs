@@ -51,6 +51,7 @@ The request body structure varies based on the JWK `type`. All types require `na
   "name": "generated-rsa-jwk",
   "description": "Auto-generated RSA JWK",
   "type": "RSA",
+  "kid": "rsa-key-1",
   "rsa": {
     "keySize": 2048
   }
@@ -70,6 +71,7 @@ The request body structure varies based on the JWK `type`. All types require `na
   "name": "generated-ec-jwk",
   "description": "Auto-generated EC JWK",
   "type": "EC",
+  "kid": "ec-key-1",
   "ec": {
     "crv": "P-256"
   }
@@ -89,6 +91,7 @@ The request body structure varies based on the JWK `type`. All types require `na
   "name": "generated-oct-jwk",
   "description": "Auto-generated symmetric key",
   "type": "OCT",
+  "kid": "oct-key-1",
   "oct": {
     "keySize": 256
   }
@@ -108,6 +111,7 @@ The request body structure varies based on the JWK `type`. All types require `na
   "name": "generated-okp-jwk",
   "description": "Auto-generated OKP JWK",
   "type": "OKP",
+  "kid": "okp-key-1",
   "okp": {
     "crv": "Ed25519"
   }
@@ -128,6 +132,7 @@ The request body structure varies based on the JWK `type`. All types require `na
 | name | string | Yes | JWK name (unique identifier) |
 | description | string | No | JWK description |
 | type | string | Yes | JWK type: `RSA`, `EC`, `OCT`, `OKP` |
+| kid | string | No | Key ID (kid) - Unique identifier for the key. If not provided, a default kid will be generated |
 | rsa | object | Conditional | RSA-specific parameters (required if type is RSA) |
 | ec | object | Conditional | EC-specific parameters (required if type is EC) |
 | oct | object | Conditional | OCT-specific parameters (required if type is OCT) |
@@ -161,6 +166,7 @@ The request body structure varies based on the JWK `type`. All types require `na
 
 - `name` must be unique within the project
 - `type` determines the cryptographic algorithm and which type-specific object (`rsa`, `ec`, `oct`, or `okp`) must be provided
+- `kid` (Key ID) is optional. If not provided, a default kid will be automatically generated. The kid is used to identify the key in JWK Sets and JWT headers
 - Type-specific parameters are required based on the selected `type`
 - JWK is automatically deployed to all environments after generation
 
@@ -225,6 +231,7 @@ curl -X POST \
     "name": "generated-rsa-jwk",
     "description": "Auto-generated RSA 2048-bit JWK",
     "type": "RSA",
+    "kid": "rsa-2048-key-1",
     "rsa": {
       "keySize": 2048
     }
@@ -242,6 +249,7 @@ curl -X POST \
     "name": "generated-rsa-4096-jwk",
     "description": "Auto-generated RSA 4096-bit JWK",
     "type": "RSA",
+    "kid": "rsa-4096-key-1",
     "rsa": {
       "keySize": 4096
     }
@@ -259,6 +267,7 @@ curl -X POST \
     "name": "generated-ec-jwk",
     "description": "Auto-generated EC P-256 JWK",
     "type": "EC",
+    "kid": "ec-p256-key-1",
     "ec": {
       "crv": "P-256"
     }
@@ -276,6 +285,7 @@ curl -X POST \
     "name": "generated-ec-p384-jwk",
     "description": "Auto-generated EC P-384 JWK",
     "type": "EC",
+    "kid": "ec-p384-key-1",
     "ec": {
       "crv": "P-384"
     }
@@ -293,6 +303,7 @@ curl -X POST \
     "name": "generated-oct-jwk",
     "description": "Auto-generated 256-bit symmetric key",
     "type": "OCT",
+    "kid": "oct-256-key-1",
     "oct": {
       "keySize": 256
     }
@@ -310,6 +321,7 @@ curl -X POST \
     "name": "generated-okp-jwk",
     "description": "Auto-generated Ed25519 JWK",
     "type": "OKP",
+    "kid": "okp-ed25519-key-1",
     "okp": {
       "crv": "Ed25519"
     }
@@ -327,6 +339,7 @@ curl -X POST \
     "name": "generated-x25519-jwk",
     "description": "Auto-generated X25519 JWK for key exchange",
     "type": "OKP",
+    "kid": "okp-x25519-key-1",
     "okp": {
       "crv": "X25519"
     }
