@@ -92,7 +92,7 @@ The request body varies based on the `sourceType`. All source types require:
   "sourceType": "CERTIFICATE",
   "certificateName": "my-certificate",
   "environmentName": "production",
-  "useType": "SIGN",
+  "useType": "SIGNATURE",
   "keystoreAlgorithm": "RSA"
 }
 ```
@@ -106,7 +106,7 @@ The request body varies based on the `sourceType`. All source types require:
   "sourceType": "PUBLIC_KEY",
   "keyName": "my-key",
   "environmentName": "production",
-  "useType": "SIGN",
+  "useType": "SIGNATURE",
   "keystoreAlgorithm": "RSA"
 }
 ```
@@ -121,7 +121,7 @@ The request body varies based on the `sourceType`. All source types require:
   "keyStoreName": "my-keystore",
   "environmentName": "production",
   "aliasName": "my-alias",
-  "useType": "SIGN",
+  "useType": "SIGNATURE",
   "keystoreAlgorithm": "RSA"
 }
 ```
@@ -144,7 +144,7 @@ The request body varies based on the `sourceType`. All source types require:
 | kid | string | Conditional | Key ID (kid) - Required for URL and COPY_PASTE source types when the source contains multiple keys (JWK Set) |
 | environmentName | string | Conditional | Environment name (required for CERTIFICATE, KEY, KEYSTORE source types) |
 | aliasName | string | Conditional | Alias name in keystore (required if sourceType is KEYSTORE) |
-| useType | string | Conditional | Use type: `SIGN`, `ENCRYPT` (required for CERTIFICATE, KEY, KEYSTORE source types) |
+| useType | string | Conditional | Use type: `SIGNATURE`, `ENCRYPTION` (required for CERTIFICATE, KEY, KEYSTORE source types) |
 | keystoreAlgorithm | string | Conditional | Keystore algorithm (required for CERTIFICATE, KEY, KEYSTORE source types) |
 
 ### Notes
@@ -270,7 +270,7 @@ curl -X POST \
     "sourceType": "CERTIFICATE",
     "certificateName": "my-certificate",
     "environmentName": "production",
-    "useType": "SIGN",
+    "useType": "SIGNATURE",
     "keystoreAlgorithm": "RSA"
   }'
 ```

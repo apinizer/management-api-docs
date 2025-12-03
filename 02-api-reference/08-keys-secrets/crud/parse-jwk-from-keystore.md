@@ -49,7 +49,7 @@ Authorization: Bearer YOUR_TOKEN
   "keyStoreName": "my-keystore",
   "environmentName": "production",
   "aliasName": "my-alias",
-  "useType": "SIGN",
+  "useType": "SIGNATURE",
   "keystoreAlgorithm": "RSA"
 }
 ```
@@ -63,7 +63,7 @@ Authorization: Bearer YOUR_TOKEN
 | keyStoreName | string | Yes | Keystore name |
 | environmentName | string | Yes | Environment name |
 | aliasName | string | Yes | Alias name in keystore |
-| useType | string | Yes | Use type: `SIGN`, `ENCRYPT` |
+| useType | string | Yes | Use type: `SIGNATURE`, `ENCRYPTION` |
 | keystoreAlgorithm | string | Yes | Keystore algorithm (e.g., `RSA`) |
 
 ## Response
@@ -83,7 +83,7 @@ curl -X POST \
     "keyStoreName": "my-keystore",
     "environmentName": "production",
     "aliasName": "my-alias",
-    "useType": "SIGN",
+    "useType": "SIGNATURE",
     "keystoreAlgorithm": "RSA"
   }'
 ```

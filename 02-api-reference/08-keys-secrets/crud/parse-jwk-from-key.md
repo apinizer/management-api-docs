@@ -48,7 +48,7 @@ Authorization: Bearer YOUR_TOKEN
   "description": "JWK from key",
   "keyName": "my-key",
   "environmentName": "production",
-  "useType": "SIGN",
+  "useType": "SIGNATURE",
   "keystoreAlgorithm": "RSA"
 }
 ```
@@ -61,7 +61,7 @@ Authorization: Bearer YOUR_TOKEN
 | description | string | No | JWK description |
 | keyName | string | Yes | Key name |
 | environmentName | string | Yes | Environment name |
-| useType | string | Yes | Use type: `SIGN`, `ENCRYPT` |
+| useType | string | Yes | Use type: `SIGNATURE`, `ENCRYPTION` |
 | keystoreAlgorithm | string | Yes | Keystore algorithm (e.g., `RSA`) |
 
 ## Response
@@ -80,7 +80,7 @@ curl -X POST \
     "description": "JWK from key",
     "keyName": "my-key",
     "environmentName": "production",
-    "useType": "SIGN",
+    "useType": "SIGNATURE",
     "keystoreAlgorithm": "RSA"
   }'
 ```
