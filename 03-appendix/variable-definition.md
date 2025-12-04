@@ -17,7 +17,7 @@ Variable is a structure used to extract data from API traffic messages for polic
 |----------|------|----------|-------------|
 | name | string | Yes | Unique name of the variable |
 | description | string | No | Description for the variable |
-| type | EnumVariableType | Yes | Variable type. See [Variable Types](/management-api-docs/variable-types) |
+| type | EnumVariableType | Yes | Variable type. See [Variable Types](/management-api-docs/#variable-types) |
 
 ### Note
 
